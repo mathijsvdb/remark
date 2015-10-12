@@ -15,18 +15,10 @@
     filter: blur(5px);
 }
 
-.nav-pills>li{
+header{
+    background-color: white;
+}
+
+header li{
     float:right;
-}
-
-
-
-@media (min-width: 768px){
-    .navbar-left {
-        float: right!important;
-    }
-}
-
-.col-md-offset-4{
-    background-color: whitesmoke;
 }
