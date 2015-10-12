@@ -15,3 +15,5 @@ Route::get('/','frontpageController@frontpage');
 Route::get('registreren','registrerenController@registreren');
 Route::get('reset_paswoord','resetPaswoordController@reset_paswoord');
 Route::get('login','loginController@login');
+Route::get('gallery','galleryController@gallery');
+Route::get('gallery/upload','workuploadController@workupload');

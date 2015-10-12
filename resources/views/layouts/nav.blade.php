@@ -17,6 +17,8 @@
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
                     <li><a href="#">Profile</a></li>
+                    <li><a href="/gallery">Gallery</a></li>
+                    <li><a href="/gallery/upload">Upload Work</a></li>
                 </ul>
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
