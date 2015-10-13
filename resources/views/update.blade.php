@@ -4,7 +4,8 @@
 
     <h1>Edit your profile</h1>
 
-   	<form method="POST" action="/profile">
+   	<form method="POST" action="/update">
+      {!! csrf_field() !!}
 
    		<div>
        		<label for="name">Name</label>
@@ -20,7 +21,7 @@
         	<input type="hidden" name="id" value="{{ $user->id }}" class="form-control">
     	</div>
 
-    	<input type="submit" value="Update!">
+    	<button>Submit!</button>
 
    	</form>
     
