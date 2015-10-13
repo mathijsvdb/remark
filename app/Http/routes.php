@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/','frontpageController@frontpage');
-Route::get('registreren','registrerenController@registreren');
-Route::get('reset_paswoord','resetPaswoordController@reset_paswoord');
-Route::get('login','loginController@login');
+Route::get('/projects','ProjectController@showAllProjects');
+Route::get('/projects/add', 'ProjectController@getAddProject');
+Route::post('/projects/add', 'ProjectController@postAddProject');
+Route::get('/projects/{id}', 'ProjectController@showProjectById');
+
