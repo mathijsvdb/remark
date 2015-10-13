@@ -12,6 +12,9 @@
 */
 
 Route::get('/','frontpageController@frontpage');
+Route::get('profile','ProfileController@profile');
+Route::get('update','ProfileController@updateProfile');
+Route::post('update', 'ProfileController@postProfile');
 
 // Authentication routes...
 Route::get('/login', 'Auth\AuthController@getLogin');
