@@ -1,7 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use Illuminate\Routing\Controller;
 use Auth;
 
@@ -22,32 +22,35 @@ class ProfileController extends Controller {
 
     public function updateProfile(Request $request)
     {
-        if ($request->user())
-        {
+        // if ($request->user())
+        // {
             $user = Auth::user();
 
             return view("update", compact('user'));
-        }
+        // }
     }
 
-    public function postProfile(Request $request)
+    public function postProfile()
     {
-        if ($request->user())
-        {
-            $user = Auth::user();
+        // if ($request->user())
+        // {
+            $user = \App\User::find(Auth::id());
 
-            
+            $user->name = Request::input('name');
+            $user->email = Request::input('email');
 
-            $id = Input::get('id');
-            $upname = Input::get('name');
-            $upemail = Input::get('email');
+            $user->save();
 
 
-            $sql = "UPDATE users SET name= ? email= ? WHERE Id= ?";
-            DB::update($sql, array($upname, $upemail, $id));
+            // $upname = Input::get('name');
+            // $upemail = Input::get('email');
+
+
+            // $sql = "UPDATE users SET name= ? email= ? WHERE id= ?";
+            // DB::update($sql, array($upname, $upemail, $id));
 
             return view("profile", compact('user'));
-        }
+        // }
     }
 
 }
