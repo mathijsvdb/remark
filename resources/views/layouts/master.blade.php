@@ -12,9 +12,9 @@
     <div class="background-image"></div>
     <div class="container">
 
-        <header class="row">
-            @include('layouts.nav')
-        </header>
+
+        @include('layouts.nav')
+
 
         @yield('content')
 
