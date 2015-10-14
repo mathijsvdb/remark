@@ -1,29 +1,57 @@
-.background-image{
-    position: fixed;
-    width: 101%;
-    height: 101%;
-    top:-8px;
-    right: -5px;
-
+body{
     background-image: url(../images/0014.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    -webkit-filter: blur(5px);
-    -moz-filter: blur(5px);
-    -o-filter: blur(5px);
-    -ms-filter: blur(5px);
-    filter: blur(5px);
+}
+
+
+.container{
+    background: rgba(255, 255, 255, 1);
 }
 
 .nav-pills>li{
     float:right;
 }
 
+.navbar-brand:link,
+.navbar-brand:visited,
+.navbar-brand:hover
+.navbar-brand:active{
+    width: 100px;
+    background-image: url(../images/remark_logo_mini.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.form-signin
+{
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-control
+{
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
 
 
 @media (min-width: 768px){
     .navbar-left {
         float: right!important;
+    }
+
+    .loginmini{
+        position: absolute;
+        width: 100%;
+        max-width: 340px;
     }
 }
 
