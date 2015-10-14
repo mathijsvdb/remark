@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use Illuminate\Support\Facades\Auth;
 use Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -24,6 +25,7 @@ class ProjectController extends Controller
 
         $project->title = Request::input('title');
         $project->body = Request::input('body');
+        $project->user_id = Auth::id();
 
         $project->save();
 
