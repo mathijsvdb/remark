@@ -1,0 +1,24 @@
+.background-image{
+    position: fixed;
+    width: 101%;
+    height: 101%;
+    top:-8px;
+    right: -5px;
+
+    background-image: url(../images/0014.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+}
+
+header{
+    background-color: white;
+}
+
+header li{
+    float:right;
+}
