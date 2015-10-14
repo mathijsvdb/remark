@@ -9,9 +9,8 @@
 
 </head>
 <body>
-    <div class="background-image"></div>
-    <div class="container">
 
+    <div class="container">
 
         @include('layouts.nav')
 

@@ -8,19 +8,171 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:focus,
+.navbar-default .navbar-nav>.active>a:hover{
+    color:mediumspringgreen;
+}
+
+.navbar-default {
+    border-color: rgba(34,34,34,.05);
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    background-color: #fff;
+    -webkit-transition: all .35s;
+    -moz-transition: all .35s;
+    transition: all .35s;
+}
+
+.navbar-brand:link,
+.navbar-brand:visited,
+.navbar-brand:hover,
+.navbar-brand:active,{
+    background-image: url("../images/Remark_logo_mini.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100px;
+}
+
+.navbar-brand{
+    background-image: url("../images/Remark_logo_mini_white.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100px;
+}
+
+.navbar-default .navbar-header {
+    text-transform: uppercase;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    font-weight: 700;
+    color: lightgreen;
+}
+
+.navbar-default .navbar-header  {
+    color: mediumspringgreen;
+}
+
+.navbar-default .nav > li>a,
+.navbar-default .nav>li>a:focus {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    color: #222;
+}
+
+.navbar-default .nav > li>a:hover,
+.navbar-default .nav>li>a:focus:hover {
+    color: lightgreen;
+}
+
+.navbar-default .nav > li.active>a,
+.navbar-default .nav>li.active>a:focus {
+    background-color: transparent;
+}
+
+.navbar-default .nav > li.active>a:hover,
+.navbar-default .nav>li.active>a:focus:hover {
+    background-color: transparent;
+}
+
+@media(min-width:768px) {
+    .navbar-default {
+        border-radius: 0px;
+        border: none;
+        border-bottom: 1px solid ;
+        border-color: rgba(255,255,255,3);
+        background-color: transparent;
+    }
+
+    .navbar-default .navbar-header {
+        color: lightgreen;
+    }
+
+    .navbar-default .navbar-header ,
+    .navbar-default .navbar-header {
+        color: #fff;
+    }
+
+    .navbar-default .nav > li>a,
+    .navbar-default .nav>li>a:focus {
+        color: lightgreen;
+    }
+
+    .navbar-default .nav > li>a:hover,
+    .navbar-default .nav>li>a:focus:hover {
+        color: #fff;
+    }
+
+    .navbar-default.affix {
+        border-color: rgba(34,34,34,.05);
+        background-color: #fff;
+    }
+
+    .navbar-default.affix .navbar-header {
+        font-size: 14px;
+        color: #f05f40;
+    }
+
+    .navbar-default.affix .navbar-header,
+    .navbar-default.affix .navbar-header  {
+        color: #eb3812;
+    }
+
+    .navbar-default.affix .nav > li>a,
+    .navbar-default.affix .nav>li>a:focus {
+        color: #222;
+    }
+
+    .navbar-default.affix .nav > li>a:hover,
+    .navbar-default.affix .nav>li>a:focus:hover {
+        color: #f05f40;
+    }
+}
 
 .container{
-    background: rgba(0, 0, 0, 0.5);
+
     color: white;
     width: 100%;
     height: 100%;
+    padding: 0;
+}
+
+.container span{
+    color: whitesmoke;
+}
+
+.registrer{
+    max-width: 800px;
+    min-width: 360px;
+    display: block;
+    margin: 0 auto;
+    background-color: rgba(0,0,0, 0.5);
+    padding: 20px;
+}
+
+.header-content-inner{
+    background-color: rgba(0,0,0, 0.5);
+    padding: 40px 20px 40px 20px;
+}
+
+.btn{
+    background-color: lightgreen;
+    border: none;
+    color: white;
+    width: auto;
+    border-radius: 100px;
+}
+
+.btn:hover{
+    background-color: mediumspringgreen;
 }
 
 header {
     width: 100%;
     text-align: center;
     color: #fff;
-    margin-top: 200px;
+
 }
 
 header .header-content {
@@ -41,6 +193,13 @@ header .header-content .header-content-inner hr {
     margin: 30px auto;
 }
 
+a:link,
+a:visited,
+a:hover,
+a:active {
+    color: lightgreen;
+}
+
 header a:link,
 header a:visited,
 header a:hover,
@@ -48,13 +207,15 @@ header a:active{
     background-color: lightgreen;
     border: none;
     font-size: 2rem;
+    color: white;
     border-radius: 100px;
     padding: 14px;
 }
 
 header a:hover{
-    background-color: limegreen;
+    background-color: mediumspringgreen;
 }
+
 
 header hr{
     background-color: lightgreen;
@@ -107,20 +268,8 @@ header .header-content .header-content-inner p {
     max-width: 400px;
 }
 
-
 .nav-pills>li{
     float:right;
-}
-
-.navbar-brand:link,
-.navbar-brand:visited,
-.navbar-brand:hover
-.navbar-brand:active{
-    width: 100px;
-    background-image: url(../images/remark_logo_mini.png);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .form-signin
