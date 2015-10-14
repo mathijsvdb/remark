@@ -1,5 +1,32 @@
 <?php
 
+// return [
+//     'driver' => env('MAIL_DRIVER', 'mail'),
+//     'host' => env('MAIL_HOST', 'mailtrap.io'),
+//     'port' => env('MAIL_PORT', 597),
+//     'from' => ['address' => 'from@example.com', 'name' => 'Example'],
+//     'encryption' => env('MAIL_ENCRYPTION', 'tls'),
+//     'username' => env('MAIL_USERNAME'),
+//     'password' => env('MAIL_PASSWORD'),
+//     'sendmail' => '/usr/sbin/sendmail -bs',
+//     'pretend' => false,
+
+// ];
+
+// return array(
+//   "driver" => "smtp",
+//   "host" => "mailtrap.io",
+//   "port" => 2525,
+//   "from" => array(
+//       "address" => "from@example.com",
+//       "name" => "Example"
+//   ),
+//   "username" => "470956155c25f8179",
+//   "password" => "b0cdfdbe2c4fab",
+//   "sendmail" => "/usr/sbin/sendmail -bs",
+//   "pretend" => false
+// );
+
 return [
 
     /*
@@ -28,7 +55,7 @@ return [
     |
     */
 
-    'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+    'host' => env('MAIL_HOST', 'smtp.mailtrap.io'),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +68,7 @@ return [
     |
     */
 
-    'port' => env('MAIL_PORT', 587),
+    'port' => env('MAIL_PORT', 2525),
 
     /*
     |--------------------------------------------------------------------------
@@ -54,7 +81,7 @@ return [
     |
     */
 
-    'from' => ['address' => null, 'name' => null],
+    'from' => ['address' => 'from@example.com', 'name' => 'remark'],
 
     /*
     |--------------------------------------------------------------------------
