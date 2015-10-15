@@ -22,14 +22,9 @@ Route::get('profile','ProfileController@profile');
 Route::get('update','ProfileController@updateProfile');
 Route::post('update', 'ProfileController@postProfile');
 
-Route::get('registreren','registrerenController@registreren');
-Route::get('reset_paswoord','resetPaswoordController@reset_paswoord');
-Route::get('login','loginController@login');
-Route::get('profiel','profielController@profiel');
-
 // Registration routes...
-Route::get('register', 'Auth\AuthController@getRegister');
-Route::post('register', 'Auth\AuthController@postRegister');
+Route::get('/registreren', 'Auth\AuthController@getRegister');
+Route::post('/registreren', 'Auth\AuthController@postRegister');
 
 // Authentication routes...
 Route::get('/login', 'Auth\AuthController@getLogin');
