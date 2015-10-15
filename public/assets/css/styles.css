@@ -23,23 +23,14 @@ body{
     transition: all .35s;
 }
 
-.navbar-brand:link,
-.navbar-brand:visited,
-.navbar-brand:hover,
-.navbar-brand:active,{
-    background-image: url("../images/Remark_logo_mini.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100px;
-}
-
 .navbar-brand{
     background-image: url("../images/Remark_logo_mini_white.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 100px;
+    width: 60px;
+    height: 31px;
+    margin-top: 10px;
 }
 
 .navbar-default .navbar-header {
@@ -77,10 +68,14 @@ body{
 }
 
 @media(min-width:768px) {
+    .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+        margin-left: -5px;
+    }
+
+
     .navbar-default {
         border-radius: 0px;
         border: none;
-        border-bottom: 1px solid ;
         border-color: rgba(255,255,255,3);
         background-color: transparent;
     }
@@ -219,8 +214,9 @@ header a:hover{
 
 header hr{
     background-color: lightgreen;
-    height: 4px;
+    height: 6px;
     width: 10%;
+    border: none;
 }
 
 
