@@ -23,8 +23,8 @@ Route::get('update','ProfileController@updateProfile');
 Route::post('update', 'ProfileController@postProfile');
 
 // Registration routes...
-Route::get('/registreren', 'Auth\AuthController@getRegister');
-Route::post('/registreren', 'Auth\AuthController@postRegister');
+Route::get('/register', 'Auth\AuthController@getRegister');
+Route::post('/register', 'Auth\AuthController@postRegister');
 
 // Authentication routes...
 Route::get('/login', 'Auth\AuthController@getLogin');
