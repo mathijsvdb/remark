@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Waitlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -57,13 +58,12 @@ class AuthController extends Controller
 
         if(str_contains($input['email'], '@student.thomasmore.be')){
             Auth::login($this->create($request->all()));
-            return redirect($this->redirectPath());
         } else {
-            return redirect($this->redirectPath());
+            $this->addToWaitlist($request->all());
         }
 
         //redirect
-
+        return redirect($this->redirectPath());
     }
 
     /**
@@ -97,6 +97,15 @@ class AuthController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+        ]);
+    }
+
+    protected function addToWaitlist(array $data)
+    {
+        return Waitlist::create([
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'email' => $data['email'],
         ]);
     }
 }
