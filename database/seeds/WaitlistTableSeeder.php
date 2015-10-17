@@ -17,17 +17,17 @@ class WaitlistTableSeeder extends Seeder
             [
                 'firstname' => 'test',
                 'lastname' => 'test',
-                'email' => 'test@student.thomasmore.be',
+                'email' => 'test@hotmail.com',
             ],
             [
                 'firstname' => 'test1',
                 'lastname' => 'test1',
-                'email' => 'test1@student.thomasmore.be',
+                'email' => 'test1@hotmail.com',
             ],
             [
                 'firstname' => 'test2',
                 'lastname' => 'test2',
-                'email' => 'test2@student.thomasmore.be',
+                'email' => 'test2@hotmail.com',
             ],
         ];
 
