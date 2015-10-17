@@ -58,12 +58,14 @@ class AuthController extends Controller
 
         if(str_contains($input['email'], '@student.thomasmore.be')){
             Auth::login($this->create($input));
+            $info = 'Congratulations on creating an account, To update your profile visit the profile page!';
         } else {
             $this->addToWaitlist($request->all());
+            $info = "Thanks for showing interest in our services, at the moment you will be put on a waiting list. When It's your turn, we will send an activation mail in your inbox.";
         }
 
         //redirect
-        return redirect($this->redirectPath());
+        return redirect($this->redirectPath())->with('info', $info);
     }
 
     /**
