@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -33,6 +35,35 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('guest', ['except' => 'getLogout']);
+    }
+
+    //register users + waitinglist users
+
+    public function postRegister(Request $request)
+    {
+        //validator
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        //login + create in database for thomasmore email
+        //create in database for non thomasmore emails
+
+        $input = $request->all();
+
+        if(str_contains($input['email'], '@student.thomasmore.be')){
+            Auth::login($this->create($request->all()));
+            return redirect($this->redirectPath());
+        } else {
+            return redirect($this->redirectPath());
+        }
+
+        //redirect
+
     }
 
     /**
