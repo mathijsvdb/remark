@@ -42,9 +42,11 @@ class AuthController extends Controller
 
     public function postRegister(Request $request)
     {
-        //validator
-        $validator = $this->validator($request->all());
+        $input = $request->all();
 
+        $validator = $this->validator($input);
+
+        //validator fails
         if ($validator->fails()) {
             $this->throwValidationException(
                 $request, $validator
@@ -54,10 +56,8 @@ class AuthController extends Controller
         //login + create in database for thomasmore email
         //create in database for non thomasmore emails
 
-        $input = $request->all();
-
         if(str_contains($input['email'], '@student.thomasmore.be')){
-            Auth::login($this->create($request->all()));
+            Auth::login($this->create($input));
         } else {
             $this->addToWaitlist($request->all());
         }
@@ -74,13 +74,21 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'firstname' => 'required|max:255',
-            'lastname' => 'required|max:255',
-            'username' => 'required|max:50|unique:users',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        if(str_contains($data['email'], '@student.thomasmore.be')){
+            return Validator::make($data, [
+                'firstname' => 'required|max:255',
+                'lastname' => 'required|max:255',
+                'username' => 'required|max:50|unique:users',
+                'email' => 'required|email|max:255|unique:users',
+                'password' => 'required|confirmed|min:6',
+            ]);
+        } else {
+            return Validator::make($data, [
+                'firstname' => 'required|max:255',
+                'lastname' => 'required|max:255',
+                'email' => 'required|email|max:255|unique:waitlist',
+            ]);
+        }
     }
 
     /**
