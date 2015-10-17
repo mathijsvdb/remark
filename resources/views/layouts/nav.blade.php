@@ -9,14 +9,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"></a>
+                <a class="navbar-brand" href="/"></a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="{{ url('/') }}">Home<span class="sr-only">(current)</span></a></li>
-                    <li><a href="{{ url('/profiel') }}">Profile</a></li>
+                    <li><a href="{{ url('/profile') }}">Profile</a></li>
                 </ul>
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
@@ -24,7 +24,7 @@
                     </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url('/registreren') }}">Register</a></li>
+                    <li><a href="{{ url('/register') }}">Register</a></li>
                     <li class="dropdown">
                         <a href="{{ url('/login') }}" >Login</a>
                     </li>
