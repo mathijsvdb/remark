@@ -17,7 +17,7 @@
     </div>
 
     <div class="form-group">
-    <label for="body">Add image tags:</label><br>
+    <label for="tags">Add image tags:</label><br>
         <input type="checkbox" name="tags" value="web">Web Design
         <input type="checkbox" name="tags" value="illustrator">Illustrator
         <input type="checkbox" name="tags" value="photoshop">Photoshop
