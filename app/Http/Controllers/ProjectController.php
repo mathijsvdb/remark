@@ -25,6 +25,9 @@ class ProjectController extends Controller
 
         $project->title = Request::input('title');
         $project->body = Request::input('body');
+        $project->tags = Request::input('tags');
+        $project->img = Request::input('fileToUpload');
+
         $project->user_id = Auth::id();
 
         $project->save();
@@ -36,5 +39,6 @@ class ProjectController extends Controller
         $project = Project::find($id);
 
         return $project->title;
+        return $project->img;
     }
 }
