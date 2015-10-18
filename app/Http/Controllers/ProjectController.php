@@ -29,6 +29,8 @@ class ProjectController extends Controller
         $project->img = Request::input('fileToUpload');
 
         $project->user_id = Auth::id();
+        //$project->user_id = 1;
+        //$table->increments('id');
 
         $project->save();
 

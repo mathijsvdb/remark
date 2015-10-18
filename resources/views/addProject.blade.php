@@ -8,12 +8,12 @@
 
     <div class="form-group">
         <label for="title">Project title</label><br>
-        <input type="text" name="title"> <br>
+        <input type="text" name="title" style="color:black"> <br>
     </div>
 
     <div class="form-group">
         <label for="body">Project description:</label><br>
-        <input type="text" name="body"><br>
+        <input type="text" name="body" style="color:black"><br>
     </div>
 
     <div class="form-group">
