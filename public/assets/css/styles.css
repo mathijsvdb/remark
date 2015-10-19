@@ -137,7 +137,7 @@ body{
     color: whitesmoke;
 }
 
-.registrer{
+.activity, .registrer{
     max-width: 800px;
     min-width: 360px;
     display: block;
@@ -307,3 +307,7 @@ footer{
 .col-md-offset-4{
     background-color: whitesmoke;
 }
+
+.notificationlist{margin-top: 30px;}
+.notificationlist p{color:black;}
+.notificationlist span{color:black;}
