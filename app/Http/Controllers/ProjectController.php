@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Request;
 use App\Http\Requests;
@@ -39,8 +40,8 @@ class ProjectController extends Controller
 
     public function showProjectById($id) {
         $project = Project::find($id);
+        $user = User::find($project['user_id']);
 
-        return $project->title;
-        return $project->img;
+        return view('projects.detailProjects', compact('project', 'user'));
     }
 }
