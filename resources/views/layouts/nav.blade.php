@@ -16,10 +16,12 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}">Home<span class="sr-only">(current)</span></a></li>
-                    <li>
-                        <a href="{{ url('/profile') }}">Profile</a>
-                        <span class="profile-notification" aria-hidden="true">1</span>
-                    </li>
+                    @if(Auth::check())
+                        <li>
+                            <a href="{{ url('/profile') }}">Profile</a>
+                            <span class="profile-notification" aria-hidden="true">1</span>
+                        </li>
+                    @endif
 
                 </ul>
                 <form class="navbar-form navbar-left" role="search">
@@ -28,10 +30,17 @@
                     </div>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="{{ url('/register') }}">Register</a></li>
-                    <li class="dropdown">
-                        <a href="{{ url('/login') }}" >Login</a>
-                    </li>
+                    @if(Auth::check())
+                        <li><a href="{{ url('/projects/add') }}">Add project</a></li>
+                        <li class="dropdown">
+                            <a href="{{ url('/logout') }}" >Logout</a>
+                        </li>
+                    @else
+                        <li><a href="{{ url('/register') }}">Sign up</a></li>
+                        <li class="dropdown">
+                            <a href="{{ url('/login') }}" >Sign in</a>
+                        </li>
+                    @endif
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
