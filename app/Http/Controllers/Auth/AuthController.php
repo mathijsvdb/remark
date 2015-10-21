@@ -102,8 +102,8 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
+            'firstname' => ucfirst($data['firstname']),
+            'lastname' => ucfirst($data['lastname']),
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -114,8 +114,8 @@ class AuthController extends Controller
     protected function addToWaitlist(array $data)
     {
         return Waitlist::create([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
+            'firstname' => ucfirst($data['firstname']),
+            'lastname' => ucfirst($data['lastname']),
             'email' => $data['email'],
         ]);
     }

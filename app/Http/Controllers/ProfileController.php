@@ -39,8 +39,13 @@ class ProfileController extends Controller {
         // {
             $user = \App\User::find(Auth::id());
 
-            $user->name = Request::input('name');
+            $user->firstname = ucfirst(Request::input('firstname'));
+            $user->lastname = ucfirst(Request::input('lastname'));
             $user->email = Request::input('email');
+            $user->bio = Request::input('bio');
+            $user->facebook = Request::input('facebook');
+            $user->twitter = Request::input('twitter');
+            $user->website = Request::input('website');
 
             $user->save();
 
@@ -52,7 +57,7 @@ class ProfileController extends Controller {
             // $sql = "UPDATE users SET name= ? email= ? WHERE id= ?";
             // DB::update($sql, array($upname, $upemail, $id));
 
-            return view("profile", compact('user'));
+            return redirect("profile/" . $user->id);
         // }
     }
 
