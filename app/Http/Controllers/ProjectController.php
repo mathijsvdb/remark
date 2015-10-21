@@ -11,6 +11,7 @@ use App\Http\Requests;
 use Validator;
 use Redirect;
 use App\Http\Controllers\Controller;
+use \League\ColorExtractor\Client as ColorExtractor;
 
 class ProjectController extends Controller
 {
@@ -83,7 +84,20 @@ class ProjectController extends Controller
     public function showProjectById($id) {
         $project = Project::find($id);
         $user = User::find($project['user_id']);
+        $image = $project['img'];
 
-        return view('projects.detailProjects', compact('project', 'user'));
+        $client = new ColorExtractor;
+
+        if(str_contains($project['img'], '.png')){
+            $imagecolor = $client->loadPng('uploads/' . $image);
+        } else if(str_contains($image, '.jpg')){
+            $imagecolor = $client->loadJpeg('uploads/' . $image);
+        } else{
+            return 'nope';
+        }
+
+        $palette = $imagecolor->extract(3);
+
+        return view('projects.detailProjects', compact('project', 'user', 'palette'));
     }
 }
