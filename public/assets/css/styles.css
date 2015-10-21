@@ -275,6 +275,15 @@ header .header-content .header-content-inner p {
     margin-top: 250px;
 }
 
+/*/projects*/
+
+.gallery ul{list-style: none;}
+
+.gallery .projecttitle
+{
+    font-size: 25px;
+}
+
 @media(min-width:768px) {
     header {
         min-height: 100%;
