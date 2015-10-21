@@ -194,6 +194,63 @@ header .header-content .header-content-inner p {
     font-weight: 300;
 }
 
+/*front spotlight*/
+#spotlight{
+    position: relative;
+    color:black;
+    margin-top: 0px;
+    height: 200px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#spotlight .input-group{
+    width: 300px;
+}
+
+#spotlight .btn{
+    height: 34px;
+}
+
+#spotlight h2{
+    text-align: center;
+    padding: 20px;
+}
+
+#spotlight .imagelist{
+    margin-top: 20px;
+}
+
+#spotlight .imagelist p{
+    padding-top: 10px;
+    width: 300px;
+}
+
+#spotlight img{
+    margin: 0 auto;
+}
+
+.frontlikebtn{
+    position: absolute;
+    margin-left: -200px;
+    margin-top: 250px;
+}
+
+.frontfavbtn{
+    position: absolute;
+    margin-left: -140px;
+    margin-top: 250px;
+}
+
+/*/projects*/
+
+.gallery ul{list-style: none;}
+
+.gallery .projecttitle
+{
+    font-size: 25px;
+}
+
 @media(min-width:768px) {
     header {
         min-height: 100%;

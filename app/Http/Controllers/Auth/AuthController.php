@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Waitlist;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -35,6 +38,36 @@ class AuthController extends Controller
         $this->middleware('guest', ['except' => 'getLogout']);
     }
 
+    //register users + waitinglist users
+
+    public function postRegister(Request $request)
+    {
+        $input = $request->all();
+
+        $validator = $this->validator($input);
+
+        //validator fails
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        //login + create in database for thomasmore email
+        //create in database for non thomasmore emails
+
+        if(str_contains($input['email'], '@student.thomasmore.be')){
+            Auth::login($this->create($input));
+            $info = 'Congratulations on creating an account, To update your profile visit the profile page!';
+        } else {
+            $this->addToWaitlist($request->all());
+            $info = "Thanks for showing interest in our services, at the moment you will be put on a waiting list. When It's your turn, we will send an activation mail in your inbox.";
+        }
+
+        //redirect
+        return redirect($this->redirectPath())->with('info', $info);
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
@@ -43,13 +76,21 @@ class AuthController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'firstname' => 'required|max:255',
-            'lastname' => 'required|max:255',
-            'username' => 'required|max:50|unique:users',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        if(str_contains($data['email'], '@student.thomasmore.be')){
+            return Validator::make($data, [
+                'firstname' => 'required|max:255',
+                'lastname' => 'required|max:255',
+                'username' => 'required|max:50|unique:users',
+                'email' => 'required|email|max:255|unique:users',
+                'password' => 'required|confirmed|min:6',
+            ]);
+        } else {
+            return Validator::make($data, [
+                'firstname' => 'required|max:255',
+                'lastname' => 'required|max:255',
+                'email' => 'required|email|max:255|unique:waitlist',
+            ]);
+        }
     }
 
     /**
@@ -66,6 +107,15 @@ class AuthController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+        ]);
+    }
+
+    protected function addToWaitlist(array $data)
+    {
+        return Waitlist::create([
+            'firstname' => $data['firstname'],
+            'lastname' => $data['lastname'],
+            'email' => $data['email'],
         ]);
     }
 }

@@ -7,7 +7,9 @@
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.1.*",
-        "twbs/bootstrap": "^3.3"
+        "twbs/bootstrap": "^3.3",
+        "intervention/image": "^2.3",
+        "league/color-extractor": "0.1.8"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
