@@ -18,9 +18,7 @@
                     <li><a href="{{ url('/') }}">Home<span class="sr-only">(current)</span></a></li>
                     <li>
                         <a href="{{ url('/profile') }}">Profile</a>
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
-                        <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                        <span class="profile-notification" aria-hidden="true">1</span>
                     </li>
 
                 </ul>

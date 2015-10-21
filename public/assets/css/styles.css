@@ -34,12 +34,6 @@ body ul{
     animation-iteration-count:  infinite;
 }
 
-@-webkit-keyframes bounce {
-    100% {-webkit-transform: translateY(0);}
-    4% {-webkit-transform: translateY(-30px);}
-    10% {-webkit-transform: translateY(-15px);}
-}
-
 @keyframes bounce {
     100% {transform: translateY(0);}
     4% {transform: translateY(-15px);}
@@ -47,6 +41,12 @@ body ul{
     10% {transform: translateY(0);}
 }
 
+@keyframes notification {
+    100% {transform: translateY(0);}
+    4% {transform: translateY(-4px);}
+    6% {transform: translateY(+4px);}
+    10% {transform: translateY(0);}
+}
 
 /*-------navigatie-------*/
 
@@ -56,7 +56,18 @@ body ul{
 }
 
 .navbar-default li span{
+    animation-name: notification;
+    animation-duration: 4s;
+    animation-iteration-count:  infinite;
     position: absolute;
+    width: 16px;
+    height: 16px;
+    top:2px;
+    font-size: 1rem;
+    right: 0px;
+    background-color: red;
+    border-radius: 100px;
+    text-align: center;
 }
 
 .navbar-brand{
@@ -345,9 +356,6 @@ a.btn.btn-primary.plus-project span{
     font-size: 3rem;
     width: 30px;
     height: 30px;
-    animation-name: spin;
-    animation-duration: 5s;
-    animation-iteration-count:  infinite;
 }
 
 .project button{
