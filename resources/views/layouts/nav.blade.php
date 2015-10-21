@@ -15,7 +15,6 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-<<<<<<< HEAD
                     <li><a href="{{ url('/') }}">Home<span class="sr-only">(current)</span></a></li>
                     <li>
                         <a href="{{ url('/profile') }}">Profile</a>
@@ -23,10 +22,7 @@
                         <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
                         <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
                     </li>
-=======
-                    <li class="active"><a href="{{ url('/') }}">Home<span class="sr-only">(current)</span></a></li>
-                    <li><a href="{{ url('/profile') }}">Profile</a></li>
->>>>>>> a0f2ba32520114a3920ed09b61721d34bc6beb10
+
                 </ul>
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">

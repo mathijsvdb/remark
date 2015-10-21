@@ -1,16 +1,5 @@
-<<<<<<< HEAD
-=======
-@extends("layouts.master")
-
-@section("content")
-
-
-<h1>Projects</h1>
->>>>>>> a0f2ba32520114a3920ed09b61721d34bc6beb10
-
 @extends('layouts.master')
 
-<<<<<<< HEAD
 
 
 @section("content")
@@ -44,24 +33,22 @@
 
             @endforeach
         </ul>
-=======
+<!---
 <div class="row">
     <div class="gallery">
-<ul>
-    @foreach($projects as $project)
-        <div class="col-md-4">
-            <li class="projectslist">
-                <a class="projecttitle" href="/projects/{{ $project->id }}">{{ $project->title  }}</a><br>
-                <a class="btn btn-default glyphicon glyphicon-hand-up"></a><a class="btn btn-default glyphicon glyphicon-star"></a>
-                <img src="{{ $project->img  }}" alt=""><br>
-                tag: <span>{{ $project->tags  }}</span>
-            </li>
-        </div>
-    @endforeach
-</ul>
-
-        </div>
->>>>>>> a0f2ba32520114a3920ed09b61721d34bc6beb10
+        <ul>
+            @//foreach($projects as $project)
+                <div class="col-md-4">
+                    <li class="projectslist">
+                        <a class="projecttitle" href="/projects/{{ $project->id }}">{{ $project->title  }}</a><br>
+                        <a class="btn btn-default glyphicon glyphicon-hand-up"></a><a class="btn btn-default glyphicon glyphicon-star"></a>
+                        <img src="{{ $project->img  }}" alt=""><br>
+                        tag: <span>{{ $project->tags  }}</span>
+                    </li>
+                </div>
+            @//endforeach
+        </ul>
     </div>
-
+</div>
+--->
 @stop

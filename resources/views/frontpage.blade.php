@@ -1,15 +1,12 @@
 @extends("layouts.master")
 
 @section("content")
-<<<<<<< HEAD
-=======
     @if(!empty(Session::get('info')))
         <div class="alert alert-success">
             <strong>{!! Session::get('info') !!}</strong>
         </div>
     @endif
 
->>>>>>> a0f2ba32520114a3920ed09b61721d34bc6beb10
     <header>
         <div class="header-content">
             <div class="header-content-inner">
