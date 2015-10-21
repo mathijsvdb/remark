@@ -4,23 +4,59 @@ html, body{
 }
 
 body{
-    background-image: url(../images/0014.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-.navbar-default .navbar-nav>.active>a,
-.navbar-default .navbar-nav>.active>a:focus,
-.navbar-default .navbar-nav>.active>a:hover{
-    color:mediumspringgreen;
+    /*background-image: url(../images/0014.jpg);*/
+    background-color: whitesmoke;
 }
 
+body ul{
+    list-style-type: none;
+}
+
+.container{
+    color: black;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.container h1{
+    margin-left: 40px;
+}
+
+.container span{
+    color: whitesmoke;
+}
+
+/*-------animation-------*/
+.animation-bounce{
+    animation-name: bounce;
+    animation-duration: 5s;
+    animation-iteration-count:  infinite;
+}
+
+@-webkit-keyframes bounce {
+    100% {-webkit-transform: translateY(0);}
+    4% {-webkit-transform: translateY(-30px);}
+    10% {-webkit-transform: translateY(-15px);}
+}
+
+@keyframes bounce {
+    100% {transform: translateY(0);}
+    4% {transform: translateY(-15px);}
+    6% {transform: translateY(+15px);}
+    10% {transform: translateY(0);}
+}
+
+
+/*-------navigatie-------*/
+
 .navbar-default {
-    border-color: rgba(34,34,34,.05);
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    background-color: #fff;
-    -webkit-transition: all .35s;
-    -moz-transition: all .35s;
-    transition: all .35s;
+    background-color: #333;
+    border-color: #e7e7e7;
+}
+
+.navbar-default li span{
+    position: absolute;
 }
 
 .navbar-brand{
@@ -30,125 +66,50 @@ body{
     background-repeat: no-repeat;
     width: 60px;
     height: 31px;
+    margin-left: 20px;
     margin-top: 10px;
 }
+li.active {
+    background-color: #333;
+}
 
-.navbar-default .navbar-header {
-    text-transform: uppercase;
-    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
-    font-weight: 700;
+.navbar-default .navbar-nav>li>a {
     color: lightgreen;
 }
 
-.navbar-default .navbar-header  {
-    color: mediumspringgreen;
-}
-
-.navbar-default .nav > li>a,
-.navbar-default .nav>li>a:focus {
-    text-transform: uppercase;
-    font-size: 13px;
-    font-weight: 700;
-    color: #222;
-}
-
-.navbar-default .nav > li>a:hover,
-.navbar-default .nav>li>a:focus:hover {
-    color: lightgreen;
-}
-
-.navbar-default .nav > li.active>a,
-.navbar-default .nav>li.active>a:focus {
-    background-color: transparent;
-}
-
-.navbar-default .nav > li.active>a:hover,
-.navbar-default .nav>li.active>a:focus:hover {
-    background-color: transparent;
-}
-
-@media(min-width:768px) {
-    .navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
-        margin-left: -5px;
-    }
-
-
-    .navbar-default {
+@media (min-width: 768px){
+    .navbar {
         border-radius: 0px;
-        border: none;
-        border-color: rgba(255,255,255,3);
-        background-color: transparent;
+        box-shadow: 0 2px 10px 0 rgba(0,0,0,.16);
     }
-
-    .navbar-default .navbar-header {
-        color: lightgreen;
-    }
-
-    .navbar-default .navbar-header ,
-    .navbar-default .navbar-header {
-        color: #fff;
-    }
-
-    .navbar-default .nav > li>a,
-    .navbar-default .nav>li>a:focus {
-        color: lightgreen;
-    }
-
-    .navbar-default .nav > li>a:hover,
-    .navbar-default .nav>li>a:focus:hover {
-        color: #fff;
-    }
-
-    .navbar-default.affix {
-        border-color: rgba(34,34,34,.05);
-        background-color: #fff;
-    }
-
-    .navbar-default.affix .navbar-header {
-        font-size: 14px;
-        color: #f05f40;
-    }
-
-    .navbar-default.affix .navbar-header,
-    .navbar-default.affix .navbar-header  {
-        color: #eb3812;
-    }
-
-    .navbar-default.affix .nav > li>a,
-    .navbar-default.affix .nav>li>a:focus {
-        color: #222;
-    }
-
-    .navbar-default.affix .nav > li>a:hover,
-    .navbar-default.affix .nav>li>a:focus:hover {
-        color: #f05f40;
+    .navbar>.container-fluid .navbar-brand {
+        margin-left: 0px;
     }
 }
 
-.container{
-
-    color: white;
-    width: 100%;
-    height: 100%;
-    padding: 0;
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border: none;
 }
 
-.container span{
-    color: whitesmoke;
+@media (min-width: 768px){
+    .navbar-left {
+        float: right!important;
+    }
+
+    .loginmini{
+        position: absolute;
+        width: 100%;
+        max-width: 340px;
+    }
 }
 
-.registrer{
+/*------register------*/
+.registrer, .add-project-container, .project{
     max-width: 800px;
     min-width: 360px;
     display: block;
     margin: 0 auto;
-    background-color: rgba(0,0,0, 0.5);
     padding: 20px;
-}
-
-.header-content-inner{
-    background-color: rgba(0,0,0, 0.5);
-    padding: 40px 20px 40px 20px;
 }
 
 .btn{
@@ -161,13 +122,20 @@ body{
 
 .btn:hover{
     background-color: mediumspringgreen;
+    color: white;
 }
+
+.header-content-inner{
+    background-color: white;
+    padding: 40px 20px 40px 20px;
+}
+
+
 
 header {
     width: 100%;
     text-align: center;
-    color: #fff;
-
+    color: #333;
 }
 
 header .header-content {
@@ -191,8 +159,12 @@ header .header-content .header-content-inner hr {
 a:link,
 a:visited,
 a:hover,
-a:active {
+a:active{
     color: lightgreen;
+}
+
+a:hover{
+    color: mediumspringgreen;
 }
 
 header a:link,
@@ -205,10 +177,6 @@ header a:active{
     color: white;
     border-radius: 100px;
     padding: 14px;
-}
-
-header a:hover{
-    background-color: mediumspringgreen;
 }
 
 
@@ -224,7 +192,6 @@ header .header-content .header-content-inner p {
     margin-bottom: 50px;
     font-size: 16px;
     font-weight: 300;
-    color: rgba(255,255,255, 1);
 }
 
 @media(min-width:768px) {
@@ -245,6 +212,7 @@ header .header-content .header-content-inner p {
         margin-right: auto;
         margin-left: auto;
         max-width: 1000px;
+        box-shadow: 0 2px 10px 0 rgba(0,0,0,.16);
     }
 
     header .header-content .header-content-inner p {
@@ -253,6 +221,13 @@ header .header-content .header-content-inner p {
         max-width: 80%;
         font-size: 18px;
     }
+}
+
+/*------login------*/
+
+.content-box{
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.16);
+    background-color: white;
 }
 
 .section-heading {
@@ -264,15 +239,19 @@ header .header-content .header-content-inner p {
     max-width: 400px;
 }
 
-.nav-pills>li{
-    float:right;
-}
-
-.form-signin
-{
+.form-signin{
     max-width: 330px;
     padding: 15px;
     margin: 0 auto;
+}
+
+.account-wall{
+    padding: 20px;
+    color: #373737;
+}
+
+h1.text-center.login-title{
+    color: #373737;
 }
 
 .form-signin .form-control
@@ -285,6 +264,76 @@ header .header-content .header-content-inner p {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+.row {
+     margin-right: 0px;
+     margin-left: 0px;
+}
+
+/*------addprojects-------*/
+.add-project-container{
+    width: 50%;
+}
+
+/*-----project------*/
+a.btn.btn-primary.plus-project{
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-left: 40px;
+    padding-bottom: 10px;
+    padding-top: 0px;
+}
+
+a.btn.btn-primary.plus-project span{
+    font-size: 3rem;
+    width: 30px;
+    height: 30px;
+    animation-name: spin;
+    animation-duration: 5s;
+    animation-iteration-count:  infinite;
+}
+
+.project button{
+    float: right;
+    margin-top: -30px;
+}
+
+.project p{
+    margin-top: 20px;
+}
+
+.projects-container{
+    width: 95%;
+    Margin:0 auto;
+}
+
+.projects-container li{
+    margin: 10px;
+}
+
+.project a:link,
+.project a:visited,
+.project a:hover,
+.project a:active{
+    color: white;
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.plus-project a{
+    margin-left: 30px;
+}
+
+.projects-title{
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+}
+
+/*---------------*/
+.col-md-offset-4{
+    background-color: whitesmoke;
+}
 
 footer{
     text-align: center;
@@ -292,18 +341,7 @@ footer{
     position: relative;
 }
 
-@media (min-width: 768px){
-    .navbar-left {
-        float: right!important;
-    }
-
-    .loginmini{
-        position: absolute;
-        width: 100%;
-        max-width: 340px;
-    }
-}
-
-.col-md-offset-4{
-    background-color: whitesmoke;
+.form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
 }

@@ -49,10 +49,10 @@
 @endif
 
 @section("content")
-    <div class="registrer">
+    <div class="registrer content-box">
         <form class="form-horizontal" method="post" action="register" role="form">
             {!! csrf_field() !!}
-            <h2>Registreren</h2>
+            <h2>Register</h2>
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Full name</label>
                 <div class="col-sm-9">

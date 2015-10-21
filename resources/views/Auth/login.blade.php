@@ -16,7 +16,7 @@
 
     <div class="login_mini">
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="col-sm-6 col-md-4 col-md-offset-4 content-box">
                 <h1 class="text-center login-title">Login om verder te gaan</h1>
                 <div class="account-wall">
                     <form class="form-signin" method="POST" action="/login">
