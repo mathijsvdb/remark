@@ -137,8 +137,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        /*custom (dit is de image upload/resize
-        'Intervention\Image\ImageServiceProvider',*/
+        /*custom (dit is de image upload/resize*/
+        /*Intervention\Image\ImageServiceProvider,*/
 
         /*
          * Application Service Providers...

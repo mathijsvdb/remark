@@ -54,29 +54,29 @@
         <div class="row">
             <div class="imagelist">
                 <div class="col-md-4">
-                    <img src="http://placehold.it/300x300">
+                    <img src="http://placehold.it/300x300"><a class="btn btn-default glyphicon glyphicon-hand-up frontlikebtn"></a><a class="btn btn-default glyphicon glyphicon-star frontfavbtn"></a>
                     <p class="imgtags"><i class="fa fa-pencil"></i> Illustrator <i class="fa fa-mobile"></i> Mobile Design</p>
                     <!--<p class="imgbody">quasi architecto beatae vitae dicta sunt expl icabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>-->
                 </div>
                 <div class="col-md-4">
-                    <img src="http://placehold.it/300x300">
+                    <img src="http://placehold.it/300x300"><a class="btn btn-default glyphicon glyphicon-hand-up frontlikebtn"></a><a class="btn btn-default glyphicon glyphicon-star frontfavbtn"></a>
                     <p class="imgtags"><i class="fa fa-camera-retro"></i> Photoshop <i class="fa fa-trademark"></i> Logo's</p>
                 </div>
                 <div class="col-md-4">
-                    <img src="http://placehold.it/300x300">
+                    <img src="http://placehold.it/300x300"><a class="btn btn-default glyphicon glyphicon-hand-up frontlikebtn"></a><a class="btn btn-default glyphicon glyphicon-star frontfavbtn"></a>
                     <p class="imgtags"> <i class="fa fa-globe"></i> Web Design <i class="fa fa-black-tie"></i> Branding</p>
                 </div>
                 <div class="col-md-4">
-                    <img src="http://placehold.it/300x300">
+                    <img src="http://placehold.it/300x300"><a class="btn btn-default glyphicon glyphicon-hand-up frontlikebtn"></a><a class="btn btn-default glyphicon glyphicon-star frontfavbtn"></a>
                     <p class="imgtags"><i class="fa fa-pencil"></i> Illustrator <i class="fa fa-mobile"></i> Mobile Design</p>
                     <!--<p class="imgbody">quasi architecto beatae vitae dicta sunt expl icabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur.</p>-->
                 </div>
                 <div class="col-md-4">
-                    <img src="http://placehold.it/300x300">
+                    <img src="http://placehold.it/300x300"><a class="btn btn-default glyphicon glyphicon-hand-up frontlikebtn"></a><a class="btn btn-default glyphicon glyphicon-star frontfavbtn"></a>
                     <p class="imgtags"><i class="fa fa-camera-retro"></i> Photoshop <i class="fa fa-trademark"></i> Logo's</p>
                 </div>
                 <div class="col-md-4">
-                    <img src="http://placehold.it/300x300">
+                    <img src="http://placehold.it/300x300"><a class="btn btn-default glyphicon glyphicon-hand-up frontlikebtn"></a><a class="btn btn-default glyphicon glyphicon-star frontfavbtn"></a>
                     <p class="imgtags"> <i class="fa fa-globe"></i> Web Design <i class="fa fa-black-tie"></i> Branding</p>
                 </div>
             </div>
