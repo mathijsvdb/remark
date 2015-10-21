@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1d346cfb855b1ff7fe57d449d2f0cd8e",
-    "content-hash": "5e5bc59923dcf580de0d4ed785d93b96",
+    "hash": "b0541834c5f82965da6ca707155abf74",
+    "content-hash": "d848cd8dd0955b7bd339aa8bb94cab14",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -609,6 +609,65 @@
                 "laravel"
             ],
             "time": "2015-10-01 18:32:48"
+        },
+        {
+            "name": "league/color-extractor",
+            "version": "0.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/color-extractor.git",
+                "reference": "7d0db6eaa7a527e9b1bd7239e6db08d96c4a7bb9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/color-extractor/zipball/7d0db6eaa7a527e9b1bd7239e6db08d96c4a7bb9",
+                "reference": "7d0db6eaa7a527e9b1bd7239e6db08d96c4a7bb9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "php": ">=5.3.0"
+            },
+            "replace": {
+                "matthecat/colorextractor": "*"
+            },
+            "require-dev": {
+                "laravel/framework": "~4.1",
+                "orchestra/testbench": "~2.0",
+                "silex/silex": "~1.1",
+                "squizlabs/php_codesniffer": "~1.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "League\\ColorExtractor": [
+                        "src",
+                        "tests"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mathieu Lechat",
+                    "email": "math.lechat@gmail.com",
+                    "homepage": "http://matthecat.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Extract colors from an image as a human would do.",
+            "homepage": "https://github.com/thephpleague/color-extractor",
+            "keywords": [
+                "color",
+                "extract",
+                "human",
+                "image",
+                "palette"
+            ],
+            "time": "2015-06-21 12:26:32"
         },
         {
             "name": "league/flysystem",
