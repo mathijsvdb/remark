@@ -3,8 +3,9 @@
 @section("content")
 
     <h1>Hier komt de data van user!</h1>
-
+    
     <p>{{ $user->firstname . " " . $user->lastname }}</p>
+    <img class="img-circle" style="width: 100px; height: 100px;" src="/assets/images/default.jpg" alt="">
     <p>{{ $user->email }}</p>
     @if($user->id == Auth::user()->id)
 	    <a href="/update">Edit my profile</a>

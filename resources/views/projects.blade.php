@@ -33,22 +33,5 @@
 
             @endforeach
         </ul>
-<!---
-<div class="row">
-    <div class="gallery">
-        <ul>
-            @//foreach($projects as $project)
-                <div class="col-md-4">
-                    <li class="projectslist">
-                        <a class="projecttitle" href="/projects/{{ $project->id }}">{{ $project->title  }}</a><br>
-                        <a class="btn btn-default glyphicon glyphicon-hand-up"></a><a class="btn btn-default glyphicon glyphicon-star"></a>
-                        <img src="{{ $project->img  }}" alt=""><br>
-                        tag: <span>{{ $project->tags  }}</span>
-                    </li>
-                </div>
-            @//endforeach
-        </ul>
     </div>
-</div>
---->
 @stop
