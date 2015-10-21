@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Project;
+use App\User;
 use Request;
 use Illuminate\Routing\Controller;
 use Auth;
@@ -13,11 +15,12 @@ class ProfileController extends Controller {
      *
      * @return Response
      */
-    public function profile()
+    public function profile($id)
     {
-        $user = Auth::user();
+        $user = User::find($id);
+        $projects = Project::where('user_id', $id)->get();
 
-        return view("profile", compact('user'));
+        return view("profile", compact('user', 'projects'));
     }
 
     public function updateProfile(Request $request)

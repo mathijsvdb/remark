@@ -18,7 +18,7 @@ Route::post('/projects/add', 'ProjectController@postAddProject');
 Route::get('/projects/{id}', 'ProjectController@showProjectById');
 Route::get('/','frontpageController@frontpage');
 
-Route::get('profile','ProfileController@profile');
+Route::get('profile/{id}','ProfileController@profile');
 Route::get('update','ProfileController@updateProfile');
 Route::post('update', 'ProfileController@postProfile');
 

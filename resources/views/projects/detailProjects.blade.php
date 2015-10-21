@@ -2,7 +2,7 @@
 
 @section("content")
     <h2>{!! $project['title'] !!}</h2>
-    <p>by <a href="/user/{!! $user['username'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a></p>
+    <p>by <a href="/profile/{!! $user['id'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a></p>
     <img style="width: 150px; height: 120px;" src="/uploads/{!! $project['img'] !!}" alt="">
 
     <div>
