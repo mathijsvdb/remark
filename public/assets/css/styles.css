@@ -263,6 +263,18 @@ header .header-content .header-content-inner p {
     margin: 0 auto;
 }
 
+.frontlikebtn{
+    position: absolute;
+    margin-left: -200px;
+    margin-top: 250px;
+}
+
+.frontfavbtn{
+    position: absolute;
+    margin-left: -140px;
+    margin-top: 250px;
+}
+
 @media(min-width:768px) {
     header {
         min-height: 100%;
