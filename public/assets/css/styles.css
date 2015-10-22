@@ -61,11 +61,12 @@ body ul{
     animation-iteration-count:  infinite;
     position: absolute;
     width: 16px;
+    color: black;
     height: 16px;
     top:2px;
     font-size: 1rem;
     right: 0px;
-    background-color: red;
+    background-color: white;
     border-radius: 100px;
     text-align: center;
 }
@@ -383,6 +384,10 @@ a.btn.btn-primary.plus-project span{
     color: white;
     text-decoration: none;
     font-size: 2rem;
+}
+
+li a:hover{
+   color:white !important;
 }
 
 .plus-project a{
