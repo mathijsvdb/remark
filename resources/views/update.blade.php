@@ -1,11 +1,16 @@
 @extends("layouts.master")
 
 @section("content")
-	<div id="updateform">
-		<h2>Edit your profile</h2>
+	<div id="updateform" style="padding: 45px;">
+		<h2>Edit profile</h2>
 
 		<form method="POST" action="/update" enctype="multipart/form-data">
 			{!! csrf_field() !!}
+
+			<div class="form-group">
+				<img class="img-circle" id="preview" style="width: 150px; height:150px; padding: 5px; margin-right: auto; margin-left: auto; display: block;background-color: whitesmoke;" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
+				<input type="file" style="margin-top: 15px;" name="fileToUpload" id="input">
+			</div>
 
 			<div>
 				<label for="firstname">Firstname</label>

@@ -4,7 +4,7 @@
     <div class="container">
 
         <div id="basicinfo">
-            <img class="img-circle" id="profilepicture" src="/assets/images/{!! $user->image !!}" alt="">
+            <img class="img-circle" id="profilepicture" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
 
             <a href="/profile/{!! $user->id !!}" id="user">{{ $user->firstname . " " . $user->lastname }}</a>
             <p>{{ $user->email }}</p>
