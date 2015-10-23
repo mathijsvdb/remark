@@ -2,13 +2,28 @@
 
 @section("content")
 	<div id="updateform" style="padding: 45px;">
+		@if (count($errors) > 0)
+			<div class="alert alert-danger">
+				<ul>
+					@foreach ($errors->all() as $error)
+						<li class="form-group has-error">{{ $error }}</li>
+					@endforeach
+				</ul>
+			</div>
+		@endif
 		<h2>Edit profile</h2>
 
 		<form method="POST" action="/update" enctype="multipart/form-data">
 			{!! csrf_field() !!}
 
 			<div class="form-group">
-				<img class="img-circle" id="preview" style="width: 150px; height:150px; padding: 5px; margin-right: auto; margin-left: auto; display: block;background-color: whitesmoke;" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
+
+				@if($user->image == 'default.jpg')
+					<img class="img-circle" id="preview" style="width: 150px; height:150px; padding: 5px; margin-right: auto; margin-left: auto; display: block;background-color: whitesmoke;" src="/assets/images/{!! $user->image !!}" alt="">
+				@else
+					<img class="img-circle" id="preview" style="width: 150px; height:150px; padding: 5px; margin-right: auto; margin-left: auto; display: block;background-color: whitesmoke;" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
+				@endif
+
 				<input type="file" style="margin-top: 15px;" name="fileToUpload" id="input">
 			</div>
 

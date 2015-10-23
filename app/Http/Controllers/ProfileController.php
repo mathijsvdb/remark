@@ -5,6 +5,8 @@ use App\Project;
 use App\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Request;
 use Illuminate\Routing\Controller;
 use Auth;
