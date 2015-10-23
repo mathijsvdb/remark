@@ -1,28 +1,34 @@
 @extends("layouts.master")
 
 @section("content")
+    <div class="container">
 
-    <h1>Hier komt de data van user!</h1>
-    
-    <p>{{ $user->firstname . " " . $user->lastname }}</p>
-    <img class="img-circle" style="width: 100px; height: 100px;" src="/assets/images/{!! $user->image !!}" alt="">
-    <p>{{ $user->email }}</p>
-    <a href="{!! $user->facebook !!}">facebook</a>
-    <a href="{!! $user->twitter !!}">twitter</a>
-    <a href="{!! $user->website !!}">website</a>
-    <br />
-    @if($user->id == Auth::user()->id)
-	    <a href="/update">Edit my profile</a>
-    @endif
+        <div id="basicinfo">
+            <img class="img-circle" id="profilepicture" src="/assets/images/{!! $user->image !!}" alt="">
 
-    <hr />
-    <ul>
-        @foreach($projects as $work)
-            <li>
+            <a href="/profile/{!! $user->id !!}" id="user">{{ $user->firstname . " " . $user->lastname }}</a>
+            <p>{{ $user->email }}</p>
+            <div id="socialmediadiv">
+                <a href="{!! $user->facebook !!}" class="socialmedia" id="facebook">facebook</a>
+                <a href="{!! $user->twitter !!}" class="socialmedia" id="twitter">twitter</a>
+                <a href="{!! $user->website !!}" class="socialmedia" id="website">website</a>
+            </div>
+
+            @if(Auth::user())
+                @if($user->id == Auth::user()->id)
+                    <a id="edit" href="/update">Edit my profile</a>
+                @endif
+            @endif
+
+        </div>
+        <br />
+        <hr />
+        <div id="allwork">
+            @foreach($projects as $work)
                 <a href="/projects/{!! $work['id'] !!}">
-                    <img style="width: 150px; height: 150px;" src="/uploads/{!! $work['img'] !!}" alt="">
+                    <img class="projectimages" src="/uploads/{!! $work['img'] !!}" alt="">
                 </a>
-            </li>
-        @endforeach
-    </ul>
+            @endforeach
+        </div>
+    </div>
 @stop
