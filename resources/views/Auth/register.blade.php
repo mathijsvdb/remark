@@ -1,43 +1,5 @@
 @extends('layouts.master')
 
-<!--<form method="POST" action="register">
-
-
-    <div class="form-group">
-        First name
-        <input type="text" name="firstname" class="form-control" value="{{ old('firstname') }}">
-    </div>
-
-    <div class="form-group">
-        Last name
-        <input type="text" name="lastname" class="form-control" value="{{ old('lastname') }}">
-    </div>
-
-    <div class="form-group">
-        Username
-        <input type="text" name="username" class="form-control" value="{{ old('username') }}">
-    </div>
-
-    <div class="form-group">
-        Email
-        <input type="email" name="email" class="form-control" value="{{ old('email') }}">
-    </div>
-
-    <div class="form-group">
-        Password
-        <input type="password" class="form-control" name="password">
-    </div>
-
-    <div class="form-group">
-        Confirm Password
-        <input type="password" class="form-control" name="password_confirmation">
-    </div>
-
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Register</button>
-    </div>
-</form>-->
-
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <ul>
@@ -66,7 +28,7 @@
             <div class="form-group">
                 <label for="username" class="col-sm-3 control-label">Student username</label>
                 <div class="col-sm-9">
-                    <input type="username" id="username" placeholder="Username" value="{{ old('username') }}" name="username" class="form-control" required="required">
+                    <input type="username" placeholder="Username" value="{{ old('username') }}" name="username" class="form-control" required="required">
                 </div>
             </div>
             <div class="form-group">
