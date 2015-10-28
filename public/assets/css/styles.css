@@ -22,6 +22,7 @@ body ul{
 
 .container h1{
     margin-left: 40px;
+    color: black;
 }
 
 /*-------animation-------*/
@@ -113,15 +114,14 @@ li.active {
 }
 
 
-
 /*------register------*/
-.registrer, .add-project-container, .project{}
 .container{
-
-    color: white;
     width: 100%;
     height: 100%;
     padding: 0;
+}
+.container .projects-container img{
+    width: 100%;
 }
 
 .container span{
@@ -388,6 +388,7 @@ a.btn.btn-primary.plus-project span{
 
 .projects-container li{
     margin: 10px;
+    min-width: 320px;
 }
 
 .project a:link,
