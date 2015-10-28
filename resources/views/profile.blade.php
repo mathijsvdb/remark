@@ -4,7 +4,11 @@
     <div class="container">
 
         <div id="basicinfo">
-            <img class="img-circle" id="profilepicture" src="/assets/images/{!! $user->image !!}" alt="">
+            @if($user->image == 'default.jpg')
+                <img class="img-circle" id="profilepicture" src="/assets/images/{!! $user->image !!}" alt="">
+            @else
+                <img class="img-circle" id="profilepicture" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
+            @endif
 
             <a href="/profile/{!! $user->id !!}" id="user">{{ $user->firstname . " " . $user->lastname }}</a>
             <p>{{ $user->email }}</p>

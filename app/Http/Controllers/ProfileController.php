@@ -3,6 +3,10 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\User;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 use Request;
 use Illuminate\Routing\Controller;
 use Auth;
@@ -35,30 +39,45 @@ class ProfileController extends Controller {
 
     public function postProfile()
     {
-        // if ($request->user())
-        // {
-            $user = \App\User::find(Auth::id());
+        $user = \App\User::find(Auth::id());
+        $image = Input::file('fileToUpload');
+        $destinationPath = 'uploads/profilepictures';
+        $oldfile = $user->image;
 
-            $user->firstname = ucfirst(Request::input('firstname'));
-            $user->lastname = ucfirst(Request::input('lastname'));
-            $user->email = Request::input('email');
-            $user->bio = Request::input('bio');
-            $user->facebook = Request::input('facebook');
-            $user->twitter = Request::input('twitter');
-            $user->website = Request::input('website');
+        $file = array('fileToUpload' => $image);
+        $rules = array('fileToUpload' => 'image');
 
-            $user->save();
+        $validator = Validator::make($file, $rules);
 
+        if ($validator->fails()) {
+            return Redirect::to('/update')->withInput()->withErrors($validator);
+        }
 
-            // $upname = Input::get('name');
-            // $upemail = Input::get('email');
+        if(!empty($image)){
+            if($image->isValid()){
+                $extension = $image->getClientOriginalExtension();
+                $fileName = Auth::user()->username.'.'.$extension;
+                File::delete('uploads/profilepictures/' . $oldfile);
+                Input::file('fileToUpload')->move($destinationPath, $fileName);
+                $user->image = $fileName;
+            } else {
+                Session::flash('error', 'uploaded file is not valid');
+                return Redirect::to('/update');
+            }
+        } else {
+            $user->image = $oldfile;
+        }
 
+        $user->firstname = ucfirst(Request::input('firstname'));
+        $user->lastname = ucfirst(Request::input('lastname'));
+        $user->email = Request::input('email');
+        $user->bio = Request::input('bio');
+        $user->facebook = Request::input('facebook');
+        $user->twitter = Request::input('twitter');
+        $user->website = Request::input('website');
 
-            // $sql = "UPDATE users SET name= ? email= ? WHERE id= ?";
-            // DB::update($sql, array($upname, $upemail, $id));
+        $user->save();
 
-            return redirect("profile/" . $user->id);
-        // }
+        return redirect("profile/" . $user->id);
     }
-
 }
