@@ -16,6 +16,11 @@ Route::get('/projects','ProjectController@showAllProjects');
 Route::get('/projects/add', 'ProjectController@getAddProject');
 Route::post('/projects/add', 'ProjectController@postAddProject');
 Route::get('/projects/{id}', 'ProjectController@showProjectById');
+
+// Likes and favorites routes
+Route::get('/projects/{id}/like', 'ProjectController@likeProject');
+Route::get('/projects/{id}/favorite', 'ProjectController@favoriteProject');
+
 Route::get('/','frontpageController@frontpage');
 
 Route::get('profile/{id}','ProfileController@profile');

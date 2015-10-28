@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Project;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
 use Request;
 use App\Http\Requests;
 use Validator;
@@ -99,5 +101,46 @@ class ProjectController extends Controller
         $palette = $imagecolor->extract(3);
 
         return view('projects.detailProjects', compact('project', 'user', 'palette'));
+    }
+
+    /**
+     * Function to like a project
+     */
+    public function likeProject($project_id) {
+        // check is a user has already liked this project
+        $result = DB::table('likes')->where('user_id', '=', Auth::id())
+            ->where('project_id', '=', $project_id)
+            ->get();
+
+        if($result) {
+            Session::flash('error', 'You have already liked this project.');
+        } else {
+            DB::table('likes')->insert([
+                'user_id' => Auth::id(),
+                'project_id' => $project_id
+            ]);
+        }
+
+        return redirect('/projects/' . $project_id);
+    }
+
+    /**
+     * Function to favorite a project
+     */
+    public function favoriteProject($project_id) {
+        // check if a user has already favorited this project.
+
+        $result = DB::table('favorites')->where('user_id', '=', Auth::id())->where('project_id', '=', $project_id)->get();
+
+        if($result) {
+            Session::flash('error', 'You have already favorited this project.');
+        } else {
+            DB::table('favorites')->insert([
+                'user_id' => Auth::id(),
+                'project_id' => $project_id
+            ]);
+        }
+
+        return redirect('/projects/' . $project_id);
     }
 }
