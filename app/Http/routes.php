@@ -26,6 +26,8 @@ Route::get('/','frontpageController@frontpage');
 Route::get('profile/{id}','ProfileController@profile');
 Route::get('update','ProfileController@updateProfile');
 Route::post('update', 'ProfileController@postProfile');
+Route::get('/profile/activity','UserActivityController@showAllActivity');
+
 
 // Registration routes...
 Route::get('/register', 'Auth\AuthController@getRegister');

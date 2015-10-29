@@ -28,6 +28,7 @@
                                 </div>
                             </div>
                         </form>
+                        <img src="/uploads/{!! $project->img !!}" alt="">
                         <p>{{$project->body}}</p>
                     </li>
 

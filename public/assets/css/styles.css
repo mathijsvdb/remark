@@ -22,6 +22,7 @@ body ul{
 
 .container h1{
     margin-left: 40px;
+    color: black;
 }
 
 /*-------animation-------*/
@@ -112,8 +113,22 @@ li.active {
     }
 }
 
+
 /*------register------*/
-.registrer, .add-project-container, .project{
+.container{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+.container .projects-container img{
+    width: 100%;
+}
+
+.container span{
+    color: whitesmoke;
+}
+
+.activity, .registrer{
     max-width: 800px;
     min-width: 360px;
     display: block;
@@ -373,6 +388,7 @@ a.btn.btn-primary.plus-project span{
 
 .projects-container li{
     margin: 10px;
+    min-width: 320px;
 }
 
 .project a:link,
@@ -446,8 +462,6 @@ footer{
     display: block;
     text-indent: -9999px;
     opacity: 0.8;
-    margin-right: auto;
-    margin-left: auto;
     margin-left: 10px;
     margin-right: 10px;
     float: left;
@@ -521,7 +535,6 @@ hr{
         margin-left: auto;
     }
 }
-
 @media screen and (min-width: 900px) {
     #allwork{
         width: 840px;
@@ -571,7 +584,10 @@ hr{
     }
 }
 
+.col-md-offset-4{
+    background-color: whitesmoke;
+}
 
-
-
-
+.notificationlist{margin-top: 30px;}
+.notificationlist p{color:black;}
+.notificationlist span{color:black;}

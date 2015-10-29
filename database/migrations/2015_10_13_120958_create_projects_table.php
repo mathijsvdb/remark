@@ -18,6 +18,7 @@ class CreateProjectsTable extends Migration
             $table->string('body');
             $table->string('tags');
             $table->string('img');
+            $table->string('img_tricolor');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

@@ -33,7 +33,7 @@ class ProjectController extends Controller
         $tags = Request::input('tags');
         $image = Input::file('fileToUpload');
         $destinationPath = 'uploads'; // upload path
-
+        $client = new ColorExtractor;
         //rules
         $file = array(
             'fileToUpload' => $image,
@@ -68,12 +68,28 @@ class ProjectController extends Controller
             return Redirect::to('/projects/add');
         }
 
+
         $project = new Project;
 
         $project->title = $title;
         $project->body = $body;
         $project->tags = $tags;
         $project->img = $fileName;
+
+
+
+        if($extension == 'png'){
+            $pimage = $client->loadPng('uploads/' . $fileName);
+        } else if($extension == 'jpg'){
+            $pimage = $client->loadJpeg('uploads/' . $fileName);
+        } else{
+            return 'wrong image';
+        }
+
+        $image_tricolor = $pimage->extract(3);
+
+        $project->img_tricolor = "".$image_tricolor[0].",".$image_tricolor[1].",".$image_tricolor[2];
+
 
         $project->user_id = Auth::id();
         //$project->user_id = 1;
