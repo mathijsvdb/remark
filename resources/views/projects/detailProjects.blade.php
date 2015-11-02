@@ -17,4 +17,21 @@
         <p>{!! $project['body'] !!}</p>
         <a href="/">{!! $project['tags'] !!}</a>
     </div>
+
+    <p>{!! $project['body'] !!}</p>
+    <a href="/">{!! $project['tags'] !!}</a>
+
+    <form method="POST", action="{!! $project['id'] !!}">
+        {!! csrf_field() !!}
+                
+        <textarea name="body"></textarea>
+                
+        <input type="hidden" name="project_id" value="{{ $project->id }}" class="form-control">
+        </br>
+
+        <button type="submit">Submit comment</button>
+
+    </form>
+
+
 @stop

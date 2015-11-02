@@ -69,6 +69,27 @@ body ul{
     text-align: center;
 }
 
+.navbar-default .nav-notification li span{
+    animation-name: none;
+    position: inherit;
+    width: 25px;
+    color: whitesmoke;
+    background-color: transparent;
+    height: 25px;
+    font-size: 1.5rem;
+    border-radius: 100px;
+    text-align: center;
+}
+
+.notifications{
+    color: white;
+}
+
+.nav-notification{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .navbar-brand{
     background-image: url("../images/Remark_logo_mini_white.png");
     background-size: cover;

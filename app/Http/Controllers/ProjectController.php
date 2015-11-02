@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\User;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Request;
@@ -114,6 +115,23 @@ class ProjectController extends Controller
 
         $palette = $imagecolor->extract(3);
 
+
+
         return view('projects.detailProjects', compact('project', 'user', 'palette'));
+    }
+
+    public function addComment(Request $request){
+
+        $user = Auth::user();
+        $comment = new Comment;
+
+        $comment->body = Request::input('body');
+        $comment->user_id = $user->id;
+        $comment->project_id = Request::input('project_id');
+        $comment->new = 1;
+
+        $comment->save();
+
+        return redirect('projects/' . $comment->project_id);
     }
 }
