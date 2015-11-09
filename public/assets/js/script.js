@@ -1,3 +1,23 @@
+//search function
+
+$("#searchonfrontpage").submit(function(e){
+    e.preventDefault()
+
+    var whattosearch = $("#searchFRONT").val();
+    console.log("searching... " + whattosearch + ".");
+
+    $.ajax({
+        type: "POST",
+        //url: window.location, // This is what I have updated
+        url: "/",
+        data: { whattosearch: whattosearch },
+        success : function(data){
+            console.log(data);
+        }
+    });
+
+});
+
 (function() {
 
     var URL = window.URL || window.webkitURL;
@@ -10,3 +30,4 @@
         preview.src = URL.createObjectURL(this.files[0]);
     });
 })();
+
