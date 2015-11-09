@@ -8,8 +8,8 @@ $("#searchonfrontpage").submit(function(e){
 
     $.ajax({
         type: "POST",
-        //url: window.location, // This is what I have updated
-        url: "/",
+        //url: window.location,
+        url: "/",   // This is what I have updated
         data: { whattosearch: whattosearch },
         success : function(data){
             console.log(data);

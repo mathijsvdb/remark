@@ -27,30 +27,29 @@ class frontpageController extends Controller
     }
 
     public function search() {
-        var_dump($_POST);
 
-        print_r($_POST);
+        //na post ajax call wat zit er in mijn functie
+        $q = $_POST["whattosearch"];
+        print_r($q);
 
-
-
-       /*
-        //$q = Input::get('search');
         $searchTerms = explode(' ', $q);
         $query = DB::table('projects');
 
         foreach($searchTerms as $term)
         {
-            $query->where('title', 'LIKE', '%'. $term .'%')
+            $query->join('users', 'users.id', '=', 'projects.user_id')
+                  ->where('title', 'LIKE', '%'. $term .'%')
                   ->orWhere('tags', 'LIKE', '%'. $term .'%')
-                  ->orWhere('body', 'LIKE', '%'. $term .'%');
-
-            //->orWhere('tags', 'LIKE', "%{$term}%")
+                  ->orWhere('body', 'LIKE', '%'. $term .'%')
+                  ->orWhere('username', 'LIKE', '%'. $term .'%');
         }
 
         $projects = $query->get();
 
+        print_r($projects);
+
         //return View::make('projects', compact('projects'));
-        return view('search')->with('projects', $projects);*/
+        //return view('search')->with('projects', $projects);
     }
 
     public function filterbytag() {
