@@ -41,15 +41,22 @@ class frontpageController extends Controller
                   ->where('title', 'LIKE', '%'. $term .'%')
                   ->orWhere('tags', 'LIKE', '%'. $term .'%')
                   ->orWhere('body', 'LIKE', '%'. $term .'%')
-                  ->orWhere('username', 'LIKE', '%'. $term .'%');
+                  ->orWhere('username', 'LIKE', '%'. $term .'%')
+                  ->orderBy('created_at', 'desc');
         }
 
         $projects = $query->get();
 
         print_r($projects);
 
+        return View::make( 'viewfile' )->with( 'data', $projects );
+
         //return View::make('projects', compact('projects'));
-        //return view('search')->with('projects', $projects);
+        //$view =  view('search')->with('projects', $projects);
+
+        //return View('/')->with('projects');
+
+        //View::make('/')->nest('child', 'child.view', $projects);
     }
 
     public function filterbytag() {
