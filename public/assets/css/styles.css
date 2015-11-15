@@ -69,6 +69,27 @@ body ul{
     text-align: center;
 }
 
+.navbar-default .nav-notification li span{
+    animation-name: none;
+    position: inherit;
+    width: 25px;
+    color: whitesmoke;
+    background-color: transparent;
+    height: 25px;
+    font-size: 1.5rem;
+    border-radius: 100px;
+    text-align: center;
+}
+
+.notifications{
+    color: white;
+}
+
+.nav-notification{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .navbar-brand{
     background-image: url("../images/Remark_logo_mini_white.png");
     background-size: cover;
@@ -417,6 +438,123 @@ li a:hover{
 input[type=checkbox]{
     margin-right: 10px;
 }
+/*----------details project---------*/
+
+.detail_container{
+    width: 65%;
+    padding: 20px;
+    margin: 0 auto;
+    background-color: #f7f7f7;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.16);
+}
+
+.detail_container ul{
+    width: 50%;
+    height: 300px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.detail_container li{
+    padding: 6px 10px 6px 10px;
+ }
+
+.detail_container h2{
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+.border-bottom-info{
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.project-info-text{
+    width: 50%;
+    float: left;
+}
+
+.tag-border{
+    background-color: #e7e7e7;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 20px;
+}
+
+.detail_container p{
+    width: 320px;
+    padding-top: 10px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.detail_container img{
+    width: 320px;
+    float: left;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.16);
+}
+
+.detail_container span{
+    margin-top: 4px;
+    margin-right: 10px;
+    font-size: 1.5rem;
+    color: #9D9D9D;
+    float: left;
+    line-height: 1.5rem;
+}
+
+.detail_container span:first-child{
+    float: none;
+    display: block;
+}
+
+.project-info-text .img-circle{
+    width:60px;
+    display: block;
+    margin-right: 10px;
+    padding: 5px;
+    background-color: white;
+}
+
+.detail_container .pallets {
+    width: 200px;
+}
+
+.clearfix{
+    clear: both;
+}
+
+.detail_container .pallets .pallet-styling{
+    width: 33px;
+    height: 18px;
+    margin: 4px 0px 4px 0px;
+    float: left;
+}
+
+.project-info a:link,
+.project-info a:visited,
+.project-info a:hover,
+.project-info a:active{
+    color: grey;
+}
+
+.project-info a:hover{
+    color: darkgrey !important;
+    text-decoration: none;
+}
+
+.project-info .pallets a:link,
+.project-info .pallets a:visited,
+.project-info .pallets a:hover,
+.project-info .pallets a:active {
+    text-indent: -999px;
+}
+
+.project-info .pallets a:hover{
+    transform: scale(1.1);
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
+}
 
 /*---------------*/
 
@@ -534,7 +672,9 @@ hr{
         margin-right: auto;
         margin-left: auto;
     }
+
 }
+
 @media screen and (min-width: 900px) {
     #allwork{
         width: 840px;
@@ -550,6 +690,10 @@ hr{
         width: 70%;
         margin-right: auto;
         margin-left: auto;
+    }
+
+    .detail_container {
+        width: 65%;
     }
 }
 
@@ -569,6 +713,7 @@ hr{
         margin-right: auto;
         margin-left: auto;
     }
+
 }
 
 @media screen and (min-width: 1300px) {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\User;
+use App\Comment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -116,6 +117,8 @@ class ProjectController extends Controller
 
         $palette = $imagecolor->extract(3);
 
+
+
         return view('projects.detailProjects', compact('project', 'user', 'palette'));
     }
 
@@ -143,12 +146,13 @@ class ProjectController extends Controller
     /**
      * Function to favorite a project
      */
-    public function favoriteProject($project_id) {
+    public function favoriteProject($project_id)
+    {
         // check if a user has already favorited this project.
 
         $result = DB::table('favorites')->where('user_id', '=', Auth::id())->where('project_id', '=', $project_id)->get();
 
-        if($result) {
+        if ($result) {
             Session::flash('error', 'You have already favorited this project.');
         } else {
             DB::table('favorites')->insert([
@@ -158,5 +162,21 @@ class ProjectController extends Controller
         }
 
         return redirect('/projects/' . $project_id);
+    }
+
+
+    public function addComment(Request $request){
+
+        $user = Auth::user();
+        $comment = new Comment;
+
+        $comment->body = Request::input('body');
+        $comment->user_id = $user->id;
+        $comment->project_id = Request::input('project_id');
+        $comment->new = 1;
+
+        $comment->save();
+
+        return redirect('projects/' . $comment->project_id);
     }
 }
