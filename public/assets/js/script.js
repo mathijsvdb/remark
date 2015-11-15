@@ -10,3 +10,8 @@
         preview.src = URL.createObjectURL(this.files[0]);
     });
 })();
+
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});

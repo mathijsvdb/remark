@@ -21,12 +21,13 @@ Route::get('/projects/{id}', 'ProjectController@showProjectById');
 Route::get('/projects/{id}/like', 'ProjectController@likeProject');
 Route::get('/projects/{id}/favorite', 'ProjectController@favoriteProject');
 
+Route::post('/projects/{id}', 'ProjectController@addComment');
 Route::get('/','frontpageController@frontpage');
 
 Route::get('profile/{id}','ProfileController@profile');
 Route::get('update','ProfileController@updateProfile');
 Route::post('update', 'ProfileController@postProfile');
-Route::get('/profile/activity','UserActivityController@showAllActivity');
+Route::get('/profile/{id}/activity','UserActivityController@showAllActivity');
 
 
 // Registration routes...
