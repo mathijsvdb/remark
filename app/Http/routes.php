@@ -18,9 +18,10 @@ Route::post('/projects/add', 'ProjectController@postAddProject');
 Route::get('/projects/{id}', 'ProjectController@showProjectById');
 
 // Likes and favorites routes
-Route::post('/projects/{id}/like', 'AjaxController@likeProject');
 Route::get('/projects/{id}/like', 'ProjectController@likeProject');
+Route::post('/projects/{id}/like', 'AjaxController@likeProject');
 Route::get('/projects/{id}/favorite', 'ProjectController@favoriteProject');
+Route::post('/projects/{id}/favorite', 'AjaxController@favoriteProject');
 
 Route::post('/projects/{id}', 'ProjectController@addComment');
 Route::get('/','frontpageController@frontpage');
