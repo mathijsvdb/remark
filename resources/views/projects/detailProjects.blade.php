@@ -66,6 +66,16 @@
 
     </form>
     </div>
+
+    <div id="allwork">
+        @foreach($comments as $comment)
+
+            <div>
+                <p>{!! $comment->body !!}</p>
+            </div>
+            
+        @endforeach
+    </div>
 @stop
 
 @section('scripts')
@@ -109,8 +119,10 @@
                             console.log(errorThrown);
                         });
 
+
                 e.preventDefault();
             })
         });
     </script>
+    
 @stop
