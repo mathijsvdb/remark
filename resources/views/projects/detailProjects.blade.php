@@ -7,11 +7,6 @@
             <p>{{ Session::get('error') }}</p>
         </div>
     @endif
-    <h2>{!! $project['title'] !!}</h2>
-    <p>by <a href="/profile/{!! $user['id'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a>{!! " " . $project['created_at'] !!}</p>
-    <img style="width: 150px; height: 120px;" src="/uploads/{!! $project['img'] !!}" alt="">
-    <a href="/projects/{{ $project['id'] }}/like"><span class="glyphicon glyphicon-heart"></span> Like</a>
-    <a href="/projects/{{ $project['id'] }}/favorite"><span class="glyphicon glyphicon-star"></span> Favorite</a>
     <div class="detail_container">
         <div class="project-info">
             <div class="project-info-text">
@@ -22,7 +17,7 @@
                 @endif
                 <h2>{!! $project['title'] !!} <span>by <a href="/profile/{!! $user['id'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a>{!! " " . $project['created_at'] !!}</span></h2>
 
-                <img src="/uploads/{!! $project['img'] !!}" alt="">
+                <img id="project-img" src="/uploads/{!! $project['img'] !!}" alt="">
 
                 <p>{!! $project['body'] !!}</p>
             </div>
@@ -35,10 +30,10 @@
                     <a href="/"><span class="glyphicon glyphicon-eye-open"></span>Views</a>
                 </li>
                 <li class="border-bottom-info">
-                    <a href="/"><span class="glyphicon glyphicon-thumbs-up"></span>Likes</a>
+                    <a id="like-project" href="/projects/{{ $project['id'] }}/like"><span class="glyphicon glyphicon-thumbs-up"></span> <span id="n_likes"></span> Likes</a>
                 </li>
                 <li class="border-bottom-info">
-                    <a href="/"><span class="glyphicon glyphicon-heart-empty"></span>Favorite</a>
+                    <a id="favorite-project" href="/projects/{{ $project['id'] }}/favorite"><span class="glyphicon glyphicon-heart-empty"></span> <span id="n_favorites"></span> Favorites</a>
                 </li>
 
                 <li class="border-bottom-info">
@@ -71,6 +66,51 @@
 
     </form>
     </div>
+@stop
 
+@section('scripts')
+    <script>
+        $(function() {
 
+            $('#like-project').click(function(e) {
+                $.ajax({
+                    method: "POST",
+                    url: "/projects/{{ $project['id'] }}/like",
+                    data: {project_id: {{ $project['id'] }}},
+                    dataType: 'json'
+                })
+                        .done(function(resp) {
+                            console.log(resp);
+                            $('#n_likes').html(resp.likes);
+                        })
+                        .fail(function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            console.log(textStatus);
+                            console.log(errorThrown);
+                        });
+
+                e.preventDefault();
+            });
+
+            $('#favorite-project').click(function(e) {
+                $.ajax({
+                    method: "POST",
+                    url: "/projects/{{ $project['id'] }}/favorite",
+                    data: {project_id: {{ $project['id'] }}},
+                    dataType: 'json'
+                })
+                        .done(function(resp) {
+                            console.log(resp);
+                            $('#n_favorites').html(resp.favorites);
+                        })
+                        .fail(function (jqXHR, textStatus, errorThrown) {
+                            console.log(jqXHR);
+                            console.log(textStatus);
+                            console.log(errorThrown);
+                        });
+
+                e.preventDefault();
+            })
+        });
+    </script>
 @stop
