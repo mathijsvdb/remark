@@ -28,4 +28,16 @@
 
     </form>
 
+    <div id="allwork">
+        @foreach($comments as $comment)
+
+            <div>
+                <p>{!! $comment->body !!}</p>
+            </div>
+            
+        @endforeach
+    </div>
+
+    
+
 @stop
