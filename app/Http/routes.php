@@ -22,6 +22,8 @@ Route::get('/projects/{id}/like', 'ProjectController@likeProject');
 Route::post('/projects/{id}/like', 'AjaxController@likeProject');
 Route::get('/projects/{id}/favorite', 'ProjectController@favoriteProject');
 Route::post('/projects/{id}/favorite', 'AjaxController@favoriteProject');
+Route::get('/projects/{id}/delete', 'ProjectController@deleteProject');
+Route::get('/projects/{id}/edit', 'ProjectController@editProject');
 
 Route::post('/projects/{id}', 'ProjectController@addComment');
 Route::get('/','frontpageController@frontpage');
@@ -30,7 +32,6 @@ Route::get('profile/{id}','ProfileController@profile');
 Route::get('update','ProfileController@updateProfile');
 Route::post('update', 'ProfileController@postProfile');
 Route::get('/profile/{id}/activity','UserActivityController@showAllActivity');
-
 
 // Registration routes...
 Route::get('/register', 'Auth\AuthController@getRegister');
