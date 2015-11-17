@@ -23,47 +23,76 @@
         <!-- <img src="http://placehold.it/350x150"> -->
         <div class="row">
             <div class="col-md-8">
-                <div class="input-group">
-                    <input type="text" class="form-control" aria-label="..." name="search" placeholder="search">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default">Action</button>
+                <form class="form" action="" id="searchonfrontpage">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="text" class="form-control" aria-label="..." name="search" placeholder="What are you looking for?" id="searchFRONT">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit" id="searchbutton">Search</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
 
+
             <div class="col-md-4">
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                        Filter by tag
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                        <li><a href="#">Web Design</a></li>
-                        <li><a href="#">Illustrator</a></li>
-                        <li><a href="#">Photoshop</a></li>
-                        <li><a href="#">Mobile Design</a></li>
-                        <li><a href="#">Logo's</a></li>
-                        <li><a href="#">Posters</a></li>
-                        <li><a href="#">Material Design</a></li>
-                        <li><a href="#">Branding</a></li>
-                    </ul>
-                </div>
+                <form class="form" action="">
+                    <div class="form-group">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                Filter by tag
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="">Web Design</a></li>
+                                <li><a href="">Illustrator</a></li>
+                                <li><a href="">Photoshop</a></li>
+                                <li><a href="">Mobile Design</a></li>
+                                <li><a href="">Logo's</a></li>
+                                <li><a href="">Posters</a></li>
+                                <li><a href="">Material Design</a></li>
+                                <li><a href="">Branding</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
 
         <div class="row">
 
+            <?php //var_dump($projects); ?>
+
         <div class="imagelist">
-        @foreach($spotlight as $work)
+
+
+            <?php
+            if(isset($products)){ ?>
+            @foreach($products as $product)
                 <div class="col-md-4">
-                        <a href="/projects/{!! $work->id !!}">
-                            <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
-                        </a>
-                        <a href="/profile/{!! $work->user_id !!}">
-                            <p style="text-transform: uppercase">{!! $work->username !!}</p>
-                        </a>
+                    <a href="/projects/{!! $product->id !!}">
+                        <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $product->img !!}" alt="">
+                    </a>
+                    <a href="/profile/{!! $product->user_id !!}">
+                        <p style="text-transform: uppercase">{!! $product->username !!}</p>
+                    </a>
                 </div>
-        @endforeach
+            @endforeach
+            <?php } else { ?>
+            @foreach($spotlight as $work)
+                <div class="col-md-4">
+                    <a href="/projects/{!! $work->id !!}">
+                        <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
+                    </a>
+                    <a href="/profile/{!! $work->user_id !!}">
+                        <p style="text-transform: uppercase">{!! $work->username !!}</p>
+                    </a>
+                </div>
+            @endforeach
+                <?php }
+            ?>
+
         </div>
 
         </div>

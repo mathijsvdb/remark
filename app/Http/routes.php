@@ -49,3 +49,14 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 // Route::get('test', function(){ dd(Config::get('mail'));});
+
+//frontpage routes
+Route::get('/','frontpageController@frontpage');
+Route::post('/', 'frontpageController@search');
+
+Route::filter('csrf', function() {
+    $token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
+    if (Session::token() != $token)
+        throw new Illuminate\Session\TokenMismatchException;
+});
+//Route::get('/search', 'frontpageController@postSearch');
