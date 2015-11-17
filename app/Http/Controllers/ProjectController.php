@@ -163,7 +163,7 @@ class ProjectController extends Controller
 
         return redirect('/projects/' . $project_id);
     }
-    
+
     public function addComment(Request $request){
 
         $user = Auth::user();
