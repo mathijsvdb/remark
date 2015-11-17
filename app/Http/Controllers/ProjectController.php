@@ -184,4 +184,14 @@ class ProjectController extends Controller
 
         return redirect('projects/' . $comment->project_id);
     }
+
+    public function deleteProject($project_id) {
+        Project::find($project_id)->softDelete();
+    }
+
+    public function editProject($project_id) {
+        $project = Project::find($project_id);
+
+        return view('updateProject', compact('project'));
+    }
 }
