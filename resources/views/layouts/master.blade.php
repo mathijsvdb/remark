@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="_token" content="{{ csrf_token() }}"/>
     <title>App Name - @yield('title')</title>
 
     <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -34,6 +35,13 @@
 
 <script src="{{ URL::asset('assets/js/jquery-2.1.4.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
+
+<script>
+    $.ajaxSetup({
+        headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+    });
+</script>
+
 <script src="{{ URL::asset('assets/js/script.js') }}"></script>
 <script type="text/javascript">
     $.ajaxSetup({

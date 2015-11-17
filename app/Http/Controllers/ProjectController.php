@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Project;
 use App\User;
 use App\Comment;
@@ -117,9 +118,15 @@ class ProjectController extends Controller
 
         $palette = $imagecolor->extract(3);
 
+        $comments = DB::table("comments")
+        ->where('project_id', $id)
+        ->join('users', 'users.id', '=', 'comments.user_id')
+        ->select('users.firstname', 'users.lastname', 'comments.*')
+        ->get();
 
 
-        return view('projects.detailProjects', compact('project', 'user', 'palette'));
+
+        return view('projects.detailProjects', compact('project', 'user', 'palette', 'comments'));
     }
 
     /**
