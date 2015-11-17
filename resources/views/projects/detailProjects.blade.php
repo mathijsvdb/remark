@@ -40,8 +40,8 @@
                     <div class="pallets">
                         <span class="glyphicon glyphicon-tint"></span>
 
-                        @for($i=0; $i<count($palette); $i++)
-                            <a class="pallet-styling" href="{!! $palette[$i] !!}" style="background-color: {!! $palette[$i] !!};">{!! $palette[$i] !!}</a>
+                        @for($i=0; $i<count($colorpieces); $i++)
+                            <a class="pallet-styling" href="/projects/search/{!! $colorpieces[$i] !!}" style="background-color: #{!! $colorpieces[$i] !!};">{!! $colorpieces[$i] !!}</a>
                         @endfor
                     </div>
                     <div class="clearfix"></div>
