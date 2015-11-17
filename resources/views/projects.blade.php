@@ -14,7 +14,7 @@
                         <div class="projects-title">
                             <a href="/projects/{{ $project->id }}">{{ $project->title }}</a>
                         </div>
-                        <form class="form" action="/projects/edit/{{ $project->id }}">
+                        <form class="form" action="/projects/{{ $project->id }}/edit">
                             <div class="form-group">
                                 <div class="">
                                     <button type="submit" class="btn btn-default">Edit</button>
