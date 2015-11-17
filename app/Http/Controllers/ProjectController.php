@@ -7,7 +7,6 @@ use App\Project;
 use App\User;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Request;
