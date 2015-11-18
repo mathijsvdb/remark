@@ -177,10 +177,12 @@ class ProjectController extends Controller
         Project::find($project_id)->softDelete();
     }
 
-    public function editProject($project_id) {
+    public function editProject($project_id)
+    {
         $project = Project::find($project_id);
 
         return view('updateProject', compact('project'));
+    }
 
     public function SearchByColor($colorid){
 
