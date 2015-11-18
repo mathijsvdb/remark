@@ -88,8 +88,8 @@ class ProjectController extends Controller
         }
 
         $image_tricolor = $pimage->extract(3);
-
-        $project->img_tricolor = "".$image_tricolor[0].",".$image_tricolor[1].",".$image_tricolor[2];
+        $tricolor_correct = str_replace('#', '', "".$image_tricolor[0].",".$image_tricolor[1].",".$image_tricolor[2]);
+        $project->img_tricolor = $tricolor_correct;
 
 
         $project->user_id = Auth::id();
@@ -103,19 +103,9 @@ class ProjectController extends Controller
     public function showProjectById($id) {
         $project = Project::find($id);
         $user = User::find($project['user_id']);
-        $image = $project['img'];
 
-        $client = new ColorExtractor;
-
-        if(str_contains($project['img'], '.png')){
-            $imagecolor = $client->loadPng('uploads/' . $image);
-        } else if(str_contains($image, '.jpg')){
-            $imagecolor = $client->loadJpeg('uploads/' . $image);
-        } else{
-            return 'nope';
-        }
-
-        $palette = $imagecolor->extract(3);
+        $colors = $project['img_tricolor'];
+        $colorpieces = explode(",",$colors);
 
         $comments = DB::table("comments")
         ->where('project_id', $id)
@@ -123,9 +113,7 @@ class ProjectController extends Controller
         ->select('users.firstname', 'users.lastname', 'comments.*')
         ->get();
 
-
-
-        return view('projects.detailProjects', compact('project', 'user', 'palette', 'comments'));
+        return view('projects.detailProjects', compact('project', 'user', 'colorpieces', 'comments'));
     }
 
     /**
@@ -193,5 +181,13 @@ class ProjectController extends Controller
         $project = Project::find($project_id);
 
         return view('updateProject', compact('project'));
+
+    public function SearchByColor($colorid){
+
+        $projectsByColor = DB::table("projects")
+            ->where('img_tricolor', 'LIKE','%'.$colorid.'%')
+            ->get();
+
+        return view('projects.searchProjectsColor', compact('projectsByColor'));
     }
 }
