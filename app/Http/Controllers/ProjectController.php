@@ -7,6 +7,7 @@ use App\Project;
 use App\User;
 use App\Comment;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Request;
@@ -174,14 +175,89 @@ class ProjectController extends Controller
     }
 
     public function deleteProject($project_id) {
-        Project::find($project_id)->softDelete();
+        $project = Project::find($project_id);
+
+        $project->delete();
+
+        return redirect::back();
     }
 
-    public function editProject($project_id)
-    {
+    public function getEditProject($project_id) {
         $project = Project::find($project_id);
 
         return view('updateProject', compact('project'));
+    }
+
+    public function postEditProject($project_id)
+    {
+        $project = Project::find($project_id);
+
+        $title = Request::input('title');
+        $body = Request::input('body');
+        $tags = Request::input('tags');
+        $image = Input::file('fileToUpload');
+        $destinationPath = 'uploads'; // upload path
+        $client = new ColorExtractor;
+        //rules
+        $file = array(
+            'fileToUpload' => $image,
+            'title' => $title,
+            'body' => $body,
+            'tags' => $tags,
+        );
+        $rules = array(
+            'fileToUpload' => 'required|image',
+            'title' => 'required',
+            'body' => 'required',
+            'tags' => 'required',
+        );
+
+        //validator
+        $validator = Validator::make($file, $rules);
+
+        //if validator fails
+        if ($validator->fails()) {
+        // send back to the page with the input data and errors
+        return Redirect::to('/projects/add')->withInput()->withErrors($validator);
+    }
+
+        //if input is a file upload to destination /uploads
+        //else redirect to view with error message
+        if($image->isValid()){
+            $extension = $image->getClientOriginalExtension(); // getting image extension
+            $fileName = Auth::user()->username . '_' . rand(11111,99999).'.'.$extension; // renaming image
+            Input::file('fileToUpload')->move($destinationPath, $fileName);
+            File::delete('uploads/' . $project->img);
+        } else {
+            Session::flash('error', 'uploaded file is not valid');
+            return Redirect::to('/projects/add');
+        }
+
+        $project->title = $title;
+        $project->body = $body;
+        $project->tags = $tags;
+        $project->img = $fileName;
+
+        if($extension == 'png'){
+            $pimage = $client->loadPng('uploads/' . $fileName);
+        } else if($extension == 'jpg'){
+            $pimage = $client->loadJpeg('uploads/' . $fileName);
+        } else{
+            return 'wrong image';
+        }
+
+        $image_tricolor = $pimage->extract(3);
+        $tricolor_correct = str_replace('#', '', "".$image_tricolor[0].",".$image_tricolor[1].",".$image_tricolor[2]);
+        $project->img_tricolor = $tricolor_correct;
+
+
+        $project->user_id = Auth::id();
+        //$project->user_id = 1;
+        //$table->increments('id');
+
+        $project->save();
+
+        return redirect('/projects');
     }
 
     public function SearchByColor($colorid){

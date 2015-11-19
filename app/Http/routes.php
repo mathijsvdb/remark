@@ -16,14 +16,15 @@ Route::get('/projects','ProjectController@showAllProjects');
 Route::get('/projects/add', 'ProjectController@getAddProject');
 Route::post('/projects/add', 'ProjectController@postAddProject');
 Route::get('/projects/{id}', 'ProjectController@showProjectById');
+Route::post('/projects/{id}/delete', 'ProjectController@deleteProject');
+Route::get('/projects/{id}/edit', 'ProjectController@getEditProject');
+Route::post('/projects/{id}/edit', 'ProjectController@postEditProject');
 
 // Likes and favorites routes
 Route::get('/projects/{id}/like', 'ProjectController@likeProject');
 Route::post('/projects/{id}/like', 'AjaxController@likeProject');
 Route::get('/projects/{id}/favorite', 'ProjectController@favoriteProject');
 Route::post('/projects/{id}/favorite', 'AjaxController@favoriteProject');
-Route::get('/projects/{id}/delete', 'ProjectController@deleteProject');
-Route::get('/projects/{id}/edit', 'ProjectController@editProject');
 
 Route::post('/projects/{id}', 'ProjectController@addComment');
 Route::get('/','frontpageController@frontpage');
