@@ -33,6 +33,7 @@ Route::get('profile/{id}','ProfileController@profile');
 Route::get('update','ProfileController@updateProfile');
 Route::post('update', 'ProfileController@postProfile');
 Route::get('/profile/{id}/activity','UserActivityController@showAllActivity');
+Route::get('profile/{id}/favorites', 'ProfileController@showFavorites');
 
 // Registration routes...
 Route::get('/register', 'Auth\AuthController@getRegister');
