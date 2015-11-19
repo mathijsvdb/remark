@@ -226,8 +226,9 @@ class ProjectController extends Controller
         if($image->isValid()){
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = Auth::user()->username . '_' . rand(11111,99999).'.'.$extension; // renaming image
-            Input::file('fileToUpload')->move($destinationPath, $fileName);
             File::delete('uploads/' . $project->img);
+            Input::file('fileToUpload')->move($destinationPath, $fileName);
+
         } else {
             Session::flash('error', 'uploaded file is not valid');
             return Redirect::to('/projects/add');
