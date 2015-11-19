@@ -80,4 +80,18 @@ class ProfileController extends Controller {
 
         return redirect("profile/" . $user->id);
     }
+
+    public function showMyFavorites()
+    {
+        $user = Auth::user();
+
+        $myFavorites = DB::table('favorites')
+
+
+        $projectsByColor = DB::table("projects")
+            ->where('img_tricolor', 'LIKE','%'.$colorid.'%')
+            ->get();
+
+
+    }
 }

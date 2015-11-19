@@ -178,6 +178,7 @@ class ProjectController extends Controller
         $project = Project::find($project_id);
 
         $project->delete();
+        File::delete('uploads/' . $project->img);
 
         return redirect::back();
     }
@@ -217,9 +218,9 @@ class ProjectController extends Controller
 
         //if validator fails
         if ($validator->fails()) {
-        // send back to the page with the input data and errors
-        return Redirect::to('/projects/add')->withInput()->withErrors($validator);
-    }
+            // send back to the page with the input data and errors
+            return Redirect::to('/projects/' . $project_id . '/edit')->withInput()->withErrors($validator);
+        }
 
         //if input is a file upload to destination /uploads
         //else redirect to view with error message
@@ -228,10 +229,9 @@ class ProjectController extends Controller
             $fileName = Auth::user()->username . '_' . rand(11111,99999).'.'.$extension; // renaming image
             File::delete('uploads/' . $project->img);
             Input::file('fileToUpload')->move($destinationPath, $fileName);
-
         } else {
             Session::flash('error', 'uploaded file is not valid');
-            return Redirect::to('/projects/add');
+            return Redirect::to('/projects/' . $project_id . '/edit');
         }
 
         $project->title = $title;
