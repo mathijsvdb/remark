@@ -17,7 +17,7 @@
 
                         <a href="/projects/{{ $project->id }}/edit/" class="btn btn-default">Edit</a>
 
-                        <form class="form" action="/projects/{{ $project->id }}/delete" method="post">
+                        <form class="form" action="/projects/{{ $project->id }}/delete" method="post" onclick="return confirm('Are you sure you want to delete this project?');">
                             {!! csrf_field() !!}
                             <button type="submit" class="btn btn-default">Delete</button>
                         </form>
