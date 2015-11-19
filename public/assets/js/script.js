@@ -1,22 +1,4 @@
-//search function
 
-$("#searchonfrontpage").submit(function(e){
-    e.preventDefault()
-
-    var whattosearch = $("#searchFRONT").val();
-    console.log("searching... " + whattosearch + ".");
-
-    $.ajax({
-        type: "POST",
-        //url: window.location,
-        url: "/",   // This is what I have updated
-        data: { whattosearch: whattosearch },
-        success : function(data){
-            console.log(data);
-        }
-    });
-
-});
 
 (function() {
 

@@ -27,7 +27,6 @@ Route::get('/projects/{id}/favorite', 'ProjectController@favoriteProject');
 Route::post('/projects/{id}/favorite', 'AjaxController@favoriteProject');
 
 Route::post('/projects/{id}', 'ProjectController@addComment');
-Route::get('/','frontpageController@frontpage');
 
 Route::get('profile/{id}','ProfileController@profile');
 Route::get('update','ProfileController@updateProfile');

@@ -27,7 +27,7 @@ class frontpageController extends Controller
     }
 
     public function search() {
-
+        print_r("call made");
         //na post ajax call wat zit er in mijn functie
         $q = $_POST["whattosearch"];
         print_r($q);
@@ -49,7 +49,10 @@ class frontpageController extends Controller
 
         print_r($projects);
 
-        return View::make( 'viewfile' )->with( 'data', $projects );
+        //header('Content-type: application/json');
+        //echo json_encode($projects);
+
+        //return View::make( 'viewfile' )->with( 'data', $projects );
 
         //return View::make('projects', compact('projects'));
         //$view =  view('search')->with('projects', $projects);
