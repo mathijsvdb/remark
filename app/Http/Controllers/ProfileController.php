@@ -87,7 +87,8 @@ class ProfileController extends Controller {
         $myFavorites = DB::table('favorites')
             ->where('favorites.user_id', '=', $user_id)
             ->join('projects', 'projects.id', '=', 'favorites.project_id')
-            ->select('projects.*')
+            ->join('users', 'users.id', '=', 'projects.user_id')
+            ->select('projects.*', 'users.username')
             ->get();
 
         return view('myFavorites', compact('myFavorites'));
