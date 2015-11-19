@@ -13,7 +13,7 @@
     @endif
 
     <div class="col-sm-6 col-md-4 col-md-offset-4 content-box">
-        <form action="/projects/add" method="post" class="form" enctype="multipart/form-data">
+        <form action="/projects/{{ $project->id }}/edit" method="post" class="form" enctype="multipart/form-data">
             {!! csrf_field() !!}
 
             <div class="form-group">
@@ -38,8 +38,6 @@
                 <p class="col-xs-5"><input type="checkbox" name="tags" value="material">Material Design</p>
                 <p class="col-xs-5"><input type="checkbox" name="tags" value="branding">Branding</p>
             </div>
-
-            <img src="/uploads/{!! $project->img !!}" alt="">
 
             <div class="form-group">
                 <p class="col-xs-7"><b>Select image to upload:</b></p>

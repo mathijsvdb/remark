@@ -14,19 +14,12 @@
                         <div class="projects-title">
                             <a href="/projects/{{ $project->id }}">{{ $project->title }}</a>
                         </div>
-                        <form class="form" action="/projects/{{ $project->id }}/edit">
-                            <div class="form-group">
-                                <div class="">
-                                    <button type="submit" class="btn btn-default">Edit</button>
-                                </div>
-                            </div>
-                        </form>
-                        <form class="form" action="/projects/delete/{{ $project->id }}">
-                            <div class="form-group">
-                                <div class="">
-                                    <button type="submit" class="btn btn-default">Delete</button>
-                                </div>
-                            </div>
+
+                        <a href="/projects/{{ $project->id }}/edit/" class="btn btn-default">Edit</a>
+
+                        <form class="form" action="/projects/{{ $project->id }}/delete" method="post">
+                            {!! csrf_field() !!}
+                            <button type="submit" class="btn btn-default">Delete</button>
                         </form>
                         <img src="/uploads/{!! $project->img !!}" alt="">
                         <p>{{$project->body}}</p>
