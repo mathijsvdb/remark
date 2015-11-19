@@ -45,7 +45,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-default">Add project</button>
+                <button type="submit" class="btn btn-default">Update my project</button>
             </div>
 
         </form>
