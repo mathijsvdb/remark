@@ -17,4 +17,9 @@ class UserActivityController extends Controller
         return view('UserActivity');
     }
 
+    public function activityFilter() {
+
+
+    }
+
 }

@@ -25,20 +25,6 @@
 
                 </ul>
 
-                @if(true)
-                    <ul class="nav navbar-nav nav-notification">
-                        <li>
-                            <a id="like"  href="#"> <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>Like</a>
-                        </li>
-                        <li>
-                            <a id="favorite" href="#"> <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>Favorite</a>
-                        </li>
-                        <li>
-                            <a id="comment" href="#"> <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>Comment</a>
-                        </li>
-                    </ul>
-                @endif
-
                 <form class="navbar-form navbar-left" role="search">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search">
