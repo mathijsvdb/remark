@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use App\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -81,17 +82,14 @@ class ProfileController extends Controller {
         return redirect("profile/" . $user->id);
     }
 
-    public function showMyFavorites()
+    public function showFavorites($user_id)
     {
-        $user = Auth::user();
-
         $myFavorites = DB::table('favorites')
-
-
-        $projectsByColor = DB::table("projects")
-            ->where('img_tricolor', 'LIKE','%'.$colorid.'%')
+            ->where('favorites.user_id', '=', $user_id)
+            ->join('projects', 'projects.id', '=', 'favorites.project_id')
+            ->select('projects.*')
             ->get();
 
-
+        return view('myFavorites', compact('myFavorites'));
     }
 }
