@@ -16,3 +16,14 @@ php composer.phar dump-autoload
 php artisan migrate --force
 php artisan up
 @endtask
+
+        <!--
+@task('beta', ['on' => 'production'])
+cd /home/remark/  .. BETA PATH HERE?
+php artisan down
+git reset --hard HEAD
+git pull origin master
+php composer.phar dump-autoload
+php artisan migrate --force
+php artisan up
+@endtask -->
