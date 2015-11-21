@@ -23,7 +23,7 @@
         <!-- <img src="http://placehold.it/350x150"> -->
         <div class="row">
             <div class="col-md-8">
-                <form class="form" action="" id="searchonfrontpage">
+                <form class="form" id="searchonfrontpage">
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" class="form-control" aria-label="..." name="search" placeholder="What are you looking for?" id="searchFRONT">
@@ -98,5 +98,34 @@
         </div>
         
     </section>
+
+@stop
+
+@section('scripts')
+    <script>
+        $(function() {
+            //search function
+
+            $("#searchonfrontpage").submit(function(e){
+                e.preventDefault();
+
+                var whattosearch = $("#searchFRONT").val();
+                console.log("searching... " + whattosearch + ".");
+
+                $.ajax({
+                    type: "POST",
+                    //url: window.location,
+                    url: "/",   // This is what I have updated
+                    data: { whattosearch: whattosearch },
+                    success : function(data){
+                        console.log(data);
+                    },error: function(jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus, errorThrown);
+                    }
+                });
+
+            });
+        });
+    </script>
 
 @stop
