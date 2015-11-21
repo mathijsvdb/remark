@@ -409,7 +409,10 @@ a.btn.btn-primary.plus-project span{
 
 .project button{
     float: right;
-    margin-top: -30px;
+    margin-top: -40px;
+    height: 40px;
+    margin-bottom: 20px;
+
 }
 
 .project p{
@@ -417,9 +420,9 @@ a.btn.btn-primary.plus-project span{
 }
 
 .projects-container{
-    width: 95%;
-    Margin:0 auto;
-}
+     width: 95%;
+     Margin:0 auto;
+ }
 
 .projects-container li{
     margin: 10px;
@@ -446,6 +449,7 @@ li a:hover{
 .projects-title{
     width: 100%;
     padding: 10px;
+    margin-bottom: 20px;
     background-color: #333;
 }
 

@@ -19,7 +19,7 @@
 
                         <form class="form" action="/projects/{{ $project->id }}/delete" method="post" onclick="return confirm('Are you sure you want to delete this project?');">
                             {!! csrf_field() !!}
-                            <button type="submit" class="btn btn-default">Delete</button>
+                            <button type="submit" class="btn btn-default btn-delete">Delete</button>
                         </form>
                         <img src="/uploads/{!! $project->img !!}" alt="">
                         <p>{{$project->body}}</p>
