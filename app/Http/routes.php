@@ -52,6 +52,9 @@ Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 // Route::get('test', function(){ dd(Config::get('mail'));});
 
+//battles routes
+Route::get('/battles','BattlesController@battles');
+
 //frontpage routes
 Route::get('/','frontpageController@frontpage');
 Route::post('/', 'frontpageController@search');
