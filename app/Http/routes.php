@@ -57,7 +57,7 @@ Route::get('/','frontpageController@frontpage');
 Route::post('/', 'frontpageController@search');
 
 Route::filter('csrf', function() {
-    $token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
+    $token = Request::ajax() ? Request::header('X-CSRF-TOKEN') : Input::get('_token');
     if (Session::token() != $token)
         throw new Illuminate\Session\TokenMismatchException;
 });
