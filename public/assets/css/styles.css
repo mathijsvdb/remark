@@ -377,6 +377,20 @@ h1.text-center.login-title{
     width: 50%;
 }
 
+.battles_projadd_subscribe{
+    border: 1px solid #111;
+    background: transparent;
+    width: 150px;
+    padding: 5px 35px 5px 5px;
+    font-size: 13px;
+    border: 1px solid #ccc;
+    height: 34px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(https://cdn1.iconfinder.com/data/icons/unigrid-military/60/002_military_battle_attack_swords-512.png) 96% / 15% no-repeat #eee;
+}
+
 /*-----project------*/
 a.btn.btn-primary.plus-project{
     color: white;
