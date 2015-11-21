@@ -5,7 +5,7 @@
     <div class="container_filter form-group">
         <h2>Filter</h2>
         <form class="" action="/">
-            <span><input type="checkbox" checked="checked" id="all" class="notifications" name="comment">all</span>
+            <span><input type="checkbox" checked="checked" id="all" class="notifications" name="all">all</span>
             <span><input type="checkbox" id="likes" class="notifications" name="likes">like</span>
             <span><input type="checkbox" id="favorite" class="notifications" name="favorite">favorite</span>
             <span><input type="checkbox" id="comment" class="notifications" name="comment">comment</span>
