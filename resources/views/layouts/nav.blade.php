@@ -27,6 +27,10 @@
                         <a href="{{ url('/battles') }}">Battles</a>
                     </li>
 
+                    <li>
+                        <a href="{{ url('/projects') }}">Projects</a>
+                    </li>
+
                 </ul>
 
                 @if(true)
