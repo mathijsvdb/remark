@@ -4,11 +4,11 @@
 
     <div class="container_filter form-group">
         <h2>Filter</h2>
-        <form class="" action="/">
-            <span><input type="checkbox" checked="checked" id="all" class="notifications" name="all">all</span>
-            <span><input type="checkbox" id="likes" class="notifications" name="likes">like</span>
-            <span><input type="checkbox" id="favorite" class="notifications" name="favorite">favorite</span>
-            <span><input type="checkbox" id="comment" class="notifications" name="comment">comment</span>
+        <form id="notification_filter" action="/">
+            <span><input type="checkbox" class="notification_checkbox" id="all" value="all" checked="checked" class="notifications" name="all">all</span>
+            <span><input type="checkbox" class="notification_checkbox" id="likes" value="likes" class="notifications" name="likes">like</span>
+            <span><input type="checkbox" class="notification_checkbox" id="favorite" value="favorite" class="notifications" name="favorite">favorite</span>
+            <span><input type="checkbox" class="notification_checkbox" id="comment" value="comment" class="notifications" name="comment">comment</span>
 
         </form>
     </div>
@@ -51,5 +51,5 @@
         </div>
 
     </div>
-
+    <script src="{{ URL::asset('assets/js/notifications.js') }}"></script>
 @stop

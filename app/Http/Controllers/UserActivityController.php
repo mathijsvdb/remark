@@ -18,16 +18,15 @@ class UserActivityController extends Controller
     }
 
     public function activityFilter(Request $request) {
-        $input = $request->all();
+        $likes = $request->all();
         $user = User::find($p_id);
         if($likes->selected()){
-
-        }
-            $likes = DB::table("likes");
-            ->where('project_id', $p_id);
-            ->join('users', 'users.id', '=', 'likes.user_id');
-            ->select('users.firstname', 'users.lastname', 'likes.*');
+            $likes = DB::table("likes")
+            ->where('project_id', $p_id)
+            ->join('users', 'users.id', '=', 'likes.user_id')
+            ->select('users.firstname', 'users.lastname', 'likes.*')
             ->get();
+        }
 
     }
 
