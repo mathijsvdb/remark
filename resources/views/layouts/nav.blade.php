@@ -23,6 +23,10 @@
                         </li>
                     @endif
 
+                    <li>
+                        <a href="{{ url('/battles') }}">Battles</a>
+                    </li>
+
                 </ul>
 
                 <form class="navbar-form navbar-left" role="search">

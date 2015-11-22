@@ -43,13 +43,17 @@
 <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
 
 
-
 <script src="{{ URL::asset('assets/js/script.js') }}"></script>
 <script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
+    $(document).ready(function() {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+
     });
 </script>
 

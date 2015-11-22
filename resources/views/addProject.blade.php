@@ -45,6 +45,16 @@
             </div>
 
             <div class="form-group">
+                <p class="col-xs-7"><b>Participate in a battle?</b></p><br><br>
+                <select class="battles_projadd_subscribe">
+                    <option value="battles">No thanks</option>
+                    <!-- <option value="battles">battle #1</option>
+                     <option value="battles">battle #2</option>
+                     <option value="battles">battle #3</option>-->
+                </select>
+            </div>
+
+            <div class="form-group">
                 <button type="submit" class="btn btn-default">Add project</button>
             </div>
 

@@ -66,7 +66,6 @@
 
         <div class="imagelist">
 
-
             <?php
             if(isset($products)){ ?>
             @foreach($products as $product)
@@ -103,28 +102,34 @@
 
 @section('scripts')
     <script>
-        $(function() {
-            //search function
 
-            $("#searchonfrontpage").submit(function(e){
-                e.preventDefault();
+        $(document).ready(function() {
+            //$(function() {
+                //search function
 
-                var whattosearch = $("#searchFRONT").val();
-                console.log("searching... " + whattosearch + ".");
+                $("#searchonfrontpage").submit(function(e){
+                    e.preventDefault();
 
-                $.ajax({
-                    type: "POST",
-                    //url: window.location,
-                    url: "/",   // This is what I have updated
-                    data: { whattosearch: whattosearch },
-                    success : function(data){
-                        console.log(data);
-                    },error: function(jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus, errorThrown);
-                    }
+                    var whattosearch = $("#searchFRONT").val();
+                    console.log("searching... " + whattosearch + ".");
+                    var _token = "{{ csrf_token() }}";
+                    console.log(_token);
+
+                    $.ajax({
+                        type: "POST",
+                        //url: window.location,
+                        url: "/",   // This is what I have updated
+                        data: { whattosearch: whattosearch, _token: _token },
+                        success : function(data){
+                            console.log(data);
+                        },error: function(jqXHR, textStatus, errorThrown, data) {
+                            console.log(textStatus, errorThrown);
+                            console.log(data);
+                        },always: function(data){console.log(data);}
+                    });
+
                 });
-
-            });
+            //});
         });
     </script>
 
