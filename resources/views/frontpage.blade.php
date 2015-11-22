@@ -23,10 +23,11 @@
         <!-- <img src="http://placehold.it/350x150"> -->
         <div class="row">
             <div class="col-md-8">
-                <form class="form" id="searchonfrontpage">
+                <form class="form" id="searchonfrontpage" action="#">
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" class="form-control" aria-label="..." name="search" placeholder="What are you looking for?" id="searchFRONT">
+                            <input type="hidden" name="_token" id="tokenhiddensearch" value="{{ csrf_token() }}">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit" id="searchbutton">Search</button>
                             </div>
@@ -103,33 +104,33 @@
 @section('scripts')
     <script>
 
+        $.ajaxSetup({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+        });
+
         $(document).ready(function() {
-            //$(function() {
-                //search function
 
-                $("#searchonfrontpage").submit(function(e){
-                    e.preventDefault();
+            $("#searchonfrontpage").submit(function(e){
+                e.preventDefault();
 
-                    var whattosearch = $("#searchFRONT").val();
-                    console.log("searching... " + whattosearch + ".");
-                    var _token = "{{ csrf_token() }}";
-                    console.log(_token);
+                var whattosearch = $("#searchFRONT").val();
+                var _token = $("#tokenhiddensearch").val();
 
-                    $.ajax({
-                        type: "POST",
-                        //url: window.location,
-                        url: "/",   // This is what I have updated
-                        data: { whattosearch: whattosearch, _token: _token },
-                        success : function(data){
-                            console.log(data);
-                        },error: function(jqXHR, textStatus, errorThrown, data) {
-                            console.log(textStatus, errorThrown);
-                            console.log(data);
-                        },always: function(data){console.log(data);}
-                    });
+                var dataString = "search="+whattosearch+"&token="+_token;
 
+                $.ajax({
+                    type: "POST",
+                    url: "/search",
+                    data: dataString,
+                    success: function(data){
+                        console.log(data);
+
+                    },error: function(data){
+                        console.log("couldn't do search")
+                    }
                 });
-            //});
+            });
+
         });
     </script>
 

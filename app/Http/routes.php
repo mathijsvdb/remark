@@ -57,13 +57,22 @@ Route::get('/battles','BattlesController@battles');
 
 //frontpage routes
 Route::get('/','frontpageController@frontpage');
-Route::post('/', 'frontpageController@search');
 
-Route::filter('csrf', function() {
+//search
+Route::get('/search','SearchController@search');
+Route::post('/search', 'SearchController@searchThis');
+
+Route::post('/', function(){
+    if(Request::ajax()){
+        return Response::json(Request::all());
+    }
+});
+
+/*Route::filter('csrf', function() {
     $token = Request::ajax() ? Request::header('X-CSRF-TOKEN') : Input::get('_token');
     if (Session::token() != $token)
         throw new Illuminate\Session\TokenMismatchException;
-});
+});*/
 //Route::get('/search', 'frontpageController@postSearch');
 
 
