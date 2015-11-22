@@ -68,13 +68,5 @@ Route::post('/', function(){
     }
 });
 
-/*Route::filter('csrf', function() {
-    $token = Request::ajax() ? Request::header('X-CSRF-TOKEN') : Input::get('_token');
-    if (Session::token() != $token)
-        throw new Illuminate\Session\TokenMismatchException;
-});*/
-//Route::get('/search', 'frontpageController@postSearch');
-
-
 //search by color
 Route::get('/projects/search/{id}','ProjectController@SearchByColor');

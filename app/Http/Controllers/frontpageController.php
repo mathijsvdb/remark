@@ -21,8 +21,6 @@ class frontpageController extends Controller
             ->take(6)
             ->get();
 
-        //print_r($spotlight);
-
         return view("frontpage", compact('spotlight'));
     }
 

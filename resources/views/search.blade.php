@@ -2,7 +2,7 @@
 
 @section("content")
 
-    @foreach($spotlight as $work)
+    @foreach($searches as $work)
         <div class="col-md-4">
             <a href="/projects/{!! $work->id !!}">
                 <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">

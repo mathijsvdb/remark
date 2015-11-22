@@ -122,11 +122,15 @@
                     type: "POST",
                     url: "/search",
                     data: dataString,
+                    //async: false,
+                    dataType: 'json',
                     success: function(data){
                         console.log(data);
 
-                    },error: function(data){
-                        console.log("couldn't do search")
+                    },
+                    error: function(xhr, status, error) {
+                        var err = eval("(" + xhr.responseText + ")");
+                        console.log(err.Message);
                     }
                 });
             });

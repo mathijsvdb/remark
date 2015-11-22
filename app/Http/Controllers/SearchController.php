@@ -18,20 +18,28 @@ class SearchController extends Controller
 
     public function searchThis(Request $request) {
 
-        print_r("call made");
+        $q = $request->input('search'); //is ne string
+        //var_dump($q);
 
-        $q = $request->input('search');
-        var_dump($q);
+        $searchTerms = explode(' ', $q);
+        $query = DB::table('projects');
 
-        
 
-        /*$input = Input::all();
-        print_r($input);
-        print_r("call made");
-        //na post ajax call wat zit er in mijn functie
-        $q = $_POST["whattosearch"];
-        print_r($q);
 
+        foreach($searchTerms as $term)
+        {
+            $query->join('users', 'users.id', '=', 'projects.user_id')
+                ->where('title', 'LIKE', '%'. $term .'%')
+                ->orWhere('tags', 'LIKE', '%'. $term .'%')
+                ->orWhere('body', 'LIKE', '%'. $term .'%')
+                ->orWhere('username', 'LIKE', '%'. $term .'%')
+                ->orderBy('created_at', 'desc');
+        }
+
+        $projects = $query->get();
+
+        /*$
+        //header('Content-type: application/json');
         $searchTerms = explode(' ', $q);
         $query = DB::table('projects');
 
