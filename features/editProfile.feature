@@ -2,8 +2,8 @@ Feature: Updating account
   Testing account update
 
 ##TODO
-  Scenario: update testperson account
-    Given I am on "/login"
+  Scenario: updating account
+    Given I am on "/"
     And I fill in "email" with "testpersonemail@student.thomasmore.be"
     And I fill in "password" with "testperson password"
     And I press "submit"
