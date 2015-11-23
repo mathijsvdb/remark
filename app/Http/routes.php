@@ -60,7 +60,7 @@ Route::get('/','frontpageController@frontpage');
 
 //search
 Route::get('/search','SearchController@search');
-Route::post('/search', 'SearchController@searchThis');
+Route::post('/search', 'SearchController@searchFrontpage');
 
 Route::post('/', function(){
     if(Request::ajax()){

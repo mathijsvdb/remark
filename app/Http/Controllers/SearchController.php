@@ -16,10 +16,9 @@ class SearchController extends Controller
         return view("search");
     }
 
-    public function searchThis(Request $request) {
+    public function searchFrontpage(Request $request) {
 
-        $q = $request->input('search'); //is ne string
-        //var_dump($q);
+        $q = $request->input('search');
 
         $searchTerms = explode(' ', $q);
         $query = DB::table('projects');
@@ -28,45 +27,21 @@ class SearchController extends Controller
 
         foreach($searchTerms as $term)
         {
-            $query->join('users', 'users.id', '=', 'projects.user_id')
+            $query
                 ->where('title', 'LIKE', '%'. $term .'%')
                 ->orWhere('tags', 'LIKE', '%'. $term .'%')
                 ->orWhere('body', 'LIKE', '%'. $term .'%')
-                ->orWhere('username', 'LIKE', '%'. $term .'%')
-                ->orderBy('created_at', 'desc');
+                ->orderBy('title', 'desc')
+                ->leftJoin('users', 'users.id', '=', 'projects.user_id')
+                ->orWhere('username', 'LIKE', '%'. $term .'%');
+                //->orderBy('created_at', 'desc');
         }
 
-        $projects = $query->get();
+        $searches = $query->get();
 
-        /*$
-        //header('Content-type: application/json');
-        $searchTerms = explode(' ', $q);
-        $query = DB::table('projects');
+        return view("frontpage", compact('searches'));
+        //return $searches;
+        //return View::make('/')->with('searches', $searches);
 
-        foreach($searchTerms as $term)
-        {
-            $query->join('users', 'users.id', '=', 'projects.user_id')
-                  ->where('title', 'LIKE', '%'. $term .'%')
-                  ->orWhere('tags', 'LIKE', '%'. $term .'%')
-                  ->orWhere('body', 'LIKE', '%'. $term .'%')
-                  ->orWhere('username', 'LIKE', '%'. $term .'%')
-                  ->orderBy('created_at', 'desc');
-        }
-
-        $projects = $query->get();
-
-        print_r($projects);*/
-
-        //header('Content-type: application/json');
-        //echo json_encode($projects);
-
-        //return View::make( 'viewfile' )->with( 'data', $projects );
-
-        //return View::make('projects', compact('projects'));
-        //$view =  view('search')->with('projects', $projects);
-
-        //return View('/')->with('projects');
-
-        //View::make('/')->nest('child', 'child.view', $projects);
     }
 }

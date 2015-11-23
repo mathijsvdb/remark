@@ -37,7 +37,7 @@
             </div>
 
 
-            <div class="col-md-4">
+            <!--<div class="col-md-4">
                 <form class="form" action="">
                     <div class="form-group">
                         <div class="dropdown">
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </div>-->
         </div>
 
         <div class="row">
@@ -67,31 +67,41 @@
 
         <div class="imagelist">
 
-            <?php
-            if(isset($products)){ ?>
-            @foreach($products as $product)
-                <div class="col-md-4">
-                    <a href="/projects/{!! $product->id !!}">
-                        <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $product->img !!}" alt="">
-                    </a>
-                    <a href="/profile/{!! $product->user_id !!}">
-                        <p style="text-transform: uppercase">{!! $product->username !!}</p>
-                    </a>
-                </div>
-            @endforeach
-            <?php } else { ?>
-            @foreach($spotlight as $work)
-                <div class="col-md-4">
-                    <a href="/projects/{!! $work->id !!}">
-                        <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
-                    </a>
-                    <a href="/profile/{!! $work->user_id !!}">
-                        <p style="text-transform: uppercase">{!! $work->username !!}</p>
-                    </a>
-                </div>
-            @endforeach
-                <?php }
-            ?>
+                <?php if(!isset($searches)){ ?>
+
+                    @foreach($spotlight as $work)
+                        <div class="col-md-4">
+                            <a href="/projects/{!! $work->id !!}">
+                                <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
+                            </a>
+                            <a href="/profile/{!! $work->user_id !!}">
+                                <p style="text-transform: uppercase">{!! $work->username !!}</p>
+                            </a>
+                        </div>
+                    @endforeach
+
+                <?php }else{ ?>
+
+                    <?php if(empty($searches)){ ?>
+
+                    <h1>No search found</h1>
+
+                    <?php }else{ ?>
+
+                    @foreach($searches as $work)
+                        <div class="col-md-4">
+                            <a href="/projects/{!! $work->id !!}">
+                                <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
+                            </a>
+                            <a href="/profile/{!! $work->user_id !!}">
+                                <p style="text-transform: uppercase">{!! $work->username !!}</p>
+                            </a>
+                        </div>
+                    @endforeach
+
+                    <?php }?>
+
+                <?php }?>
 
         </div>
 
@@ -123,14 +133,20 @@
                     url: "/search",
                     data: dataString,
                     //async: false,
-                    dataType: 'json',
+                    //dataType: 'json',
                     success: function(data){
                         console.log(data);
 
+                        //window.history.pushState(data,"search","/search");
+                        //$(arr).appendTo(document.body);
+
+                        $("body" ).html(data);
+
+
                     },
                     error: function(xhr, status, error) {
-                        var err = eval("(" + xhr.responseText + ")");
-                        console.log(err.Message);
+                        //var err = eval(xhr.responseText);
+                        console.log(error,status, xhr.responseText);
                     }
                 });
             });
