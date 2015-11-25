@@ -70,3 +70,6 @@ Route::post('/', function(){
 
 //search by color
 Route::get('/projects/search/{id}','ProjectController@SearchByColor');
+
+//ads
+Route::get('/advertising','AdsController@ads');
