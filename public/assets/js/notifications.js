@@ -1,6 +1,11 @@
 /**
  * Created by Marijn on 21/11/15.
  */
+$.ajaxSetup({
+    headers:{
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 $(document).ready(function(){
 
 
@@ -8,16 +13,17 @@ $(document).ready(function(){
 
         var value = $(this).val();
         $.ajax({
-            type: "POST",
-            url: "http://remark.dev/profile/1/activity",
+            type: "post",
+            url: "http://remark.dev/profile/1/activityFilter",
             async: true,
-            data: {
+            data:{
                 likes: value // as you are getting in php $_POST['likes'];
             },
-            success: function (msg) {
-                alert('Success');
-                if (msg != 'success') {
+            success: function (data) {
+                if (data == '' ) {
                     alert('Fail');
+                } else {
+                    $("#activity").prepend("<li>"+value+"</li>");
                 }
             }
         });

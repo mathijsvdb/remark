@@ -32,6 +32,12 @@ Route::get('profile/{id}','ProfileController@profile');
 Route::get('update','ProfileController@updateProfile');
 Route::post('update', 'ProfileController@postProfile');
 Route::get('/profile/{id}/activity','UserActivityController@showAllActivity');
+
+Route::post('/profile/{id}/activityFilter',function(){
+    if(Request::ajax()){
+        return 'iets';
+    }
+});
 Route::get('profile/{id}/favorites', 'ProfileController@showFavorites');
 
 // Registration routes...

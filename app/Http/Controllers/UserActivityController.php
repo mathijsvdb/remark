@@ -28,6 +28,8 @@ class UserActivityController extends Controller
             ->get();
         }
 
+        return view($likes, $user, 'UserActivity');
+
     }
 
 }

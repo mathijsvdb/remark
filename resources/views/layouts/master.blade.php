@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="_token" content="{{ csrf_token() }}"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>App Name - @yield('title')</title>
 
     <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
