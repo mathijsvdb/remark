@@ -2,7 +2,7 @@ Feature: Updating account
   Testing account update
 
 ##TODO
-  Scenario: voeg ene project toe
+  Scenario: updating account
     Given I am on "/"
     And I fill in "email" with "testpersonemail@student.thomasmore.be"
     And I fill in "password" with "testperson password"
