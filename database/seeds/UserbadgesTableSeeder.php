@@ -2,9 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 
-class UserbadgesTableSeeders extends Seeder
+class UserbadgesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -28,7 +27,6 @@ class UserbadgesTableSeeders extends Seeder
                 'user_id' => '1',
                 'badge_id' => '3',
             ],
-
         ];
 
         DB::table('userbadges')->insert($userbadges);

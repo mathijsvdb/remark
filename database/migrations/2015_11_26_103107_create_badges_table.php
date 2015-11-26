@@ -16,7 +16,7 @@ class CreateBadgesTable extends Migration
             $table->increments('id');
             $table->string('badge_title');
             $table->string('badge_description');
-            $table->string('badge_image');
+            $table->string('badge_img');
         });
     }
 
