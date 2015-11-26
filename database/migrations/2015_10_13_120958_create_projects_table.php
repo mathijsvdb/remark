@@ -19,8 +19,6 @@ class CreateProjectsTable extends Migration
             $table->string('tags');
             $table->string('img');
             $table->string('img_tricolor');
-            $table->integer('battle_id')->unsigned();
-            $table->foreign('battle_id')->references('id')->on('battles');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

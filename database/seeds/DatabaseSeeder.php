@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(WaitlistTableSeeder::class);
         $this->call(BadgesTableSeeder::class);
         $this->call(UserbadgesTableSeeder::class);
+        $this->call(BattlesTableSeeder::class);
 
         Model::reguard();
     }
