@@ -615,6 +615,12 @@ footer{
 
 /*--------------profile page -------------------*/
 
+.center404{text-align: center; margin-left: auto; margin-right: auto; margin-bottom: auto; margin-top: auto;}
+
+.center404 a{color:white;}
+
+/*--------------profile page -------------------*/
+
 #profilepicture{
      width: 100px;
      height: 100px;
