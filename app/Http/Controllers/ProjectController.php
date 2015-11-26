@@ -280,7 +280,7 @@ class ProjectController extends Controller
     //badges
 
     public function CheckFirstUploadedProject($id){
-        $badge_id = 2;
+        $badge_id = 4;
         $totalProjects = DB::table("projects")
             ->where('user_id', $id)
             ->count();
@@ -305,7 +305,7 @@ class ProjectController extends Controller
     }
 
     public function checkUserWithin2Hours($id){
-        $badge_id = 4;
+        $badge_id = 1;
         $timeCreated = DB::table("users")
             ->where('id', $id)
             ->select('created_at')

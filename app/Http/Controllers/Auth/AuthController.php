@@ -62,7 +62,7 @@ class AuthController extends Controller
             Auth::login($this->create($input));
             $info = 'Congratulations on creating an account, To update your profile visit the profile page!';
 
-            $badge_id = 1;
+            $badge_id = 2;
             $totalUsers = DB::table("users")
                 ->count();
 
