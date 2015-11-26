@@ -15,6 +15,7 @@ class CreateBattlesTable extends Migration
         Schema::create('battles', function (Blueprint $table) {
             $table->increments('id');
             $table->string('battle_theme');
+            $table->boolean('active');
         });
     }
 
