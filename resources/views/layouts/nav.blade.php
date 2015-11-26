@@ -31,6 +31,10 @@
                         <a href="{{ url('/projects') }}">Projects</a>
                     </li>
 
+                    <li>
+                        <a href="{{ url('/advertising') }}">Advertising</a>
+                    </li>
+
                 </ul>
 
                 <form class="navbar-form navbar-left" role="search">
