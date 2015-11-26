@@ -22,15 +22,14 @@
                             <span class="profile-notification" aria-hidden="true">1</span>
                         </li>
                     @endif
-
-                    <li>
-                        <a href="{{ url('/battles') }}">Battles</a>
-                    </li>
-
                     <li>
                         <a href="{{ url('/projects') }}">Projects</a>
                     </li>
 
+                    <li>
+                        <a href="{{ url('/battles') }}">Battles</a>
+                    </li>
+                    
                     <li>
                         <a href="{{ url('/advertising') }}">Advertising</a>
                     </li>
