@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Badges;
 use App\User;
 use App\Waitlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -59,6 +61,16 @@ class AuthController extends Controller
         if(str_contains($input['email'], '@student.thomasmore.be')){
             Auth::login($this->create($input));
             $info = 'Congratulations on creating an account, To update your profile visit the profile page!';
+
+            $badge_id = 1;
+            $totalUsers = DB::table("users")
+                ->count();
+
+            if($totalUsers<100){
+                //badgeId + userId naar db sturen
+                $this->AddInDatabase(Auth::id(), $badge_id);
+            }
+
         } else {
             $this->addToWaitlist($request->all());
             $info = "Thanks for showing interest in our services, at the moment you will be put on a waiting list. When It's your turn, we will send an activation mail in your inbox.";
@@ -118,5 +130,21 @@ class AuthController extends Controller
             'lastname' => ucfirst($data['lastname']),
             'email' => $data['email'],
         ]);
+    }
+
+    public function AddInDatabase($user_id, $badge_id){
+        $badge = new Badges;
+
+        $totalBadge = DB::table("userbadges")
+            ->where('user_id', $user_id)
+            ->where('badge_id', $badge_id)
+            ->count();
+
+        $badge->user_id = $user_id;
+        $badge->badge_id = $badge_id;
+
+        if($totalBadge <= 0){
+            $badge->save();
+        }
     }
 }

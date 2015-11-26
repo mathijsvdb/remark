@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Badges;
+use Carbon\Carbon;
+use DateTime;
 use DB;
 use App\Project;
 use App\User;
@@ -96,8 +99,9 @@ class ProjectController extends Controller
         $project->user_id = Auth::id();
         //$project->user_id = 1;
         //$table->increments('id');
-
+        $this->CheckFirstUploadedProject(Auth::id());
         $project->save();
+
         return redirect('/projects');
     }
 
@@ -169,8 +173,10 @@ class ProjectController extends Controller
         $comment->project_id = Request::input('project_id');
         $comment->new = 1;
 
+        $this->checkComments($user->id, Request::input('project_id'));
         $comment->save();
 
+        $this->checkUserWithin2Hours($user->id);
         return redirect('projects/' . $comment->project_id);
     }
 
@@ -268,5 +274,65 @@ class ProjectController extends Controller
             ->get();
 
         return view('projects.searchProjectsColor', compact('projectsByColor'));
+    }
+
+
+    //badges
+
+    public function CheckFirstUploadedProject($id){
+        $badge_id = 2;
+        $totalProjects = DB::table("projects")
+            ->where('user_id', $id)
+            ->count();
+
+        if($totalProjects == 0){
+            //badgeId + userId naar db sturen
+            $this->AddInDatabase($id, $badge_id);
+        }
+    }
+
+    public function checkComments($id, $projectId){
+        $badge_id = 3;
+        $totalComments = DB::table("comments")
+            ->where('user_id', $id)
+            ->where('project_id', $projectId)
+            ->count();
+
+        if($totalComments >= 4){
+            //badgeId + userId naar db sturen
+            $this->AddInDatabase($id, $badge_id);
+        }
+    }
+
+    public function checkUserWithin2Hours($id){
+        $badge_id = 4;
+        $timeCreated = DB::table("users")
+            ->where('id', $id)
+            ->select('created_at')
+            ->get();
+
+        $dateCreated = new DateTime($timeCreated[0]->created_at);
+        $dateNow = Carbon::now();
+        $interval = $dateCreated->diff($dateNow);
+
+        if($interval->format('%a') == 0 && $interval->format('%h') < 2){
+            $this->AddInDatabase($id, $badge_id);
+        }
+    }
+
+    public function AddInDatabase($user_id, $badge_id){
+        $badge = new Badges;
+
+        $totalBadge = DB::table("userbadges")
+            ->where('user_id', $user_id)
+            ->where('badge_id', $badge_id)
+            ->count();
+
+        $badge->user_id = $user_id;
+        $badge->badge_id = $badge_id;
+
+        if($totalBadge <= 0){
+            $badge->save();
+        }
     }
 }
