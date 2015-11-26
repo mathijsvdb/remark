@@ -27,7 +27,7 @@ class BadgesTableSeeder extends Seeder
             ],
             [
                 'badge_title' => 'Helping hand',
-                'badge_description' => "You've given feedback 5 times on one project",
+                'badge_description' => "You've given feedback 5 times on one project.",
                 'badge_img' => 'badges_1.png'
             ],
             [
