@@ -19,6 +19,7 @@ Route::get('/projects/{id}', 'ProjectController@showProjectById');
 Route::post('/projects/{id}/delete', 'ProjectController@deleteProject');
 Route::get('/projects/{id}/edit', 'ProjectController@getEditProject');
 Route::post('/projects/{id}/edit', 'ProjectController@postEditProject');
+Route::get('profile/{id}/rewards','RewardsController@ShowUserRewards');
 
 // Likes and favorites routes
 Route::get('/projects/{id}/like', 'ProjectController@likeProject');
@@ -38,6 +39,7 @@ Route::post('/profile/{id}/activityFilter',function(){
         return 'iets';
     }
 });
+
 Route::get('profile/{id}/favorites', 'ProfileController@showFavorites');
 
 // Registration routes...

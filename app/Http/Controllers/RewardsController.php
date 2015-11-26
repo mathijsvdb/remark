@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use Auth;
 
 class RewardsController extends Controller
 {
@@ -76,5 +77,15 @@ class RewardsController extends Controller
         if($totalBadge <= 0){
             $badge->save();
         }
+    }
+
+    public function ShowUserRewards(){
+        /*$user = \App\User::find(Auth::id());
+        $all_badges = DB::table("userbadges")
+            ->where('user_id', $user->id)
+            ->get();
+        */
+        return view( "rewardsProfile");
+
     }
 }
