@@ -25,7 +25,15 @@ class ProfileController extends Controller {
         $user = User::find($id);
         $projects = Project::where('user_id', $id)->get();
 
-        return view("profile", compact('user', 'projects'));
+        $badges = DB::table("userbadges")
+            ->join('badges', 'badge_id' , '=' , 'badges.id')
+            ->where('user_id', $id)
+            ->orderBy('created_at', 'asc')
+            ->take(3)
+            ->get();
+
+
+        return view("profile", compact('user', 'projects', 'badges'));
     }
 
     public function updateProfile(Request $request)

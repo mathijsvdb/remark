@@ -18,6 +18,13 @@
                 <a href="{!! $user->website !!}" class="socialmedia" id="website">website</a>
             </div>
 
+            <ul style="clear: both; padding: 0px;">
+                @for($i = 0; $i < count($badges); $i++)
+                    <img style="width: 45px; height: 45px; padding: 5px;" src="/assets/images/badges/{{ $badges[$i]->badge_img }}" alt="">
+                @endfor
+            </ul>
+
+
             @if(Auth::user())
                 @if($user->id == Auth::user()->id)
                     <a id="edit" href="/update">Edit my profile</a>
