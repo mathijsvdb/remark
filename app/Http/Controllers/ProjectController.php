@@ -29,7 +29,9 @@ class ProjectController extends Controller
     }
 
     public function getAddProject() {
-        return view('addProject');
+        $battles = Battle::all();
+
+        return view('addProject', compact('battles'));
     }
 
     public function postAddProject() {
