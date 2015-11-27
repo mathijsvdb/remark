@@ -76,6 +76,18 @@ class ProfileController extends Controller {
         $user->facebook = Request::input('facebook');
         $user->twitter = Request::input('twitter');
         $user->website = Request::input('website');
+        
+        if (Input::get('commentmail_yes') === 'yes') {
+            $user->comment_mail = 1;
+        } else {
+            $user->comment_mail = 0;
+        }
+
+        if (Input::get('highlightmail_yes') === 'yes') {
+            $user->highlight_mail = 1;
+        } else {
+            $user->highlight_mail = 0;
+        }
 
         $user->save();
 

@@ -58,11 +58,25 @@
 			<br />
 			<div id="emailpreferences">
 				<h4>Email preferences</h4>
-				<label for="commentmail">Email on comment</label><br><input type="radio" name="commentmail" id="commentmail_yes" value="commentmail_yes" checked><label for="commentmail_yes" class="updatemaillable"> Mail me when someone comments</label><br>
-																	 <input type="radio" name="commentmail" id="commentmail_no" value="commentmail_no"><label for="commentmail_no" class="updatemaillable"> Don't email me when someone comments</label><br>
-				<label for="highlightmail">Highlight email</label><br><input type="radio" name="highlightmail" id="highlightmail_weekly" value="highlightmail_weekly" checked><label for="highlightmail_weekly" class="updatemaillable">  Weekly</label><br>
-				   												       <input type="radio" name="highlightmail" id="highlightmail_monthly" value="highlightmail_monthly"><label for="highlightmail_monthly" class="updatemaillable"> Monthly</label><br>
-				                                                       <input type="radio" name="highlightmail" id="highlightmail_none" value="highlightmail_none"><label for="highlightmail_none" class="updatemaillable"> None</label><br>
+				<label for="commentmail">Email on comment</label><br>
+
+				@if($user->comment_mail == 1)
+				<input type="checkbox" name="commentmail_yes" id="commentmail_yes" value="yes" checked>
+				@else
+				<input type="checkbox" name="commentmail_yes" id="commentmail_yes" value="yes">
+				@endif
+				<label for="commentmail_yes" class="updatemaillable"> Mail me when someone comments</label><br>
+																	 
+				<label for="highlightmail">Highlight email</label><br>
+
+				@if($user->highlight_mail == 1)
+				<input type="checkbox" name="highlightmail_yes" id="highlightmail_yes" value="yes" checked>
+				@else
+				<input type="checkbox" name="highlightmail_yes" id="highlightmail_yes" value="yes" >
+				@endif
+
+				<label for="highlightmail_yes" class="updatemaillable"> Email me with highlights </label><br>
+                                                   
 			</div>
 			<br />
 

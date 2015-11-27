@@ -24,6 +24,8 @@ class CreateUsersTable extends Migration
             $table->string('facebook');
             $table->string('twitter');
             $table->string('website');
+            $table->boolean('comment_mail')->default(1);
+            $table->boolean('highlight_mail')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
