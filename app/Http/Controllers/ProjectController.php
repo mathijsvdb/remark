@@ -107,6 +107,9 @@ class ProjectController extends Controller
 
     public function showProjectById($id) {
         $project = Project::find($id);
+        $likes = Project::find($id)->likes->count();
+        $favorites = Project::find($id)->favorites->count();
+
         $user = User::find($project['user_id']);
 
         $colors = $project['img_tricolor'];
@@ -118,7 +121,7 @@ class ProjectController extends Controller
         ->select('users.firstname', 'users.lastname', 'comments.*')
         ->get();
 
-        return view('projects.detailProjects', compact('project', 'user', 'colorpieces', 'comments'));
+        return view('projects.detailProjects', compact('project', 'user', 'colorpieces', 'comments', 'likes', 'favorites'));
     }
 
     /**

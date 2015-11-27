@@ -30,10 +30,10 @@
                     <a href="/"><span class="glyphicon glyphicon-eye-open"></span>Views</a>
                 </li>
                 <li class="border-bottom-info">
-                    <a id="like-project" href="/projects/{{ $project['id'] }}/like"><span class="glyphicon glyphicon-thumbs-up"></span> <span id="n_likes"></span> Likes</a>
+                    <a id="like-project" href="/projects/{{ $project['id'] }}/like"><span class="glyphicon glyphicon-thumbs-up"></span><span id="n_likes">{{ $likes }}</span> Likes</a>
                 </li>
                 <li class="border-bottom-info">
-                    <a id="favorite-project" href="/projects/{{ $project['id'] }}/favorite"><span class="glyphicon glyphicon-heart-empty"></span> <span id="n_favorites"></span> Favorites</a>
+                    <a id="favorite-project" href="/projects/{{ $project['id'] }}/favorite"><span class="glyphicon glyphicon-heart-empty"></span><span id="n_favorites">{{ $favorites }}</span> Favorites</a>
                 </li>
 
                 <li class="border-bottom-info">
