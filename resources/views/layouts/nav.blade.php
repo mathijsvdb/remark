@@ -18,7 +18,7 @@
                     <li><a href="{{ url('/') }}">Home<span class="sr-only">(current)</span></a></li>
                     @if(Auth::check())
                         <li>
-                            <a href="{{ url('/profile/' . Auth::user()->id) }}">Profile</a>
+                            <a href="{{ url('/profile/' . Auth::user()->id) }}">My Profile</a>
                             <span class="profile-notification" aria-hidden="true">1</span>
                         </li>
                     @endif
@@ -29,7 +29,7 @@
                     <li>
                         <a href="{{ url('/battles') }}">Battles</a>
                     </li>
-                    
+
                     <li>
                         <a href="{{ url('/advertising') }}">Advertising</a>
                     </li>
