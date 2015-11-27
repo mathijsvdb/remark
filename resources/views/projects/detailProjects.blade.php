@@ -30,10 +30,10 @@
                     <a href="/"><span class="glyphicon glyphicon-eye-open"></span>Views</a>
                 </li>
                 <li class="border-bottom-info">
-                    <a id="like-project" href="/projects/{{ $project['id'] }}/like"><span class="glyphicon glyphicon-thumbs-up"></span><span id="n_likes">{{ $likes }}</span> Likes</a>
+                    <a id="like-project" href="/projects/{{ $project['id'] }}/like"><span class="glyphicon glyphicon-heart-empty"></span><span id="n_likes">{{ $likes }}</span> Likes</a>
                 </li>
                 <li class="border-bottom-info">
-                    <a id="favorite-project" href="/projects/{{ $project['id'] }}/favorite"><span class="glyphicon glyphicon-heart-empty"></span><span id="n_favorites">{{ $favorites }}</span> Favorites</a>
+                    <a id="favorite-project" href="/projects/{{ $project['id'] }}/favorite"><span class="glyphicon glyphicon-star-empty"></span><span id="n_favorites">{{ $favorites }}</span> Favorites</a>
                 </li>
 
                 <li class="border-bottom-info">
@@ -56,7 +56,7 @@
 
     <form method="POST" class="form" action="{!! $project['id'] !!}">
         {!! csrf_field() !!}
-        <h3>Commets</h3>
+        <h3>Comments</h3>
         <textarea class="form-control" rows="3" name="body"></textarea>
                 
         <input type="hidden" name="project_id" value="{{ $project->id }}" class="form-control">
@@ -81,7 +81,6 @@
 @section('scripts')
     <script>
         $(function() {
-
             $('#like-project').click(function(e) {
                 $.ajax({
                     method: "POST",
@@ -89,15 +88,18 @@
                     data: {project_id: {{ $project['id'] }}},
                     dataType: 'json'
                 })
-                        .done(function(resp) {
-                            console.log(resp);
-                            $('#n_likes').html(resp.likes);
-                        })
-                        .fail(function (jqXHR, textStatus, errorThrown) {
-                            console.log(jqXHR);
-                            console.log(textStatus);
-                            console.log(errorThrown);
-                        });
+                .done(function(resp) {
+                    console.log(resp);
+                    $('#n_likes').html(resp.likes);
+                    $(".glyphicon-heart-empty").attr("class", "glyphicon glyphicon-heart");
+                    $(".glyphicon-heart").attr("style", "color: #BA0000;");
+                    $('#like-project').attr("href", "projects/{{ $project['id'] }}/unlike");
+                })
+                .fail(function (jqXHR, textStatus, errorThrown) {
+                    console.log(jqXHR);
+                    console.log(textStatus);
+                    console.log(errorThrown);
+                });
 
                 e.preventDefault();
             });
@@ -112,6 +114,9 @@
                         .done(function(resp) {
                             console.log(resp);
                             $('#n_favorites').html(resp.favorites);
+                            $(".glyphicon-star-empty").attr("class", "glyphicon glyphicon-star");
+                            $(".glyphicon-star").attr("style", "color: #FFD800;");
+                            $('#like-project').attr("href", "projects/{{ $project['id'] }}/unfavorite");
                         })
                         .fail(function (jqXHR, textStatus, errorThrown) {
                             console.log(jqXHR);
@@ -119,10 +124,8 @@
                             console.log(errorThrown);
                         });
 
-
                 e.preventDefault();
             })
         });
     </script>
-    
 @stop
