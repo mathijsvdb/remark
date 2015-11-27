@@ -14,7 +14,7 @@ class AddBattleIdFkToProjects extends Migration
     {
         Schema::table('projects', function (Blueprint $table) {
             $table->integer('battle_id')->unsigned()->after('user_id');
-            $table->foreign('battle_id')->references('id')->on('battles');
+            $table->foreign('battle_id')->references('id')->on('battles')/*->onDelete('set null')*/;
         });
     }
 
