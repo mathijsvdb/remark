@@ -80,12 +80,14 @@ class RewardsController extends Controller
     }
 
     public function ShowUserRewards(){
-        /*$user = \App\User::find(Auth::id());
+        /*UserEarnedBadges*/
+
+        $user = \App\User::find(Auth::id());
         $all_badges = DB::table("userbadges")
             ->where('user_id', $user->id)
             ->get();
-        */
-        return view( "rewardsProfile");
+
+        return view( "rewardsProfile",compact('all_badges'));
 
     }
 }

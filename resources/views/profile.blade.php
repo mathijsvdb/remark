@@ -10,7 +10,9 @@
                         <img style="width: 45px; height: 45px; padding: 5px;" src="/assets/images/badges/{{ $badges[$i]->badge_img }}" alt="">
                     @endfor
                     <br>
-                    <a id="rewards" href="/profile/{!! $user->id !!}/rewards">View this users' badges</a>
+                        @if($user->id == Auth::user()->id)
+                            <a id="rewards" href="/profile/{!! $user->id !!}/rewards">View your badges</a>
+                        @endif
                 </ul>
             </div>
 
