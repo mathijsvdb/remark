@@ -835,3 +835,12 @@ hr{
 .notificationlist{margin-top: 30px; width: 80%; min-width: 400px}
 .notificationlist p{color:black;}
 .notificationlist span{color:black;}
+
+/*-- ads --*/
+
+.advertising li{
+    float: left;
+    background-color: white;
+    margin: 10px;
+}
+

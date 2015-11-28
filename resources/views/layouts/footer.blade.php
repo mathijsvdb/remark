@@ -1,6 +1,12 @@
-{{--<p>Copywrite&commat;remark.be</p>--}}
-{{--<ul>--}}
-    {{--<il><a href="#facebook">Facebook</a></il>--}}
-    {{--<il><a href="#twitter">Twitter</a></il>--}}
-    {{--<il><a href="#email">EMail</a></il>--}}
-{{--</ul>--}}
+<footer>
+    <ul class="advertising row">
+        @for($i = 0; $i < 3; $i ++)
+            <li class="col-md-4">
+
+                <h3>{{$ads[$i]->title}} </h3>
+                <p>{{$ads[$i]->description}} </p>
+
+            </li>
+        @endfor
+    </ul>
+</footer>
