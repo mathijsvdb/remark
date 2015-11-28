@@ -20,6 +20,23 @@ body ul{
     padding: 0;
 }
 
+.container .dropdown-toggle{
+    background-color: transparent !important;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+    color: lightgreen;
+}
+
+.dropdown-menu>li>a {
+     color: lightgreen;
+}
+
+.dropdown-menu>li>a:hover {
+    background-color: lightgreen !important;
+}
+
+
 .container h1{
     margin-left: 40px;
     color: black;
@@ -53,7 +70,7 @@ body ul{
     border-color: #e7e7e7;
 }
 
-.navbar-default li span{
+.navbar-default li .profile-notification{
     animation-name: notification;
     animation-duration: 4s;
     animation-iteration-count:  infinite;
@@ -69,7 +86,7 @@ body ul{
     text-align: center;
 }
 
-.navbar-default .nav-notification li span{
+.navbar-default .nav-notification li .profile-notification{
     animation-name: none;
     position: inherit;
     width: 25px;
@@ -604,7 +621,7 @@ input[type=checkbox]{
 
 footer{
     text-align: center;
-    bottom: 0px
+    bottom: 0px;
     position: relative;
 }
 
