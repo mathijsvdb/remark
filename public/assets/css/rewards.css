@@ -1,0 +1,32 @@
+.rewards_content li{
+    width: 140px;
+    float: left;
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.16);
+    text-align: center;
+}
+
+.rewards_content ul{
+    margin-top: 40px;
+}
+
+.rewards_right_container{
+    clear: both;
+}
+
+.rewards_content h1{
+    display: inline;
+    margin-left: 50px;
+    margin-bottom: 40px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid lightgreen;
+}
+
+@media screen and (min-width: 700px) {
+
+    .rewards_right_container{
+        clear: none;
+    }
+}
