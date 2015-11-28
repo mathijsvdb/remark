@@ -22,10 +22,18 @@ Route::post('/projects/{id}/edit', 'ProjectController@postEditProject');
 Route::get('profile/{id}/rewards','RewardsController@ShowUserRewards');
 
 // Likes and favorites routes
-Route::get('/projects/{id}/like', 'ProjectController@likeProject');
-Route::post('/projects/{id}/like', 'AjaxController@likeProject');
-Route::get('/projects/{id}/favorite', 'ProjectController@favoriteProject');
-Route::post('/projects/{id}/favorite', 'AjaxController@favoriteProject');
+Route::post('projects/{id}/like', 'ProjectController@likeProject');
+Route::post('projects/{id}/unlike', 'ProjectController@unlikeProject');
+Route::post('projects/{id}/favorite', 'ProjectController@favoriteProject');
+Route::post('projects/{id}/unfavorite', 'ProjectController@unfavoriteProject');
+
+// Ajax like and favorite routes
+Route::group(['prefix' => 'ajax'], function () {
+    Route::post('projects/{id}/like', 'AjaxController@likeProject');
+    Route::post('projects/{id}/unlike', 'AjaxController@unlikeProject');
+    Route::post('projects/{id}/favorite', 'AjaxController@favoriteProject');
+    Route::post('projects/{id}/unfavorite', 'AjaxController@unfavoriteProject');
+});
 
 Route::post('/projects/{id}', 'ProjectController@addComment');
 
