@@ -5,6 +5,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>App Name - @yield('title')</title>
 
+    <meta property="og:site_name" content="Remark">
+    <meta property="og:url" content="https://remark.weareimd.be">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Remark: Design Projects">
+    <meta property="og:description" content="Remark is a website for students to get feedback on their design projects.">
+    <meta property="og:image" content="http://remark.weareimd.be/images/Remark_logo.jpg">
+
     <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="{{ URL::asset('assets/css/styles.css') }}" rel="stylesheet">
