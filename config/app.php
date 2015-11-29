@@ -136,7 +136,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Laravel\Cashier\CashierServiceProvider::class,
 
         /*custom (dit is de image upload/resize*/
         /*Intervention\Image\ImageServiceProvider,*/
