@@ -37,18 +37,33 @@ Route::group(['prefix' => 'ajax'], function () {
 
 Route::post('/projects/{id}', 'ProjectController@addComment');
 
-Route::get('profile/{id}','ProfileController@profile');
-Route::get('update','ProfileController@updateProfile');
-Route::post('update', 'ProfileController@postProfile');
-Route::get('/profile/{id}/activity','UserActivityController@showAllActivity');
 
+/*
+ * Profile Routes
+ */
+Route::get('profile/{id}', [
+    'middleware' => 'auth',
+    'uses' =>'ProfileController@profile'
+]);
+Route::get('update', [
+    'middleware' => 'auth',
+    'uses' => 'ProfileController@updateProfile']
+);
+Route::post('update', 'ProfileController@postProfile');
+Route::get('/profile/{id}/activity', [
+    'middleware' => 'auth',
+    'uses' => 'UserActivityController@showAllActivity'
+]);
 Route::post('/profile/{id}/activityFilter',function(){
     if(Request::ajax()){
         return 'iets';
     }
 });
 
-Route::get('profile/{id}/favorites', 'ProfileController@showFavorites');
+Route::get('profile/{id}/favorites', [
+    'middleware' => 'auth',
+    'uses' => 'ProfileController@showFavorites'
+]);
 
 // Registration routes...
 Route::get('/register', 'Auth\AuthController@getRegister');
