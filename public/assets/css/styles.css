@@ -464,6 +464,7 @@ a.btn.btn-primary.plus-project span{
 
 .projects-container{
      width: 95%;
+    height: 100%;
      Margin:0 auto;
  }
 
@@ -838,9 +839,48 @@ hr{
 
 /*-- ads --*/
 
-.advertising li{
-    float: left;
-    background-color: white;
-    margin: 10px;
+footer{
+    clear: both;
 }
 
+.advertising a:link,
+.advertising a:visited,
+.advertising a:hover,
+.advertising a:active{
+    color: white;
+}
+.advertising a:hover{
+    color: white!important;
+    text-decoration: none;
+}
+
+.advertising{
+    margin-left: -40px;
+}
+
+.advertising img{
+    z-index: -1;
+}
+
+.advertising h3{
+    padding: 10px;
+    margin-bottom: 0px;
+    background-color: black;
+}
+
+.advertising li{
+    position: relative;
+    width: 200px;
+    margin: 0 auto;
+    background-color: white;
+    box-shadow: 0 2px 10px 0 rgba(0,0,0,.16);
+}
+
+.advertising li p{
+    position: absolute;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    bottom: -10px;
+}

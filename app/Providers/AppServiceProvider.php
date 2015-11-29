@@ -18,13 +18,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        /*
+
         $ads = DB::table("ads")
             ->orderBy(DB::raw('RAND()'))
             ->take(3)
             ->get();
         view()->share('ads',$ads);
-        */
+
     }
 
     /**
