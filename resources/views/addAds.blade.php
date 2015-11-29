@@ -48,10 +48,10 @@
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="pk_test_uJfH5C7V9YeBhsIhZ2LB6edn"
                         data-image="/img/documentation/checkout/marketplace.png"
-                        data-name="Demo Site"
+                        data-name="Pay add"
                         data-description="2 widgets"
                         data-currency="eur"
-                        data-amount="2000"
+                        data-amount="5000"
                         data-locale="auto">
                 </script>
 

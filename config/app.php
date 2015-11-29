@@ -136,7 +136,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Weblee\Mandrill\MandrillServiceProvider::class,
+        'Weblee\Mandrill\MandrillServiceProvider',
+        Laravel\Cashier\CashierServiceProvider::class,
+
 
         /*custom (dit is de image upload/resize*/
         /*Intervention\Image\ImageServiceProvider,*/
