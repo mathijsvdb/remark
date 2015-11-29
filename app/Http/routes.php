@@ -13,11 +13,17 @@
 
 
 Route::get('/projects','ProjectController@showAllProjects');
-Route::get('/projects/add', 'ProjectController@getAddProject');
+Route::get('/projects/add', [
+    'middleware' => 'auth',
+    'uses' => 'ProjectController@getAddProject'
+]);
 Route::post('/projects/add', 'ProjectController@postAddProject');
 Route::get('/projects/{id}', 'ProjectController@showProjectById');
 Route::post('/projects/{id}/delete', 'ProjectController@deleteProject');
-Route::get('/projects/{id}/edit', 'ProjectController@getEditProject');
+Route::get('/projects/{id}/edit', [
+    'middleware' => 'auth',
+    'uses' => 'ProjectController@getEditProject'
+]);
 Route::post('/projects/{id}/edit', 'ProjectController@postEditProject');
 Route::get('profile/{id}/rewards','RewardsController@ShowUserRewards');
 
