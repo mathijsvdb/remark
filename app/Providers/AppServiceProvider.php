@@ -2,12 +2,15 @@
 
 namespace App\Providers;
 
+
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\Factory;
 use DB;
+use Schema;
+use Illuminate\Database\Schema\Blueprint;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,12 +21,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-
-        $ads = DB::table("ads")
-            ->orderBy(DB::raw('RAND()'))
-            ->take(3)
-            ->get();
-        view()->share('ads',$ads);
+        if(Schema::hasTable('ads')) {
+            $ads = DB::table("ads")
+                ->orderBy(DB::raw('RAND()'))
+                ->take(3)
+                ->get();
+            view()->share('ads', $ads);
+        }
 
     }
 
