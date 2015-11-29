@@ -80,16 +80,32 @@ class RewardsController extends Controller
     }
 
     public function ShowUserRewards(){
-        /*UserEarnedBadges*/
-
-        //->whereNotIn('badge_id', badges.id)
-
         $user = \App\User::find(Auth::id());
         $all_badges = DB::table("userbadges")
             ->where('user_id', $user->id)
             ->get();
 
-        return view( "rewardsProfile",compact('all_badges'));
+        /* DB doesnt contain badges we don't have..
+         * $no_badges = DB::table("userbadges")
+            ->where('user_id', $user->id)
+            ->whereNotIn('badge_id', [1,2,3,4,5,6])
+            ->get();
+        var_dump($no_badges);
+        */
 
+        $userBadges = array();
+
+        //THIS IS A CONSTANT
+        $NumberOfBadges = array("1","2","3","4","5");
+
+        foreach ($all_badges as $badges) {
+            $badgeID = $badges->badge_id;
+            array_push($userBadges, $badgeID);
+        }
+
+        //welke ID's zitten er niet in?
+        $yettoearn = array_merge(array_diff($userBadges, $NumberOfBadges), array_diff($NumberOfBadges, $userBadges));
+
+        return view( "rewardsProfile",compact('all_badges','yettoearn'));
     }
 }
