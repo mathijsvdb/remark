@@ -31,7 +31,7 @@ class AdsController extends Controller
         $title = Request::input('title');
         $url = Request::input('url');
         $image = Input::file('fileToUpload');
-        $start_date = Request::input('startDate');
+        $start_date = Request::input('data-picker');
         $destinationPath = 'uploads/reclam';
 
         //rules
