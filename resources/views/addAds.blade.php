@@ -23,7 +23,7 @@
                     <input type="text" id="url" placeholder="http://" name="url" class="form-control" autofocus required="required">
                     <span class="help-block">Example: http://example.com</span>
                     <label for="startDate">Date :</label>
-                    <input name="startDate" id="startDate" class="date-picker" />
+                    <input name="data-picker" id="date-picker" type="date" class="date-picker" />
 
                 </div>
 
