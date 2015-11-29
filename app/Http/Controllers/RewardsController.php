@@ -82,6 +82,8 @@ class RewardsController extends Controller
     public function ShowUserRewards(){
         /*UserEarnedBadges*/
 
+        //->whereNotIn('badge_id', badges.id)
+
         $user = \App\User::find(Auth::id());
         $all_badges = DB::table("userbadges")
             ->where('user_id', $user->id)
