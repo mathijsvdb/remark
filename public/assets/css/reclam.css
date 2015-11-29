@@ -1,7 +1,9 @@
 .advertising_container{
-    height: 100%;
+    max-width: 800px;
+    min-width: 360px;
+    margin: 0 auto;
 }
 
-.ui-datepicker-calendar {
-    display: none;
+.advertising_container{
+    width: 100%;
 }

@@ -8,6 +8,10 @@
     text-align: center;
 }
 
+.rewards_content{
+    height: 95%;
+}
+
 .rewards_content ul{
     margin-top: 40px;
 }
