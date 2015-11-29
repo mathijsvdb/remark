@@ -77,12 +77,32 @@ class Kernel extends ConsoleKernel
                                         'rcpt' => $u->email,
                                         'vars' => array(
                                             array(
-                                                'name' => 'highlights',
-                                                'content' => $result_new,
+                                                'name' => 'highlights_title_1',
+                                                'content' => $result_new[0]->title,
+                                            ),
+                                            array(
+                                                'name' => 'highlights_title_2',
+                                                'content' => $result_new[1]->title,
+                                            ),
+                                            array(
+                                                'name' => 'highlights_title_3',
+                                                'content' => $result_new[2]->title,
+                                            ),
+                                            array(
+                                                'name' => 'highlights_description_1',
+                                                'content' => $result_new[0]->body,
+                                            ),
+                                            array(
+                                                'name' => 'highlights_description_2',
+                                                'content' => $result_new[1]->body,
+                                            ),
+                                            array(
+                                                'name' => 'highlights_description_3',
+                                                'content' => $result_new[2]->body,
                                             ),
                                             array(
                                                 'name' => 'POPULAR',
-                                                'content' => $result_likes,
+                                                'content' => $result_likes[0],
                                             )
                                         )
                                     )
@@ -93,6 +113,6 @@ class Kernel extends ConsoleKernel
                     }
                 }
        
-            })->everyMinute();
+            })->weekly()->mondays()->at('13:00');
     }
 }
