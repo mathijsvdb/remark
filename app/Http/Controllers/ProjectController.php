@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Badges;
+use App\Battle;
 use App\Favorite;
 use App\Like;
 use Carbon\Carbon;
@@ -31,7 +32,7 @@ class ProjectController extends Controller
     }
 
     public function getAddProject() {
-        $battles = Battle::all();
+        $battles = Battle::where('active', true)->get();
 
         return view('addProject', compact('battles'));
     }
@@ -84,6 +85,14 @@ class ProjectController extends Controller
         $project->body = $body;
         $project->tags = $tags;
         $project->img = $fileName;
+
+        //add battle_id if user participates in battle
+        $battle_id = Request::input('battle');
+
+        if($battle_id != "") {
+            $project->battle_id = $battle_id;
+        }
+
 
 
 
