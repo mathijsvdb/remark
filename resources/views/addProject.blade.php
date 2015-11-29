@@ -49,7 +49,7 @@
                 <select class="battles_projadd_subscribe" name="battle">
                     <option value="">No thanks</option>
                     @foreach($battles as $battle)
-                    <option value="{{ $battle->id }}">{{ $battle->battle_name }}</option>
+                    <option value="{{ $battle->id }}">{{ $battle->name }}</option>
                     @endforeach
                 </select>
             </div>
