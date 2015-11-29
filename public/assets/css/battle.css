@@ -1,0 +1,41 @@
+.battle_container p{
+    color: grey;
+    padding:10px;
+}
+
+.information_battle{
+    margin-left: 40px;
+    margin-bottom: 20px;
+}
+
+.information_battle p{
+    display: inline;
+}
+
+.battle_container img{
+    width: 100%;
+}
+
+.battle_container ul{
+
+}
+
+.battle_container li{
+    padding: 0px;
+    margin: 10px;
+}
+
+.battle_container a:link,
+.battle_container a:visited,
+.battle_container a:hover,
+.battle_container a:active{
+    color: white;
+    display: block;
+    background-color: black;
+    padding: 8px;
+    font-size: 1.6rem;
+}
+
+.battle_container span{
+    float: right;
+}

@@ -1,20 +1,21 @@
 @extends("layouts.master")
 
 @section("content")
-    <h1>{{$active_battle->name}}</h1>
-    <p>{{$active_battle->description}}</p>
 
-    <ul>
-        @foreach($battle_projects as $project)
-            <li>
-                <a href="/projects/{{ $project->id }}">{{ $project->title }}</a>
-                <img src="/uploads/{!! $project->img !!}" alt="" style="width: 200px; height: 200px;">
-                <p>{{$project->body}}</p>
-                <span class="glyphicon glyphicon-heart"></span> {{ $project->likes }}
-            </li>
-        @endforeach
-    </ul>
+    <div class="battle_container ">
+        <h1>{{$active_battle->name}}</h1>
+        <div class="information_battle"><p>{{$active_battle->description}}</p></div>
+        <ul class="row">
+            @foreach($battle_projects as $project)
+                <li class="col-md-2 content-box">
+                    <a href="/projects/{{ $project->id }}">{{ $project->title }} <span class="glyphicon glyphicon-heart">{{ $project->likes }}</span> </a>
+                    <img src="/uploads/{!! $project->img !!}" alt="">
+                    <p>{{$project->body}}</p>
 
+                </li>
+            @endforeach
+        </ul>
+    </div>
 @stop
 
 @section("scripts")
