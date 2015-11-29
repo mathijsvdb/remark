@@ -1,4 +1,7 @@
 .advertising_container{
     height: 100%;
+}
 
+.ui-datepicker-calendar {
+    display: none;
 }

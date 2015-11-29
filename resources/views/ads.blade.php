@@ -12,6 +12,8 @@
                     <input type="text" id="title" placeholder="Title" name="title" value="{{ old('title') }}" class="form-control" autofocus required="required">
                     <input type="text" id="url" placeholder="URL" name="url" value="http://" class="form-control" autofocus required="required">
                     <span class="help-block">Example: http://example.com</span>
+                    <label for="startDate">Date :</label>
+                    <input name="startDate" id="startDate" class="date-picker" />
                 </div>
 
             </div>
