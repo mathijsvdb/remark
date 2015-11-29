@@ -136,6 +136,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        'Weblee\Mandrill\MandrillServiceProvider',
 
         /*custom (dit is de image upload/resize*/
         /*Intervention\Image\ImageServiceProvider,*/
@@ -147,6 +148,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
 
     ],
 
@@ -195,7 +197,8 @@ return [
         'Storage'   => Illuminate\Support\Facades\Storage::class,
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View'      => Illuminate\Support\Facades\View::class
+        'View'      => Illuminate\Support\Facades\View::class,
+        'MandrillMail'  => 'Weblee\Mandrill\MandrillFacade',
         /*'Image' => 'Intervention\Image\Facades\Image'*/
     ],
 
