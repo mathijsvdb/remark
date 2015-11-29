@@ -15,6 +15,7 @@
         <form class="form-horizontal" method="post" action="/advertising/add" role="form" enctype="multipart/form-data">
             {!! csrf_field() !!}
             <h2>Your advertising</h2>
+            <p>advertisments will be displayed for 30 days - €50</p>
             <div class="form-group">
 
                 <div class="col-sm-12">
