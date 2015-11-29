@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 
 use App\Advertisement;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Request;
 use App\Http\Requests;
+use Validator;
+use Redirect;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\Factory;
 
@@ -27,6 +31,7 @@ class AdsController extends Controller
         $title = Request::input('title');
         $url = Request::input('url');
         $image = Input::file('fileToUpload');
+        $start_date = Request::input('startDate');
         $destinationPath = 'uploads/reclam';
 
         //rules
@@ -64,9 +69,10 @@ class AdsController extends Controller
         $advertisement = new Advertisement;
 
         $advertisement->title = $title;
+        $advertisement->description = $title;
         $advertisement->url = $url;
         $advertisement->img = $fileName;
-        $advertisement->user_id = Auth::id();
+        $advertisement->start_date = $start_date;
         $advertisement->save();
 
         return redirect('/advertising');

@@ -13,7 +13,7 @@
     @endif
 
     <div class="advertising_container">
-        <form class="form-horizontal" method="post" action="advertise" role="form">
+        <form class="form-horizontal" method="post" action="/advertising/add" role="form" enctype="multipart/form-data">
             {!! csrf_field() !!}
             <h2>Your advertising</h2>
             <div class="form-group">
@@ -31,10 +31,14 @@
             <div class="form-group">
                 <div class="col-sm-9">
                     <label for="inputFileupload">Advertising image:</label>
-                    <input type="file" style="margin-top: 15px;" name="fileToUpload" id="inputFileupload">
+                    <input type="file" style="margin-top: 15px;" name="fileToUpload" id="fileToUpload">
                     <span class="help-block">Image has to be width 200 and height 150</span>
                 </div>
 
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Add project</button>
             </div>
             
         </form>

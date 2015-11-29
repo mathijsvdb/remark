@@ -12,4 +12,6 @@ class Advertisement extends Model
      * @var string
      */
     protected $table = 'ads';
+
+    public $timestamps = false;
 }
