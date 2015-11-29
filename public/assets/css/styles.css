@@ -447,27 +447,42 @@ a.btn.btn-primary.plus-project span{
     height: 30px;
 }
 
+.btn_edit_project:link,
+.btn_edit_project:visited,
+.btn_edit_project:hover,
+.btn_edit_project:active,
 .project button{
+    font-size: 1.6rem;
+    padding: 6px;
+    background-color:transparent;
     float: right;
-    margin-top: -40px;
-    height: 40px;
-    margin-bottom: 20px;
+    margin-top: -4px;
+    margin-right: 10px;
+}
 
+.btn_edit_project:hover,.project button:hover {
+    background-color: transparent;
+    border-bottom: 1px solid white;
+    border-radius: 0;
+}
+
+.project button{
+    margin-top: -32px;
 }
 
 .project p{
-    margin-top: 20px;
+    padding: 15px;
 }
 
 .projects-container{
-     width: 95%;
-    height: 100%;
+     width: 100%;
+     height: 100%;
      Margin:0 auto;
  }
 
 .projects-container li{
     margin: 10px;
-    min-width: 320px;
+    padding: 0;
 }
 
 .project a:link,
@@ -476,7 +491,6 @@ a.btn.btn-primary.plus-project span{
 .project a:active{
     color: white;
     text-decoration: none;
-    font-size: 2rem;
 }
 
 li a:hover{
@@ -489,8 +503,9 @@ li a:hover{
 
 .projects-title{
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
+    padding: 8px;
+    font-size: 2rem;
+    position: relative;
     background-color: #333;
 }
 
