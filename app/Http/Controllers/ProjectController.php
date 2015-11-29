@@ -20,6 +20,7 @@ use Request;
 use App\Http\Requests;
 use Validator;
 use Redirect;
+use MandrillMail;
 use App\Http\Controllers\Controller;
 use \League\ColorExtractor\Client as ColorExtractor;
 
@@ -199,18 +200,62 @@ class ProjectController extends Controller
         return Redirect::back();
     }
 
-    public function addComment(Request $request){
+    public function addComment(Request $request, $id){
 
         $user = Auth::user();
         $comment = new Comment;
 
         $comment->body = Request::input('body');
         $comment->user_id = $user->id;
-        $comment->project_id = Request::input('project_id');
+        $comment->project_id = $id;
         $comment->new = 1;
 
         $this->checkComments($user->id, Request::input('project_id'));
         $comment->save();
+
+        $result = DB::table('projects')
+            ->where('projects.id','=', $id )
+            ->join('users', 'users.id', '=', 'projects.user_id')
+            ->select('users.*', 'projects.*')
+            ->first();
+
+        if($result->comment_mail == 1){
+
+        $template_content = [];
+
+        $message = [
+            'subject' => 'Notification alert',
+            'from_email' => 'noreply@remark.com',
+            'from_name' => 'Remark',
+            'to' => array(
+                array(
+                    'email' => $result->email,
+                    'name' => $result->firstname + " " + $result->lastname,
+                    'type' => 'to'
+                )
+            ),
+            'merge_vars' => array(
+                array(
+                    'rcpt' => $result->email,
+                    'vars' => array(
+                        array(
+                            'name' => 'COMMENT',
+                            'content' =>  Request::input('body'),
+                            
+                        ),
+                        array(
+                            'name' => 'COMMENTERNAME',
+                            'content' => $user->firstname + " " + $user->lastname,
+                            )
+
+                    )
+                )
+            )
+        ];
+
+        MandrillMail::messages()->sendTemplate('remark-comment', $template_content, $message);
+
+    }
 
         $this->checkUserWithin2Hours($user->id);
         return redirect('projects/' . $comment->project_id);

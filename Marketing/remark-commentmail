@@ -1,0 +1,67 @@
+<?php
+
+namespace App;
+
+use Weblee\Mandrill\Mail;
+
+class SendMyMail{
+
+    private $mandrill;
+
+    public function CommentMail()
+    {
+        $newcomments_amount = DB::table('comments')->where('new', true)->count();
+            ?><pre><?php var_dump($newcomments_amount); ?></pre><?php
+
+            if($newcomments_amount > 0){
+                $result = DB::select(DB::raw("
+                    SELECT p.id as 'project', count(p.id) AS 'new_comments', u.email AS 'email', u.name AS 'name'
+                    FROM projects p, comments c, users u
+                    WHERE p.id = c.project_id
+                    AND p.user_id = u.id
+                    AND new = 1
+                    GROUP BY p.id"
+                ));
+            
+                DB::update(DB::raw("UPDATE comments set new = 0"));
+
+            $resultLength = count($result);
+
+            for($i = 0; $i < $resultLength; $i++){
+                $template_content = [];
+
+                $message = [
+                    'subject' => 'Notification alert',
+                    'from_email' => 'noreply@remark.com',
+                    'from_name' => 'Remark',
+                    'to' => array(
+                        array(
+                            'email' => $result[$i]->email,
+                            'name' => $result[$i]->name,
+                            'type' => 'to'
+                        )
+                    ),
+                    'merge_vars' => array(
+                        array(
+                            'rcpt' => $result[$i]->email,
+                            'vars' => array(
+                                array(
+                                    'name' => 'COMMENT',
+                                    'content' => $result[$i]->new_comments,
+                                    
+                                ),
+                                array(
+                                    'name' => 'FIRSTNAME',
+                                    'content' => $result[$i]->name,
+                                    )
+
+                            )
+                        )
+                    )
+                ];
+
+                MandrillMail::messages()->sendTemplate('comment-mail', $template_content, $message);
+                }
+            };
+    }
+}
