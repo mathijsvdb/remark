@@ -15,4 +15,9 @@ class AdsController extends Controller
         return view("ads");
     }
 
+    public function AddAds()
+    {
+        return view("addAds");
+    }
+
 }

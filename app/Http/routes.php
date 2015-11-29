@@ -89,3 +89,4 @@ Route::get('/projects/search/{id}','ProjectController@SearchByColor');
 
 //ads
 Route::get('/advertising','AdsController@ads');
+Route::get('/advertising/add','AdsController@addAds');
