@@ -13,8 +13,8 @@ class AddBattleIdFkToProjects extends Migration
     public function up()
     {
         Schema::table('projects', function (Blueprint $table) {
-            $table->integer('battle_id')->unsigned()->after('user_id');
-            $table->foreign('battle_id')->references('id')->on('battles')/*->onDelete('set null')*/;
+            $table->integer('battle_id')->unsigned()->after('user_id')->nullable();
+            $table->foreign('battle_id')->references('id')->on('battles')->onDelete('set null');
         });
     }
 
@@ -26,7 +26,7 @@ class AddBattleIdFkToProjects extends Migration
     public function down()
     {
         Schema::table('projects', function (Blueprint $table) {
-            //
+            $table->dropForeign('projects_battle_id_foreign');
         });
     }
 }
