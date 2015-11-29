@@ -162,9 +162,6 @@ li.active {
     width: 100%;
 }
 
-.container span{
-    color: whitesmoke;
-}
 
 .activity, .registrer{
     max-width: 800px;
