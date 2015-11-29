@@ -162,6 +162,9 @@ li.active {
     width: 100%;
 }
 
+#refer_email, #refer_email2, #refer_email3{
+    margin-bottom: 20px;
+}
 
 .activity, .registrer{
     max-width: 800px;
