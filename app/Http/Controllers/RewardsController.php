@@ -85,18 +85,16 @@ class RewardsController extends Controller
             ->where('user_id', $user->id)
             ->get();
 
-        /* DB doesnt contain badges we don't have..
-         * $no_badges = DB::table("userbadges")
-            ->where('user_id', $user->id)
-            ->whereNotIn('badge_id', [1,2,3,4,5,6])
-            ->get();
-        var_dump($no_badges);
-        */
-
         $userBadges = array();
+        $NumberOfBadges = array();
 
-        //THIS IS A CONSTANT
-        $NumberOfBadges = array("1","2","3","4","5");
+        $all_badges_in_DB = DB::table("badges")
+            ->get();
+
+        for($i = 0, $c = count($all_badges_in_DB); $i < $c; $i++){
+            array_push($NumberOfBadges, $i+1);
+            //+1 voor de IDs
+        }
 
         foreach ($all_badges as $badges) {
             $badgeID = $badges->badge_id;
