@@ -46,11 +46,11 @@
 
             <div class="form-group">
                 <p class="col-xs-7"><b>Participate in a battle?</b></p><br><br>
-                <select class="battles_projadd_subscribe">
-                    <option value="battles">No thanks</option>
-                    <!-- <option value="battles">battle #1</option>
-                     <option value="battles">battle #2</option>
-                     <option value="battles">battle #3</option>-->
+                <select class="battles_projadd_subscribe" name="battle">
+                    <option value="">No thanks</option>
+                    @foreach($battles as $battle)
+                    <option value="{{ $battle->id }}">{{ $battle->battle_name }}</option>
+                    @endforeach
                 </select>
             </div>
 
