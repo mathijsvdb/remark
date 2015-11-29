@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 
 use App\Advertisement;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Request;
 use App\Http\Requests;
+use Stripe\Stripe;
 use Validator;
 use Redirect;
 use App\Http\Controllers\Controller;
@@ -28,6 +30,15 @@ class AdsController extends Controller
 
     public function postAddAdvertisement()
     {
+
+
+        $user = User::find(1);
+
+        $user->charge(5000, [
+            'source' => $_POST['stripeToken'],
+            'currency' => 'eur'
+        ]);
+
         $title = Request::input('title');
         $url = Request::input('url');
         $image = Input::file('fileToUpload');
