@@ -16,14 +16,16 @@ class BattlesTableSeeder extends Seeder
 
         $battles = [
             [
-                'battle_name' => 'Christmas Battle',
-                'battle_theme' => 'Christmas',
-                'battle_active' => true,
+                'name' => 'Christmas Battle',
+                'theme' => 'Christmas',
+                'description' => 'Make a Christmas themed artwork.',
+                'active' => true,
             ],
             [
-                'battle_name' => 'Coffee Battle',
-                'battle_theme' => 'Coffee',
-                'battle_active' => false,
+                'name' => 'Coffee Battle',
+                'theme' => 'Coffee',
+                'description' => 'Design a logo for a coffee brand.',
+                'active' => false,
             ],
         ];
 
