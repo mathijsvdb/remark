@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Badges;
+use App\Favorite;
+use App\Like;
+use Carbon\Carbon;
+use DateTime;
 use DB;
 use App\Project;
 use App\User;
@@ -97,17 +102,30 @@ class ProjectController extends Controller
         $project->user_id = Auth::id();
         //$project->user_id = 1;
         //$table->increments('id');
-
+        $this->CheckFirstUploadedProject(Auth::id());
         $project->save();
+
         return redirect('/projects');
     }
 
     public function showProjectById($id) {
         $project = Project::find($id);
+        $likes = Project::find($id)->likes->count();
+        $favorites = Project::find($id)->favorites->count();
+
         $user = User::find($project['user_id']);
 
         $colors = $project['img_tricolor'];
         $colorpieces = explode(",",$colors);
+
+        // check if current user liked project
+        $user_liked = DB::table('likes')->where('user_id', '=', Auth::id())
+                                        ->where('project_id', '=', $project->id)
+                                        ->get();
+
+        $user_favorited = DB::table('favorites')->where('user_id', '=', Auth::id())
+            ->where('project_id', '=', $project->id)
+            ->get();
 
         $comments = DB::table("comments")
         ->where('project_id', $id)
@@ -115,28 +133,33 @@ class ProjectController extends Controller
         ->select('users.firstname', 'users.lastname', 'comments.*')
         ->get();
 
-        return view('projects.detailProjects', compact('project', 'user', 'colorpieces', 'comments'));
+        return view('projects.detailProjects', compact('project', 'user', 'colorpieces', 'comments', 'likes', 'favorites', 'user_liked', 'user_favorited'));
     }
 
     /**
      * Function to like a project
      */
     public function likeProject($project_id) {
-        // check is a user has already liked this project
-        $result = DB::table('likes')->where('user_id', '=', Auth::id())
-            ->where('project_id', '=', $project_id)
-            ->get();
+        $user_liked = Like::where('project_id', $project_id)->where('user_id', Auth::id())->take(1)->get();
 
-        if($result) {
-            Session::flash('error', 'You have already liked this project.');
-        } else {
-            DB::table('likes')->insert([
-                'user_id' => Auth::id(),
-                'project_id' => $project_id
-            ]);
+        if(count($user_liked) > 0)
+        {
+            return Redirect::back();
         }
+        else
+        {
+            $like = new Like;
+            $like->user_id = Auth::id();
+            $like->project_id = $project_id;
+            $like->save();
 
-        return redirect('/projects/' . $project_id);
+            return Redirect::back();
+        }
+    }
+
+    public function unlikeProject($project_id) {
+        Like::where('user_id', Auth::id())->where('project_id', $project_id)->delete();
+        return Redirect::back();
     }
 
     /**
@@ -144,20 +167,26 @@ class ProjectController extends Controller
      */
     public function favoriteProject($project_id)
     {
-        // check if a user has already favorited this project.
+        $user_favorited = Favorite::where('project_id', $project_id)->where('user_id', Auth::id())->take(1)->get();
 
-        $result = DB::table('favorites')->where('user_id', '=', Auth::id())->where('project_id', '=', $project_id)->get();
-
-        if ($result) {
-            Session::flash('error', 'You have already favorited this project.');
-        } else {
-            DB::table('favorites')->insert([
-                'user_id' => Auth::id(),
-                'project_id' => $project_id
-            ]);
+        if(count($user_favorited) > 0)
+        {
+            return Redirect::back();
         }
+        else
+        {
+            $favorite = new Favorite;
+            $favorite->user_id = Auth::id();
+            $favorite->project_id = $project_id;
+            $favorite->save();
 
-        return redirect('/projects/' . $project_id);
+            return Redirect::back();
+        }
+    }
+
+    public function unfavoriteProject($project_id) {
+        Favorite::where('user_id', Auth::id())->where('project_id', $project_id)->delete();
+        return Redirect::back();
     }
 
     public function addComment(Request $request, $id){
@@ -170,6 +199,7 @@ class ProjectController extends Controller
         $comment->project_id = $id;
         $comment->new = 1;
 
+        $this->checkComments($user->id, Request::input('project_id'));
         $comment->save();
 
         $result = DB::table('projects')
@@ -216,6 +246,7 @@ class ProjectController extends Controller
 
     }
 
+        $this->checkUserWithin2Hours($user->id);
         return redirect('projects/' . $comment->project_id);
     }
 
@@ -313,5 +344,65 @@ class ProjectController extends Controller
             ->get();
 
         return view('projects.searchProjectsColor', compact('projectsByColor'));
+    }
+
+
+    //badges
+
+    public function CheckFirstUploadedProject($id){
+        $badge_id = 4;
+        $totalProjects = DB::table("projects")
+            ->where('user_id', $id)
+            ->count();
+
+        if($totalProjects == 0){
+            //badgeId + userId naar db sturen
+            $this->AddInDatabase($id, $badge_id);
+        }
+    }
+
+    public function checkComments($id, $projectId){
+        $badge_id = 3;
+        $totalComments = DB::table("comments")
+            ->where('user_id', $id)
+            ->where('project_id', $projectId)
+            ->count();
+
+        if($totalComments >= 4){
+            //badgeId + userId naar db sturen
+            $this->AddInDatabase($id, $badge_id);
+        }
+    }
+
+    public function checkUserWithin2Hours($id){
+        $badge_id = 1;
+        $timeCreated = DB::table("users")
+            ->where('id', $id)
+            ->select('created_at')
+            ->get();
+
+        $dateCreated = new DateTime($timeCreated[0]->created_at);
+        $dateNow = Carbon::now();
+        $interval = $dateCreated->diff($dateNow);
+
+        if($interval->format('%a') == 0 && $interval->format('%h') < 2){
+            $this->AddInDatabase($id, $badge_id);
+        }
+    }
+
+    public function AddInDatabase($user_id, $badge_id){
+        $badge = new Badges;
+
+        $totalBadge = DB::table("userbadges")
+            ->where('user_id', $user_id)
+            ->where('badge_id', $badge_id)
+            ->count();
+
+        $badge->user_id = $user_id;
+        $badge->badge_id = $badge_id;
+
+        if($totalBadge <= 0){
+            $badge->save();
+        }
     }
 }

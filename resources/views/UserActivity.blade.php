@@ -4,7 +4,8 @@
 
     <div class="container_filter form-group">
         <h2>Filter</h2>
-        <form id="notification_filter" action="/">
+        <form id="notification_filter" method="post" action="/">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}">
             <span><input type="checkbox" class="notification_checkbox" id="all" value="all" checked="checked" class="notifications" name="all">all</span>
             <span><input type="checkbox" class="notification_checkbox" id="likes" value="likes" class="notifications" name="likes">like</span>
             <span><input type="checkbox" class="notification_checkbox" id="favorite" value="favorite" class="notifications" name="favorite">favorite</span>
@@ -14,6 +15,9 @@
     </div>
 
     <div class="activity">
+
+        <ul id="activity">
+        </ul>
 
         <h2>Your user activity</h2>
         <a href="#">New notifications <span class="badge aantalnotificaties">3</span></a>

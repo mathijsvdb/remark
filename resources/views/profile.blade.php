@@ -2,27 +2,47 @@
 
 @section("content")
     <div class="container">
+        <div class="row">
 
-        <div id="basicinfo">
-            @if($user->image == 'default.jpg')
-                <img class="img-circle" id="profilepicture" src="/assets/images/{!! $user->image !!}" alt="">
-            @else
-                <img class="img-circle" id="profilepicture" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
-            @endif
-
-            <a href="/profile/{!! $user->id !!}" id="user">{{ $user->firstname . " " . $user->lastname }}</a>
-            <p>{{ $user->email }}</p>
-            <div id="socialmediadiv">
-                <a href="{!! $user->facebook !!}" class="socialmedia" id="facebook">facebook</a>
-                <a href="{!! $user->twitter !!}" class="socialmedia" id="twitter">twitter</a>
-                <a href="{!! $user->website !!}" class="socialmedia" id="website">website</a>
+            <div class="col-md-3">
+                <ul id="recentbadges">
+                    @for($i = 0; $i < count($badges); $i++)
+                        <img style="width: 45px; height: 45px; padding: 5px;" src="/assets/images/badges/{{ $badges[$i]->badge_img }}" alt="">
+                    @endfor
+                    <br>
+                        @if($user->id == Auth::user()->id)
+                            <a id="rewards" href="/profile/{!! $user->id !!}/rewards">View your badges</a>
+                        @endif
+                </ul>
             </div>
 
-            @if(Auth::user())
-                @if($user->id == Auth::user()->id)
-                    <a id="edit" href="/update">Edit my profile</a>
+            <div id="basicinfo" class="col-md-6">
+                @if($user->image == 'default.jpg')
+                    <img class="img-circle" id="profilepicture" src="/assets/images/{!! $user->image !!}" alt="">
+                @else
+                    <img class="img-circle" id="profilepicture" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
                 @endif
-            @endif
+
+                <a href="/profile/{!! $user->id !!}" id="user">{{ $user->firstname . " " . $user->lastname }}</a>
+                <p>{{ $user->email }}</p>
+                <div id="socialmediadiv">
+                    <a href="{!! $user->facebook !!}" class="socialmedia" id="facebook">facebook</a>
+                    <a href="{!! $user->twitter !!}" class="socialmedia" id="twitter">twitter</a>
+                    <a href="{!! $user->website !!}" class="socialmedia" id="website">website</a>
+                </div>
+
+                @if(Auth::user())
+                    @if($user->id == Auth::user()->id)
+                        <a id="edit" href="/update">Edit my profile</a>
+                    @endif
+                @endif
+
+            </div>
+
+            <div id="profileRIGHT" class="col-md-3">
+                <p>ADVERTISING AREA</p>
+                <img src="http://placehold.it/150x150">
+            </div>
 
         </div>
         <br />

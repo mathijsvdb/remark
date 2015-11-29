@@ -23,10 +23,11 @@
         <!-- <img src="http://placehold.it/350x150"> -->
         <div class="row">
             <div class="col-md-8">
-                <form class="form" id="searchonfrontpage">
+                <form class="form" id="searchonfrontpage" action="#">
                     <div class="form-group">
                         <div class="input-group">
                             <input type="text" class="form-control" aria-label="..." name="search" placeholder="What are you looking for?" id="searchFRONT">
+                            <input type="hidden" name="_token" id="tokenhiddensearch" value="{{ csrf_token() }}">
                             <div class="input-group-btn">
                                 <button class="btn btn-default" type="submit" id="searchbutton">Search</button>
                             </div>
@@ -36,7 +37,7 @@
             </div>
 
 
-            <div class="col-md-4">
+            <!--<div class="col-md-4">
                 <form class="form" action="">
                     <div class="form-group">
                         <div class="dropdown">
@@ -57,7 +58,7 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </div>-->
         </div>
 
         <div class="row">
@@ -66,31 +67,41 @@
 
         <div class="imagelist">
 
-            <?php
-            if(isset($products)){ ?>
-            @foreach($products as $product)
-                <div class="col-md-4">
-                    <a href="/projects/{!! $product->id !!}">
-                        <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $product->img !!}" alt="">
-                    </a>
-                    <a href="/profile/{!! $product->user_id !!}">
-                        <p style="text-transform: uppercase">{!! $product->username !!}</p>
-                    </a>
-                </div>
-            @endforeach
-            <?php } else { ?>
-            @foreach($spotlight as $work)
-                <div class="col-md-4">
-                    <a href="/projects/{!! $work->id !!}">
-                        <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
-                    </a>
-                    <a href="/profile/{!! $work->user_id !!}">
-                        <p style="text-transform: uppercase">{!! $work->username !!}</p>
-                    </a>
-                </div>
-            @endforeach
-                <?php }
-            ?>
+                <?php if(!isset($searches)){ ?>
+
+                    @foreach($spotlight as $work)
+                        <div class="col-md-4">
+                            <a href="/projects/{!! $work->id !!}">
+                                <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
+                            </a>
+                            <a href="/profile/{!! $work->user_id !!}">
+                                <p style="text-transform: uppercase">{!! $work->username !!}</p>
+                            </a>
+                        </div>
+                    @endforeach
+
+                <?php }else{ ?>
+
+                    <?php if(empty($searches)){ ?>
+
+                    <h1>No search found</h1>
+
+                    <?php }else{ ?>
+
+                    @foreach($searches as $work)
+                        <div class="col-md-4">
+                            <a href="/projects/{!! $work->id !!}">
+                                <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
+                            </a>
+                            <a href="/profile/{!! $work->user_id !!}">
+                                <p style="text-transform: uppercase">{!! $work->username !!}</p>
+                            </a>
+                        </div>
+                    @endforeach
+
+                    <?php }?>
+
+                <?php }?>
 
         </div>
 
@@ -103,33 +114,43 @@
 @section('scripts')
     <script>
 
+        $.ajaxSetup({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}
+        });
+
         $(document).ready(function() {
-            //$(function() {
-                //search function
 
-                $("#searchonfrontpage").submit(function(e){
-                    e.preventDefault();
+            $("#searchonfrontpage").submit(function(e){
+                e.preventDefault();
 
-                    var whattosearch = $("#searchFRONT").val();
-                    console.log("searching... " + whattosearch + ".");
-                    var _token = "{{ csrf_token() }}";
-                    console.log(_token);
+                var whattosearch = $("#searchFRONT").val();
+                var _token = $("#tokenhiddensearch").val();
 
-                    $.ajax({
-                        type: "POST",
-                        //url: window.location,
-                        url: "/",   // This is what I have updated
-                        data: { whattosearch: whattosearch, _token: _token },
-                        success : function(data){
-                            console.log(data);
-                        },error: function(jqXHR, textStatus, errorThrown, data) {
-                            console.log(textStatus, errorThrown);
-                            console.log(data);
-                        },always: function(data){console.log(data);}
-                    });
+                var dataString = "search="+whattosearch+"&token="+_token;
 
+                $.ajax({
+                    type: "POST",
+                    url: "/search",
+                    data: dataString,
+                    //async: false,
+                    //dataType: 'json',
+                    success: function(data){
+                        console.log(data);
+
+                        //window.history.pushState(data,"search","/search");
+                        //$(arr).appendTo(document.body);
+
+                        $("body" ).html(data);
+
+
+                    },
+                    error: function(xhr, status, error) {
+                        //var err = eval(xhr.responseText);
+                        console.log(error,status, xhr.responseText);
+                    }
                 });
-            //});
+            });
+
         });
     </script>
 

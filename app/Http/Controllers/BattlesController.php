@@ -8,8 +8,12 @@ use App\Http\Controllers\Controller;
 
 class BattlesController extends Controller
 {
-    public function battles()
+    public function getBattles()
     {
         return view("battles");
+    }
+
+    public function postBattles() {
+
     }
 }

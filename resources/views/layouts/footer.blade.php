@@ -1,6 +1,16 @@
-{{--<p>Copywrite&commat;remark.be</p>--}}
-{{--<ul>--}}
-    {{--<il><a href="#facebook">Facebook</a></il>--}}
-    {{--<il><a href="#twitter">Twitter</a></il>--}}
-    {{--<il><a href="#email">EMail</a></il>--}}
-{{--</ul>--}}
+<footer>
+        <ul class="advertising row">
+            @foreach($ads as $ad)
+                <div class="col-md-4">
+                <li>
+                    <a href="{{$ad->url}}">
+                    <h3>{{$ad->title}} </h3>
+
+                    <p>{{$ad->description}} </p>
+                        <img src="http://placehold.it/200x150" alt="advertising">
+                    </a>
+                </li>
+                </div>
+            @endforeach
+        </ul>
+    </footer>

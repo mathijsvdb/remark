@@ -19,12 +19,21 @@ Route::get('/projects/{id}', 'ProjectController@showProjectById');
 Route::post('/projects/{id}/delete', 'ProjectController@deleteProject');
 Route::get('/projects/{id}/edit', 'ProjectController@getEditProject');
 Route::post('/projects/{id}/edit', 'ProjectController@postEditProject');
+Route::get('profile/{id}/rewards','RewardsController@ShowUserRewards');
 
 // Likes and favorites routes
-Route::get('/projects/{id}/like', 'ProjectController@likeProject');
-Route::post('/projects/{id}/like', 'AjaxController@likeProject');
-Route::get('/projects/{id}/favorite', 'ProjectController@favoriteProject');
-Route::post('/projects/{id}/favorite', 'AjaxController@favoriteProject');
+Route::post('projects/{id}/like', 'ProjectController@likeProject');
+Route::post('projects/{id}/unlike', 'ProjectController@unlikeProject');
+Route::post('projects/{id}/favorite', 'ProjectController@favoriteProject');
+Route::post('projects/{id}/unfavorite', 'ProjectController@unfavoriteProject');
+
+// Ajax like and favorite routes
+Route::group(['prefix' => 'ajax'], function () {
+    Route::post('projects/{id}/like', 'AjaxController@likeProject');
+    Route::post('projects/{id}/unlike', 'AjaxController@unlikeProject');
+    Route::post('projects/{id}/favorite', 'AjaxController@favoriteProject');
+    Route::post('projects/{id}/unfavorite', 'AjaxController@unfavoriteProject');
+});
 
 Route::post('/projects/{id}', 'ProjectController@addComment');
 
@@ -32,6 +41,13 @@ Route::get('profile/{id}','ProfileController@profile');
 Route::get('update','ProfileController@updateProfile');
 Route::post('update', 'ProfileController@postProfile');
 Route::get('/profile/{id}/activity','UserActivityController@showAllActivity');
+
+Route::post('/profile/{id}/activityFilter',function(){
+    if(Request::ajax()){
+        return 'iets';
+    }
+});
+
 Route::get('profile/{id}/favorites', 'ProfileController@showFavorites');
 
 // Registration routes...
@@ -53,19 +69,23 @@ Route::post('password/reset', 'Auth\PasswordController@postReset');
 // Route::get('test', function(){ dd(Config::get('mail'));});
 
 //battles routes
-Route::get('/battles','BattlesController@battles');
+Route::get('/battles','BattlesController@getBattles');
 
 //frontpage routes
 Route::get('/','frontpageController@frontpage');
-Route::post('/', 'frontpageController@search');
 
-Route::filter('csrf', function() {
-    $token = Request::ajax() ? Request::header('X-CSRF-TOKEN') : Input::get('_token');
-    if (Session::token() != $token)
-        throw new Illuminate\Session\TokenMismatchException;
+//search
+Route::get('/search','SearchController@search');
+Route::post('/search', 'SearchController@searchFrontpage');
+
+Route::post('/', function(){
+    if(Request::ajax()){
+        return Response::json(Request::all());
+    }
 });
-//Route::get('/search', 'frontpageController@postSearch');
-
 
 //search by color
 Route::get('/projects/search/{id}','ProjectController@SearchByColor');
+
+//ads
+Route::get('/advertising','AdsController@ads');

@@ -23,17 +23,42 @@
             </div>
 
             <ul>
-
-
-
                 <li class="border-bottom-info">
                     <a href="/"><span class="glyphicon glyphicon-eye-open"></span>Views</a>
                 </li>
-                <li class="border-bottom-info">
-                    <a id="like-project" href="/projects/{{ $project['id'] }}/like"><span class="glyphicon glyphicon-thumbs-up"></span> <span id="n_likes"></span> Likes</a>
+                <li class="border-bottom-info" id="test">
+                    @if(!$user_liked)
+                        <span class="glyphicon glyphicon-heart" id="like-icon"></span><span id="n-likes">{{ $likes }}</span> Likes
+
+                        <form action="/projects/{{ $project->id }}/like" method="post" id="like-form">
+                            {!! csrf_field() !!}
+                            <button type=submit class="btn btn-xs" id="like-btn">Like</button>
+                        </form>
+                    @else
+                        <span class="glyphicon glyphicon-heart" style="color: crimson;" id="like-icon"></span><span id="n-likes">{{ $likes }}</span> Likes
+
+                        <form action="/projects/{{ $project->id }}/unlike" method="post" id="like-form">
+                            {!! csrf_field() !!}
+                            <button type=submit class="btn btn-xs" id="unlike-btn">Unlike</button>
+                        </form>
+                    @endif
                 </li>
                 <li class="border-bottom-info">
-                    <a id="favorite-project" href="/projects/{{ $project['id'] }}/favorite"><span class="glyphicon glyphicon-heart-empty"></span> <span id="n_favorites"></span> Favorites</a>
+                    @if(!$user_favorited)
+                        <span class="glyphicon glyphicon-star" id="favorite-icon"></span><span id="n-favorites">{{ $favorites }}</span> Favorites
+
+                        <form action="/projects/{{ $project->id }}/favorite" method="post" id="favorite-form">
+                            {!! csrf_field() !!}
+                            <button type=submit class="btn btn-xs" id="favorite-btn">Favorite</button>
+                        </form>
+                    @else
+                        <span class="glyphicon glyphicon-star" style="color: gold;" id="favorite_icon"></span><span id="n-favorites">{{ $favorites }}</span> Favorites
+
+                        <form action="/projects/{{ $project->id }}/unfavorite" method="post" id="favorite_form">
+                            {!! csrf_field() !!}
+                            <button type=submit class="btn btn-xs" id="unfavorite-btn">Unfavorite</button>
+                        </form>
+                    @endif
                 </li>
 
                 <li class="border-bottom-info">
@@ -56,7 +81,7 @@
 
     <form method="POST" class="form" action="{!! $project['id'] !!}">
         {!! csrf_field() !!}
-        <h3>Commets</h3>
+        <h3>Comments</h3>
         <textarea class="form-control" rows="3" name="body"></textarea>
                 
         <input type="hidden" name="project_id" value="{{ $project->id }}" class="form-control">
@@ -81,48 +106,75 @@
 @section('scripts')
     <script>
         $(function() {
-
-            $('#like-project').click(function(e) {
+            $('#like-form').on('click', '#like-btn', function(e) {
                 $.ajax({
                     method: "POST",
-                    url: "/projects/{{ $project['id'] }}/like",
-                    data: {project_id: {{ $project['id'] }}},
+                    url: "/ajax/projects/{{ $project->id }}/like",
                     dataType: 'json'
                 })
-                        .done(function(resp) {
-                            console.log(resp);
-                            $('#n_likes').html(resp.likes);
-                        })
-                        .fail(function (jqXHR, textStatus, errorThrown) {
-                            console.log(jqXHR);
-                            console.log(textStatus);
-                            console.log(errorThrown);
-                        });
+                .done(function($data) {
+                    console.log($data.feedback);
+                    $('#like-icon').css('color', 'crimson');
+                    $('#n-likes').text($data.likes);
+                    $('#like-form').attr('action', '/projects/ $project->id /unlike')
+                    $('#like-btn').attr('id', 'unlike-btn').text('Unlike');
+                })
 
                 e.preventDefault();
             });
 
-            $('#favorite-project').click(function(e) {
+            $('#like-form').on('click', '#unlike-btn', function(e) {
                 $.ajax({
                     method: "POST",
-                    url: "/projects/{{ $project['id'] }}/favorite",
-                    data: {project_id: {{ $project['id'] }}},
+                    url: "/ajax/projects/{{ $project->id }}/unlike",
                     dataType: 'json'
                 })
-                        .done(function(resp) {
-                            console.log(resp);
-                            $('#n_favorites').html(resp.favorites);
-                        })
-                        .fail(function (jqXHR, textStatus, errorThrown) {
-                            console.log(jqXHR);
-                            console.log(textStatus);
-                            console.log(errorThrown);
-                        });
-
+                .done(function($data) {
+                    console.log($data.feedback);
+                    $('#like-icon').css('color', '');
+                    $('#n-likes').text($data.likes);
+                    $('#like-form').attr('action', '/projects/$project->id/like')
+                    $('#unlike-btn').attr('id', 'like-btn').text('Like');
+                })
 
                 e.preventDefault();
-            })
+            });
+
+            $('#favorite-form').on('click', '#favorite-btn', function(e) {
+                $.ajax({
+                    method: "POST",
+                    url: "/ajax/projects/{{ $project->id }}/favorite",
+                    dataType: 'json'
+                })
+                .done(function($data) {
+                    console.log($data.feedback);
+                    console.log($data.favorites);
+                    $('#favorite-icon').css('color', 'gold');
+                    $('#n-favorites').text($data.favorites);
+                    $('#favorite-form').attr('action', '/projects/ $project->id /unfavorite')
+                    $('#favorite-btn').attr('id', 'unfavorite-btn').text('Unfavorite');
+                })
+
+                e.preventDefault();
+            });
+
+            $('#favorite-form').on('click', '#unfavorite-btn', function(e) {
+                $.ajax({
+                    method: "POST",
+                    url: "/ajax/projects/{{ $project->id }}/unfavorite",
+                    dataType: 'json'
+                })
+                .done(function($data) {
+                    console.log($data.feedback);
+                    console.log($data.favorites);
+                    $('#favorite-icon').css('color', '');
+                    $('#n-favorites').text($data.favorites);
+                    $('#favorite-form').attr('action', '/projects/$project->id/favorite')
+                    $('#unfavorite-btn').attr('id', 'favorite-btn').text('Favorite');
+                })
+
+                e.preventDefault();
+            });
         });
     </script>
-    
 @stop
