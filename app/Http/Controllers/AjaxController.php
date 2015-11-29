@@ -2,64 +2,86 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Favorite;
+use App\Like;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class AjaxController extends Controller
 {
-    public function likeProject(Request $request) {
-        $project_id = $request->input('project_id');
+    public function likeProject($project_id) {
+        $user_liked = Like::where('project_id', $project_id)->where('user_id', Auth::id())->take(1)->get();
 
-        $result = DB::table('likes')->where('user_id', '=', Auth::id())
-                                    ->where('project_id', '=', $project_id)
-                                    ->get();
-
-        if($result) {
-            $resp = [
-                'error' => 'You have already liked this project.'
+        if(count($user_liked) > 0)
+        {
+            $data = [
+                'feedback' => 'You already liked the project.',
             ];
-        } else {
-            DB::table('likes')->insert([
-                'user_id' => Auth::id(),
-                'project_id' => $project_id
-            ]);
+        }
+        else
+        {
+            $like = new Like;
+            $like->user_id = Auth::id();
+            $like->project_id = $project_id;
+            $like->save();
 
-            // get # likes to update the quantity
-            $resp = [
-                'likes' => DB::table('likes')->where('project_id', '=', $project_id)->count()
+            $data = [
+                'feedback' => 'You like the project.',
+                'likes' => Like::where('project_id', $project_id)->count(),
             ];
         }
 
         header('Content-type: application/json');
-        echo json_encode($resp);
+        echo json_encode($data);
     }
 
-    public function favoriteProject(Request $request) {
-        $project_id = $request->input('project_id');
+    public function unlikeProject($project_id) {
+        Like::where('user_id', Auth::id())->where('project_id', $project_id)->delete();
 
-        $result = DB::table('favorites')->where('user_id', '=', Auth::id())
-                                        ->where('project_id', '=', $project_id)
-                                        ->get();
+        $data = [
+            'feedback' => 'You unlike the project.',
+            'likes' => Like::where('project_id', $project_id)->count(),
+        ];
 
-        if ($result) {
-            $resp = [
-                'error' => 'You have already favorited this project.'
+        header('Content-type: application/json');
+        echo json_encode($data);
+    }
+
+    public function favoriteProject($project_id) {
+        $user_favorited = Favorite::where('project_id', $project_id)->where('user_id', Auth::id())->take(1)->get();
+
+        if(count($user_favorited) > 0)
+        {
+            $data = [
+                'feedback' => 'You already favorited the project.',
             ];
-        } else {
-            DB::table('favorites')->insert([
-                'user_id' => Auth::id(),
-                'project_id' => $project_id
-            ]);
+        }
+        else
+        {
+            $favorite = new Favorite;
+            $favorite->user_id = Auth::id();
+            $favorite->project_id = $project_id;
+            $favorite->save();
 
-            $resp = [
-                'favorites' => DB::table('favorites')->where('project_id', '=', $project_id)->count()
+            $data = [
+                'feedback' => 'You favorite the project.',
+                'favorites' => Favorite::where('project_id', $project_id)->count(),
             ];
         }
 
         header('Content-type: application/json');
-        echo json_encode($resp);
+        echo json_encode($data);
+    }
+
+    public function unfavoriteProject($project_id) {
+        Favorite::where('user_id', Auth::id())->where('project_id', $project_id)->delete();
+
+        $data = [
+            'feedback' => 'You unfavorite the project.',
+            'favorites' => Favorite::where('project_id', $project_id)->count(),
+        ];
+
+        header('Content-type: application/json');
+        echo json_encode($data);
     }
 }

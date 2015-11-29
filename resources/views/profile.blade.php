@@ -10,7 +10,7 @@
                         <img style="width: 45px; height: 45px; padding: 5px;" src="/assets/images/badges/{{ $badges[$i]->badge_img }}" alt="">
                     @endfor
                     <br>
-                    <a id="rewards" href="/update">View this users' badges</a>
+                    <a id="rewards" href="/profile/{!! $user->id !!}/rewards">View this users' badges</a>
                 </ul>
             </div>
 

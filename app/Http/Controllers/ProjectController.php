@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Badges;
+use App\Favorite;
+use App\Like;
 use Carbon\Carbon;
 use DateTime;
 use DB;
@@ -109,10 +111,22 @@ class ProjectController extends Controller
 
     public function showProjectById($id) {
         $project = Project::find($id);
+        $likes = Project::find($id)->likes->count();
+        $favorites = Project::find($id)->favorites->count();
+
         $user = User::find($project['user_id']);
 
         $colors = $project['img_tricolor'];
         $colorpieces = explode(",",$colors);
+
+        // check if current user liked project
+        $user_liked = DB::table('likes')->where('user_id', '=', Auth::id())
+                                        ->where('project_id', '=', $project->id)
+                                        ->get();
+
+        $user_favorited = DB::table('favorites')->where('user_id', '=', Auth::id())
+            ->where('project_id', '=', $project->id)
+            ->get();
 
         $comments = DB::table("comments")
         ->where('project_id', $id)
@@ -120,28 +134,33 @@ class ProjectController extends Controller
         ->select('users.firstname', 'users.lastname', 'comments.*')
         ->get();
 
-        return view('projects.detailProjects', compact('project', 'user', 'colorpieces', 'comments'));
+        return view('projects.detailProjects', compact('project', 'user', 'colorpieces', 'comments', 'likes', 'favorites', 'user_liked', 'user_favorited'));
     }
 
     /**
      * Function to like a project
      */
     public function likeProject($project_id) {
-        // check is a user has already liked this project
-        $result = DB::table('likes')->where('user_id', '=', Auth::id())
-            ->where('project_id', '=', $project_id)
-            ->get();
+        $user_liked = Like::where('project_id', $project_id)->where('user_id', Auth::id())->take(1)->get();
 
-        if($result) {
-            Session::flash('error', 'You have already liked this project.');
-        } else {
-            DB::table('likes')->insert([
-                'user_id' => Auth::id(),
-                'project_id' => $project_id
-            ]);
+        if(count($user_liked) > 0)
+        {
+            return Redirect::back();
         }
+        else
+        {
+            $like = new Like;
+            $like->user_id = Auth::id();
+            $like->project_id = $project_id;
+            $like->save();
 
-        return redirect('/projects/' . $project_id);
+            return Redirect::back();
+        }
+    }
+
+    public function unlikeProject($project_id) {
+        Like::where('user_id', Auth::id())->where('project_id', $project_id)->delete();
+        return Redirect::back();
     }
 
     /**
@@ -149,20 +168,26 @@ class ProjectController extends Controller
      */
     public function favoriteProject($project_id)
     {
-        // check if a user has already favorited this project.
+        $user_favorited = Favorite::where('project_id', $project_id)->where('user_id', Auth::id())->take(1)->get();
 
-        $result = DB::table('favorites')->where('user_id', '=', Auth::id())->where('project_id', '=', $project_id)->get();
-
-        if ($result) {
-            Session::flash('error', 'You have already favorited this project.');
-        } else {
-            DB::table('favorites')->insert([
-                'user_id' => Auth::id(),
-                'project_id' => $project_id
-            ]);
+        if(count($user_favorited) > 0)
+        {
+            return Redirect::back();
         }
+        else
+        {
+            $favorite = new Favorite;
+            $favorite->user_id = Auth::id();
+            $favorite->project_id = $project_id;
+            $favorite->save();
 
-        return redirect('/projects/' . $project_id);
+            return Redirect::back();
+        }
+    }
+
+    public function unfavoriteProject($project_id) {
+        Favorite::where('user_id', Auth::id())->where('project_id', $project_id)->delete();
+        return Redirect::back();
     }
 
     public function addComment(Request $request){
