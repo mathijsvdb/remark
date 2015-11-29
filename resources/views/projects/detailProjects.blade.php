@@ -74,6 +74,12 @@
                 <li class="tag-border">
                     <a href="/">{!! $project['tags'] !!}</a>
                 </li>
+                <li>
+                <li class="tag-border">
+                    <div class="fb-share-button sharebtndetail" id="detailed-fb-share" data-href="http://remark.weareimd.be" data-layout="button_count"></div>
+                    <a href="https://twitter.com/share" class=" sharebtndetail twitter-share-button"{count} data-hashtags="remark"></a>
+                    <div class="g-plus sharebtndetail" data-action="share" data-annotation="none" data-href=""></div>
+                </li>
 
             </ul>
         </div>
@@ -101,6 +107,8 @@
             
         @endforeach
     </div>
+
+    <div id="fb-root"></div>
 @stop
 
 @section('scripts')
@@ -176,5 +184,30 @@
                 e.preventDefault();
             });
         });
+    </script>
+
+    <!-- Facebook Share Button -->
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        $('#detailed-fb-share').attr('data-href',window.location.href);
+        $('.g-plus').attr('data-href',window.location.href);
+    </script>
+
+    <!-- Twitter Share Button -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <!-- Google Share Button -->
+    <script type="text/javascript">
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/platform.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
     </script>
 @stop
