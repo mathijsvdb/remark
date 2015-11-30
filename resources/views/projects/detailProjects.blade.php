@@ -11,12 +11,15 @@
         <div class="project-info">
             <div class="project-info-text">
                 @if($user->image == 'default.jpg')
-                    <img class="img-circle" src="/assets/images/{!! $user->image !!}" alt="">
+                    <img class="img-circle project_user_img" src="/assets/images/{!! $user->image !!}" alt="">
                 @else
-                    <img class="img-circle" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
+                    <img class="img-circle project_user_img" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
                 @endif
-                <h2>{!! $project['title'] !!} <span>by <a href="/profile/{!! $user['id'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a>{!! " " . $project['created_at'] !!}</span></h2>
+                <h2>
+                    {!! $project['title'] !!} <span>by <a href="/profile/{!! $user['id'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a>{!! " " . $project['created_at'] !!}</span>
+                    <a href="#flagg" class="flag_project_user" title="flag project for inappropriate"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></a>
 
+                </h2>
                 <img id="project-img" src="/uploads/{!! $project['img'] !!}" alt="">
 
                 <p>{!! $project['body'] !!}</p>
@@ -70,7 +73,7 @@
                         <span class="glyphicon glyphicon-tint"></span>
 
                         @for($i=0; $i<count($colorpieces); $i++)
-                            <a class="pallet-styling" href="/projects/search/{!! $colorpieces[$i] !!}" style="background-color: #{!! $colorpieces[$i] !!};">{!! $colorpieces[$i] !!}</a>
+                            <a class="pallet-styling" href="/projects/search/{!! $colorpieces[$i] !!}" style="background-color: #{!! $colorpieces[$i] !!};"></a>
                         @endfor
                     </div>
                     <div class="clearfix"></div>
@@ -100,17 +103,28 @@
         <button class="btn btn-default" type="submit">Submit comment</button>
 
     </form>
+
+        <div>
+            @foreach($comments as $comment)
+
+                <div class="content_comment content-box row">
+                    <div class="col-lg-1">
+                        <img src="" class="user_image" alt="">
+                    </div>
+
+                    <div class="user_info_comment col-md-11">
+                        <a href="#flagg" class="flag_user" title="flag user"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></a>
+                        <h4 class="user_name_info">user name</h4>
+                        <p>{!! $comment->body !!}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            @endforeach
+        </div>
     </div>
 
-    <div id="allwork">
-        @foreach($comments as $comment)
 
-            <div>
-                <p>{!! $comment->body !!}</p>
-            </div>
-            
-        @endforeach
-    </div>
 
     <div id="fb-root"></div>
 @stop

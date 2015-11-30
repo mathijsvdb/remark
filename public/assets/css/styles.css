@@ -538,6 +538,7 @@ input[type=checkbox]{
 
 .detail_container h2{
     margin-top: 0px;
+    position: relative;
     margin-bottom: 20px;
 }
 
@@ -564,7 +565,7 @@ input[type=checkbox]{
     display: inline-block;
 }
 
-.detail_container img{
+#project-img, .project_user_img{
     width: 320px;
     float: left;
     padding: 20px;
@@ -588,6 +589,7 @@ input[type=checkbox]{
 
 .project-info-text .img-circle{
     width:60px;
+    height: 60px;
     display: block;
     margin-right: 10px;
     padding: 5px;
@@ -621,16 +623,47 @@ input[type=checkbox]{
     text-decoration: none;
 }
 
-.project-info .pallets a:link,
-.project-info .pallets a:visited,
-.project-info .pallets a:hover,
-.project-info .pallets a:active {
-    text-indent: -999px;
-}
-
 .project-info .pallets a:hover{
     transform: scale(1.1);
     box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
+}
+
+.content_comment{
+    margin-top: 20px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.content_comment p{
+    margin-top: 0px;
+    width: auto;
+}
+.user_image{
+    width: 50px;
+    height: 50px;
+    float: left;
+    border-radius: 50px;
+}
+
+.user_name_info{
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+.flag_user:link,
+.flag_user:visited,
+.flag_user:hover,
+.flag_user:active{
+    float: right;
+    text-decoration: none;
+}
+.flag_project_user:link,
+.flag_project_user:visited,
+.flag_project_user:hover,
+.flag_project_user:active{
+    position: absolute;
+    top:0;
+    right:20px;
 }
 
 /*---------------*/
