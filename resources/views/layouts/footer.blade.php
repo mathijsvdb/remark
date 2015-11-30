@@ -7,7 +7,7 @@
                     <h3>{{$ad->title}} </h3>
 
                     <p>{{$ad->description}} </p>
-                        <img src="http://placehold.it/200x150" alt="advertising">
+                        <img src="{{asset($ad->img)}}" alt="advertising">
                     </a>
                 </li>
                 </div>
