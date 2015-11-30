@@ -30,10 +30,12 @@
                     @if(!$user_liked)
                         <span class="glyphicon glyphicon-heart" id="like-icon"></span><span id="n-likes">{{ $likes }}</span> Likes
 
+                        @if(Auth::check())
                         <form action="/projects/{{ $project->id }}/like" method="post" id="like-form">
                             {!! csrf_field() !!}
                             <button type=submit class="btn btn-xs" id="like-btn">Like</button>
                         </form>
+                        @endif
                     @else
                         <span class="glyphicon glyphicon-heart" style="color: crimson;" id="like-icon"></span><span id="n-likes">{{ $likes }}</span> Likes
 
@@ -47,10 +49,12 @@
                     @if(!$user_favorited)
                         <span class="glyphicon glyphicon-star" id="favorite-icon"></span><span id="n-favorites">{{ $favorites }}</span> Favorites
 
+                        @if(Auth::check())
                         <form action="/projects/{{ $project->id }}/favorite" method="post" id="favorite-form">
                             {!! csrf_field() !!}
                             <button type=submit class="btn btn-xs" id="favorite-btn">Favorite</button>
                         </form>
+                        @endif
                     @else
                         <span class="glyphicon glyphicon-star" style="color: gold;" id="favorite_icon"></span><span id="n-favorites">{{ $favorites }}</span> Favorites
 

@@ -7,6 +7,7 @@
         </div>
     @endif
 
+    @if(!Auth::check())
     <header>
         <div class="header-content">
             <div class="header-content-inner">
@@ -17,6 +18,7 @@
             </div>
         </div>
     </header>
+    @endif
 
     <section id="spotlight">
         <h2>Spotlight</h2>
