@@ -666,7 +666,10 @@ input[type=checkbox]{
     background-color: transparent;
     position: absolute;
     top:0;
-    right: 0;
+    right: 0px;
+}
+.flag_project_user button{
+    right: 70px;
 }
 
 
