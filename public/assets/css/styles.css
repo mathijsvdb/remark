@@ -664,6 +664,9 @@ input[type=checkbox]{
 .flag_comment button, .flag_project_user button{
     border: none;
     background-color: transparent;
+    position: absolute;
+    top:0;
+    right: 0;
 }
 
 
