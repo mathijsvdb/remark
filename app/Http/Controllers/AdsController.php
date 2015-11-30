@@ -43,6 +43,7 @@ class AdsController extends Controller
         $url = Request::input('url');
         $image = Input::file('fileToUpload');
         $start_date = Request::input('data-picker');
+        $end_date = date('Y-m-d', strtotime($start_date. ' + 30 days'));
         $destinationPath = 'uploads/reclam';
 
         //rules
@@ -82,8 +83,9 @@ class AdsController extends Controller
         $advertisement->title = $title;
         $advertisement->description = $title;
         $advertisement->url = $url;
-        $advertisement->img = $fileName;
+        $advertisement->img = '/uploads/reclam/' . $fileName;
         $advertisement->start_date = $start_date;
+        $advertisement->end_date = $end_date;
         $advertisement->save();
 
         return redirect('/advertising');

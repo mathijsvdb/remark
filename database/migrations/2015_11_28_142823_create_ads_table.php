@@ -20,6 +20,7 @@ class CreateAdsTable extends Migration
             $table->string('img');
             $table->integer('clicks')->default(0);
             $table->date('start_date');
+            $table->date('end_date');
         });
     }
 
