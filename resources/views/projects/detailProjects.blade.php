@@ -17,7 +17,10 @@
                 @endif
                 <h2>
                     {!! $project['title'] !!} <span>by <a href="/profile/{!! $user['id'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a>{!! " " . $project['created_at'] !!}</span>
-                    <a href="#flagg" class="flag_project_user" title="flag project for inappropriate"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></a>
+                    <form action="/" method="post" class="flag_project_user">
+                        {!! csrf_field() !!}
+                        <button class="flag_project" title="flag project" type=submit class="btn btn-xs" id="flag_project"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
+                    </form>
 
                 </h2>
                 <img id="project-img" src="/uploads/{!! $project['img'] !!}" alt="">
@@ -91,7 +94,7 @@
             </ul>
         </div>
 <div class="clearfix"></div>
-
+    <div class="add_comment_container">
     <form method="POST" class="form" action="{!! $project['id'] !!}">
         {!! csrf_field() !!}
         <h3>Comments</h3>
@@ -103,8 +106,9 @@
         <button class="btn btn-default" type="submit">Submit comment</button>
 
     </form>
+    </div>
 
-        <div>
+        <div class="clearfix">
             @foreach($comments as $comment)
 
                 <div class="content_comment content-box row">
@@ -113,7 +117,11 @@
                     </div>
 
                     <div class="user_info_comment col-md-11">
-                        <a href="#flagg" class="flag_user" title="flag user"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></a>
+                        <form action="/" method="post" class="flag_comment">
+                            {!! csrf_field() !!}
+                            <button class="flag_user" title="flag user" type=submit class="btn btn-xs" id="flag_comment_user"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
+                        </form>
+
                         <h4 class="user_name_info">user name</h4>
                         <p>{!! $comment->body !!}</p>
                     </div>

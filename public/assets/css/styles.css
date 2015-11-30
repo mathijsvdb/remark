@@ -542,6 +542,10 @@ input[type=checkbox]{
     margin-bottom: 20px;
 }
 
+.detail_container .add_comment_container button{
+    float: right;
+}
+
 .border-bottom-info{
     border-bottom: 1px solid #e7e7e7;
 }
@@ -650,21 +654,19 @@ input[type=checkbox]{
     margin-bottom: 0;
     padding-bottom: 0;
 }
-.flag_user:link,
-.flag_user:visited,
-.flag_user:hover,
-.flag_user:active{
-    float: right;
-    text-decoration: none;
-}
-.flag_project_user:link,
-.flag_project_user:visited,
-.flag_project_user:hover,
-.flag_project_user:active{
+
+
+.flag_comment{
     position: absolute;
     top:0;
     right:20px;
 }
+.flag_comment button, .flag_project_user button{
+    border: none;
+    background-color: transparent;
+}
+
+
 
 /*---------------*/
 
