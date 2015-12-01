@@ -23,7 +23,7 @@ class ApiController extends Controller
     }
 
     public function getProjectById($id) {
-        $project  = Project::find($id);
+        $project  = Project::findOrFail($id);
         $user     = $project->user;
         $comments = $project->comments->implode('body', ', ');
         $likes    = $project->likes->count();
