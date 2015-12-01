@@ -43,7 +43,24 @@ class ApiController extends Controller
         echo json_encode($projects);
     }
 
-    public function getProjectById() {
+    public function getProjectById($id) {
+        $project  = Project::find($id);
+        $user     = $project->user;
+        $comments = $project->comments->implode('body', ', ');
+        $likes    = $project->likes->count();
 
+        $data = [
+            'id' => $project->id,
+            'title'=> $project->title,
+            'url' => url('projects/' . $project->id),
+            'image_url' => url('uploads/' . $project->img),
+            'author name' => $project->user->firstname . ' ' . $user->lastname,
+            'author profile image url' => url('uploads/profilepictures/' . $user->image),
+            'comments' => $comments,
+            'likes' => $likes,
+        ];
+
+        header('Content-type: application/json');
+        echo json_encode($data);
     }
 }
