@@ -12,7 +12,7 @@
         </div>
     @endif
 
-    <div class="col-sm-6 col-md-4 col-md-offset-4 content-box">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 content-box add_project_container">
         <form action="/projects/add" method="post" class="form" enctype="multipart/form-data">
             {!! csrf_field() !!}
 
