@@ -19,6 +19,13 @@ class AdsController extends Controller
 {
     public function ads()
     {
+        /*$user_ads = DB::table("ads")
+            ->join('ads', 'id' , '=' , 'badges.id')
+            ->where('user_id', $id)
+            ->orderBy('created_at', 'asc')
+            ->take(3)
+            ->get();*/
+
         return view("ads");
     }
 
