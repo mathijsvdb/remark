@@ -38,6 +38,7 @@ Route::group(['prefix' => 'ajax'], function () {
 Route::post('/projects/{id}', 'ProjectController@addComment');
 
 Route::get('profile/{id}','ProfileController@profile');
+Route::post('profile/{id}','ProfileController@referralMail');
 Route::get('update','ProfileController@updateProfile');
 Route::post('update', 'ProfileController@postProfile');
 Route::get('/profile/{id}/activity','UserActivityController@showAllActivity');

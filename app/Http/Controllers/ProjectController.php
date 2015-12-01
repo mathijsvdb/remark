@@ -254,7 +254,6 @@ class ProjectController extends Controller
         ];
 
         MandrillMail::messages()->sendTemplate('remark-comment', $template_content, $message);
-
     }
 
         $this->checkUserWithin2Hours($user->id);

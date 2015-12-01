@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use Request;
 use Illuminate\Routing\Controller;
 use Auth;
+use MandrillMail;
 
 
 class ProfileController extends Controller {
@@ -112,5 +113,51 @@ class ProfileController extends Controller {
             ->get();
 
         return view('myFavorites', compact('myFavorites'));
+    }
+
+    public function referralMail(Request $request, $id){
+
+        $user = User::find(Auth::id());
+
+        if($user->referral_amount > 0){
+
+            $template_content = [];
+
+            $message = [
+                'subject' => 'Notification alert',
+                'from_email' => 'noreply@remark.com',
+                'from_name' => 'Remark',
+                'to' => array(
+                    array(
+                        'email' => Request::input('referral-email'),
+                        'name' => 'sir, madam',
+                        'type' => 'to'
+                    )
+                ),
+                'merge_vars' => array(
+                    array(
+                        'rcpt' => Request::input('referral-email'),
+                        'vars' => array(
+                            array(
+                                'name' => 'SENDER',
+                                'content' =>  $user->firstname . " " . $user->lastname, 
+                            ),
+                            array(
+                                'name' => 'RECEIVER',
+                                'content' =>  "sir, madam",
+                            )
+                        )
+                    )
+                )
+            ];
+
+        MandrillMail::messages()->sendTemplate('remark-referral', $template_content, $message);
+
+        $user->referral_amount --;
+
+        $user->save();
+
+        return redirect("profile/" . $user->id);
+        }
     }
 }
