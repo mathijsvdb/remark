@@ -124,6 +124,9 @@ Route::post('/advertising/add', 'AdsController@postAddAdvertisement');
  * API Routes
  */
 Route::get('/developer','ApiController@developer');
-Route::get('/api/v1/items/popular', 'ApiController@getPopularProjects');
-Route::get('/api/v1/item/{id}', 'ApiController@getProjectById');
+Route::group(['prefix' => 'api/v1'], function() {
+    Route::get('items/popular', 'ApiController@getPopularProjects');
+    Route::get('item/{id}', 'ApiController@getProjectById');
+});
+
 
