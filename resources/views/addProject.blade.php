@@ -40,7 +40,7 @@
             </div>
 
             <div class="form-group">
-                <p class="col-xs-7"><b>Select image to upload:</b></p>
+                <p class="col-xs-7"><b>Select image to upload (500x500):</b></p>
                 <input type="file" name="fileToUpload" id="fileToUpload" value={!! old('fileToUpload') !!}>
             </div>
 
