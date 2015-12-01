@@ -18,7 +18,16 @@
             </div>
         </div>
     </header>
+    @else
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <a href="{{ url('/projects/add') }}" class="btn btn-primary animation-bounce">Add a project!</a>
+            </div>
+        </div>
+    </header>
     @endif
+
 
     <section id="spotlight">
         <h2>Spotlight</h2>

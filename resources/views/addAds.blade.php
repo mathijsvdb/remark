@@ -49,7 +49,7 @@
                         data-key="pk_test_uJfH5C7V9YeBhsIhZ2LB6edn"
                         data-image="/img/documentation/checkout/marketplace.png"
                         data-name="Pay add"
-                        data-description="2 widgets"
+                        data-description="30 days = 50€"
                         data-currency="eur"
                         data-amount="5000"
                         data-locale="auto">

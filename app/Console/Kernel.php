@@ -29,7 +29,12 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('inspire')
                  ->hourly();
-    
+
+        $schedule->call(function () {
+            DB::table('ads')
+                ->where('end_date', '<', Carbon::now())
+                ->delete();
+        })->everyMinute();
 
         $schedule->call(function () {
 

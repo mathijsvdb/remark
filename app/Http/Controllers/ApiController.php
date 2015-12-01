@@ -15,4 +15,12 @@ class ApiController extends Controller
     {
         return view("developer");
     }
+
+    public function getPopularProjects() {
+
+    }
+
+    public function getProjectById() {
+
+    }
 }

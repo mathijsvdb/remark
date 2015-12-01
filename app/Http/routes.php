@@ -11,7 +11,9 @@
 |
 */
 
-
+/*
+ * Project Routes
+ */
 Route::get('/projects','ProjectController@showAllProjects');
 Route::get('/projects/add', [
     'middleware' => 'auth',
@@ -19,6 +21,7 @@ Route::get('/projects/add', [
 ]);
 Route::post('/projects/add', 'ProjectController@postAddProject');
 Route::get('/projects/{id}', 'ProjectController@showProjectById');
+Route::post('/projects/{id}', 'ProjectController@addComment');
 Route::post('/projects/{id}/delete', 'ProjectController@deleteProject');
 Route::get('/projects/{id}/edit', [
     'middleware' => 'auth',
@@ -40,9 +43,6 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::post('projects/{id}/favorite', 'AjaxController@favoriteProject');
     Route::post('projects/{id}/unfavorite', 'AjaxController@unfavoriteProject');
 });
-
-Route::post('/projects/{id}', 'ProjectController@addComment');
-
 
 /*
  * Profile Routes
@@ -71,31 +71,36 @@ Route::get('profile/{id}/favorites', [
     'uses' => 'ProfileController@showFavorites'
 ]);
 
-// Registration routes...
+/*
+ * Authentication Routes
+ */
 Route::get('/register', 'Auth\AuthController@getRegister');
 Route::post('/register', 'Auth\AuthController@postRegister');
 
-// Authentication routes...
 Route::get('/login', 'Auth\AuthController@getLogin');
 Route::post('/login', 'Auth\AuthController@postLogin');
 Route::get('/logout', 'Auth\AuthController@getLogout');
 
-// Password reset link request routes...
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 
-// Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 // Route::get('test', function(){ dd(Config::get('mail'));});
 
-//battles routes
+/*
+ * Battle Routes
+ */
 Route::get('/battles','BattlesController@getBattles');
 
-//frontpage routes
+/*
+ * Frontpage Routes
+ */
 Route::get('/','frontpageController@frontpage');
 
-//search
+/*
+ * Searh Routes
+ */
 Route::get('/search','SearchController@search');
 Route::post('/search', 'SearchController@searchFrontpage');
 
@@ -108,11 +113,17 @@ Route::post('/', function(){
 //search by color
 Route::get('/projects/search/{id}','ProjectController@SearchByColor');
 
-//ads
+/*
+ * Advertising Routes
+ */
 Route::get('/advertising','AdsController@ads');
 Route::get('/advertising/add','AdsController@addAds');
 Route::post('/advertising/add', 'AdsController@postAddAdvertisement');
 
-//developer routes
+/*
+ * API Routes
+ */
 Route::get('/developer','ApiController@developer');
+Route::get('/api/v1/items/popular', 'ApiController@getPopularProjects');
+Route::get('/api/v1/item/{id}', 'ApiController@getProjectById');
 
