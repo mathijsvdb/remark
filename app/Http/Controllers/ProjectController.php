@@ -53,7 +53,7 @@ class ProjectController extends Controller
             'tags' => $tags,
         );
         $rules = array(
-            'fileToUpload' => 'required|image',
+            'fileToUpload' => 'required|image|mimes:jpeg,png',
             'title' => 'required',
             'body' => 'required',
             'tags' => 'required',

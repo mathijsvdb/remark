@@ -60,7 +60,7 @@ class AdsController extends Controller
             'url' => $url
         );
         $rules = array(
-            'fileToUpload' => 'required|image',
+            'fileToUpload' => 'required|image|mimes:jpeg,png',
             'title' => 'required',
             'url' => 'required'
         );

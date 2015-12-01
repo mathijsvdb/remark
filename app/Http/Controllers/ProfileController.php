@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Request;
 use Illuminate\Routing\Controller;
@@ -54,7 +55,7 @@ class ProfileController extends Controller {
         $oldfile = $user->image;
 
         $file = array('fileToUpload' => $image);
-        $rules = array('fileToUpload' => 'image');
+        $rules = array('fileToUpload' => 'image|mimes:jpeg,png');
 
         $validator = Validator::make($file, $rules);
 
