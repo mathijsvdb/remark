@@ -39,8 +39,7 @@ class ApiController extends Controller
             'likes' => $likes,
         ];
 
-
-
+        header('Content-type: application/json');
         echo json_encode($data);
     }
 }
