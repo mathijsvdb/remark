@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Advertisement;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
-use Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\Http\Requests;
 use Stripe\Stripe;
 use Validator;
@@ -19,14 +19,14 @@ class AdsController extends Controller
 {
     public function ads()
     {
-        /*$user_ads = DB::table("ads")
-            ->join('ads', 'id' , '=' , 'badges.id')
-            ->where('user_id', $id)
-            ->orderBy('created_at', 'asc')
-            ->take(3)
-            ->get();*/
+        $user_id = Auth::user();
 
-        return view("ads");
+        $myAds = DB::table('ads')
+            ->where('user_id', '=', $user_id)
+            ->select('ads.*')
+            ->get();
+
+        return view("ads", compact('myAds'));
     }
 
 
@@ -37,8 +37,6 @@ class AdsController extends Controller
 
     public function postAddAdvertisement()
     {
-
-
         $user = User::find(1);
 
         $user->charge(5000, [
@@ -93,9 +91,23 @@ class AdsController extends Controller
         $advertisement->img = '/uploads/reclam/' . $fileName;
         $advertisement->start_date = $start_date;
         $advertisement->end_date = $end_date;
+        $advertisement->user_id = Auth::id();
         $advertisement->save();
 
         return redirect('/advertising');
+    }
+
+    public function postClickCounter(Request $request) {
+
+        $id = $request->input('id');
+        //var_dump($request);
+        //DB::update("update ads set clicks = clicks+1 where id = ?", [$id]);
+
+        DB::table('ads')
+            ->where('id', $id)
+            ->increment('clicks', 1);
+
+        return $id;
     }
 
 }

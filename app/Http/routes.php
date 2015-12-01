@@ -117,6 +117,14 @@ Route::get('/projects/search/{id}','ProjectController@SearchByColor');
  * Advertising Routes
  */
 Route::get('/advertising','AdsController@ads');
+Route::post('/advertising', 'AdsController@postClickCounter');
+
+Route::post('', function(){
+    if(Request::ajax()){
+        return Response::json(Request::all());
+    }
+});
+
 Route::get('/advertising/add','AdsController@addAds');
 Route::post('/advertising/add', 'AdsController@postAddAdvertisement');
 
@@ -126,4 +134,5 @@ Route::post('/advertising/add', 'AdsController@postAddAdvertisement');
 Route::get('/developer','ApiController@developer');
 Route::get('/api/v1/items/popular', 'ApiController@getPopularProjects');
 Route::get('/api/v1/item/{id}', 'ApiController@getProjectById');
+
 
