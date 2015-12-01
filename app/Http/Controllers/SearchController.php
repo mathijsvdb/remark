@@ -23,8 +23,6 @@ class SearchController extends Controller
         $searchTerms = explode(' ', $q);
         $query = DB::table('projects');
 
-
-
         foreach($searchTerms as $term)
         {
             $query
@@ -40,8 +38,5 @@ class SearchController extends Controller
         $searches = $query->get();
 
         return view("frontpage", compact('searches'));
-        //return $searches;
-        //return View::make('/')->with('searches', $searches);
-
     }
 }
