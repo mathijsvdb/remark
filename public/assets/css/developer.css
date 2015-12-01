@@ -1,0 +1,17 @@
+.api_container{
+    height: 100%;
+}
+.api_container .info_api{
+    margin-left: 20px;
+}
+
+.user_api_key_container{
+    float: none;
+}
+.user_api_key_container button{
+    background-color: limegreen;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    padding: 10px;
+}
