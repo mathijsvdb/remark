@@ -12,7 +12,7 @@
         </div>
     @endif
 
-    <div class="col-sm-6 col-md-4 col-md-offset-4 content-box">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 content-box add_project_container">
         <form action="/projects/add" method="post" class="form" enctype="multipart/form-data">
             {!! csrf_field() !!}
 
@@ -40,7 +40,7 @@
             </div>
 
             <div class="form-group">
-                <p class="col-xs-7"><b>Select image to upload:</b></p>
+                <p class="col-xs-7"><b>Select image to upload (500x500):</b></p>
                 <input type="file" name="fileToUpload" id="fileToUpload" value={!! old('fileToUpload') !!}>
             </div>
 

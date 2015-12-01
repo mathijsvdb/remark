@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <div class="advertising_container">
+    <div class="advertising_container content-box">
         <form action="/advertising/add" method="POST" id="payment-form" class="form-horizontal" role="form" enctype="multipart/form-data">
             {!! csrf_field() !!}
             <h2>Your advertising</h2>
