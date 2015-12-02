@@ -17,27 +17,27 @@ class UserTableSeeder extends Seeder
 
         $users = [
             [
-                'firstname' => 'test',
-                'lastname' => 'test',
-                'username' => 'test',
-                'password' => Hash::make('test'),
-                'email' => 'test@student.thomasmore.be',
+                'firstname' => 'Joris',
+                'lastname' => 'Hens',
+                'username' => 'Jorre',
+                'password' => Hash::make('joris'),
+                'email' => 'joris@student.thomasmore.be',
                 'image' => 'default.jpg'
             ],
             [
-                'firstname' => 'test1',
-                'lastname' => 'test1',
-                'username' => 'test1',
-                'password' => Hash::make('test1'),
-                'email' => 'test1@student.thomasmore.be',
+                'firstname' => 'Robby',
+                'lastname' => 'Vanelderen',
+                'username' => 'MustacheMan',
+                'password' => Hash::make('robby'),
+                'email' => 'robby@student.thomasmore.be',
                 'image' => 'default.jpg'
             ],
             [
-                'firstname' => 'test2',
-                'lastname' => 'test2',
-                'username' => 'test2',
-                'password' => Hash::make('test2'),
-                'email' => 'test2@student.thomasmore.be',
+                'firstname' => 'David',
+                'lastname' => 'Heerinckx',
+                'username' => 'ViKING',
+                'password' => Hash::make('david'),
+                'email' => 'david@student.thomasmore.be',
                 'image' => 'default.jpg'
             ],
         ];

@@ -17,47 +17,47 @@ class AdsTableSeeder extends Seeder
 
         $adver = [
             [
-                'title' => 'test',
-                'description' => "Lorem ipsum dolerium sa monty",
-                'url' => "http://remark.dev",
-                'img' => 'assets/images/200x150.png',
+                'title' => 'Adobe Creative Cloud',
+                'description' => "Save 20% on purchases",
+                'url' => "http://www.adobe.com/be_nl/creativecloud.html",
+                'img' => 'assets/images/ads/ad_adobe.png',
                 'user_id' => 1,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)
             ],
             [
-                'title' => 'test&',
-                'description' => "Lorem ipsum dolerium sa monty",
+                'title' => 'Dribbble',
+                'description' => "Remark is stealing our customers!",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/200x150.png',
+                'img' => 'assets/images/ads/ad_dribble.png',
                 'user_id' => 1,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)
             ],
             [
-                'title' => 'test2',
-                'description' => "Lorem ipsum dolerium sa monty",
+                'title' => 'Razer',
+                'description' => "New Anansi Keyboard",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/200x150.png',
+                'img' => 'assets/images/ads/ad_razer.png',
                 'user_id' => 2,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)
             ],
             [
-                'title' => 'test3',
-                'description' => "Lorem ipsum dolerium sa monty",
+                'title' => 'Thomas More',
+                'description' => "De hogeschool voor wie meer verwacht",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/200x150.png',
+                'img' => 'assets/images/ads/ad_thomasmore.png',
                 'user_id' => 1,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)
             ],
             [
-                'title' => 'test4',
-                'description' => "Lorem ipsum dolerium sa monty",
-                'url' => "http://remark.dev",
-                'img' => 'assets/images/200x150.png',
-                'user_id' => 1,
+                'title' => 'Beezonder',
+                'description' => "Een beezondere blog",
+                'url' => "http://www.beezonder.be/",
+                'img' => 'assets/images/ad_beezonder.png',
+                'user_id' => 2,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)
             ],
