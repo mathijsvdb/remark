@@ -39,11 +39,6 @@
 
             </div>
 
-            <div id="profileRIGHT" class="col-md-3">
-                <p>ADVERTISING AREA</p>
-                <img src="http://placehold.it/150x150">
-            </div>
-
         </div>
         <br />
         <hr />

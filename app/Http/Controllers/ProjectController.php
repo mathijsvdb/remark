@@ -143,7 +143,7 @@ class ProjectController extends Controller
         $comments = DB::table("comments")
         ->where('project_id', $id)
         ->join('users', 'users.id', '=', 'comments.user_id')
-        ->select('users.firstname', 'users.lastname', 'comments.*')
+        ->select('users.firstname', 'users.lastname', 'comments.*', 'users.image')
         ->get();
 
         return view('projects.detailProjects', compact('project', 'user', 'colorpieces', 'comments', 'likes', 'favorites', 'user_liked', 'user_favorited'));
