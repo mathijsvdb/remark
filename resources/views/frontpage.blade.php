@@ -1,6 +1,7 @@
 @extends("layouts.master")
 
 @section("content")
+    <div class="front_container_bg"></div>
     @if(!empty(Session::get('info')))
         <div class="alert alert-success">
             <strong>{!! Session::get('info') !!}</strong>
@@ -22,6 +23,8 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
+                <h1>Get remarks and learn</h1>
+                <hr>
                 <a href="{{ url('/projects/add') }}" class="btn btn-primary animation-bounce">Add a project!</a>
             </div>
         </div>

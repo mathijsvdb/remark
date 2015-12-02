@@ -3,9 +3,15 @@
 @section("content")
 
     <div class="adver_container">
-        <h2>Your advertising's</h2> <a class="" href="/advertising/add">Add +</a>
 
-        <ul class="row">
+
+
+        <div class="content_adver col-md-10 content-box center-block">
+            <h2>Your advertisements <a class="" href="/advertising/add">Add more +</a></h2>
+
+
+            @if(!empty($myAds))
+            <ul class="row">
             @foreach($myAds as $ad)
                 <div class="col-md-4 ad" id="{{$ad->id}}">
                     <li>
@@ -15,8 +21,13 @@
                         <img src="{{asset($ad->img)}}" alt="advertising">
                     </li>
                 </div>
+            </ul>
             @endforeach
-        </ul>
+            @else
+                <p>There are no advertisments linked to your account</p>
+            @endif
+        </div>
+
     </div>
 
 @stop

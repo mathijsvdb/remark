@@ -29,14 +29,12 @@
                     <li>
                         <a href="{{ url('/advertising') }}">Advertising</a>
                     </li>
+                    <li>
+                        <a href="{{ url('/developer') }}">Development</a>
+                    </li>
 
                 </ul>
 
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile Menu <span class="glyphicon glyphicon-align-justify"></span></a>
