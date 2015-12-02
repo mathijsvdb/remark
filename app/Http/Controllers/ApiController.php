@@ -49,10 +49,6 @@ class ApiController extends Controller
         {
             return 'Use the page and perpage parameters for this request (/popular?page=1&perpage=10)';
         }
-
-
-
-
     }
 
     public function getProjectById($id) {
