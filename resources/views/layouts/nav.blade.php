@@ -17,15 +17,7 @@
                 <ul class="nav navbar-nav">
 
                     <li><a href="{{ url('/') }}">Home<span class="sr-only">(current)</span></a></li>
-                    @if(Auth::check())
-                        <li>
-                            <a href="{{ url('/profile/' . Auth::user()->id) }}">My Profile</a>
 
-                            @if(true)
-                            <span class="profile-notification" aria-hidden="true">1</span>
-                            @endif
-                        </li>
-                    @endif
                     <li>
                         <a href="{{ url('/projects') }}">Projects</a>
                     </li>
@@ -47,10 +39,18 @@
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">menu <span class="glyphicon glyphicon-align-justify"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile Menu <span class="glyphicon glyphicon-align-justify"></span></a>
                         <ul class="dropdown-menu">
 
                             @if(Auth::check())
+                                <li>
+                                    <a href="{{ url('/profile/' . Auth::user()->id) }}">My Profile</a>
+
+                                    @if(true)
+                                        <span class="profile-notification" aria-hidden="true">1</span>
+                                    @endif
+                                </li>
+
                                 <li><a href="{{ url('/projects/add') }}">Add project +</a></li>
                                 <li class="dropdown">
                                     <a href="{{ url('/logout') }}" >Logout</a>

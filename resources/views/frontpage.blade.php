@@ -143,17 +143,8 @@
                     type: "POST",
                     url: "/search",
                     data: dataString,
-                    //async: false,
-                    //dataType: 'json',
                     success: function(data){
-                        console.log(data);
-
-                        //window.history.pushState(data,"search","/search");
-                        //$(arr).appendTo(document.body);
-
                         $("body" ).html(data);
-
-
                     },
                     error: function(xhr, status, error) {
                         //var err = eval(xhr.responseText);

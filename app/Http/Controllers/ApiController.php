@@ -19,28 +19,44 @@ class ApiController extends Controller
         return view("developer");
     }
 
-    public function getPopularProjects() {
+    public function getPopularProjects(Request $request) {
+        $page     = $request->get('page');
+        $perpage  = $request->get('perpage');
+        $response = [];
 
-        $projects = [];
-        $page = Input::get('page', 1);
-        $perpage = Input::get('perpage', 200);
-        $offset = ($perpage * $page) - $perpage;
+        if((isset($page) && !empty($page) && (isset($perpage) && !empty($perpage)))) {
+            $projects = Project::paginate($perpage);
 
-        foreach(Project::with('user', 'comments', 'likes')->take($perpage)->skip($offset)->get() as $project){
-            $data = [
-                'id' => $project->id,
-                'title' => $project->title,
-                'url' => url('/projects/' . $project->id),
-                'image_url' => url('/uploads/' . $project->img),
-                'author_name' => $project->user->firstname . ' ' . $project->user->lastname,
-                'author_profile_picture' => url('/uploads/profilepictures/' . $project->user->image),
-                'comments' => $project->comments->implode('body', ',  '),
-                'likes' => $project->likes->count()
-            ];
-            array_push($projects, $data);
+            foreach($projects as $project) {
+                $data = [
+                    'id' => $project->id,
+                    'title' => $project->title,
+                    'url' => url('/projects/' . $project->id),
+                    'image_url' => url('/uploads/' . $project->img),
+                    'author_name' => $project->user->firstname . ' ' . $project->user->lastname,
+                    'author_profile_image_url' => url('/uploads/profilepictures/' . $project->user->image),
+                    'comments' => $project->comments->implode('body', ',  '),
+                    'likes' => $project->likes->count()
+                ];
+
+                array_push($response, $data);
+            }
+
+            $new_array = [];
+
+            foreach($response as $single => $like) {
+                $new_array[$single] = $like['likes'];
+            }
+
+            array_multisort($singles, SORT_DESC, $response);
+
+            header('Content-type: application/json');
+            echo json_encode($response);
         }
-
-        echo json_encode($projects);
+        else
+        {
+            return 'Use the page and perpage parameters for this request (/popular?page=1&perpage=10)';
+        }
     }
 
     public function getProjectById($id) {
@@ -54,8 +70,8 @@ class ApiController extends Controller
             'title'=> $project->title,
             'url' => url('projects/' . $project->id),
             'image_url' => url('uploads/' . $project->img),
-            'author name' => $project->user->firstname . ' ' . $user->lastname,
-            'author profile image url' => url('uploads/profilepictures/' . $user->image),
+            'author_name' => $project->user->firstname . ' ' . $user->lastname,
+            'author_profile_image_url' => url('uploads/profilepictures/' . $user->image),
             'comments' => $comments,
             'likes' => $likes,
         ];
