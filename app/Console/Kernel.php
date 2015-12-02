@@ -29,6 +29,20 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('inspire')
                  ->hourly();
+
+        $schedule->call(function(){
+
+            $date = new Carbon;
+            $date->subWeek();
+
+            $result_waitingList = DB::table('waitlist')
+                ->where('created_at', '<', $date->toDateTimeString())
+                ->orderBy(DB::raw('RAND()'))
+                ->get();
+
+            var_dump($result_waitingList);
+
+        })->everyMinute();
     
 
         $schedule->call(function () {
