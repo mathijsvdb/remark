@@ -19,31 +19,36 @@ class AdsTableSeeder extends Seeder
                 'title' => 'test',
                 'description' => "Lorem ipsum dolerium sa monty",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/200x150.png'
+                'img' => 'assets/images/200x150.png',
+                'user_id' => 1
             ],
             [
                 'title' => 'test&',
                 'description' => "Lorem ipsum dolerium sa monty",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/200x150.png'
+                'img' => 'assets/images/200x150.png',
+                'user_id' => 1
             ],
             [
                 'title' => 'test2',
                 'description' => "Lorem ipsum dolerium sa monty",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/200x150.png'
+                'img' => 'assets/images/200x150.png',
+                'user_id' => 2
             ],
             [
                 'title' => 'test3',
                 'description' => "Lorem ipsum dolerium sa monty",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/200x150.png'
+                'img' => 'assets/images/200x150.png',
+                'user_id' => 1
             ],
             [
                 'title' => 'test4',
                 'description' => "Lorem ipsum dolerium sa monty",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/200x150.png'
+                'img' => 'assets/images/200x150.png',
+                'user_id' => 1
             ],
         ];
 
