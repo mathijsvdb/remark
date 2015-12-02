@@ -13,6 +13,7 @@
                         @if($user->id == Auth::user()->id)
                             <a id="rewards" href="/profile/{!! $user->id !!}/rewards">View your badges</a>
                         @endif
+                            <br>
                             <a href="/profile/{{ $user->id }}/favorites">Checkout {{ $user->firstname }}'s favorites</a>
                 </ul>
             </div>
