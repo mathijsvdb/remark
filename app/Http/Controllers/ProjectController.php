@@ -232,7 +232,7 @@ class ProjectController extends Controller
                 'to' => array(
                     array(
                         'email' => $result->email,
-                        'name' => $result->firstname + " " + $result->lastname,
+                        'name' => $result->firstname . " " . $result->lastname,
                         'type' => 'to'
                     )
                 ),
@@ -247,9 +247,12 @@ class ProjectController extends Controller
                             ),
                             array(
                                 'name' => 'COMMENTERNAME',
-                                'content' => $user->firstname + " " + $user->lastname,
-                                )
-
+                                'content' => $user->firstname . " " . $user->lastname,
+                            ),
+                            array(
+                                'name' => 'FIRSTNAME',
+                                'content' => $result->firstname . " " . $result->lastname,
+                            )
                         )
                     )
                 )
