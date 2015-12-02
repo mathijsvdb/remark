@@ -2,8 +2,16 @@
 
 @section("content")
 
+    <div class="battle_text_intro">
+        <h1 class="intro">Participate in a battle or vote</h1>
+
+        <p>Do you want to get some exposure and earn badges? Participate in our monthly competition.<br>
+        Don't want to join with your project? Vote on your favorite projects by clicking on them, <br>
+        going to their page and like them. Participating will earn you rewards!</p>
+    </div>
+
     <div class="battle_container ">
-        <h1>{{$active_battle->name}}</h1>
+        <h1><img class="axe" src="http://game-icons.net/icons/lorc/originals/png/000000/transparent/battle-axe.png" alt="battle_icon">  {{$active_battle->name}}</h1>
         <div class="information_battle"><p>{{$active_battle->description}}</p></div>
         <ul class="row">
             @foreach($battle_projects as $project)

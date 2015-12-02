@@ -1,3 +1,19 @@
+.battle_text_intro h1.intro{
+
+}
+
+.battle_text_intro p{
+    margin-top: 20px;
+    margin-left:40px;
+}
+
+.battle_container .axe{
+    width: 30px; height: 30px;
+    display: inline-block;
+    margin-top: -10px;
+    margin-right: 20px;
+}
+
 .battle_container p{
     color: grey;
     padding:10px;
