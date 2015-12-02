@@ -42,6 +42,14 @@ class ApiController extends Controller
                 array_push($response, $data);
             }
 
+            $new_array = [];
+
+            foreach($response as $single => $like) {
+                $new_array[$single] = $like['likes'];
+            }
+
+            array_multisort($singles, SORT_DESC, $response);
+
             header('Content-type: application/json');
             echo json_encode($response);
         }
