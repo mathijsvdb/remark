@@ -5,8 +5,18 @@ html, body{
 }
 
 body{
-    /*background-image: url(../images/0014.jpg);*/
     background-color: whitesmoke;
+}
+
+.front_container_bg{
+    width: 100%;
+    position: absolute;
+    margin-top: -40px;
+    z-index: -999;
+    height: 100%;
+    background-image: url(../images/bg1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body ul{
@@ -26,6 +36,14 @@ body ul{
 
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
     color: lightgreen;
+}
+
+#searchFRONT{
+    background-color: whitesmoke;
+    border:none;
+    border-radius: 0px;
+    color: black;
+    border-bottom: 2px solid lightgreen;
 }
 
 .dropdown-menu>li>a {
