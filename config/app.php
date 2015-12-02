@@ -138,6 +138,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         'Weblee\Mandrill\MandrillServiceProvider',
         Laravel\Cashier\CashierServiceProvider::class,
+        'Intervention\Image\ImageServiceProvider',
 
 
         /*custom (dit is de image upload/resize*/
@@ -201,7 +202,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'MandrillMail'  => 'Weblee\Mandrill\MandrillFacade',
-        /*'Image' => 'Intervention\Image\Facades\Image'*/
+        'Image' => 'Intervention\Image\Facades\Image',
     ],
 
 ];

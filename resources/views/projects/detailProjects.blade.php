@@ -11,12 +11,18 @@
         <div class="project-info">
             <div class="project-info-text">
                 @if($user->image == 'default.jpg')
-                    <img class="img-circle" src="/assets/images/{!! $user->image !!}" alt="">
+                    <img class="img-circle project_user_img" src="/assets/images/{!! $user->image !!}" alt="">
                 @else
-                    <img class="img-circle" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
+                    <img class="img-circle project_user_img" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
                 @endif
-                <h2>{!! $project['title'] !!} <span>by <a href="/profile/{!! $user['id'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a>{!! " " . $project['created_at'] !!}</span></h2>
+                <h2>
+                    {!! $project['title'] !!} <span>by <a href="/profile/{!! $user['id'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a>{!! " " . $project['created_at'] !!}</span>
+                    <form action="/" method="post" class="flag_project_user">
+                        {!! csrf_field() !!}
+                        <button class="flag_project" title="flag project" type=submit class="btn btn-xs" id="flag_project"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
+                    </form>
 
+                </h2>
                 <img id="project-img" src="/uploads/{!! $project['img'] !!}" alt="">
 
                 <p>{!! $project['body'] !!}</p>
@@ -30,10 +36,12 @@
                     @if(!$user_liked)
                         <span class="glyphicon glyphicon-heart" id="like-icon"></span><span id="n-likes">{{ $likes }}</span> Likes
 
+                        @if(Auth::check())
                         <form action="/projects/{{ $project->id }}/like" method="post" id="like-form">
                             {!! csrf_field() !!}
                             <button type=submit class="btn btn-xs" id="like-btn">Like</button>
                         </form>
+                        @endif
                     @else
                         <span class="glyphicon glyphicon-heart" style="color: crimson;" id="like-icon"></span><span id="n-likes">{{ $likes }}</span> Likes
 
@@ -47,10 +55,12 @@
                     @if(!$user_favorited)
                         <span class="glyphicon glyphicon-star" id="favorite-icon"></span><span id="n-favorites">{{ $favorites }}</span> Favorites
 
+                        @if(Auth::check())
                         <form action="/projects/{{ $project->id }}/favorite" method="post" id="favorite-form">
                             {!! csrf_field() !!}
                             <button type=submit class="btn btn-xs" id="favorite-btn">Favorite</button>
                         </form>
+                        @endif
                     @else
                         <span class="glyphicon glyphicon-star" style="color: gold;" id="favorite_icon"></span><span id="n-favorites">{{ $favorites }}</span> Favorites
 
@@ -66,7 +76,7 @@
                         <span class="glyphicon glyphicon-tint"></span>
 
                         @for($i=0; $i<count($colorpieces); $i++)
-                            <a class="pallet-styling" href="/projects/search/{!! $colorpieces[$i] !!}" style="background-color: #{!! $colorpieces[$i] !!};">{!! $colorpieces[$i] !!}</a>
+                            <a class="pallet-styling" href="/projects/search/{!! $colorpieces[$i] !!}" style="background-color: #{!! $colorpieces[$i] !!};"></a>
                         @endfor
                     </div>
                     <div class="clearfix"></div>
@@ -84,7 +94,7 @@
             </ul>
         </div>
 <div class="clearfix"></div>
-
+    <div class="add_comment_container">
     <form method="POST" class="form" action="{!! $project['id'] !!}">
         {!! csrf_field() !!}
         <h3>Comments</h3>
@@ -98,15 +108,31 @@
     </form>
     </div>
 
-    <div id="allwork">
-        @foreach($comments as $comment)
+        <div class="clearfix">
+            @foreach($comments as $comment)
 
-            <div>
-                <p>{!! $comment->body !!}</p>
-            </div>
-            
-        @endforeach
+                <div class="content_comment content-box row">
+                    <div class="col-lg-1">
+                        <img src="" class="user_image" alt="">
+                    </div>
+
+                    <div class="user_info_comment col-md-11">
+                        <form action="/" method="post" class="flag_comment">
+                            {!! csrf_field() !!}
+                            <button class="flag_user" title="flag user" type=submit class="btn btn-xs" id="flag_comment_user"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
+                        </form>
+
+                        <h4 class="user_name_info">user name</h4>
+                        <p>{!! $comment->body !!}</p>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+            @endforeach
+        </div>
     </div>
+
+
 
     <div id="fb-root"></div>
 @stop

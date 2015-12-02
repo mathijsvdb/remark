@@ -8,7 +8,7 @@
         <ul class="row">
             @foreach($battle_projects as $project)
                 <li class="col-md-2 content-box">
-                    <a href="/projects/{{ $project->id }}">{{ $project->title }} <span class="glyphicon glyphicon-heart">{{ $project->likes }}</span> </a>
+                    <a href="/projects/{{ $project->id }}">{{ $project->title }} <span class="glyphicon glyphicon-heart"> {{ $project->likes }}</span></a>
                     <img src="/uploads/{!! $project->img !!}" alt="">
                     <p>{{$project->body}}</p>
 

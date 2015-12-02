@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Advertisement;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
-use Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\Http\Requests;
 use Stripe\Stripe;
 use Validator;
@@ -19,7 +19,14 @@ class AdsController extends Controller
 {
     public function ads()
     {
-        return view("ads");
+        $user_id = Auth::user();
+
+        $myAds = DB::table('ads')
+            ->where('user_id', '=', $user_id)
+            ->select('ads.*')
+            ->get();
+
+        return view("ads", compact('myAds'));
     }
 
 
@@ -30,8 +37,6 @@ class AdsController extends Controller
 
     public function postAddAdvertisement()
     {
-
-
         $user = User::find(1);
 
         $user->charge(5000, [
@@ -43,6 +48,7 @@ class AdsController extends Controller
         $url = Request::input('url');
         $image = Input::file('fileToUpload');
         $start_date = Request::input('data-picker');
+        $end_date = date('Y-m-d', strtotime($start_date. ' + 30 days'));
         $destinationPath = 'uploads/reclam';
 
         //rules
@@ -52,7 +58,7 @@ class AdsController extends Controller
             'url' => $url
         );
         $rules = array(
-            'fileToUpload' => 'required|image',
+            'fileToUpload' => 'required|image|mimes:jpeg,png',
             'title' => 'required',
             'url' => 'required'
         );
@@ -82,11 +88,26 @@ class AdsController extends Controller
         $advertisement->title = $title;
         $advertisement->description = $title;
         $advertisement->url = $url;
-        $advertisement->img = $fileName;
+        $advertisement->img = '/uploads/reclam/' . $fileName;
         $advertisement->start_date = $start_date;
+        $advertisement->end_date = $end_date;
+        $advertisement->user_id = Auth::id();
         $advertisement->save();
 
         return redirect('/advertising');
+    }
+
+    public function postClickCounter(Request $request) {
+
+        $id = $request->input('id');
+        //var_dump($request);
+        //DB::update("update ads set clicks = clicks+1 where id = ?", [$id]);
+
+        DB::table('ads')
+            ->where('id', $id)
+            ->increment('clicks', 1);
+
+        return $id;
     }
 
 }

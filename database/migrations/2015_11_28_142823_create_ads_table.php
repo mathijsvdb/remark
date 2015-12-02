@@ -19,7 +19,10 @@ class CreateAdsTable extends Migration
             $table->string('url');
             $table->string('img');
             $table->integer('clicks')->default(0);
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->date('start_date');
+            $table->date('end_date');
         });
     }
 

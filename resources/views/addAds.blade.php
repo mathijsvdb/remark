@@ -13,7 +13,7 @@
         </div>
     @endif
 
-    <div class="advertising_container">
+    <div class="advertising_container content-box">
         <form action="/advertising/add" method="POST" id="payment-form" class="form-horizontal" role="form" enctype="multipart/form-data">
             {!! csrf_field() !!}
             <h2>Your advertising</h2>
@@ -49,7 +49,7 @@
                         data-key="pk_test_uJfH5C7V9YeBhsIhZ2LB6edn"
                         data-image="/img/documentation/checkout/marketplace.png"
                         data-name="Pay add"
-                        data-description="2 widgets"
+                        data-description="30 days = 50€"
                         data-currency="eur"
                         data-amount="5000"
                         data-locale="auto">

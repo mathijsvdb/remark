@@ -22,6 +22,7 @@ class UserTableSeeder extends Seeder
                 'username' => 'test',
                 'password' => Hash::make('test'),
                 'email' => 'test@student.thomasmore.be',
+                'image' => 'default.jpg'
             ],
             [
                 'firstname' => 'test1',
@@ -29,6 +30,7 @@ class UserTableSeeder extends Seeder
                 'username' => 'test1',
                 'password' => Hash::make('test1'),
                 'email' => 'test1@student.thomasmore.be',
+                'image' => 'default.jpg'
             ],
             [
                 'firstname' => 'test2',
@@ -36,6 +38,7 @@ class UserTableSeeder extends Seeder
                 'username' => 'test2',
                 'password' => Hash::make('test2'),
                 'email' => 'test2@student.thomasmore.be',
+                'image' => 'default.jpg'
             ],
         ];
 

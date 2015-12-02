@@ -7,6 +7,7 @@
         </div>
     @endif
 
+    @if(!Auth::check())
     <header>
         <div class="header-content">
             <div class="header-content-inner">
@@ -17,6 +18,16 @@
             </div>
         </div>
     </header>
+    @else
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <a href="{{ url('/projects/add') }}" class="btn btn-primary animation-bounce">Add a project!</a>
+            </div>
+        </div>
+    </header>
+    @endif
+
 
     <section id="spotlight">
         <h2>Spotlight</h2>
@@ -132,17 +143,8 @@
                     type: "POST",
                     url: "/search",
                     data: dataString,
-                    //async: false,
-                    //dataType: 'json',
                     success: function(data){
-                        console.log(data);
-
-                        //window.history.pushState(data,"search","/search");
-                        //$(arr).appendTo(document.body);
-
                         $("body" ).html(data);
-
-
                     },
                     error: function(xhr, status, error) {
                         //var err = eval(xhr.responseText);

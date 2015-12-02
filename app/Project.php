@@ -22,4 +22,14 @@ class Project extends Model
     {
         return $this->hasMany('App\Favorite');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }

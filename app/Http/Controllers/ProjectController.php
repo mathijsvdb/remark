@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 use Request;
 use App\Http\Requests;
 use Validator;
@@ -43,7 +44,7 @@ class ProjectController extends Controller
         $body = Request::input('body');
         $tags = Request::input('tags');
         $image = Input::file('fileToUpload');
-        $destinationPath = 'uploads'; // upload path
+        $destinationPath = 'uploads/'; // upload path
         $client = new ColorExtractor;
         //rules
         $file = array(
@@ -53,7 +54,7 @@ class ProjectController extends Controller
             'tags' => $tags,
         );
         $rules = array(
-            'fileToUpload' => 'required|image',
+            'fileToUpload' => 'required|image|mimes:jpeg,png',
             'title' => 'required',
             'body' => 'required',
             'tags' => 'required',
@@ -73,7 +74,8 @@ class ProjectController extends Controller
         if($image->isValid()){
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = Auth::user()->username . '_' . rand(11111,99999).'.'.$extension; // renaming image
-            Input::file('fileToUpload')->move($destinationPath, $fileName);
+            $img = Image::make($image);
+            $img->fit(500,500)->crop(500, 500, 0, 0)->save($destinationPath . $fileName);
         } else {
             Session::flash('error', 'uploaded file is not valid');
             return Redirect::to('/projects/add');
@@ -223,39 +225,39 @@ class ProjectController extends Controller
 
         $template_content = [];
 
-        $message = [
-            'subject' => 'Notification alert',
-            'from_email' => 'noreply@remark.com',
-            'from_name' => 'Remark',
-            'to' => array(
-                array(
-                    'email' => $result->email,
-                    'name' => $result->firstname + " " + $result->lastname,
-                    'type' => 'to'
-                )
-            ),
-            'merge_vars' => array(
-                array(
-                    'rcpt' => $result->email,
-                    'vars' => array(
-                        array(
-                            'name' => 'COMMENT',
-                            'content' =>  Request::input('body'),
-                            
-                        ),
-                        array(
-                            'name' => 'COMMENTERNAME',
-                            'content' => $user->firstname + " " + $user->lastname,
-                            )
+            $message = [
+                'subject' => 'Notification alert',
+                'from_email' => 'noreply@remark.com',
+                'from_name' => 'Remark',
+                'to' => array(
+                    array(
+                        'email' => $result->email,
+                        'name' => $result->firstname + " " + $result->lastname,
+                        'type' => 'to'
+                    )
+                ),
+                'merge_vars' => array(
+                    array(
+                        'rcpt' => $result->email,
+                        'vars' => array(
+                            array(
+                                'name' => 'COMMENT',
+                                'content' =>  Request::input('body'),
 
+                            ),
+                            array(
+                                'name' => 'COMMENTERNAME',
+                                'content' => $user->firstname + " " + $user->lastname,
+                                )
+
+                        )
                     )
                 )
-            )
-        ];
+            ];
 
         MandrillMail::messages()->sendTemplate('remark-comment', $template_content, $message);
     }
-
+    
         $this->checkUserWithin2Hours($user->id);
         return redirect('projects/' . $comment->project_id);
     }
@@ -283,7 +285,7 @@ class ProjectController extends Controller
         $body = Request::input('body');
         $tags = Request::input('tags');
         $image = Input::file('fileToUpload');
-        $destinationPath = 'uploads'; // upload path
+        $destinationPath = 'uploads/'; // upload path
         $client = new ColorExtractor;
         //rules
         $file = array(
@@ -314,7 +316,8 @@ class ProjectController extends Controller
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = Auth::user()->username . '_' . rand(11111,99999).'.'.$extension; // renaming image
             File::delete('uploads/' . $project->img);
-            Input::file('fileToUpload')->move($destinationPath, $fileName);
+            $img = Image::make($image);
+            $img->fit(500,500)->crop(500, 500, 0, 0)->save($destinationPath . $fileName);
         } else {
             Session::flash('error', 'uploaded file is not valid');
             return Redirect::to('/projects/' . $project_id . '/edit');

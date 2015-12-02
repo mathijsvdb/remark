@@ -11,13 +11,22 @@
 |
 */
 
-
+/*
+ * Project Routes
+ */
 Route::get('/projects','ProjectController@showAllProjects');
-Route::get('/projects/add', 'ProjectController@getAddProject');
+Route::get('/projects/add', [
+    'middleware' => 'auth',
+    'uses' => 'ProjectController@getAddProject'
+]);
 Route::post('/projects/add', 'ProjectController@postAddProject');
 Route::get('/projects/{id}', 'ProjectController@showProjectById');
+Route::post('/projects/{id}', 'ProjectController@addComment');
 Route::post('/projects/{id}/delete', 'ProjectController@deleteProject');
-Route::get('/projects/{id}/edit', 'ProjectController@getEditProject');
+Route::get('/projects/{id}/edit', [
+    'middleware' => 'auth',
+    'uses' => 'ProjectController@getEditProject'
+]);
 Route::post('/projects/{id}/edit', 'ProjectController@postEditProject');
 Route::get('profile/{id}/rewards','RewardsController@ShowUserRewards');
 
@@ -35,47 +44,71 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::post('projects/{id}/unfavorite', 'AjaxController@unfavoriteProject');
 });
 
+
 Route::post('/projects/{id}', 'ProjectController@addComment');
 
 Route::get('profile/{id}','ProfileController@profile');
 Route::post('profile/{id}','ProfileController@referralMail');
 Route::get('update','ProfileController@updateProfile');
-Route::post('update', 'ProfileController@postProfile');
-Route::get('/profile/{id}/activity','UserActivityController@showAllActivity');
 
+/*
+ * Profile Routes
+ */
+Route::get('profile/{id}', [
+    'middleware' => 'auth',
+    'uses' =>'ProfileController@profile'
+]);
+Route::get('update', [
+    'middleware' => 'auth',
+    'uses' => 'ProfileController@updateProfile']
+);
+
+Route::post('update', 'ProfileController@postProfile');
+Route::get('/profile/{id}/activity', [
+    'middleware' => 'auth',
+    'uses' => 'UserActivityController@showAllActivity'
+]);
 Route::post('/profile/{id}/activityFilter',function(){
     if(Request::ajax()){
         return 'iets';
     }
 });
 
-Route::get('profile/{id}/favorites', 'ProfileController@showFavorites');
+Route::get('profile/{id}/favorites', [
+    'middleware' => 'auth',
+    'uses' => 'ProfileController@showFavorites'
+]);
 
-// Registration routes...
+/*
+ * Authentication Routes
+ */
 Route::get('/register', 'Auth\AuthController@getRegister');
 Route::post('/register', 'Auth\AuthController@postRegister');
 
-// Authentication routes...
 Route::get('/login', 'Auth\AuthController@getLogin');
 Route::post('/login', 'Auth\AuthController@postLogin');
 Route::get('/logout', 'Auth\AuthController@getLogout');
 
-// Password reset link request routes...
 Route::get('password/email', 'Auth\PasswordController@getEmail');
 Route::post('password/email', 'Auth\PasswordController@postEmail');
 
-// Password reset routes...
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 // Route::get('test', function(){ dd(Config::get('mail'));});
 
-//battles routes
+/*
+ * Battle Routes
+ */
 Route::get('/battles','BattlesController@getBattles');
 
-//frontpage routes
+/*
+ * Frontpage Routes
+ */
 Route::get('/','frontpageController@frontpage');
 
-//search
+/*
+ * Searh Routes
+ */
 Route::get('/search','SearchController@search');
 Route::post('/search', 'SearchController@searchFrontpage');
 
@@ -88,11 +121,29 @@ Route::post('/', function(){
 //search by color
 Route::get('/projects/search/{id}','ProjectController@SearchByColor');
 
-//ads
+/*
+ * Advertising Routes
+ */
 Route::get('/advertising','AdsController@ads');
+Route::post('/advertising', 'AdsController@postClickCounter');
+
+Route::post('', function(){
+    if(Request::ajax()){
+        return Response::json(Request::all());
+    }
+});
+
 Route::get('/advertising/add','AdsController@addAds');
 Route::post('/advertising/add', 'AdsController@postAddAdvertisement');
 
-//developer routes
+/*
+ * API Routes
+ */
 Route::get('/developer','ApiController@developer');
+Route::group(['prefix' => 'api/v1'], function() {
+    Route::get('items/popular', 'ApiController@getPopularProjects');
+    Route::get('item/{id}', 'ApiController@getProjectById');
+});
+
+
 

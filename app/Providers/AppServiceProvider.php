@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -23,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
     {
         if(Schema::hasTable('ads')) {
             $ads = DB::table("ads")
+                ->where('end_date', '>=', Carbon::now())
+                ->where('start_date', '<=', Carbon::now())
                 ->orderBy(DB::raw('RAND()'))
                 ->take(3)
                 ->get();

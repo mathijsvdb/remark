@@ -19,6 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(BadgesTableSeeder::class);
         $this->call(UserbadgesTableSeeder::class);
         $this->call(BattlesTableSeeder::class);
+        $this->call(ProjectsTableSeeder::class);
+        $this->call(AdsTableSeeder::class);
 
         Model::reguard();
     }

@@ -40,6 +40,11 @@ class BadgesTableSeeder extends Seeder
                 'badge_description' => "You've logged in for 3 consecutive days.",
                 'badge_img' => 'badges_5.png'
             ],
+            [
+                'badge_title' => "Referrer",
+                'badge_description' => "You have reffered someone.",
+                'badge_img' => 'badges_5.png'
+            ],
         ];
 
         DB::table('badges')->insert($badges);
