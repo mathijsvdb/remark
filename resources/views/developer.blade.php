@@ -21,6 +21,27 @@
                         <label for="key">key:</label><input id="key" type="text" value="key key key key key">
                     </li>
                 </ul>
+
+                <h2>Remark API v1</h2>
+
+                <p>The API has the following endpoints:</p>
+
+                <ul>
+                    <li>/items/popular</li>
+                    <ul>
+                        <li>
+                            <p>This endpoint has a page and perpage parameter (e.g.{{ url('/api/v1/items/popular?page=1&perpage=1') }}).</p>
+                            <p>It returns the most popular projects ordered by likes.</p>
+                        </li>
+                    </ul>
+                    <li>/item/id</li>
+                    <ul>
+                        <li>
+                            <p>This endpoint has an ID parameter (e.g.: {{ url('/api/v1/item/1') }}).</p>
+                            <p>It returns a project by id.</p>
+                        </li>
+                    </ul>
+                </ul>
             </div>
                 <!--<p>
                     The following url should give back Json data of popular items.
