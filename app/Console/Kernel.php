@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
             DB::table('ads')
                 ->where('end_date', '<', Carbon::now())
                 ->delete();
-        })->everyMinute();
+        })->daily();
 
         $schedule->call(function () {
 

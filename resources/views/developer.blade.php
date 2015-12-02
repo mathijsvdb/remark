@@ -13,30 +13,36 @@
 
 
 
-            <div class="user_api_key_container col-md-12 center-block content-box">
-                <button id="generate_API_KEY">Generate Key</button>
-                <ul class=""> <!-- lus hier keys uit die gelinkt zijn aan de gebruiker.-->
-                    <span>Your api key here!</span>
-                    <li>
-                        <label for="key">key:</label><input id="key" type="text" value="key key key key key">
-                    </li>
-                </ul>
-            </div>
-                <!--<p>
-                    The following url should give back Json data of popular items.
-                    ​<span>/api/v1/items/popular</span>
-                    These are the items you can find in the data:
+                <div class="user_api_key_container col-md-12 center-block content-box">
+                    <button id="generate_API_KEY">Generate Key</button>
+                    <ul class=""> <!-- lus hier keys uit die gelinkt zijn aan de gebruiker.-->
+                        <span>Your api key here!</span>
+                        <li>
+                            <label for="key">key:</label><input id="key" type="text" value="key key key key key">
+                        </li>
+                    </ul>
+
+                    <h2>Remark API v1</h2>
+
+                    <p>The API has the following endpoints:</p>
+
                     <ul>
-                    <li>title</li>
-                    <li>url</li>
-                    <li>image url</li>
-                    <li>author</li>
-                    <li>author profile image url</li>
-                    <li>comments</li>
-                    <li>number of likes</li>
-                    <li>id of hash</li>
-                </ul>
-                </p>-->
+                        <li>/items/popular</li>
+                        <ul>
+                            <li>
+                                <p>This endpoint has a page and perpage parameter (e.g.{{ url('/api/v1/items/popular?page=1&perpage=1') }}).</p>
+                                <p>It returns the most popular projects ordered by likes.</p>
+                            </li>
+                        </ul>
+                        <li>/item/id</li>
+                        <ul>
+                            <li>
+                                <p>This endpoint has an ID parameter (e.g.: {{ url('/api/v1/item/1') }}).</p>
+                                <p>It returns a project by id.</p>
+                            </li>
+                        </ul>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

@@ -113,16 +113,21 @@
 
                 <div class="content_comment content-box row">
                     <div class="col-lg-1">
-                        <img src="" class="user_image" alt="">
+                        @if($comment->image == 'default.jpg')
+                            <img  src="/assets/images/{!! $comment->image !!}" class="user_image" alt="">
+                        @else
+                            <img src="/uploads/profilepictures/{{ $comment->image }}" class="user_image" alt="">
+                        @endif
+
                     </div>
 
                     <div class="user_info_comment col-md-11">
-                        <form action="/" method="post" class="flag_comment">
+                        <form action="#" method="post" class="flag_comment">
                             {!! csrf_field() !!}
-                            <button class="flag_user" title="flag user" type=submit class="btn btn-xs" id="flag_comment_user"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
+                            <button disabled class="flag_user" title="flag user" type=submit class="btn btn-xs" id="flag_comment_user"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
                         </form>
 
-                        <h4 class="user_name_info">user name</h4>
+                        <h4 class="user_name_info">{{ $comment->firstname . ' ' . $comment->lastname }}</h4>
                         <p>{!! $comment->body !!}</p>
                     </div>
                     <div class="clearfix"></div>

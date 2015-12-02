@@ -75,7 +75,7 @@ class ProjectController extends Controller
             $extension = $image->getClientOriginalExtension(); // getting image extension
             $fileName = Auth::user()->username . '_' . rand(11111,99999).'.'.$extension; // renaming image
             $img = Image::make($image);
-            $img->crop(500, 500, 0, 0)->save($destinationPath . $fileName);
+            $img->fit(500,500)->crop(500, 500, 0, 0)->save($destinationPath . $fileName);
         } else {
             Session::flash('error', 'uploaded file is not valid');
             return Redirect::to('/projects/add');
@@ -143,7 +143,7 @@ class ProjectController extends Controller
         $comments = DB::table("comments")
         ->where('project_id', $id)
         ->join('users', 'users.id', '=', 'comments.user_id')
-        ->select('users.firstname', 'users.lastname', 'comments.*')
+        ->select('users.firstname', 'users.lastname', 'comments.*', 'users.image')
         ->get();
 
         return view('projects.detailProjects', compact('project', 'user', 'colorpieces', 'comments', 'likes', 'favorites', 'user_liked', 'user_favorited'));
@@ -318,7 +318,7 @@ class ProjectController extends Controller
             $fileName = Auth::user()->username . '_' . rand(11111,99999).'.'.$extension; // renaming image
             File::delete('uploads/' . $project->img);
             $img = Image::make($image);
-            $img->crop(500, 500, 0, 0)->save($destinationPath . $fileName);
+            $img->fit(500,500)->crop(500, 500, 0, 0)->save($destinationPath . $fileName);
         } else {
             Session::flash('error', 'uploaded file is not valid');
             return Redirect::to('/projects/' . $project_id . '/edit');
