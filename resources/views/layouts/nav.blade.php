@@ -42,7 +42,7 @@
 
                             @if(Auth::check())
                                 <li>
-                                    <a href="{{ url('/profile/' . Auth::user()->id) }}">My Profile</a>
+                                    <a href="{{ url('/profile/' . Auth::user()->username) }}">My Profile</a>
 
                                     @if(true)
                                         <span class="profile-notification" aria-hidden="true">1</span>

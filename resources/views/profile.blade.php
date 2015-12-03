@@ -11,10 +11,10 @@
                     @endfor
                     <br>
                         @if($user->id == Auth::user()->id)
-                            <a id="rewards" href="/profile/{!! $user->id !!}/rewards">View your badges</a>
+                            <a id="rewards" href="/profile/{!! $user->username !!}/rewards">View your badges</a>
                         @endif
                             <br>
-                            <a href="/profile/{{ $user->id }}/favorites">Checkout {{ $user->firstname }}'s favorites</a>
+                            <a href="/profile/{{ $user->username }}/favorites">Checkout {{ $user->firstname }}'s favorites</a>
                 </ul>
             </div>
 
@@ -25,7 +25,7 @@
                     <img class="img-circle" id="profilepicture" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
                 @endif
 
-                <a href="/profile/{!! $user->id !!}" id="user">{{ $user->firstname . " " . $user->lastname }}</a>
+                <a href="/profile/{!! $user->username !!}" id="user">{{ $user->firstname . " " . $user->lastname }}</a>
                 <p>{{ $user->email }}</p>
                 <div id="socialmediadiv">
                     <a href="{!! $user->facebook !!}" class="socialmedia" id="facebook">facebook</a>

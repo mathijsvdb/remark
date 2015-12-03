@@ -88,7 +88,7 @@
                             <a href="/projects/{!! $work->id !!}">
                                 <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
                             </a>
-                            <a href="/profile/{!! $work->user_id !!}">
+                            <a href="/profile/{!! $work->username !!}">
                                 <p style="text-transform: uppercase">{!! $work->username !!}</p>
                             </a>
                         </div>
@@ -107,7 +107,7 @@
                             <a href="/projects/{!! $work->id !!}">
                                 <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
                             </a>
-                            <a href="/profile/{!! $work->user_id !!}">
+                            <a href="/profile/{!! $work->username !!}">
                                 <p style="text-transform: uppercase">{!! $work->username !!}</p>
                             </a>
                         </div>

@@ -47,7 +47,7 @@ Route::group(['prefix' => 'ajax'], function () {
 /*
  * Profile Routes
  */
-Route::get('profile/{id}', [
+Route::get('profile/{username}', [
     'middleware' => 'auth',
     'uses' =>'ProfileController@profile'
 ]);
@@ -56,17 +56,17 @@ Route::get('update', [
     'uses' => 'ProfileController@updateProfile']
 );
 Route::post('update', 'ProfileController@postProfile');
-Route::get('/profile/{id}/activity', [
+Route::get('/profile/{username}/activity', [
     'middleware' => 'auth',
     'uses' => 'UserActivityController@showAllActivity'
 ]);
-Route::post('/profile/{id}/activityFilter',function(){
+Route::post('/profile/{username}/activityFilter',function(){
     if(Request::ajax()){
         return 'iets';
     }
 });
 
-Route::get('profile/{id}/favorites', [
+Route::get('profile/{username}/favorites', [
     'middleware' => 'auth',
     'uses' => 'ProfileController@showFavorites'
 ]);
