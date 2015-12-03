@@ -22,13 +22,19 @@ class ApiController extends Controller
     public function getPopularProjects(Request $request) {
         $page     = $request->get('page');
         $perpage  = $request->get('perpage');
-        $response = [];
+        $data     = [];
 
         if((isset($page) && !empty($page) && (isset($perpage) && !empty($perpage)))) {
             $projects = Project::paginate($perpage);
 
+            $links = [
+                'self' => $projects->url($projects->currentPage()),
+                'next' => $projects->nextPageUrl(),
+                'last' => $projects->url($projects->lastPage()),
+            ];
+
             foreach($projects as $project) {
-                $data = [
+                $info = [
                     'id' => $project->id,
                     'title' => $project->title,
                     'url' => url('/projects/' . $project->id),
@@ -39,16 +45,21 @@ class ApiController extends Controller
                     'likes' => $project->likes->count()
                 ];
 
-                array_push($response, $data);
+                array_push($data, $info);
             }
 
-            $new_array = [];
+            $sorted = [];
 
-            foreach($response as $single => $like) {
-                $new_array[$single] = $like['likes'];
+            foreach($data as $items => $item) {
+                $sorted[$items] = $item['likes'];
             }
 
-            array_multisort($singles, SORT_DESC, $response);
+            array_multisort($sorted, SORT_DESC, $data);
+
+            $response = [
+                'links' => $links,
+                'data'  => $data
+            ];
 
             header('Content-type: application/json');
             echo json_encode($response);
