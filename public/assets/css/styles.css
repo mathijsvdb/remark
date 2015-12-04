@@ -694,6 +694,24 @@ input[type=checkbox]{
     right: 70px;
 }
 
+.detail_container .btn_edit_project{
+    background-color: lightgreen;
+    border: none;
+    color: white;
+    width: auto;
+    border-radius: 100px;
+    display: inline-block;
+    padding: 6px 12px;
+    color:white !important;
+    float: left;
+    margin-top: 0px;
+    font-size: 14px !important;
+}
+
+.project_flag_edit_delete_btn{
+    margin-top: 15px;
+}
+
 
 
 /*---------------*/
