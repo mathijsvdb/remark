@@ -96,7 +96,9 @@ class ProjectController extends Controller
             $project->battle_id = $battle_id;
         }
 
+        if($title){
 
+        }
 
 
         if($extension == 'png'){

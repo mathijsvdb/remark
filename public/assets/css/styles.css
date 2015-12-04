@@ -514,8 +514,20 @@ li a:hover{
    color:white !important;
 }
 
-.plus-project a{
+.plus-project:link,
+.plus-project:visited,
+.plus-project:hover,
+.plus-project:active{
     margin-left: 30px;
+    border-radius: 30px;
+    background-color: lightgreen;
+    border: none;
+    color: white;
+    margin-left: 20px;
+}
+
+.plus-project:hover, header a:hover, #searchbutton:hover{
+    background-color: mediumspringgreen !important;
 }
 
 .projects-title{

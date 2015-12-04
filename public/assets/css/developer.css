@@ -28,9 +28,13 @@
 }
 
 .user_api_key_container button{
-    background-color: limegreen;
+    background-color: lightgreen;
     border: none;
     border-radius: 50px;
     color: white;
     padding: 10px;
+}
+
+.user_api_key_container button:hover{
+    background-color: mediumspringgreen;
 }

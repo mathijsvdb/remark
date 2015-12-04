@@ -21,6 +21,12 @@
     border-radius: 30px;
     font-size: 1.4rem;
     color: white;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.adver_container a:hover{
+    background-color: mediumspringgreen;
 }
 
 .content_adver{
