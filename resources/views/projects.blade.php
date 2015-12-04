@@ -12,20 +12,13 @@
             @foreach($projects as $project)
                     <li class="col-xs-3 project content-box">
                         <div class="projects-title">
-                            <a href="/projects/{{ $project->id }}">{{ $project->title }}</a>
-                            @if(Auth::check() && $project->user_id == Auth::id())
-                            <a href="/projects/{{ $project->id }}/edit/" class="btn btn-default btn_edit_project">Edit</a>
+                            <a href="/projects/{{ $project->id }}"><span>{{ $project->title }}</span><img src="/uploads/{!! $project->img !!}" alt=""><p>{{$project->body}}</p></a>
 
-                            <form class="form" action="/projects/{{ $project->id }}/delete" method="post" onclick="return confirm('Are you sure you want to delete this project?');">
-                                {!! csrf_field() !!}
-                                <button type="submit" class="btn btn-default btn-delete">Delete</button>
-                            </form>
-                            @endif
                         </div>
 
 
-                        <img src="/uploads/{!! $project->img !!}" alt="">
-                        <p>{{$project->body}}</p>
+
+
                     </li>
             @endforeach
         </ul>
