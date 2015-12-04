@@ -943,35 +943,35 @@ footer{
     clear: both;
 }
 
-.advertising a:link,
-.advertising a:visited,
-.advertising a:hover,
-.advertising a:active{
+.reclam a:link,
+.reclam a:visited,
+.reclam a:hover,
+.reclam a:active{
     color: white;
 }
-.advertising a:hover{
+.reclam a:hover{
     color: white!important;
     text-decoration: none;
 }
 
-.advertising{
+.reclam{
     margin-left: -40px;
     margin-top: 30px;
     background-color: rgba(233, 233, 233, 0.50);
     padding-bottom: 30px;
 }
 
-.advertising img{
+.reclam img{
     z-index: -1;
 }
 
-.advertising h3{
+.reclam h3{
     padding: 10px;
     margin-bottom: 0px;
     background-color: black;
 }
 
-.advertising li{
+.reclam li{
     position: relative;
     width: 200px;
     margin: 0 auto;
@@ -979,7 +979,7 @@ footer{
     box-shadow: 0 2px 10px 0 rgba(0,0,0,.16);
 }
 
-.advertising li p{
+.reclam li p{
     position: absolute;
     width: 100%;
     padding-top: 10px;
