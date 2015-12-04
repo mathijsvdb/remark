@@ -12,13 +12,14 @@
             @foreach($projects as $project)
                     <li class="col-xs-3 project content-box">
                         <div class="projects-title">
-                            <a href="/projects/{{ $project->id }}"><span>{{ $project->title }}</span><img src="/uploads/{!! $project->img !!}" alt=""><p>{{$project->body}}</p></a>
+                            <a href="/projects/{{ $project->id }}">
+                                <span>{{ $project->title }}</span>
+
+                                <p>{{$project->body}}</p>
+                            </a>
+                            <img src="/uploads/{!! $project->img !!}" alt="">
 
                         </div>
-
-
-
-
                     </li>
             @endforeach
         </ul>

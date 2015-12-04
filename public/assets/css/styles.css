@@ -470,9 +470,7 @@ h1.text-center.login-title{
     margin-top: -32px;
 }
 
-.project p{
-    padding: 15px;
-}
+
 
 .projects-container{
      width: 100%;
@@ -481,17 +479,22 @@ h1.text-center.login-title{
 
 .projects-container p{
     width: 100%;
+    height: 30%;
+    font-size: 1.6rem;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    display: -webkit-box;
     overflow: hidden;
-    position: absolute;
-    bottom: 0;
-    background-color: black;
+    padding: 14px;
+    line-height: 2rem;
+    -webkit-line-clamp: 4;
+    margin-top: 210px;
+    -webkit-box-orient: vertical;
 }
 
 .projects-container li{
     margin: 10px;
     padding: 0;
+    max-height: 400px;
     position: relative;
 }
 
@@ -499,19 +502,34 @@ h1.text-center.login-title{
 .project a:visited,
 .project a:hover,
 .project a:active{
+    width: 100%;
+    height: 100%;
     text-decoration: none;
-    color: white;
+    opacity: 0;
+    color: black;
+    position: absolute;
+    -webkit-transition: opacity ease 0.3s;
+    -moz-transition: opacity ease 0.3s;
+    -ms-transition: opacity ease 0.3s;
+    -o-transition: opacity ease 0.3s;
+    transition: opacity ease 0.3s;
+}
+
+.project a:hover{
+    opacity: 0.96;
+    background-color: white;
+    color:grey !important;
 }
 
 .projects-container span{
     position: absolute;
-    background-color: black;
     padding: 15px;
     width: 100%;
-}
-
-li a:hover{
-   color:white !important;
+    font-weight: bold;
+    border-bottom: 1px solid lightgrey;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .plus-project:link,
@@ -523,7 +541,6 @@ li a:hover{
     background-color: lightgreen;
     border: none;
     color: white;
-    margin-left: 20px;
 }
 
 .plus-project:hover, header a:hover, #searchbutton:hover{
