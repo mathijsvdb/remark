@@ -83,14 +83,14 @@
                     @if(Auth::check() && $project->user_id == Auth::id())
                         <a href="/projects/{{ $project->id }}/edit/" class="btn btn-default btn_edit_project">Edit</a>
 
-                        <form class="form" action="/projects/{{ $project->id }}/delete" method="post" onclick="return confirm('Are you sure you want to delete this project?');">
+                        <form class="form proj_delete_form" action="/projects/{{ $project->id }}/delete" method="post" onclick="return confirm('Are you sure you want to delete this project?');">
                             {!! csrf_field() !!}
                             <button type="submit" class="btn btn-default btn-delete">Delete</button>
                         </form>
                     @endif
                     <form action="/" method="post" class="flag_project_user">
                         {!! csrf_field() !!}
-                        <button class="flag_project" title="flag project" type=submit class="btn btn-xs" id="flag_project"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
+                        <button class="flag_project" title="flag project" type=submit class="btn btn-xs" id="flag_project">Flag for spam: <span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
                     </form>
                 </li>
 

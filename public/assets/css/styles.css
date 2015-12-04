@@ -610,7 +610,6 @@ input[type=checkbox]{
 
 .detail_container span:first-child{
     float: none;
-    display: block;
 }
 
 .project-info-text .img-circle{
@@ -686,12 +685,13 @@ input[type=checkbox]{
 .flag_comment button, .flag_project_user button{
     border: none;
     background-color: transparent;
-    position: absolute;
     top:0;
     right: 0px;
+    display: inline-block;
 }
-.flag_project_user button{
-    right: 70px;
+
+.flag_project_user{
+    display: inline-block;
 }
 
 .detail_container .btn_edit_project{
@@ -710,6 +710,14 @@ input[type=checkbox]{
 
 .project_flag_edit_delete_btn{
     margin-top: 15px;
+}
+
+.detail_container .btn-delete{
+    display: inline-block;
+}
+
+.detail_container .proj_delete_form{
+    display: inline-block;
 }
 
 
