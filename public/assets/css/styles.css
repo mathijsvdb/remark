@@ -43,6 +43,7 @@ body ul{
     border:none;
     border-radius: 0px;
     color: black;
+    box-shadow: none;
     border-bottom: 2px solid lightgreen;
 }
 
@@ -192,19 +193,6 @@ li.active {
     padding: 20px;
 }
 
-.btn{
-    background-color: lightgreen;
-    border: none;
-    color: white;
-    width: auto;
-    border-radius: 100px;
-}
-
-.btn:hover{
-    background-color: mediumspringgreen;
-    color: white;
-}
-
 .header-content-inner{
     background-color: white;
     padding: 40px 20px 40px 20px;
@@ -301,6 +289,15 @@ header .header-content .header-content-inner p {
 }
 
 /*front spotlight*/
+#searchbutton{
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    border: none;
+    background-color: lightgreen;
+    color: white;
+    padding: 7px 10px 7px;
+}
+
 #spotlight{
     position: relative;
     color:black;
@@ -312,10 +309,6 @@ header .header-content .header-content-inner p {
 
 #spotlight .input-group{
     width: 300px;
-}
-
-#spotlight .btn{
-    height: 34px;
 }
 
 #spotlight h2{
@@ -428,10 +421,6 @@ h1.text-center.login-title{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.row {
-     margin-right: 0px;
-     margin-left: 0px;
-}
 
 /*------addprojects-------*/
 .add-project-container{
@@ -457,20 +446,6 @@ h1.text-center.login-title{
     margin-bottom: 20px;
 }
 
-a.btn.btn-primary.plus-project{
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-left: 40px;
-    padding-bottom: 10px;
-    padding-top: 0px;
-}
-
-a.btn.btn-primary.plus-project span{
-    font-size: 3rem;
-    width: 30px;
-    height: 30px;
-}
 
 .btn_edit_project:link,
 .btn_edit_project:visited,
@@ -502,20 +477,37 @@ a.btn.btn-primary.plus-project span{
 .projects-container{
      width: 100%;
      height: 100%;
-     Margin:0 auto;
  }
+
+.projects-container p{
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    background-color: black;
+}
 
 .projects-container li{
     margin: 10px;
     padding: 0;
+    position: relative;
 }
 
 .project a:link,
 .project a:visited,
 .project a:hover,
 .project a:active{
-    color: white;
     text-decoration: none;
+    color: white;
+}
+
+.projects-container span{
+    position: absolute;
+    background-color: black;
+    padding: 15px;
+    width: 100%;
 }
 
 li a:hover{
@@ -528,10 +520,9 @@ li a:hover{
 
 .projects-title{
     width: 100%;
-    padding: 8px;
     font-size: 2rem;
     position: relative;
-    background-color: #333;
+    /*background-color: #333;*/
 }
 
 input[type=checkbox]{
