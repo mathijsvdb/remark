@@ -145,6 +145,7 @@ class ProjectController extends Controller
         ->where('project_id', $id)
         ->join('users', 'users.id', '=', 'comments.user_id')
         ->select('users.firstname', 'users.lastname', 'comments.*', 'users.image')
+            ->orderBy('created_at', 'desc')
         ->get();
 
         return view('projects.detailProjects', compact('project', 'user', 'colorpieces', 'comments', 'likes', 'favorites', 'user_liked', 'user_favorited'));
