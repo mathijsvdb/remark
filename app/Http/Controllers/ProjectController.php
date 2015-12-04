@@ -83,8 +83,12 @@ class ProjectController extends Controller
 
 
         $project = new Project;
+        if(strlen($title) <= 50){
+            $project->title = $title;
+        } else {
+            return Redirect::to('/projects/add')->withInput()->withErrors("Title is too long, max 50 characters");
+        }
 
-        $project->title = $title;
         $project->body = $body;
         $project->tags = $tags;
         $project->img = $fileName;
@@ -95,11 +99,6 @@ class ProjectController extends Controller
         if($battle_id != "") {
             $project->battle_id = $battle_id;
         }
-
-        if($title){
-
-        }
-
 
         if($extension == 'png'){
             $pimage = $client->loadPng('uploads/' . $fileName);
