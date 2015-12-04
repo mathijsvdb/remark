@@ -20,7 +20,7 @@ class AdsTableSeeder extends Seeder
                 'title' => 'Adobe Creative Cloud',
                 'description' => "Save 20% on purchases",
                 'url' => "http://www.adobe.com/be_nl/creativecloud.html",
-                'img' => 'assets/images/ads/ad_adobe.png',
+                'img' => 'assets/images/reclam/reclam_adobe.png',
                 'user_id' => 1,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)
@@ -29,7 +29,7 @@ class AdsTableSeeder extends Seeder
                 'title' => 'Dribbble',
                 'description' => "Remark is stealing our customers!",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/ads/ad_dribble.png',
+                'img' => 'assets/images/reclam/reclam_dribble.png',
                 'user_id' => 1,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)
@@ -38,7 +38,7 @@ class AdsTableSeeder extends Seeder
                 'title' => 'Razer',
                 'description' => "New Anansi Keyboard",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/ads/ad_razer.png',
+                'img' => 'assets/images/reclam/reclam_razer.png',
                 'user_id' => 2,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)
@@ -47,7 +47,7 @@ class AdsTableSeeder extends Seeder
                 'title' => 'Thomas More',
                 'description' => "De hogeschool voor wie meer verwacht",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/ads/ad_thomasmore.png',
+                'img' => 'assets/images/reclam/reclam_thomasmore.png',
                 'user_id' => 1,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)
@@ -56,7 +56,7 @@ class AdsTableSeeder extends Seeder
                 'title' => 'Beezonder',
                 'description' => "Een beezondere blog",
                 'url' => "http://www.beezonder.be/",
-                'img' => 'assets/images/ad_beezonder.png',
+                'img' => 'assets/images/reclam/reclam_beezonder.png',
                 'user_id' => 2,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)
