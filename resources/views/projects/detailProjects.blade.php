@@ -16,7 +16,7 @@
                     <img class="img-circle project_user_img" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
                 @endif
                 <h2>
-                    {!! $project['title'] !!} <span>by <a href="/profile/{!! $user['id'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a>{!! " " . $project['created_at'] !!}</span>
+                    {!! $project['title'] !!} <span>by <a href="/profile/{!! $user['username'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a>{!! " " . $project['created_at'] !!}</span>
                     <form action="/" method="post" class="flag_project_user">
                         {!! csrf_field() !!}
                         <button class="flag_project" title="flag project" type=submit class="btn btn-xs" id="flag_project"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>

@@ -21,14 +21,16 @@ class ProfileController extends Controller {
      *
      * @return Response
      */
-    public function profile($id)
+    public function profile($username)
     {
-        $user = User::find($id);
-        $projects = Project::where('user_id', $id)->get();
+        // $user = User::find($id);
+        $user = User::where('username', $username)->first();
+
+        $projects = Project::where('user_id', $user->id)->get();
 
         $badges = DB::table("userbadges")
             ->join('badges', 'badge_id' , '=' , 'badges.id')
-            ->where('user_id', $id)
+            ->where('user_id', $user->id)
             ->orderBy('created_at', 'asc')
             ->take(3)
             ->get();
@@ -103,10 +105,12 @@ class ProfileController extends Controller {
         return redirect("profile/" . $user->id);
     }
 
-    public function showFavorites($user_id)
+    public function showFavorites($username)
     {
+        $user = User::where('username', $username)->first();
+
         $myFavorites = DB::table('favorites')
-            ->where('favorites.user_id', '=', $user_id)
+            ->where('favorites.user_id', '=', $user->id)
             ->join('projects', 'projects.id', '=', 'favorites.project_id')
             ->join('users', 'users.id', '=', 'projects.user_id')
             ->select('projects.*', 'users.username')
