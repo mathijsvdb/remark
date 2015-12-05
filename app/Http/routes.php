@@ -131,11 +131,16 @@ Route::post('/advertising/add', 'AdsController@postAddAdvertisement');
 /*
  * API Routes
  */
-Route::get('/developer','ApiController@developer');
-Route::group(['prefix' => 'api/v1'], function() {
-    Route::get('items/popular', 'ApiController@getPopularProjects');
-    Route::get('item/{id}', 'ApiController@getProjectById');
+Route::get('/developers', function() {
+    return view('developers');
 });
+
+Route::group(['prefix' => 'api/v1'], function() {
+    Route::get('items/popular', 'API\ItemsController@getPopularProjects');
+    Route::get('items/{id}', 'API\ItemsController@getProjectById');
+    Route::get('items', 'API\ItemsController@index');
+});
+
 
 
 
