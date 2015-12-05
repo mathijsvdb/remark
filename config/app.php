@@ -139,10 +139,7 @@ return [
         'Weblee\Mandrill\MandrillServiceProvider',
         Laravel\Cashier\CashierServiceProvider::class,
         'Intervention\Image\ImageServiceProvider',
-
-
-        /*custom (dit is de image upload/resize*/
-        /*Intervention\Image\ImageServiceProvider,*/
+        Chrisbjr\ApiGuard\Providers\ApiGuardServiceProvider::class,
 
         /*
          * Application Service Providers...
