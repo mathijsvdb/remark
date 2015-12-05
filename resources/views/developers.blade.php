@@ -14,7 +14,13 @@
 
 
                 <div class="user_api_key_container col-md-12 center-block content-box">
-                    <button id="generate_API_KEY">Generate Key</button>
+                    <h3>API Keys</h3>
+
+                    <form action="" method="post">
+                        {!! csrf_field() !!}
+                        <button type="submit" class="btn btn-default" id="generate_API_KEY">Generate Key</button>
+                    </form>
+
                     <ul class=""> <!-- lus hier keys uit die gelinkt zijn aan de gebruiker.-->
                         <span>Your api key here!</span>
                         <li>
