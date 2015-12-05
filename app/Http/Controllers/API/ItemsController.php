@@ -11,7 +11,10 @@ class ItemsController extends Controller
 {
     public function index()
     {
-        return response()->json(['error' => 'parameters not defined (' . url('/developers') . ' for more info).'], 400);
+        return response()->json([
+            'error'     => 'parameters not defined.',
+            'more info' => url('developers'),
+        ], 400);
     }
 
     public function getProjectById($id) {
