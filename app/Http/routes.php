@@ -131,14 +131,19 @@ Route::post('/advertising/add', 'AdsController@postAddAdvertisement');
 /*
  * API Routes
  */
-Route::get('/developers', function() {
-    return view('developers');
-});
 
-Route::group(['prefix' => 'api/v1'], function() {
-    Route::get('items/popular', 'API\ItemsController@getPopularProjects');
-    Route::get('items/{id}', 'API\ItemsController@getProjectById');
-    Route::get('items', 'API\ItemsController@index');
+
+Route::group(['namespace' => 'API'], function() {
+    // Developers
+    Route::get('developers', 'ApiController@index');
+    Route::post('developers', 'ApiController@generateAPIkey');
+
+    Route::group(['prefix' => 'api/v1'], function() {
+        // Items endpoint
+        Route::get('items/popular', 'ItemsController@getPopularProjects');
+        Route::get('items/{id}', 'ItemsController@getProjectById');
+        Route::get('items', 'ItemsController@index');
+    });
 });
 
 
