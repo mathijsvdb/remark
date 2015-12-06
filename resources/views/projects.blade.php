@@ -5,7 +5,7 @@
 @section("content")
 
     <h1>Projects<a href="/projects/add" class="btn btn-primary plus-project"><span>+</span> Add a project</a></h1>
-
+    <hr class="hr_left">
 
     <div class="projects-container">
         <ul class="row">

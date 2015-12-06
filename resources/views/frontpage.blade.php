@@ -34,6 +34,7 @@
 
     <section id="spotlight">
         <h2>Spotlight</h2>
+        <hr>
         <!-- <img src="http://placehold.it/350x150"> -->
         <div class="row">
             <div class="col-md-8">

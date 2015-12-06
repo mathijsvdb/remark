@@ -1,9 +1,9 @@
 @extends("layouts.master")
 
 @section("content")
-    <div>
+
                 <ul class="row myprofile_container">
-                    <li class="col-md-3">
+                    <li class="col-md-3 list-item-height">
                         <div class="basicinfo content-box">
 
                             @if($user->image == 'default.jpg')
@@ -52,10 +52,7 @@
                     </li>
 
                 </ul>
-            </div>
 
-        </div>
-    </div>
 
 
 
