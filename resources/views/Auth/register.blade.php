@@ -56,7 +56,7 @@
             <div class="form-group">
                 <label for="email" class="col-sm-3 control-label"></label>
                 <div class="col-sm-9">
-                    <h2>Reffer friends</h2>
+                    <h2>Refer friends</h2>
                     <span class="help-block">Do you have a talented friend? refer him and get higher in to the waiting list</span>
                     <input type="email" id="refer_email" placeholder="Friends e-mail" name="refer_email" class="form-control" value="{{ old('email') }}" >
                     <input type="email" id="refer_email2" placeholder="Friends e-mail" name="refer_email2" class="form-control" value="{{ old('email') }}" >
