@@ -34,15 +34,49 @@ class Kernel extends ConsoleKernel
 
             $date = new Carbon;
             $date->subWeek();
+            $url = url('/password/email');
 
-            $result_waitingList = DB::table('waitlist')
+            $result_waitingList = DB::table('users')
                 ->where('created_at', '<', $date->toDateTimeString())
-                ->orderBy(DB::raw('RAND()'))
+                ->where('accountstatus', '=', 0)
                 ->get();
 
-            var_dump($result_waitingList);
+            foreach($result_waitingList as $w){
 
-        })->everyMinute();
+                $template_content = [];
+                $message = array(
+                    'subject' => 'Your account has been activated!',
+                    'from_email' => 'noreply@remark.com',
+                    'from_name' => 'Remark',
+                    'to' => array(
+                        array(
+                            'email' => $w->email,
+                            'name' => $w->firstname + ' ' + $w->lastname,
+                            'type' => 'to'
+                        )
+                    ),
+                    'merge_vars' => array(
+                        array(
+                            'rcpt' => $w->email,
+                            'vars' => array(
+                                array(
+                                    'name' => 'PASSLINK',
+                                    'content' => $url,
+                                ),
+                                array(
+                                    'name' => 'FIRSTNAME',
+                                    'content' => $w->firstname,
+                                ),
+                            )
+                        )
+                    ),
+                );
+
+                MandrillMail::messages()->sendTemplate('remark-activate', $template_content, $message);           
+            }
+
+
+        })->hourly();
     
         $schedule->call(function () {
             DB::table('ads')
@@ -128,7 +162,7 @@ class Kernel extends ConsoleKernel
                                 ),
                             );
 
-                        MandrillMail::messages()->sendTemplate('remark_highlight_mail', $template_content, $message);
+                        // MandrillMail::messages()->sendTemplate('remark_highlight_mail', $template_content, $message);
                     }
                 }
        

@@ -119,16 +119,22 @@ class AuthController extends Controller
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'image' => 'default.jpg'
+            'accountstatus' => '1',
+            'image' => 'default.jpg',
+            
         ]);
     }
 
     protected function addToWaitlist(array $data)
     {
-        return Waitlist::create([
+        return User::create([
             'firstname' => ucfirst($data['firstname']),
             'lastname' => ucfirst($data['lastname']),
+            'username' => $data['username'],
             'email' => $data['email'],
+            'accountstatus' => '0',
+            'image' => 'default.jpg',
+            
         ]);
     }
 
