@@ -763,24 +763,56 @@ footer{
 .center404 a{color:white;}
 
 /*--------------profile page -------------------*/
+.myprofile_container{
+    padding-left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.basicinfo a:link,
+.basicinfo a:visited,
+.basicinfo a:hover,
+.basicinfo a:active{
+    display: block;
+    border: none;
+    font-size: 1.8rem;
+    border-radius: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.basicinfo a:hover{
+    background-color: lightgreen;
+    color: white;
+}
+
+#rewards span{
+    display: block;
+}
+
+#socialmediadiv a:hover{
+    background-color: transparent;
+}
 
 #profilepicture{
      width: 100px;
      height: 100px;
-     display: block;
      margin-right: auto;
      margin-left: auto;
+     margin-top: 20px;
      padding: 5px;
      background-color: white;
  }
 
-#basicinfo{
+.basicinfo{
+    margin-top: 20px;
+    height: 100%;
+    padding: 0;
     text-align: center;
 }
 
 #user{
-    font-size: 20px;
-    color: darkslategrey;
+    font-size: 2.4rem;
     font-weight: bold;
     text-decoration: none;
     margin-top: 15px;
@@ -809,7 +841,6 @@ footer{
 }
 
 #edit{
-    display: block;
     clear: both;
 }
 
@@ -957,6 +988,11 @@ hr{
 .notificationlist{margin-top: 30px; width: 80%; min-width: 400px}
 .notificationlist p{color:black;}
 .notificationlist span{color:black;}
+
+.navbar{
+    border: none;
+    margin-bottom: 0px;
+}
 
 /*-- ads --*/
 
