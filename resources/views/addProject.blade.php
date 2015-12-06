@@ -1,7 +1,7 @@
 @extends("layouts.master")
 
 @section("content")
-
+    <div class="addProject_container_bg"></div>
     @if (count($errors) > 0)
         <div class="alert alert-danger">
             <ul>
@@ -17,13 +17,13 @@
             {!! csrf_field() !!}
 
             <div class="form-group">
-                <label for="title">Project title</label><br>
-                <input type="text" name="title" style="color:black" maxlength="50" value={!! old('title') !!}> <br>
+                <label for="title">Project title</label>
+                <input type="text" placeholder="Porject titel" name="title" value={!! old('title') !!}>
             </div>
 
             <div class="form-group">
-                <label for="body">Project description:</label><br>
-                <textarea class="form-control" name="body" rows="3" value={!! old('body') !!}></textarea>
+                <label for="body">Project description:</label>
+                <textarea class="form-control" name="body" placeholder="Write details..." rows="3" value={!! old('body') !!}></textarea>
                 <br>
             </div>
 
@@ -40,7 +40,7 @@
             </div>
 
             <div class="form-group">
-                <p class="col-xs-7"><b>Select image to upload (500x500):</b></p>
+                <p class="col-xs-12"><b>Select image to upload (500x500):</b></p>
                 <input type="file" name="fileToUpload" id="fileToUpload" value={!! old('fileToUpload') !!}>
             </div>
 
@@ -55,7 +55,7 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-default">Add project</button>
+                <button type="submit" class="btn btn-default btn_addProject">Add project</button>
             </div>
 
         </form>
