@@ -23,6 +23,10 @@ body ul{
     list-style-type: none;
 }
 
+.navbar_content a:hover{
+    color: white !important;
+}
+
 .container{
     color: black;
     width: 100%;
@@ -53,6 +57,7 @@ body ul{
 
 .dropdown-menu>li>a:hover {
     background-color: lightgreen !important;
+    color: white;
 }
 
 
@@ -1012,10 +1017,10 @@ footer{
 }
 
 .reclam{
-    margin-left: -40px;
     margin-top: 30px;
     background-color: rgba(233, 233, 233, 0.50);
     padding-bottom: 30px;
+    width: 100%;
 }
 
 .reclam img{
