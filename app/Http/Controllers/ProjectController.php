@@ -260,10 +260,9 @@ class ProjectController extends Controller
                 )
             ];
 
-            MandrillMail::messages()->sendTemplate('remark-comment', $template_content, $message);
-
-        }
-
+        MandrillMail::messages()->sendTemplate('remark-comment', $template_content, $message);
+    }
+    
         $this->checkUserWithin2Hours($user->id);
         return redirect('projects/' . $comment->project_id);
     }

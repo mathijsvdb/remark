@@ -30,6 +30,59 @@ class Kernel extends ConsoleKernel
         $schedule->command('inspire')
                  ->hourly();
 
+        $schedule->call(function(){
+
+            $date = new Carbon;
+            $date->subWeek();
+            $url = url('/password/email');
+
+            $result_waitingList = DB::table('users')
+                ->where('created_at', '<', $date->toDateTimeString())
+                ->where('accountstatus', '=', 0)
+                ->get();
+
+
+
+            foreach($result_waitingList as $w){
+
+                $template_content = [];
+                $message = array(
+                    'subject' => 'Your account has been activated!',
+                    'from_email' => 'noreply@remark.com',
+                    'from_name' => 'Remark',
+                    'to' => array(
+                        array(
+                            'email' => $w->email,
+                            'name' => $w->firstname + ' ' + $w->lastname,
+                            'type' => 'to'
+                        )
+                    ),
+                    'merge_vars' => array(
+                        array(
+                            'rcpt' => $w->email,
+                            'vars' => array(
+                                array(
+                                    'name' => 'PASSLINK',
+                                    'content' => $url,
+                                ),
+                                array(
+                                    'name' => 'FIRSTNAME',
+                                    'content' => $w->firstname,
+                                ),
+                            )
+                        )
+                    ),
+                );
+
+                MandrillMail::messages()->sendTemplate('remark-activate', $template_content, $message);
+
+            }
+
+            $result_waitingList = DB::table('users')
+                ->update(['accountstatus' => 1]);
+
+        })->everyMinute();
+    
         $schedule->call(function () {
             DB::table('ads')
                 ->where('end_date', '<', Carbon::now())
@@ -114,7 +167,7 @@ class Kernel extends ConsoleKernel
                                 ),
                             );
 
-                        MandrillMail::messages()->sendTemplate('remark_highlight_mail', $template_content, $message);
+                        // MandrillMail::messages()->sendTemplate('remark_highlight_mail', $template_content, $message);
                     }
                 }
        

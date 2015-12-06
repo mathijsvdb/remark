@@ -22,9 +22,9 @@
 
                 <div class="col-sm-12">
                     <label for="title" class="control-label">Title:</label>
-                    <input type="text" id="title" placeholder="Title" name="title" class="form-control" autofocus required="required">
+                    <input type="text" id="title" placeholder="Title" name="title" class="form-control" autofocus required="required" />
                     <label for="url">Url to website:</label>
-                    <input type="text" id="url" placeholder="http://" name="url" class="form-control" autofocus required="required">
+                    <input type="text" id="url" placeholder="http://" name="url" class="form-control" autofocus required="required" />
                     <span class="help-block">Example: http://example.com</span>
                     <label for="startDate">Date :</label>
                     <input name="data-picker" id="input" type="date" class="date-picker" />

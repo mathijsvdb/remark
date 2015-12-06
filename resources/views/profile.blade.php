@@ -57,6 +57,16 @@
         </div>
     </div>
 
+        </div>
+        <br />
+        <hr />
+        <div id="allwork">
+            @foreach($projects as $work)
+                <a href="/projects/{!! $work['id'] !!}">
+                    <img class="projectimages" src="/uploads/{!! $work['img'] !!}" alt="">
+                </a>
+            @endforeach
+        </div>
 
-
+    </div>
 @stop

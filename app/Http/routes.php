@@ -44,6 +44,12 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::post('projects/{id}/unfavorite', 'AjaxController@unfavoriteProject');
 });
 
+
+Route::post('/projects/{id}', 'ProjectController@addComment');
+
+Route::get('profile/{id}','ProfileController@profile');
+Route::get('update','ProfileController@updateProfile');
+
 /*
  * Profile Routes
  */
@@ -55,6 +61,7 @@ Route::get('update', [
     'middleware' => 'auth',
     'uses' => 'ProfileController@updateProfile']
 );
+
 Route::post('update', 'ProfileController@postProfile');
 Route::get('/profile/{username}/activity', [
     'middleware' => 'auth',
@@ -87,6 +94,9 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 // Route::get('test', function(){ dd(Config::get('mail'));});
+
+Route::get('/referral', function(){ return view('referral'); });
+Route::post('/referral','ProfileController@referralMail');
 
 /*
  * Battle Routes
