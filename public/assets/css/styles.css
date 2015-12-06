@@ -62,7 +62,6 @@ body ul{
 
 
 .container h1{
-    margin-left: 40px;
     color: black;
 }
 
@@ -509,6 +508,9 @@ h1.text-center.login-title{
     -webkit-line-clamp: 4;
     margin-top: 210px;
     -webkit-box-orient: vertical;
+}
+.projects-container h1{
+    margin-left: 40px;
 }
 
 .projects-container li{
