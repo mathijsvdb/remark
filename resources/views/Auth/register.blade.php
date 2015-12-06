@@ -23,7 +23,7 @@
                 </div>
                 <label for="firstName" class="col-sm-3 control-label">First name</label>
                 <div class="col-sm-9">
-                    <input type="text" id="firstName" placeholder="Name" name="firstname" value="{{ old('firstname') }}" class="form-control" autofocus required="required">
+                    <input type="text" id="firstName" placeholder="Firstname" name="firstname" value="{{ old('firstname') }}" class="form-control" autofocus required="required">
                     <span class="help-block">Example: Smith, Davis</span>
                 </div>
 
@@ -35,9 +35,9 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="email" class="col-sm-3 control-label">Student Email</label>
+                <label for="email" class="col-sm-3 control-label">E-mail</label>
                 <div class="col-sm-9">
-                    <input type="email" id="email" placeholder="Email" name="email" class="form-control" value="{{ old('email') }}" required="required">
+                    <input type="email" id="email" placeholder="E-mail" name="email" class="form-control" value="{{ old('email') }}" required="required">
                     <span class="help-block">Example: u0000000&commat;student.thomasmore.be</span>
                 </div>
             </div>
@@ -55,7 +55,7 @@
             </div>
             <div class="form-group">
                 <div class="col-sm-9 col-sm-offset-3">
-                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    <button type="submit" class="btn btn-primary btn-block register_button">Register</button>
                 </div>
             </div>
         </form> <!-- /form -->

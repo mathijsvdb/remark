@@ -4,10 +4,11 @@
 
 @section("content")
 
-    <h1>Projects<a href="/projects/add" class="btn btn-primary plus-project"><span>+</span> Add a project</a></h1>
 
 
     <div class="projects-container">
+        <h1>Projects<a href="/projects/add" class="btn btn-primary plus-project"><span>+</span> Add a project</a></h1>
+        <hr class="hr_left">
         <ul class="row">
             @foreach($projects as $project)
                     <li class="col-xs-3 project content-box">
