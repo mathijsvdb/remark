@@ -48,7 +48,6 @@ Route::group(['prefix' => 'ajax'], function () {
 Route::post('/projects/{id}', 'ProjectController@addComment');
 
 Route::get('profile/{id}','ProfileController@profile');
-Route::post('profile/{id}','ProfileController@referralMail');
 Route::get('update','ProfileController@updateProfile');
 
 /*
@@ -95,6 +94,9 @@ Route::post('password/email', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
 Route::post('password/reset', 'Auth\PasswordController@postReset');
 // Route::get('test', function(){ dd(Config::get('mail'));});
+
+Route::get('/referral', function(){ return view('referral'); });
+Route::post('/referral','ProfileController@referralMail');
 
 /*
  * Battle Routes

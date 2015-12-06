@@ -116,11 +116,7 @@ class ProfileController extends Controller {
         return view('myFavorites', compact('myFavorites'));
     }
 
-    public function referralMail(Request $request, $id){
-
-        $user = User::find(Auth::id());
-
-        if($user->referral_amount > 0){
+    public function referralMail(Request $request){
 
             $template_content = [];
 
@@ -140,10 +136,6 @@ class ProfileController extends Controller {
                         'rcpt' => Request::input('referral-email'),
                         'vars' => array(
                             array(
-                                'name' => 'SENDER',
-                                'content' =>  $user->firstname . " " . $user->lastname, 
-                            ),
-                            array(
                                 'name' => 'RECEIVER',
                                 'content' =>  "sir, madam",
                             )
@@ -154,11 +146,6 @@ class ProfileController extends Controller {
 
         MandrillMail::messages()->sendTemplate('remark-referral', $template_content, $message);
 
-        $user->referral_amount --;
-
-        $user->save();
-
-        return redirect("profile/" . $user->id);
-        }
+        return redirect(url());
     }
 }

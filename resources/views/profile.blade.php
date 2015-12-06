@@ -55,17 +55,5 @@
             @endforeach
         </div>
 
-        <form method="POST" action="/profile/{{ $user->id }}" enctype="multipart/form-data">
-            {!! csrf_field() !!}
-
-            <div id="referral">
-                <label for="referral-email">If you wish to refer a friend. Invite him by inserting his/her email below</label>
-                <input type="text" name="referral-email" class="form-control">
-            </div>
-
-            <button>Submit!</button>
-        </form>
-
-
     </div>
 @stop
