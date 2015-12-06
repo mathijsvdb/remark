@@ -139,7 +139,6 @@ return [
         'Weblee\Mandrill\MandrillServiceProvider',
         Laravel\Cashier\CashierServiceProvider::class,
         'Intervention\Image\ImageServiceProvider',
-        'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
 
         /*
          * Application Service Providers...
@@ -200,8 +199,6 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'MandrillMail'  => 'Weblee\Mandrill\MandrillFacade',
         'Image' => 'Intervention\Image\Facades\Image',
-        'JWTAuth' => 'Tymon\JWTAuth\Facades\JWTAuth',
-        'JWTFactory' => 'Tymon\JWTAuth\Facades\JWTFactory'
     ],
 
 ];

@@ -15,9 +15,7 @@
         "behat/mink-extension": "^2.0",
         "behat/mink-selenium2-driver": "1.2.0",
         "weblee/mandrill": "dev-master",
-        "laravel/cashier": "~5.0",
-        "tymon/jwt-auth": "0.5.*"
-        
+        "laravel/cashier": "~5.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
