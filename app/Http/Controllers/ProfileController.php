@@ -102,7 +102,7 @@ class ProfileController extends Controller {
 
         $user->save();
 
-        return redirect("profile/" . $user->id);
+        return redirect("profile/" . $user->username);
     }
 
     public function showFavorites($username)

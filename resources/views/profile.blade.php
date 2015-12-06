@@ -15,12 +15,19 @@
 
                             <a class="btn btn-default" href="/profile/{!! $user->username !!}" id="user">{{ $user->firstname . " " . $user->lastname }}</a>
                             <p>{{ $user->email }}</p>
+                            <p>{{ $user->bio }}</p>
 
 
                             <div id="socialmediadiv">
-                                <a href="{!! $user->facebook !!}" class="socialmedia" id="facebook">facebook</a>
-                                <a href="{!! $user->twitter !!}" class="socialmedia" id="twitter">twitter</a>
-                                <a href="{!! $user->website !!}" class="socialmedia" id="website">website</a>
+                                @if(!empty($user->facebook))
+                                    <a href="{!! $user->facebook !!}" class="socialmedia" id="facebook">facebook</a>
+                                @endif
+                                @if(!empty($user->twitter))
+                                    <a href="{!! $user->twitter !!}" class="socialmedia" id="twitter">twitter</a>
+                                @endif
+                                @if(!empty($user->website))
+                                    <a href="{!! $user->website !!}" class="socialmedia" id="website">website</a>
+                                @endif
                             </div>
 
                             @if(Auth::user())
@@ -29,15 +36,17 @@
                                 @endif
                             @endif
 
-                            @if($user->id == Auth::user()->id)
-                                <a class="btn btn-default" id="rewards" href="/profile/{!! $user->username !!}/rewards">
-                                    @for($i = 0; $i < count($badges); $i++)
-                                        <img style="width: 45px; height: 45px; padding: 5px;" src="/assets/images/badges/{{ $badges[$i]->badge_img }}" alt="">
-                                    @endfor
-                                    <span>View your badges</span></a>
+                                @for($i = 0; $i < count($badges); $i++)
+                                    <img style="width: 45px; height: 45px; padding: 5px;" src="/assets/images/badges/{{ $badges[$i]->badge_img }}" alt="">
+                                @endfor
+                            @if(Auth::user())
+                                @if($user->id == Auth::user()->id)
+                                    <a class="btn btn-default" id="rewards" href="/profile/{!! $user->username !!}/rewards">
+                                        <span>View your badges</span></a>
+                                @endif
                             @endif
 
-                            <a  class="btn btn-default" href="/profile/{{ $user->username }}/favorites">Checkout {{ $user->firstname }}'s favorites</a>
+                            <a style="display: block; width: 100%; clear: both; padding: 6px; text-decoration: none;" href="/profile/{{ $user->username }}/favorites">Checkout {{ $user->firstname }}'s favorites</a>
                         </div>
                     </li>
                     <li class="col-lg-9">
@@ -58,15 +67,5 @@
     </div>
 
         </div>
-        <br />
-        <hr />
-        <div id="allwork">
-            @foreach($projects as $work)
-                <a href="/projects/{!! $work['id'] !!}">
-                    <img class="projectimages" src="/uploads/{!! $work['img'] !!}" alt="">
-                </a>
-            @endforeach
-        </div>
-
     </div>
 @stop
