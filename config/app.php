@@ -140,10 +140,6 @@ return [
         Laravel\Cashier\CashierServiceProvider::class,
         'Intervention\Image\ImageServiceProvider',
 
-
-        /*custom (dit is de image upload/resize*/
-        /*Intervention\Image\ImageServiceProvider,*/
-
         /*
          * Application Service Providers...
          */

@@ -1,14 +1,14 @@
 <footer>
-        <ul class="advertising row">
+        <ul class="reclam row">
 
             @foreach($ads as $ad)
                 <div class="col-md-4 ad" id="{{$ad->id}}">
                 <li>
-                    <a href="{{$ad->url}}">
+                    <a target="_blank" href="{{$ad->url}}">
                     <h3>{{$ad->title}} </h3>
 
                     <p>{{$ad->description}} </p>
-                        <img style="width: 200px;" src="{{asset($ad->img)}}" alt="advertising">
+                        <img style="width: 200px;" src="{{asset($ad->img)}}" alt="productsforyou">
                     </a>
                 </li>
                 </div>

@@ -16,17 +16,20 @@
             {!! csrf_field() !!}
             <h2>Register</h2>
             <div class="form-group">
-                <label for="firstName" class="col-sm-3 control-label">Full name</label>
+                <label for="lastname" class="col-sm-3 control-label">Last name</label>
                 <div class="col-sm-9">
                     <input type="text" id="lastname" placeholder="Lastname" name="lastname" value="{{ old('lastname') }}" class="form-control" autofocus required="required">
                     <span class="help-block">Example: Emma, Liam </span>
+                </div>
+                <label for="firstName" class="col-sm-3 control-label">First name</label>
+                <div class="col-sm-9">
                     <input type="text" id="firstName" placeholder="Name" name="firstname" value="{{ old('firstname') }}" class="form-control" autofocus required="required">
                     <span class="help-block">Example: Smith, Davis</span>
                 </div>
 
             </div>
             <div class="form-group">
-                <label for="username" class="col-sm-3 control-label">Student username</label>
+                <label for="username" class="col-sm-3 control-label">Your unique username</label>
                 <div class="col-sm-9">
                     <input type="username" placeholder="Username" value="{{ old('username') }}" name="username" class="form-control" required="required">
                 </div>

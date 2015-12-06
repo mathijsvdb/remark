@@ -16,7 +16,6 @@
         "behat/mink-selenium2-driver": "1.2.0",
         "weblee/mandrill": "dev-master",
         "laravel/cashier": "~5.0"
-        
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
