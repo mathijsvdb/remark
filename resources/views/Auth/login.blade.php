@@ -18,6 +18,7 @@
         <div class="row">
             <div class="col-sm-6 col-md-4 col-md-offset-4 content-box login_container">
                 <h1 class="text-center login-title">Login</h1>
+                <hr>
                 <div class="account-wall">
                     <form class="form-signin" method="POST" action="/login">
                         {!! csrf_field() !!}
@@ -33,6 +34,7 @@
                         </label>
 
                     </form>
+                    <div class="clearfix"></div>
                 </div>
                 <a href="/register" class="text-center new-account">Create an account </a>
                 <a href="/password/email" class="pull-right need-help">Forgot password? </a>
