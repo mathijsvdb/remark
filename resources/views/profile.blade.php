@@ -52,11 +52,23 @@
                     <li class="col-lg-9">
                         <div class="profile_projecten_user">
                             <h2>Your projects</h2>
-                        @foreach($projects as $work)
-                            <a href="/projects/{!! $work['id'] !!}">
-                                <img class="projectimages content-box" src="/uploads/{!! $work['img'] !!}" alt="">
-                            </a>
-                        @endforeach
+                            @if(count($projects) == 0)
+                                @if(Auth::user())
+                                    @if($user->id == Auth::user()->id)
+                                        <p>At the moment you don't have any projects. Want to upload some? <a class="btn btn-default" style="color:black" href="/projects/add">click this link!</a></p>
+                                    @else
+                                        <p>At the moment this person doesn't have any projects</p>
+                                    @endif
+                                @else
+                                    <p>At the moment this person doesn't have any projects</p>
+                                @endif
+                            @else
+                                @foreach($projects as $work)
+                                    <a href="/projects/{!! $work['id'] !!}">
+                                        <img class="projectimages content-box" src="/uploads/{!! $work['img'] !!}" alt="">
+                                    </a>
+                                @endforeach
+                            @endif
                         </div>
                     </li>
 
