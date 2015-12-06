@@ -585,12 +585,12 @@ h1.text-center.login-title{
     color:grey !important;
 }
 
-.projects-container span{
+.project span{
     position: absolute;
     padding: 15px;
     width: 100%;
     font-weight: bold;
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid mediumspringgreen;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
