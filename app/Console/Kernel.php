@@ -41,6 +41,8 @@ class Kernel extends ConsoleKernel
                 ->where('accountstatus', '=', 0)
                 ->get();
 
+
+
             foreach($result_waitingList as $w){
 
                 $template_content = [];
@@ -72,11 +74,14 @@ class Kernel extends ConsoleKernel
                     ),
                 );
 
-                MandrillMail::messages()->sendTemplate('remark-activate', $template_content, $message);           
+                MandrillMail::messages()->sendTemplate('remark-activate', $template_content, $message);
+
             }
 
+            $result_waitingList = DB::table('users')
+                ->update(['accountstatus' => 1]);
 
-        })->hourly();
+        })->everyMinute();
     
         $schedule->call(function () {
             DB::table('ads')
