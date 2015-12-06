@@ -7,8 +7,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
-use App\Http\Requests;
+use Request;
 use Stripe\Stripe;
 use Validator;
 use Redirect;
@@ -37,7 +36,7 @@ class AdsController extends Controller
 
     public function postAddAdvertisement()
     {
-        $user = User::find(1);
+        $user = User::find(Auth::id());
 
         $user->charge(5000, [
             'source' => $_POST['stripeToken'],

@@ -5,12 +5,26 @@ html, body{
 }
 
 body{
-    /*background-image: url(../images/0014.jpg);*/
     background-color: whitesmoke;
+}
+
+.front_container_bg{
+    width: 100%;
+    position: absolute;
+    margin-top: -40px;
+    z-index: -999;
+    height: 100%;
+    background-image: url(../images/bg1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 body ul{
     list-style-type: none;
+}
+
+.navbar_content a:hover{
+    color: white !important;
 }
 
 .container{
@@ -28,12 +42,22 @@ body ul{
     color: lightgreen;
 }
 
+#searchFRONT{
+    background-color: whitesmoke;
+    border:none;
+    border-radius: 0px;
+    color: black;
+    box-shadow: none;
+    border-bottom: 2px solid lightgreen;
+}
+
 .dropdown-menu>li>a {
      color: lightgreen;
 }
 
 .dropdown-menu>li>a:hover {
     background-color: lightgreen !important;
+    color: white;
 }
 
 
@@ -174,19 +198,6 @@ li.active {
     padding: 20px;
 }
 
-.btn{
-    background-color: lightgreen;
-    border: none;
-    color: white;
-    width: auto;
-    border-radius: 100px;
-}
-
-.btn:hover{
-    background-color: mediumspringgreen;
-    color: white;
-}
-
 .header-content-inner{
     background-color: white;
     padding: 40px 20px 40px 20px;
@@ -283,6 +294,15 @@ header .header-content .header-content-inner p {
 }
 
 /*front spotlight*/
+#searchbutton{
+    border-bottom-right-radius: 30px;
+    border-top-right-radius: 30px;
+    border: none;
+    background-color: lightgreen;
+    color: white;
+    padding: 7px 10px 7px;
+}
+
 #spotlight{
     position: relative;
     color:black;
@@ -294,10 +314,6 @@ header .header-content .header-content-inner p {
 
 #spotlight .input-group{
     width: 300px;
-}
-
-#spotlight .btn{
-    height: 34px;
 }
 
 #spotlight h2{
@@ -410,10 +426,6 @@ h1.text-center.login-title{
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
-.row {
-     margin-right: 0px;
-     margin-left: 0px;
-}
 
 /*------addprojects-------*/
 .add-project-container{
@@ -439,20 +451,6 @@ h1.text-center.login-title{
     margin-bottom: 20px;
 }
 
-a.btn.btn-primary.plus-project{
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-left: 40px;
-    padding-bottom: 10px;
-    padding-top: 0px;
-}
-
-a.btn.btn-primary.plus-project span{
-    font-size: 3rem;
-    width: 30px;
-    height: 30px;
-}
 
 .btn_edit_project:link,
 .btn_edit_project:visited,
@@ -477,43 +475,88 @@ a.btn.btn-primary.plus-project span{
     margin-top: -32px;
 }
 
-.project p{
-    padding: 15px;
-}
+
 
 .projects-container{
      width: 100%;
      height: 100%;
-     Margin:0 auto;
  }
+
+.projects-container p{
+    width: 100%;
+    height: 30%;
+    font-size: 1.6rem;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    overflow: hidden;
+    padding: 14px;
+    line-height: 2rem;
+    -webkit-line-clamp: 4;
+    margin-top: 210px;
+    -webkit-box-orient: vertical;
+}
 
 .projects-container li{
     margin: 10px;
     padding: 0;
+    max-height: 400px;
+    position: relative;
 }
 
 .project a:link,
 .project a:visited,
 .project a:hover,
 .project a:active{
-    color: white;
+    width: 100%;
+    height: 100%;
     text-decoration: none;
+    opacity: 0;
+    color: black;
+    position: absolute;
+    -webkit-transition: opacity ease 0.3s;
+    -moz-transition: opacity ease 0.3s;
+    -ms-transition: opacity ease 0.3s;
+    -o-transition: opacity ease 0.3s;
+    transition: opacity ease 0.3s;
 }
 
-li a:hover{
-   color:white !important;
+.project a:hover{
+    opacity: 0.96;
+    background-color: white;
+    color:grey !important;
 }
 
-.plus-project a{
+.projects-container span{
+    position: absolute;
+    padding: 15px;
+    width: 100%;
+    font-weight: bold;
+    border-bottom: 1px solid lightgrey;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.plus-project:link,
+.plus-project:visited,
+.plus-project:hover,
+.plus-project:active{
     margin-left: 30px;
+    border-radius: 30px;
+    background-color: lightgreen;
+    border: none;
+    color: white;
+}
+
+.plus-project:hover, header a:hover, #searchbutton:hover{
+    background-color: mediumspringgreen !important;
 }
 
 .projects-title{
     width: 100%;
-    padding: 8px;
     font-size: 2rem;
     position: relative;
-    background-color: #333;
+    /*background-color: #333;*/
 }
 
 input[type=checkbox]{
@@ -592,7 +635,6 @@ input[type=checkbox]{
 
 .detail_container span:first-child{
     float: none;
-    display: block;
 }
 
 .project-info-text .img-circle{
@@ -668,12 +710,39 @@ input[type=checkbox]{
 .flag_comment button, .flag_project_user button{
     border: none;
     background-color: transparent;
-    position: absolute;
     top:0;
     right: 0px;
+    display: inline-block;
 }
-.flag_project_user button{
-    right: 70px;
+
+.flag_project_user{
+    display: inline-block;
+}
+
+.detail_container .btn_edit_project{
+    background-color: lightgreen;
+    border: none;
+    color: white;
+    width: auto;
+    border-radius: 100px;
+    display: inline-block;
+    padding: 6px 12px;
+    color:white !important;
+    float: left;
+    margin-top: 0px;
+    font-size: 14px !important;
+}
+
+.project_flag_edit_delete_btn{
+    margin-top: 15px;
+}
+
+.detail_container .btn-delete{
+    display: inline-block;
+}
+
+.detail_container .proj_delete_form{
+    display: inline-block;
 }
 
 
@@ -681,6 +750,7 @@ input[type=checkbox]{
 /*---------------*/
 
 footer{
+    padding-top: 70px;
     text-align: center;
     bottom: 0px;
     position: relative;
@@ -698,24 +768,56 @@ footer{
 .center404 a{color:white;}
 
 /*--------------profile page -------------------*/
+.myprofile_container{
+    padding-left: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.basicinfo a:link,
+.basicinfo a:visited,
+.basicinfo a:hover,
+.basicinfo a:active{
+    display: block;
+    border: none;
+    font-size: 1.8rem;
+    border-radius: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.basicinfo a:hover{
+    background-color: lightgreen;
+    color: white;
+}
+
+#rewards span{
+    display: block;
+}
+
+#socialmediadiv a:hover{
+    background-color: transparent;
+}
 
 #profilepicture{
      width: 100px;
      height: 100px;
-     display: block;
      margin-right: auto;
      margin-left: auto;
+     margin-top: 20px;
      padding: 5px;
      background-color: white;
  }
 
-#basicinfo{
+.basicinfo{
+    margin-top: 20px;
+    height: 100%;
+    padding: 0;
     text-align: center;
 }
 
 #user{
-    font-size: 20px;
-    color: darkslategrey;
+    font-size: 2.4rem;
     font-weight: bold;
     text-decoration: none;
     margin-top: 15px;
@@ -744,7 +846,6 @@ footer{
 }
 
 #edit{
-    display: block;
     clear: both;
 }
 
@@ -893,49 +994,55 @@ hr{
 .notificationlist p{color:black;}
 .notificationlist span{color:black;}
 
+.navbar{
+    border: none;
+    margin-bottom: 0px;
+}
+
 /*-- ads --*/
 
 footer{
     clear: both;
 }
 
-.advertising a:link,
-.advertising a:visited,
-.advertising a:hover,
-.advertising a:active{
+.reclam a:link,
+.reclam a:visited,
+.reclam a:hover,
+.reclam a:active{
     color: white;
 }
-.advertising a:hover{
+.reclam a:hover{
     color: white!important;
     text-decoration: none;
 }
 
-.advertising{
-    margin-left: -40px;
+.reclam{
     margin-top: 30px;
     background-color: rgba(233, 233, 233, 0.50);
     padding-bottom: 30px;
+    width: 100%;
 }
 
-.advertising img{
+.reclam img{
     z-index: -1;
 }
 
-.advertising h3{
+.reclam h3{
     padding: 10px;
     margin-bottom: 0px;
     background-color: black;
 }
 
-.advertising li{
+.reclam li{
     position: relative;
     width: 200px;
+    max-height: 150px;
     margin: 0 auto;
     background-color: white;
     box-shadow: 0 2px 10px 0 rgba(0,0,0,.16);
 }
 
-.advertising li p{
+.reclam li p{
     position: absolute;
     width: 100%;
     padding-top: 10px;

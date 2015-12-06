@@ -8,6 +8,31 @@
     width: 100%;
 }
 
+.adver_container{
+    height: 95%;
+}
+
+.adver_container a:link,
+.adver_container a:visited,
+.adver_container a:hover,
+.adver_container a:active{
+    padding: 10px;
+    background-color: lightgreen;
+    border-radius: 30px;
+    font-size: 1.4rem;
+    color: white;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.adver_container a:hover{
+    background-color: mediumspringgreen;
+}
+
+.content_adver{
+    float: none;
+}
+
 .advertising_container p{
     color: grey;
 }

@@ -18,7 +18,7 @@
 
             <div class="form-group">
                 <label for="title">Project title</label><br>
-                <input type="text" name="title" style="color:black" value={!! old('title') !!}> <br>
+                <input type="text" name="title" style="color:black" maxlength="50" value={!! old('title') !!}> <br>
             </div>
 
             <div class="form-group">

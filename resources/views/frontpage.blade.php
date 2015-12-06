@@ -1,6 +1,7 @@
 @extends("layouts.master")
 
 @section("content")
+    <div class="front_container_bg"></div>
     @if(!empty(Session::get('info')))
         <div class="alert alert-success">
             <strong>{!! Session::get('info') !!}</strong>
@@ -22,6 +23,8 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
+                <h1>Get remarks and learn</h1>
+                <hr>
                 <a href="{{ url('/projects/add') }}" class="btn btn-primary animation-bounce">Add a project!</a>
             </div>
         </div>
@@ -85,7 +88,7 @@
                             <a href="/projects/{!! $work->id !!}">
                                 <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
                             </a>
-                            <a href="/profile/{!! $work->user_id !!}">
+                            <a href="/profile/{!! $work->username !!}">
                                 <p style="text-transform: uppercase">{!! $work->username !!}</p>
                             </a>
                         </div>
@@ -104,7 +107,7 @@
                             <a href="/projects/{!! $work->id !!}">
                                 <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">
                             </a>
-                            <a href="/profile/{!! $work->user_id !!}">
+                            <a href="/profile/{!! $work->username !!}">
                                 <p style="text-transform: uppercase">{!! $work->username !!}</p>
                             </a>
                         </div>

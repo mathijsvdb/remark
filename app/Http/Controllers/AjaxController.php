@@ -31,8 +31,7 @@ class AjaxController extends Controller
             ];
         }
 
-        header('Content-type: application/json');
-        echo json_encode($data);
+        return response()->json($data);
     }
 
     public function unlikeProject($project_id) {
@@ -43,8 +42,7 @@ class AjaxController extends Controller
             'likes' => Like::where('project_id', $project_id)->count(),
         ];
 
-        header('Content-type: application/json');
-        echo json_encode($data);
+        return response()->json($data);
     }
 
     public function favoriteProject($project_id) {
@@ -69,8 +67,7 @@ class AjaxController extends Controller
             ];
         }
 
-        header('Content-type: application/json');
-        echo json_encode($data);
+        return response()->json($data);
     }
 
     public function unfavoriteProject($project_id) {
@@ -81,7 +78,6 @@ class AjaxController extends Controller
             'favorites' => Favorite::where('project_id', $project_id)->count(),
         ];
 
-        header('Content-type: application/json');
-        echo json_encode($data);
+        return response()->json($data);
     }
 }

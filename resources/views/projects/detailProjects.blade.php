@@ -16,12 +16,7 @@
                     <img class="img-circle project_user_img" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
                 @endif
                 <h2>
-                    {!! $project['title'] !!} <span>by <a href="/profile/{!! $user['id'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a>{!! " " . $project['created_at'] !!}</span>
-                    <form action="/" method="post" class="flag_project_user">
-                        {!! csrf_field() !!}
-                        <button class="flag_project" title="flag project" type=submit class="btn btn-xs" id="flag_project"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
-                    </form>
-
+                    {!! $project['title'] !!} <span>by <a href="/profile/{!! $user['username'] !!}"><strong>{!! $user['firstname'] . " " . $user['lastname'] !!}</strong></a>{!! " " . $project['created_at'] !!}</span>
                 </h2>
                 <img id="project-img" src="/uploads/{!! $project['img'] !!}" alt="">
 
@@ -84,7 +79,21 @@
                 <li class="tag-border">
                     <a href="/">{!! $project['tags'] !!}</a>
                 </li>
-                <li>
+                <li class="project_flag_edit_delete_btn">
+                    @if(Auth::check() && $project->user_id == Auth::id())
+                        <a href="/projects/{{ $project->id }}/edit/" class="btn btn-default btn_edit_project">Edit</a>
+
+                        <form class="form proj_delete_form" action="/projects/{{ $project->id }}/delete" method="post" onclick="return confirm('Are you sure you want to delete this project?');">
+                            {!! csrf_field() !!}
+                            <button type="submit" class="btn btn-default btn-delete">Delete</button>
+                        </form>
+                    @endif
+                    <form action="/" method="post" class="flag_project_user">
+                        {!! csrf_field() !!}
+                        <button class="flag_project" title="flag project" type=submit class="btn btn-xs" id="flag_project">Flag for spam: <span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
+                    </form>
+                </li>
+
                 <li class="tag-border">
                     <div class="fb-share-button sharebtndetail" id="detailed-fb-share" data-href="http://remark.weareimd.be" data-layout="button_count"></div>
                     <a href="https://twitter.com/share" class=" sharebtndetail twitter-share-button"{count} data-hashtags="remark"></a>

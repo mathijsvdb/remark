@@ -47,7 +47,7 @@ Route::group(['prefix' => 'ajax'], function () {
 /*
  * Profile Routes
  */
-Route::get('profile/{id}', [
+Route::get('profile/{username}', [
     'middleware' => 'auth',
     'uses' =>'ProfileController@profile'
 ]);
@@ -56,17 +56,17 @@ Route::get('update', [
     'uses' => 'ProfileController@updateProfile']
 );
 Route::post('update', 'ProfileController@postProfile');
-Route::get('/profile/{id}/activity', [
+Route::get('/profile/{username}/activity', [
     'middleware' => 'auth',
     'uses' => 'UserActivityController@showAllActivity'
 ]);
-Route::post('/profile/{id}/activityFilter',function(){
+Route::post('/profile/{username}/activityFilter',function(){
     if(Request::ajax()){
         return 'iets';
     }
 });
 
-Route::get('profile/{id}/favorites', [
+Route::get('profile/{username}/favorites', [
     'middleware' => 'auth',
     'uses' => 'ProfileController@showFavorites'
 ]);
@@ -131,11 +131,21 @@ Route::post('/advertising/add', 'AdsController@postAddAdvertisement');
 /*
  * API Routes
  */
-Route::get('/developer','ApiController@developer');
-Route::group(['prefix' => 'api/v1'], function() {
-    Route::get('items/popular', 'ApiController@getPopularProjects');
-    Route::get('item/{id}', 'ApiController@getProjectById');
+
+
+Route::group(['namespace' => 'API'], function() {
+    // Developers
+    Route::get('developers', 'ApiController@index');
+    Route::post('developers', 'ApiController@generateAPIkey');
+
+    Route::group(['prefix' => 'api/v1'], function() {
+        // Items endpoint
+        Route::get('items/popular', 'ItemsController@getPopularProjects');
+        Route::get('items/{id}', 'ItemsController@getProjectById');
+        Route::get('items', 'ItemsController@index');
+    });
 });
+
 
 
 

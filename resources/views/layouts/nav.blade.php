@@ -1,5 +1,5 @@
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default navbar_content">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -29,14 +29,12 @@
                     <li>
                         <a href="{{ url('/advertising') }}">Advertising</a>
                     </li>
+                    <li>
+                        <a href="{{ url('/developers') }}">Development</a>
+                    </li>
 
                 </ul>
 
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                </form>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile Menu <span class="glyphicon glyphicon-align-justify"></span></a>
@@ -44,7 +42,7 @@
 
                             @if(Auth::check())
                                 <li>
-                                    <a href="{{ url('/profile/' . Auth::user()->id) }}">My Profile</a>
+                                    <a href="{{ url('/profile/' . Auth::user()->username) }}">My Profile</a>
 
                                     @if(true)
                                         <span class="profile-notification" aria-hidden="true">1</span>
