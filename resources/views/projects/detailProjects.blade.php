@@ -28,41 +28,37 @@
                     <a href="/"><span class="glyphicon glyphicon-eye-open"></span>Views</a>
                 </li>
                 <li class="border-bottom-info" id="test">
-                    @if(!$user_liked)
+                    @if(!Auth::check())
                         <span class="glyphicon glyphicon-heart" id="like-icon"></span><span id="n-likes">{{ $likes }}</span> Likes
-
-                        @if(Auth::check())
-                        <form action="/projects/{{ $project->id }}/like" method="post" id="like-form">
-                            {!! csrf_field() !!}
-                            <button type=submit class="btn btn-xs" id="like-btn">Like</button>
-                        </form>
-                        @endif
                     @else
-                        <span class="glyphicon glyphicon-heart" style="color: crimson;" id="like-icon"></span><span id="n-likes">{{ $likes }}</span> Likes
-
-                        <form action="/projects/{{ $project->id }}/unlike" method="post" id="like-form">
-                            {!! csrf_field() !!}
-                            <button type=submit class="btn btn-xs" id="unlike-btn">Unlike</button>
-                        </form>
+                        @if(!$user_liked)
+                            <form action="/projects/{{ $project->id }}/like" method="post" id="like-form">
+                                {!! csrf_field() !!}
+                                <button type=submit class="btn btn-link btn-xs" id="like-btn"><span class="glyphicon glyphicon-heart" id="like-icon"></span></button><span id="n-likes">{{ $likes }}</span>
+                            </form>
+                        @else
+                            <form action="/projects/{{ $project->id }}/unlike" method="post" id="like-form">
+                                {!! csrf_field() !!}
+                                <button type=submit class="btn btn-link btn-xs" id="unlike-btn"><span class="glyphicon glyphicon-heart" style="color: crimson;" id="like-icon"></span></button><span id="n-likes">{{ $likes }}</span>
+                            </form>
+                        @endif
                     @endif
                 </li>
                 <li class="border-bottom-info">
-                    @if(!$user_favorited)
-                        <span class="glyphicon glyphicon-star" id="favorite-icon"></span><span id="n-favorites">{{ $favorites }}</span> Favorites
-
-                        @if(Auth::check())
-                        <form action="/projects/{{ $project->id }}/favorite" method="post" id="favorite-form">
-                            {!! csrf_field() !!}
-                            <button type=submit class="btn btn-xs" id="favorite-btn">Favorite</button>
-                        </form>
-                        @endif
+                    @if(!Auth::check())
+                        <span class="glyphicon glyphicon-star" id="favorite-icon"></span><span id="n-favorites">{{ $favorites }}</span>
                     @else
-                        <span class="glyphicon glyphicon-star" style="color: gold;" id="favorite_icon"></span><span id="n-favorites">{{ $favorites }}</span> Favorites
-
-                        <form action="/projects/{{ $project->id }}/unfavorite" method="post" id="favorite_form">
-                            {!! csrf_field() !!}
-                            <button type=submit class="btn btn-xs" id="unfavorite-btn">Unfavorite</button>
-                        </form>
+                        @if(!$user_favorited)
+                            <form action="/projects/{{ $project->id }}/favorite" method="post" id="favorite-form">
+                                {!! csrf_field() !!}
+                                <button type=submit class="btn btn-link btn-xs" id="favorite-btn"><span class="glyphicon glyphicon-star" id="favorite-icon"></span></button><span id="n-favorites">{{ $favorites }}</span>
+                            </form>
+                        @else
+                            <form action="/projects/{{ $project->id }}/unfavorite" method="post" id="favorite_form">
+                                {!! csrf_field() !!}
+                                <button type=submit class="btn btn-link btn-xs" id="unfavorite-btn"><span class="glyphicon glyphicon-star" style="color: gold;" id="favorite_icon"></span></button><span id="n-favorites">{{ $favorites }}</span>
+                            </form>
+                        @endif
                     @endif
                 </li>
 
@@ -164,8 +160,8 @@
                     console.log($data.feedback);
                     $('#like-icon').css('color', 'crimson');
                     $('#n-likes').text($data.likes);
-                    $('#like-form').attr('action', '/projects/ $project->id /unlike')
-                    $('#like-btn').attr('id', 'unlike-btn').text('Unlike');
+                    $('#like-form').attr('action', '/projects/{{$project->id}}/unlike');
+                    $('#like-btn').attr('id', 'unlike-btn');
                 })
 
                 e.preventDefault();
@@ -181,8 +177,8 @@
                     console.log($data.feedback);
                     $('#like-icon').css('color', '');
                     $('#n-likes').text($data.likes);
-                    $('#like-form').attr('action', '/projects/$project->id/like')
-                    $('#unlike-btn').attr('id', 'like-btn').text('Like');
+                    $('#like-form').attr('action', '/projects/{{$project->id}}/like');
+                    $('#unlike-btn').attr('id', 'like-btn');
                 })
 
                 e.preventDefault();
@@ -199,8 +195,8 @@
                     console.log($data.favorites);
                     $('#favorite-icon').css('color', 'gold');
                     $('#n-favorites').text($data.favorites);
-                    $('#favorite-form').attr('action', '/projects/ $project->id /unfavorite')
-                    $('#favorite-btn').attr('id', 'unfavorite-btn').text('Unfavorite');
+                    $('#favorite-form').attr('action', '/projects/{{$project->id}}/unfavorite');
+                    $('#favorite-btn').attr('id', 'unfavorite-btn');
                 })
 
                 e.preventDefault();
@@ -217,8 +213,8 @@
                     console.log($data.favorites);
                     $('#favorite-icon').css('color', '');
                     $('#n-favorites').text($data.favorites);
-                    $('#favorite-form').attr('action', '/projects/$project->id/favorite')
-                    $('#unfavorite-btn').attr('id', 'favorite-btn').text('Favorite');
+                    $('#favorite-form').attr('action', '/projects/{{$project->id}}/favorite');
+                    $('#unfavorite-btn').attr('id', 'favorite-btn');
                 })
 
                 e.preventDefault();
