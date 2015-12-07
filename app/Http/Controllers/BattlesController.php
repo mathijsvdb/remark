@@ -31,21 +31,4 @@ class BattlesController extends Controller
         return view('battles', compact('active_battle', 'battle_projects', 'done_battles', 'inactive_battle'));
     }
 
-    public function activeToInactiveBattle(){
-        //when end_date is past, put battle on inactive
-        $battles = DB::table('battles')->get();
-        $now = Carbon::now();;
-
-        foreach ($battles as $b) {
-            if($b->end_date > $now){
-                DB::table('battles')
-                    ->where('b.id', $b->id)
-                    ->update(array('active' => 0));
-            }
-        }
-    }
-
-    public function insertBattle(){
-        //insert a battle (/add)
-    }
 }
