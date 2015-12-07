@@ -28,4 +28,12 @@ class BattlesController extends Controller
 
         return view('battles', compact('active_battle', 'battle_projects', 'done_battles', 'inactive_battle'));
     }
+
+    public function activeToInactiveBattle(){
+        //when end_date is past, put battle on inactive
+    }
+
+    public function insertBattle(){
+        //insert a battle (/add)
+    }
 }

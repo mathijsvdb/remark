@@ -13,7 +13,7 @@ class ProjectsTableSeeder extends Seeder
     {
         DB::table('projects')->delete();
 
-        $adver = [
+        $projects = [
             [
                 'title' => 'Mugs',
                 'body' => "Mugs Coffee Brand",
@@ -47,5 +47,7 @@ class ProjectsTableSeeder extends Seeder
                 'updated_at' => Carbon::now()->addMonth(-1)
             ]
         ];
+
+        DB::table('projects')->insert($projects);
     }
 }
