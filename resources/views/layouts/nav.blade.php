@@ -9,59 +9,35 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/"></a>
+                <a class="navbar-brand" href="/">
+                    <!-- <img alt="Remark" src=""> -->
+                </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-
-                    <li><a href="{{ url('/') }}">Home<span class="sr-only">(current)</span></a></li>
-
-                    <li>
-                        <a href="{{ url('/projects') }}">Projects</a>
-                    </li>
-
-                    <li>
-                        <a href="{{ url('/battles') }}">Battles</a>
-                    </li>
-
-                    <li>
-                        <a href="{{ url('/advertising') }}">Advertising</a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/developers') }}">Development</a>
-                    </li>
-
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/projects') }}">Projects</a></li>
+                    <li><a href="{{ url('/battles') }}">Battles</a></li>
+                    <li><a href="{{ url('/advertising') }}">Advertising</a></li>
+                    <li><a href="{{ url('/developers') }}">Developers</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile Menu <span class="glyphicon glyphicon-align-justify"></span></a>
-                        <ul class="dropdown-menu">
-
-                            @if(Auth::check())
-                                <li>
-                                    <a href="{{ url('/profile/' . Auth::user()->username) }}">My Profile</a>
-
-                                    @if(true)
-                                        <span class="profile-notification" aria-hidden="true">1</span>
-                                    @endif
-                                </li>
-
-                                <li><a href="{{ url('/projects/add') }}">Add project +</a></li>
-                                <li class="dropdown">
-                                    <a href="{{ url('/logout') }}" >Logout</a>
-                                </li>
-                            @else
-                                <li><a href="{{ url('/register') }}">Sign up</a></li>
-                                <li class="dropdown">
-                                    <a href="{{ url('/login') }}" >Sign in</a>
-                                </li>
-                            @endif
-                        </ul>
-                    </li>
-
+                    @if(Auth::check())
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile Menu <span class="glyphicon glyphicon-align-justify"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ url('/profile/' . Auth::user()->username) }}">My Profile</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown"><a href="{{ url('/logout') }}" >Logout</a></li>
+                            </ul>
+                        </li>
+                    @else
+                        <li><a href="/register">Sign up</a></li>
+                        <li><a href="/login">Log in</a></li>
+                    @endif
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
