@@ -17,7 +17,7 @@ class AdsTableSeeder extends Seeder
 
         $adver = [
             [
-                'title' => 'Adobe Creative Cloud',
+                'title' => 'Adobe',
                 'description' => "Save 20% on purchases",
                 'url' => "http://www.adobe.com/be_nl/creativecloud.html",
                 'img' => 'assets/images/reclam/reclam_adobe.png',
