@@ -18,7 +18,7 @@
 
             <div class="form-group">
                 <label for="title">Project title</label>
-                <input type="text" placeholder="Porject titel" name="title" value={!! old('title') !!}>
+                <input type="text" placeholder="Project titel" name="title" value={!! old('title') !!}>
             </div>
 
             <div class="form-group">

@@ -17,7 +17,7 @@ class AdsTableSeeder extends Seeder
 
         $adver = [
             [
-                'title' => 'Adobe Creative Cloud',
+                'title' => 'Adobe',
                 'description' => "Save 20% on purchases",
                 'url' => "http://www.adobe.com/be_nl/creativecloud.html",
                 'img' => 'assets/images/reclam/reclam_adobe.png',
@@ -29,7 +29,7 @@ class AdsTableSeeder extends Seeder
                 'title' => 'Dribbble',
                 'description' => "Remark is stealing our customers!",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/reclam/reclam_dribble.png',
+                'img' => 'assets/images/reclam/reclam_dribbble.png',
                 'user_id' => 1,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)

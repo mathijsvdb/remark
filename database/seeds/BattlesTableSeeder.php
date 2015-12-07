@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class BattlesTableSeeder extends Seeder
 {
@@ -20,12 +21,16 @@ class BattlesTableSeeder extends Seeder
                 'theme' => 'Christmas',
                 'description' => 'Make a Christmas themed artwork.',
                 'active' => true,
+                'start_date' => carbon::now(),
+                'end_date' => Carbon::now()->addMonth(1)
             ],
             [
                 'name' => 'Coffee Battle',
                 'theme' => 'Coffee',
                 'description' => 'Design a logo for a coffee brand.',
                 'active' => false,
+                'start_date' => Carbon::now()->addMonth(-2),
+                'end_date' => Carbon::now()->addDay(-1)
             ],
         ];
 
