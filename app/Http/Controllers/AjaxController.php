@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Favorite;
 use App\Like;
+use App\Project;
+use App\User;
+use App\Notifications;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,6 +23,14 @@ class AjaxController extends Controller
         }
         else
         {
+            $user = Auth::user();
+            $notification = new Notifications;
+
+            $notification->user_id = $user->id;
+            $notification->project_id = $project_id;
+            $notification->notificationType = 'like';
+            $notification->save();
+
             $like = new Like;
             $like->user_id = Auth::id();
             $like->project_id = $project_id;
@@ -56,6 +67,14 @@ class AjaxController extends Controller
         }
         else
         {
+            $user = Auth::user();
+            $notification = new Notifications;
+
+            $notification->user_id = $user->id;
+            $notification->project_id = $project_id;
+            $notification->notificationType = 'favorite';
+            $notification->save();
+
             $favorite = new Favorite;
             $favorite->user_id = Auth::id();
             $favorite->project_id = $project_id;

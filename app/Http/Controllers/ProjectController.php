@@ -12,6 +12,7 @@ use DB;
 use App\Project;
 use App\User;
 use App\Comment;
+use App\Notifications;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
@@ -157,9 +158,19 @@ class ProjectController extends Controller
     public function likeProject($project_id) {
         $user_liked = Like::where('project_id', $project_id)->where('user_id', Auth::id())->take(1)->get();
 
+        $user = Auth::user();
+        $notification = new Notifications;
+
+        $notification->user_id = $user->id;
+        $notification->project_id = $project_id;
+        $notification->notificationType = 'like';
+        $notification->save();
+
         if(count($user_liked) > 0)
         {
             return Redirect::back();
+
+
         }
         else
         {
@@ -222,6 +233,14 @@ class ProjectController extends Controller
             ->join('users', 'users.id', '=', 'projects.user_id')
             ->select('users.*', 'projects.*')
             ->first();
+
+        $notification = new Notifications;
+
+        $notification->user_id = $user->id;
+        $notification->project_id = $id;
+        $notification->notificationType = 'comment';
+        $notification->save();
+
 
         if($result->comment_mail == 1){
 
