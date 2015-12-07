@@ -29,7 +29,7 @@ class AdsTableSeeder extends Seeder
                 'title' => 'Dribbble',
                 'description' => "Remark is stealing our customers!",
                 'url' => "http://remark.dev",
-                'img' => 'assets/images/reclam/reclam_dribble.png',
+                'img' => 'assets/images/reclam/reclam_dribbble.png',
                 'user_id' => 1,
                 'start_date' => carbon::now(),
                 'end_date' => Carbon::now()->addMonth(1)

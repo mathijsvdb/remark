@@ -24,6 +24,28 @@
             @endforeach
         </ul>
     </div>
+
+
+    <div class="battle_text_intro">
+        <h1 class="intro">Previous Battles</h1>
+        <p>See who has won in tha past.<br>
+            Want to join aswell, check the battle above to see how you can win too!</p>
+    </div>
+
+    <div class="battle_container inactive">
+        <h2><img class="axe" src="http://game-icons.net/icons/lorc/originals/png/000000/transparent/battle-axe.png" alt="battle_icon">  {{$inactive_battle->name}}</h2>
+        <div class="information_battle"><p>{{$inactive_battle->description}}</p></div>
+        <ul class="row">
+            @foreach($done_battles as $project)
+                <li class="col-md-2 content-box">
+                    <a href="/projects/{{ $project->id }}">{{ $project->title }} <span class="glyphicon glyphicon-heart"> {{ $project->likes }}</span></a>
+                    <img src="/uploads/{!! $project->img !!}" alt="">
+                    <p>{{$project->body}}</p>
+
+                </li>
+            @endforeach
+        </ul>
+    </div>
 @stop
 
 @section("scripts")

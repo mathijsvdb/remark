@@ -19,6 +19,7 @@ class BattlesController extends Controller
         $done_battles = DB::table('projects')->select(DB::raw('*, (SELECT count(id) FROM likes WHERE project_id=projects.id) as likes'))
             ->where('battle_id', '=', $inactive_battle->id)
             ->orderBy('likes', 'desc')
+            ->take(3)
             ->get();
 
         $battle_projects = DB::table('projects')->select(DB::raw('*, (SELECT count(id) FROM likes WHERE project_id=projects.id) as likes'))
