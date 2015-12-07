@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Badges;
 use App\Project;
 use App\User;
 use Illuminate\Support\Facades\DB;
@@ -149,6 +150,30 @@ class ProfileController extends Controller {
 
         MandrillMail::messages()->sendTemplate('remark-referral', $template_content, $message);
 
+        $this->referralBadge(2);
+
         return redirect(url());
+    }
+
+    public function referralBadge($id){
+        $badge_id = 6;
+
+        $this->AddInDatabase($id, $badge_id);
+    }
+
+    public function AddInDatabase($user_id, $badge_id){
+        $badge = new Badges;
+
+        $totalBadge = DB::table("userbadges")
+            ->where('user_id', $user_id)
+            ->where('badge_id', $badge_id)
+            ->count();
+
+        $badge->user_id = $user_id;
+        $badge->badge_id = $badge_id;
+
+        if($totalBadge <= 0){
+            $badge->save();
+        }
     }
 }

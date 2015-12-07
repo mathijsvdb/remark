@@ -42,8 +42,8 @@ class BadgesTableSeeder extends Seeder
             ],
             [
                 'badge_title' => "Referrer",
-                'badge_description' => "You have reffered someone.",
-                'badge_img' => 'badges_5.png'
+                'badge_description' => "You have refered someone.",
+                'badge_img' => 'badges_6.png'
             ],
         ];
 
