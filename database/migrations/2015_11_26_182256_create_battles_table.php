@@ -18,6 +18,8 @@ class CreateBattlesTable extends Migration
             $table->string('theme');
             $table->string('description');
             $table->boolean('active');
+            $table->date('start_date');
+            $table->date('end_date');
         });
     }
 
