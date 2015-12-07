@@ -6,6 +6,7 @@ use App\Battle;
 use App\Http\Requests;
 use App\Project;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class BattlesController extends Controller
 {
@@ -32,6 +33,16 @@ class BattlesController extends Controller
 
     public function activeToInactiveBattle(){
         //when end_date is past, put battle on inactive
+        $battles = DB::table('battles')->get();
+        $now = Carbon::now();;
+
+        foreach ($battles as $b) {
+            if($b->end_date > $now){
+                DB::table('battles')
+                    ->where('b.id', $b->id)
+                    ->update(array('active' => 0));
+            }
+        }
     }
 
     public function insertBattle(){

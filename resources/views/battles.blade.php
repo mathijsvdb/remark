@@ -25,11 +25,11 @@
         </ul>
     </div>
 
-
+    @if (count($done_battles) > 0)
     <div class="battle_text_intro">
         <h1 class="intro">Previous Battles</h1>
-        <p>See who has won in tha past.<br>
-            Want to join aswell, check the battle above to see how you can win too!</p>
+        <p>See who has won in the past.
+            Want to join as well, check the battle above to see how you can win too!</p>
     </div>
 
     <div class="battle_container inactive">
@@ -46,6 +46,8 @@
             @endforeach
         </ul>
     </div>
+    @endif
+
 @stop
 
 @section("scripts")
