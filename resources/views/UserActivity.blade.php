@@ -6,9 +6,9 @@
 
         <h2>Your user activity</h2>
 
-        @if(count($myNotifications) > 0)
+        @if(count($result) > 0)
             <ul class="list-group">
-                @foreach($myNotifications as $notification)
+                @foreach($result as $notification)
 
                     @if($notification->notificationType == 'like')
 
