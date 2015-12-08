@@ -128,7 +128,6 @@ class ProfileController extends Controller {
         $rules = array(
             'email' => 'email|max:255|unique:users|unique:referrals',
         );
-
         $messages = array(
             'unique' => 'There is already a user with this email or this user is already referred. If you have another friend refer him :)',
         );
@@ -142,8 +141,10 @@ class ProfileController extends Controller {
 
         $referral = new Referrals;
 
+        $token = str_random(20) . rand(11111,99999);
+
         $referral->email = Request::input('referral-email');
-        $referral->token = str_random(20) . rand(11111,99999);
+        $referral->token = $token;
         $referral->save();
 
             $template_content = [];
@@ -174,7 +175,13 @@ class ProfileController extends Controller {
 
         MandrillMail::messages()->sendTemplate('remark-referral', $template_content, $message);
 
-        $this->referralBadge(2);
+        if(isset($_GET['username'])){
+            $user = DB::table('users')
+                ->where('username', '=', $_GET['username'])
+                ->get();
+
+            $this->referralBadge($user[0]->id);
+        }
 
         return redirect(url());
     }

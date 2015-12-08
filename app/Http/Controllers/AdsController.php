@@ -36,12 +36,6 @@ class AdsController extends Controller
 
     public function postAddAdvertisement()
     {
-        $user = User::find(Auth::id());
-
-        $user->charge(5000, [
-            'source' => $_POST['stripeToken'],
-            'currency' => 'eur'
-        ]);
 
         $title = Request::input('title');
         $url = Request::input('url');
@@ -70,6 +64,13 @@ class AdsController extends Controller
             // send back to the page with the input data and errors
             return Redirect::to('/advertising/add')->withInput()->withErrors($validator);
         }
+
+        $user = User::find(Auth::id());
+
+        $user->charge(5000, [
+            'source' => $_POST['stripeToken'],
+            'currency' => 'eur'
+        ]);
 
         //if input is a file upload to destination /uploads
         //else redirect to view with error message

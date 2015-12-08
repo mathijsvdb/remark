@@ -16,7 +16,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 class AuthController extends Controller
 {
     protected $loginPath = '/login';
-    protected $redirectPath = '/referral';
+    protected $redirectPath = '/';
     /*
     |--------------------------------------------------------------------------
     | Registration & Login Controller
@@ -77,7 +77,7 @@ class AuthController extends Controller
         }
 
         //redirect
-        return redirect($this->redirectPath())->with('info', $info);
+        return redirect('/referral?username=' . $input['username'])->with('info', $info);
     }
 
     /**
