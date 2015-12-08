@@ -19,6 +19,8 @@ class CreateProjectsTable extends Migration
             $table->string('tags');
             $table->string('img');
             $table->string('img_tricolor');
+            $table->integer('spam');
+            $table->softDeletes();
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

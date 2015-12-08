@@ -138,6 +138,14 @@ Route::post('', function(){
 Route::get('/advertising/add','AdsController@addAds');
 Route::post('/advertising/add', 'AdsController@postAddAdvertisement');
 
+
+/*
+ * spamroute
+ */
+
+Route::post('/spam/{id}', 'ProjectController@spam');
+
+
 /*
  * API Routes
  */
