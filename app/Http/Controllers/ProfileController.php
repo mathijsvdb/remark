@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Badges;
 use App\Project;
+use App\Referrals;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -121,6 +122,29 @@ class ProfileController extends Controller {
     }
 
     public function referralMail(Request $request){
+        $file = array(
+            'email' => Request::input('referral-email'),
+        );
+        $rules = array(
+            'email' => 'email|max:255|unique:users|unique:referrals',
+        );
+
+        $messages = array(
+            'unique' => 'There is already a user with this email or this user is already referred. If you have another friend refer him :)',
+        );
+
+        $validator = Validator::make($file, $rules, $messages);
+
+        if ($validator->fails()) {
+            // send back to the page with the input data and errors
+            return Redirect::to('/referral')->withInput()->withErrors($validator);
+        }
+
+        $referral = new Referrals;
+
+        $referral->email = Request::input('referral-email');
+        $referral->token = str_random(20) . rand(11111,99999);
+        $referral->save();
 
             $template_content = [];
 
@@ -157,7 +181,6 @@ class ProfileController extends Controller {
 
     public function referralBadge($id){
         $badge_id = 6;
-
         $this->AddInDatabase($id, $badge_id);
     }
 

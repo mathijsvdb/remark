@@ -91,6 +91,10 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+
+        'email' => [
+            'unique' => 'There is already a user with this email, you sure you entered the correct email.',
+        ],
     ],
 
     /*
