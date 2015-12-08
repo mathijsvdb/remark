@@ -450,4 +450,24 @@ class ProjectController extends Controller
             $badge->save();
         }
     }
+
+    public function spam($id){
+        
+        $project = Project::find($id);
+
+        $project->spam ++;
+
+        $project->save();
+
+        if($project->spam >= 5){
+
+            $project->delete();
+            return redirect('/');
+        }
+
+        return Redirect::to('/projects/' . $id);
+
+    }
+
+
 }

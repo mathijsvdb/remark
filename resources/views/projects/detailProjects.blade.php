@@ -84,7 +84,7 @@
                             <button type="submit" class="btn btn-default btn-delete">Delete</button>
                         </form>
                     @endif
-                    <form action="/" method="post" class="flag_project_user">
+                    <form action="/spam/{{ $project->id }}" method="post" class="flag_project_user">
                         {!! csrf_field() !!}
                         <button class="flag_project" title="flag project" type=submit class="btn btn-xs" id="flag_project">Flag for spam: <span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
                     </form>
