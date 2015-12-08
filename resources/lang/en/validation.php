@@ -95,6 +95,20 @@ return [
         'email' => [
             'unique' => 'There is already a user with this email, you sure you entered the correct email.',
         ],
+        'title' => [
+            'required' => 'Can you please add a title?'
+        ],
+        'body' => [
+            'required' => 'A little description would be nice.'
+        ],
+        'tags' => [
+            'required' => 'It would be nice if you picked a tag.'
+        ],
+        'fileToUpload' => [
+            'required' => "You will not get many views if you don't upload an image",
+            'image' => 'Are you kidding me, stop uploading something else',
+            'mimes' => 'only add images with these types: :values.',
+        ],
     ],
 
     /*
