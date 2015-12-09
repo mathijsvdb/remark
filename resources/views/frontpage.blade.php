@@ -87,9 +87,11 @@
                 @if(isset($popular))
                     @foreach($popular as $popwork)
                     <div class="col-md-4">
-                        <a href="/projects/{{ $popwork->id }}">{{ $popwork->title }} <span class="glyphicon glyphicon-heart"> {{ $popwork->likes }}</span></a>
+                        <a href="/projects/{{ $popwork->id }}">{{ $popwork->title }} <span class="glyphicon glyphicon-heart"> {{ $popwork->likes }}</span>
                         <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $popwork->img !!}" alt="">
-                        <p>{{$popwork->body}}</p>
+                            <p>{{$popwork->body}}</p>
+                        </a>
+
                     </div>
                     @endforeach
                 @else
