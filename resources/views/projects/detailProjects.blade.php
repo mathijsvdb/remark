@@ -20,7 +20,7 @@
                 </h2>
                 <img id="project-img" src="/uploads/{!! $project['img'] !!}" alt="">
 
-                <p>{!! $project['body'] !!}</p>
+                
             </div>
 
             <ul>
@@ -67,7 +67,7 @@
                         <span class="glyphicon glyphicon-tint"></span>
 
                         @for($i=0; $i<count($colorpieces); $i++)
-                            <a class="pallet-styling" href="/projects/search/{!! $colorpieces[$i] !!}" style="background-color: #{!! $colorpieces[$i] !!};"></a>
+                            <a class="pallet-styling" href="/projects/search/{!! $colorpieces[$i] !!}" style="background-color: {!! '#' . $colorpieces[$i] !!};"></a>
                         @endfor
                     </div>
                     <div class="clearfix"></div>
@@ -100,17 +100,20 @@
         </div>
 <div class="clearfix"></div>
     <div class="add_comment_container">
-    <form method="POST" class="form" action="{!! $project['id'] !!}">
-        {!! csrf_field() !!}
-        <h3>Comments</h3>
-        <textarea class="form-control" rows="3" name="body"></textarea>
-                
-        <input type="hidden" name="project_id" value="{{ $project->id }}" class="form-control">
-        </br>
+    @if(Auth::user())
+            <form method="POST" class="form" action="{!! $project['id'] !!}">
+                {!! csrf_field() !!}
+                <h3>Comments</h3>
+                <textarea class="form-control" rows="3" name="body"></textarea>
 
-        <button class="btn btn-default" type="submit">Submit comment</button>
+                <input type="hidden" name="project_id" value="{{ $project->id }}" class="form-control">
+                </br>
 
-    </form>
+                <button class="btn btn-default" type="submit">Submit comment</button>
+
+            </form>
+    @endif
+
     </div>
 
         <div class="clearfix">
