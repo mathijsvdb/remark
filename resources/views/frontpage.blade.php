@@ -49,6 +49,8 @@
                         </div>
                     </div>
                 </form>
+                <a href="/">recent</a>
+                <a href="/?sort=popular">popular</a>
             </div>
 
 
@@ -78,13 +80,14 @@
 
         <div class="row">
 
-            <?php //var_dump($projects); ?>
+
 
         <div class="imagelist">
 
                 <?php if(!isset($searches)){ ?>
 
                     @foreach($spotlight as $work)
+
                         <div class="col-md-4">
                             <a href="/projects/{!! $work->id !!}">
                                 <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $work->img !!}" alt="">

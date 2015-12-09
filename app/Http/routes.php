@@ -73,6 +73,8 @@ Route::post('/profile/{username}/activityFilter',function(){
     }
 });
 
+Route::get("/?sort=popular", 'SearchController@filterRecent');
+
 Route::get('profile/{username}/favorites', [
     'middleware' => 'auth',
     'uses' => 'ProfileController@showFavorites'
