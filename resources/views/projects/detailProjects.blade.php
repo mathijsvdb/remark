@@ -100,7 +100,6 @@
         </div>
 <div class="clearfix"></div>
     <div class="add_comment_container">
-    @if(Auth::user())
             <form method="POST" class="form" action="{!! $project['id'] !!}">
                 {!! csrf_field() !!}
                 <h3>Comments</h3>
@@ -109,10 +108,13 @@
                 <input type="hidden" name="project_id" value="{{ $project->id }}" class="form-control">
                 </br>
 
-                <button class="btn btn-default" type="submit">Submit comment</button>
+                @if(!Auth::check())
+                    <a href="/login">Log in to comment</a>
+                @else
+                    <button class="btn btn-default" type="submit">Submit comment</button>
+                @endif
 
             </form>
-    @endif
 
     </div>
 

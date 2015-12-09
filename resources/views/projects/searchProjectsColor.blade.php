@@ -1,6 +1,7 @@
 @extends("layouts.master")
 
 @section("content")
+    <h1>Projects by this color</h1>
     <div id="allwork">
         @for($i=0; $i < count($projectsByColor); $i++)
             <a href="/projects/{!! $projectsByColor[$i]->id !!}">

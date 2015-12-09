@@ -10,7 +10,7 @@
             <h2>Your advertisements <a class="" href="/advertising/add">Add more +</a></h2>
 
 
-            @if(!empty($myAds))
+            @if (count($myAds) > 0)
             <ul class="row">
             @foreach($myAds as $ad)
                 <div class="col-md-4 ad" id="{{$ad->id}}">
