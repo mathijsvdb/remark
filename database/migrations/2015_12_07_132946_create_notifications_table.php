@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProjectsTable extends Migration
+class CreateNotificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,17 +12,13 @@ class CreateProjectsTable extends Migration
      */
     public function up()
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('title');
-            $table->string('body');
-            $table->string('tags');
-            $table->string('img');
-            $table->string('img_tricolor');
-            $table->integer('spam');
-            $table->softDeletes();
+            $table->string('notificationType');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->integer('project_id')->unsigned();
+            $table->foreign('project_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -34,6 +30,6 @@ class CreateProjectsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('projects');
+        Schema::drop('notifications');
     }
 }

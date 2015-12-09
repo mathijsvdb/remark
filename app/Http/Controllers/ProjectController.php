@@ -12,6 +12,7 @@ use DB;
 use App\Project;
 use App\User;
 use App\Comment;
+use App\Notifications;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
@@ -157,9 +158,19 @@ class ProjectController extends Controller
     public function likeProject($project_id) {
         $user_liked = Like::where('project_id', $project_id)->where('user_id', Auth::id())->take(1)->get();
 
+        $user = Auth::user();
+        $notification = new Notifications;
+
+        $notification->user_id = $user->id;
+        $notification->project_id = $project_id;
+        $notification->notificationType = 'like';
+        $notification->save();
+
         if(count($user_liked) > 0)
         {
             return Redirect::back();
+
+
         }
         else
         {
@@ -223,6 +234,14 @@ class ProjectController extends Controller
             ->select('users.*', 'projects.*')
             ->first();
 
+        $notification = new Notifications;
+
+        $notification->user_id = $user->id;
+        $notification->project_id = $id;
+        $notification->notificationType = 'comment';
+        $notification->save();
+
+
         if($result->comment_mail == 1){
 
         $template_content = [];
@@ -285,7 +304,8 @@ class ProjectController extends Controller
     public function postEditProject($project_id)
     {
         $project = Project::find($project_id);
-
+        $oldimage = $project['img'];
+        $oldtricolor = $project['img_tricolor'];
         $title = Request::input('title');
         $body = Request::input('body');
         $tags = Request::input('tags');
@@ -300,7 +320,7 @@ class ProjectController extends Controller
             'tags' => $tags,
         );
         $rules = array(
-            'fileToUpload' => 'required|image',
+            'fileToUpload' => 'image',
             'title' => 'required',
             'body' => 'required',
             'tags' => 'required',
@@ -317,15 +337,19 @@ class ProjectController extends Controller
 
         //if input is a file upload to destination /uploads
         //else redirect to view with error message
-        if($image->isValid()){
-            $extension = $image->getClientOriginalExtension(); // getting image extension
-            $fileName = Auth::user()->username . '_' . rand(11111,99999).'.'.$extension; // renaming image
-            File::delete('uploads/' . $project->img);
-            $img = Image::make($image);
-            $img->fit(500,500)->crop(500, 500, 0, 0)->save($destinationPath . $fileName);
-        } else {
-            Session::flash('error', 'uploaded file is not valid');
-            return Redirect::to('/projects/' . $project_id . '/edit');
+        if($image == ""){
+            $fileName = $oldimage;
+        }else {
+            if($image->isValid()){
+                $extension = $image->getClientOriginalExtension(); // getting image extension
+                $fileName = Auth::user()->username . '_' . rand(11111,99999).'.'.$extension; // renaming image
+                File::delete('uploads/' . $project->img);
+                $img = Image::make($image);
+                $img->fit(500,500)->crop(500, 500, 0, 0)->save($destinationPath . $fileName);
+            } else {
+                Session::flash('error', 'uploaded file is not valid');
+                return Redirect::to('/projects/' . $project_id . '/edit');
+            }
         }
 
         $project->title = $title;
@@ -333,19 +357,22 @@ class ProjectController extends Controller
         $project->tags = $tags;
         $project->img = $fileName;
 
-        if($extension == 'png'){
-            $pimage = $client->loadPng('uploads/' . $fileName);
-        } else if($extension == 'jpg'){
-            $pimage = $client->loadJpeg('uploads/' . $fileName);
-        } else{
-            return 'wrong image';
+        if($image == ""){
+            $tricolor_correct = $oldtricolor;
+        }else {
+            if($extension == 'png'){
+                $pimage = $client->loadPng('uploads/' . $fileName);
+            } else if($extension == 'jpg'){
+                $pimage = $client->loadJpeg('uploads/' . $fileName);
+            } else{
+                return 'wrong image';
+            }
+
+            $image_tricolor = $pimage->extract(3);
+            $tricolor_correct = str_replace('#', '', "".$image_tricolor[0].",".$image_tricolor[1].",".$image_tricolor[2]);
         }
 
-        $image_tricolor = $pimage->extract(3);
-        $tricolor_correct = str_replace('#', '', "".$image_tricolor[0].",".$image_tricolor[1].",".$image_tricolor[2]);
         $project->img_tricolor = $tricolor_correct;
-
-
         $project->user_id = Auth::id();
         //$project->user_id = 1;
         //$table->increments('id');
@@ -423,4 +450,24 @@ class ProjectController extends Controller
             $badge->save();
         }
     }
+
+    public function spam($id){
+        
+        $project = Project::find($id);
+
+        $project->spam ++;
+
+        $project->save();
+
+        if($project->spam >= 5){
+
+            $project->delete();
+            return redirect('/');
+        }
+
+        return Redirect::to('/projects/' . $id);
+
+    }
+
+
 }

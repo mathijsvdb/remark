@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Badges;
 use App\Project;
+use App\Referrals;
 use App\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
@@ -120,6 +122,30 @@ class ProfileController extends Controller {
     }
 
     public function referralMail(Request $request){
+        $file = array(
+            'email' => Request::input('referral-email'),
+        );
+        $rules = array(
+            'email' => 'email|max:255|unique:users|unique:referrals',
+        );
+        $messages = array(
+            'unique' => 'There is already a user with this email or this user is already referred. If you have another friend refer him :)',
+        );
+
+        $validator = Validator::make($file, $rules, $messages);
+
+        if ($validator->fails()) {
+            // send back to the page with the input data and errors
+            return Redirect::to('/referral')->withInput()->withErrors($validator);
+        }
+
+        $referral = new Referrals;
+
+        $token = str_random(20) . rand(11111,99999);
+
+        $referral->email = Request::input('referral-email');
+        $referral->token = $token;
+        $referral->save();
 
             $template_content = [];
 
@@ -149,6 +175,35 @@ class ProfileController extends Controller {
 
         MandrillMail::messages()->sendTemplate('remark-referral', $template_content, $message);
 
+        if(isset($_GET['username'])){
+            $user = DB::table('users')
+                ->where('username', '=', $_GET['username'])
+                ->get();
+
+            $this->referralBadge($user[0]->id);
+        }
+
         return redirect(url());
+    }
+
+    public function referralBadge($id){
+        $badge_id = 6;
+        $this->AddInDatabase($id, $badge_id);
+    }
+
+    public function AddInDatabase($user_id, $badge_id){
+        $badge = new Badges;
+
+        $totalBadge = DB::table("userbadges")
+            ->where('user_id', $user_id)
+            ->where('badge_id', $badge_id)
+            ->count();
+
+        $badge->user_id = $user_id;
+        $badge->badge_id = $badge_id;
+
+        if($totalBadge <= 0){
+            $badge->save();
+        }
     }
 }

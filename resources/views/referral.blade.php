@@ -1,16 +1,16 @@
 @extends('layouts.master')
 
-@if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li class="form-group has-error">{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
 @section("content")
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="form-group has-error">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="registrer content-box">
         <form class="form-horizontal" method="post" url="/referral" role="form">
             {!! csrf_field() !!}
