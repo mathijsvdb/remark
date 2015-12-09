@@ -403,7 +403,7 @@ class ProjectController extends Controller
             //badgeId + userId naar db sturen
             $badge_id = 4;
             $this->AddInDatabase($id, $badge_id);
-        } else if($totalProjects >=50){
+        } else if($totalProjects >=49){
             $badge_id = 5;
             $this->AddInDatabase($id, $badge_id);
         }
