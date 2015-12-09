@@ -7,4 +7,5 @@ Homestead.json
 .env
 .idea/
 /public/uploads
+!/public/uploads/projects/*
 composer.lock

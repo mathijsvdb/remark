@@ -1,5 +1,5 @@
-.battle_text_intro h1.intro{
-
+.battle_text_intro{
+    padding: 10px 40px 10px 40px;
 }
 
 .battle_text_intro p{
@@ -32,8 +32,8 @@
     width: 100%;
 }
 
-.battle_container ul{
-
+.battle_container{
+    padding: 10px 40px 10px 40px;
 }
 
 .battle_container li{
