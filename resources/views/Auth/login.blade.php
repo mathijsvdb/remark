@@ -16,7 +16,7 @@
 
     <div class="login_mini">
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-md-offset-4 content-box login_container">
+            <div class="col-sm-6 col-md-4 col-md-offset-4 content-box vcenter login_container">
                 <h1 class="text-center login-title">Login</h1>
                 <hr>
                 <div class="account-wall">
