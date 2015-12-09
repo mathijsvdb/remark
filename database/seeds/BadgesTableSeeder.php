@@ -36,8 +36,8 @@ class BadgesTableSeeder extends Seeder
                 'badge_img' => 'badges_4.png'
             ],
             [
-                'badge_title' => "I'm a regular",
-                'badge_description' => "You've logged in for 3 consecutive days.",
+                'badge_title' => "I'm a coolio",
+                'badge_description' => "Damn you uploaded 50 works, good job!",
                 'badge_img' => 'badges_5.png'
             ],
             [
