@@ -42,13 +42,13 @@
 				<input type="email" name="email" value="{{ $user->email }}" class="form-control">
 			</div>
 
-			<hr />
+			<hr style="visibility: hidden;"/>
 			<div>
 				<h4>About me</h4>
 				<label for="bio">biography</label><input class="form-control" value="{{ $user->bio }}" name="bio" type="text">
 			</div>
 
-			<hr />
+			<hr style="visibility: hidden;"/>
 			<div>
 				<h4>Adding links</h4>
 				<label for="facebook">Facebook</label><input class="form-control" value="{{ $user->facebook }}" name="facebook" type="text">

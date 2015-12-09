@@ -18,7 +18,7 @@ class AdsController extends Controller
 {
     public function ads()
     {
-        $user_id = Auth::user();
+        $user_id = Auth::id();
 
         $myAds = DB::table('ads')
             ->where('user_id', '=', $user_id)

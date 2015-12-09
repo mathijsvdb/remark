@@ -138,7 +138,7 @@
                         </form>
 
                         <h4 class="user_name_info">{{ $comment->firstname . ' ' . $comment->lastname }}</h4>
-                        <p>{!! $comment->body !!}</p>
+                        <p>{!! nl2br(e($comment->body)) !!}</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
