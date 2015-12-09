@@ -6,6 +6,11 @@ Homestead.yaml
 Homestead.json
 .env
 .idea/
-/public/uploads
-!/public/uploads/projects/*
+
+!/public
+/public/*
+!/public/uploads
+/public/uploads/*
+!/public/uploads/projects
+
 composer.lock
