@@ -292,7 +292,7 @@ class ProjectController extends Controller
         $project->delete();
         File::delete('uploads/' . $project->img);
 
-        return redirect::back();
+        return redirect("/projects");
     }
 
     public function getEditProject($project_id) {
