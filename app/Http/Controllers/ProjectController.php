@@ -395,13 +395,16 @@ class ProjectController extends Controller
     //badges
 
     public function CheckFirstUploadedProject($id){
-        $badge_id = 4;
         $totalProjects = DB::table("projects")
             ->where('user_id', $id)
             ->count();
 
         if($totalProjects == 0){
             //badgeId + userId naar db sturen
+            $badge_id = 4;
+            $this->AddInDatabase($id, $badge_id);
+        } else if($totalProjects >=49){
+            $badge_id = 5;
             $this->AddInDatabase($id, $badge_id);
         }
     }
