@@ -29,6 +29,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile Menu <span class="glyphicon glyphicon-align-justify"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ url('/profile/' . Auth::user()->username) }}">My Profile</a></li>
+                            <li><a href="{{ url('/activity') }}">My Notifications</a></li>
                             <li role="separator" class="divider"></li>
                             <li class="dropdown"><a href="{{ url('/logout') }}" >Logout</a></li>
                         </ul>
