@@ -50,7 +50,7 @@
                     </div>
                 </form>
                 <a href="/">recent</a>
-                <a href="/?sort=popular">popular</a>
+                <a href="/popular">popular</a>
             </div>
 
 
@@ -84,8 +84,20 @@
 
         <div class="imagelist">
 
-                <?php if(!isset($searches)){ ?>
+                @if(isset($popular))
+                    @foreach($popular as $popwork)
+                    <div class="col-md-4">
+                        <a href="/projects/{{ $popwork->id }}">{{ $popwork->title }} <span class="glyphicon glyphicon-heart"> {{ $popwork->likes }}</span></a>
+                        <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $popwork->img !!}" alt="">
+                        <p>{{$popwork->body}}</p>
+                    </div>
+                    @endforeach
+                @else
 
+
+
+                <?php if(!isset($searches)){ ?>
+                    @if(isset($spotlight))
                     @foreach($spotlight as $work)
 
                         <div class="col-md-4">
@@ -97,6 +109,7 @@
                             </a>
                         </div>
                     @endforeach
+                        @endif
 
                 <?php }else{ ?>
 
@@ -120,7 +133,7 @@
                     <?php }?>
 
                 <?php }?>
-
+                    @endif
         </div>
 
         </div>
