@@ -11,8 +11,9 @@
     </div>
 
     <div class="battle_container ">
-        <h1><img class="axe" src="http://game-icons.net/icons/lorc/originals/png/000000/transparent/battle-axe.png" alt="battle_icon">  {{$active_battle->name}}</h1>
+        <h1><img class="axe" src="http://game-icons.net/icons/lorc/originals/png/000000/transparent/battle-axe.png" alt="battle_icon">  {{$active_battle->name}}</h1> <a href="/projects/add" class="btn btn-primary participate-btn"><span></span> Add a project</a>
         <div class="information_battle"><p>{{$active_battle->description}}</p></div>
+
         <ul class="row">
             @foreach($battle_projects as $project)
                 <li class="col-md-2 content-box">
