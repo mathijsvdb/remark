@@ -132,10 +132,10 @@
                     </div>
 
                     <div class="user_info_comment col-md-11">
-                        <form action="#" method="post" class="flag_comment">
-                            {!! csrf_field() !!}
-                            <button disabled class="flag_user" title="flag user" type=submit class="btn btn-xs" id="flag_comment_user"><span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
-                        </form>
+                        <form action="/spamComment/{{ $comment->id }}" method="post" class="flag_comment_user">
+                        {!! csrf_field() !!}
+                        <button class="flag_comment" title="flag comment" type=submit class="btn btn-xs" id="flag_comment">Flag for spam: <span style="color:darkred;" class="glyphicon glyphicon-flag"></span></button>
+                    </form>
 
                         <h4 class="user_name_info">{{ $comment->firstname . ' ' . $comment->lastname }}</h4>
                         <p>{!! nl2br(e($comment->body)) !!}</p>

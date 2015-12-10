@@ -139,6 +139,7 @@ Route::post('/advertising/add', 'AdsController@postAddAdvertisement');
  */
 
 Route::post('/spam/{id}', 'ProjectController@spam');
+Route::post('/spamComment/{id}', 'ProjectController@spamComment');
 
 
 /*

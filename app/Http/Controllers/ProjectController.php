@@ -143,6 +143,7 @@ class ProjectController extends Controller
             ->get();
 
         $comments = DB::table("comments")
+        ->where('comments.deleted_at', '=', NULL)
         ->where('project_id', $id)
         ->join('users', 'users.id', '=', 'comments.user_id')
         ->select('users.firstname', 'users.lastname', 'comments.*', 'users.image')
@@ -469,6 +470,24 @@ class ProjectController extends Controller
         }
 
         return Redirect::to('/projects/' . $id);
+
+    }
+
+    public function spamComment($id){
+        
+        $comment = Comment::find($id);
+
+        $comment->spam ++;
+
+        $comment->save();
+
+        if($comment->spam >= 5){
+
+            $comment->delete();
+            return redirect::back();
+        }
+
+        return Redirect::back();
 
     }
 
