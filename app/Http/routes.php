@@ -11,6 +11,10 @@
 |
 */
 
+Route::get('/newdesign', function() {
+    return view("newdesign.auth.reset");
+});
+
 /*
  * Project Routes
  */

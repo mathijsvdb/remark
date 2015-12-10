@@ -1,0 +1,63 @@
+body {
+    background: whitesmoke;
+    font-family: 'Open Sans', sans-serif;
+
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+}
+
+.welcome {
+    min-height: 50vh;
+    background-image: url(../../images/bg1.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.jumbotron {
+    background-color: rgba(240, 240, 240, 0.9);
+    margin: 50px 0;
+}
+
+.navbar {
+    margin: 0;
+}
+
+footer {
+    background-color: #222;
+    color: white;
+}
+
+.login-form,
+.signup-form,
+.reset-form,
+.reset-email-form {
+    max-width: 400px;
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 50px auto;
+}
+
+.login-page,
+.signup-page,
+.reset-page,
+.reset-email-page {
+    background-image: url(../../images/bg2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    align-items: stretch;
+    width:100%;
+}
+
+
+
