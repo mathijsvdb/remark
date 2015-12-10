@@ -28,71 +28,18 @@
         </div>
     </div>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <a href="" class="thumbnail">
-                    <img src="http://placehold.it/250x250" alt="...">
-                    <span>title</span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-heart"></span> 125</span>
-                </a>
-            </div>
+    <div class="container-fluid">
+        <ul class="list-unstyled" id="spotlight">
+            @for($i= 0; $i < 20; $i++)
+                <li class="spotlight-item">
+                    <a href="" class="thumbnail">
+                        <img src="http://placehold.it/200x200" alt="...">
+                        <span>title</span>
+                        <span class="pull-right">125 <span class="glyphicon glyphicon-heart"></span></span>
+                    </a>
+                </li>
+            @endfor
+        </ul>
 
-            <div class="col-md-3">
-                <a href="" class="thumbnail">
-                    <img src="http://placehold.it/250x250" alt="...">
-                    <span>title</span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-heart"></span> 125</span>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a href="" class="thumbnail">
-                    <img src="http://placehold.it/250x250" alt="...">
-                    <span>title</span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-heart"></span> 125</span>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a href="" class="thumbnail">
-                    <img src="http://placehold.it/250x250" alt="...">
-                    <span>title</span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-heart"></span> 125</span>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a href="" class="thumbnail">
-                    <img src="http://placehold.it/250x250" alt="...">
-                    <span>title</span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-heart"></span> 125</span>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a href="" class="thumbnail">
-                    <img src="http://placehold.it/250x250" alt="...">
-                    <span>title</span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-heart"></span> 125</span>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a href="" class="thumbnail">
-                    <img src="http://placehold.it/250x250" alt="...">
-                    <span>title</span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-heart"></span> 125</span>
-                </a>
-            </div>
-
-            <div class="col-md-3">
-                <a href="" class="thumbnail">
-                    <img src="http://placehold.it/250x250" alt="...">
-                    <span>title</span>
-                    <span class="pull-right"><span class="glyphicon glyphicon-heart"></span> 125</span>
-                </a>
-            </div>
-        </div>
     </div>
 @stop
