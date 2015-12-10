@@ -67,15 +67,13 @@ Route::get('update', [
 );
 
 Route::post('update', 'ProfileController@postProfile');
-Route::get('/profile/{username}/activity', [
+Route::get('/activity', [
     'middleware' => 'auth',
     'uses' => 'UserActivityController@showAllActivity'
 ]);
-Route::post('/profile/{username}/activityFilter',function(){
-    if(Request::ajax()){
-        return 'iets';
-    }
-});
+
+
+Route::get("/popular", 'SearchController@filterRecent');
 
 Route::get('profile/{username}/favorites', [
     'middleware' => 'auth',

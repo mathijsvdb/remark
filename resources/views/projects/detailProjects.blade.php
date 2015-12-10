@@ -100,22 +100,18 @@
         </div>
 <div class="clearfix"></div>
     <div class="add_comment_container">
+        @if(Auth::check())
             <form method="POST" class="form" action="{!! $project['id'] !!}">
                 {!! csrf_field() !!}
                 <h3>Comments</h3>
                 <textarea class="form-control" rows="3" name="body"></textarea>
 
                 <input type="hidden" name="project_id" value="{{ $project->id }}" class="form-control">
-                </br>
-
-                @if(!Auth::check())
-                    <a href="/login">Log in to comment</a>
-                @else
-                    <button class="btn btn-default" type="submit">Submit comment</button>
-                @endif
-
+                <button class="btn btn-default" type="submit">Submit comment</button>
             </form>
-
+        @else
+            <a href="/login" class="logintocomment">Log in to comment</a>
+        @endif
     </div>
 
         <div class="clearfix">
@@ -138,7 +134,7 @@
                         </form>
 
                         <h4 class="user_name_info">{{ $comment->firstname . ' ' . $comment->lastname }}</h4>
-                        <p>{!! $comment->body !!}</p>
+                        <p>{!! nl2br(e($comment->body)) !!}</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>

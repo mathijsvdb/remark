@@ -26,6 +26,8 @@
                 <div class="col-sm-9 col-sm-offset-3">
                     <button type="submit" class="btn btn-primary btn-block">Invite!</button>
                 </div>
+
+                <p>Don't have any friends?<a href="/">Click here</a></p>
             </div>
         </form> <!-- /form -->
     </div>

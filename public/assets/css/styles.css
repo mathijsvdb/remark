@@ -644,6 +644,11 @@ input[type=checkbox]{
 }
 /*----------details project---------*/
 
+.logintocomment{
+    margin-left: 70px;
+    line-height: 40px;
+}
+
 .detail_container{
     width: 65%;
     padding: 20px;

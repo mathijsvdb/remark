@@ -10,7 +10,7 @@
                     <br />
                     <p>The page you requested could not be found, either contact your webmaster or try again.</p>
                     <p><b>Or you could just press this neat little button:</b></p>
-                    <a href="#" class="btn btn-large btn-info"><i class="icon-home icon-white"></i> Take Me Home</a>
+                    <a href="/" class="btn btn-large btn-info"><i class="icon-home icon-white"></i> Take Me Home</a>
                 </div>
             </div>
         </div>
