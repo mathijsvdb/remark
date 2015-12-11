@@ -43,8 +43,8 @@
     </div>
 
     <footer>
-        <div class="container">
-            <h1>Dit is een footer, jajajajajajaja</h1>
+        <div class="container-fluid">
+            <img src="{{ URL::asset('assets/images/remark-logo.svg') }}" width="140" alt="Remark">
         </div>
     </footer>
 

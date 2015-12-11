@@ -19,7 +19,7 @@
                     <div class="header-content">
                         <div class="header-content-inner">
                             <h1>Get remarks and learn</h1>
-                            <a href="{{ url('/projects/add') }}" class="btn btn-primary">Add a project!</a>
+                            <a class="btn btn-primary" href="/projects/add"><span class="glyphicon glyphicon-plus"></span> Add a project</a>
                         </div>
                     </div>
                 </header>
@@ -28,18 +28,25 @@
         </div>
     </div>
 
-    <div class="container-fluid">
-        <ul class="list-unstyled" id="spotlight">
-            @for($i= 0; $i < 20; $i++)
-                <li class="spotlight-item">
-                    <a href="" class="thumbnail">
-                        <img src="http://placehold.it/200x200" alt="...">
-                        <span>title</span>
-                        <span class="pull-right">125 <span class="glyphicon glyphicon-heart"></span></span>
-                    </a>
-                </li>
-            @endfor
-        </ul>
+    <div class="container-fluid text-center">
+        @if(1 == rand(0, 1))
+            <ul class="list-unstyled" id="spotlight">
+                @for($i= 0; $i < 20; $i++)
+                    <li class="spotlight-item">
+                        <a href="" class="thumbnail">
+                            <img src="http://placehold.it/250x250" alt="...">
+                            <span>title</span>
+                            <span class="pull-right">125 <span class="glyphicon glyphicon-heart"></span></span>
+
+                            <span class="pull-right">35 <span class="glyphicon glyphicon-star"></span>&nbsp;</span>
+                        </a>
+                    </li>
+                @endfor
+            </ul>
+        @else
+            <p>There are no projects yet, be the first to upload one!</p>
+            <a class="btn btn-primary" href="/projects/add"><span class="glyphicon glyphicon-plus"></span> Add a project</a>
+        @endif
 
     </div>
 @stop

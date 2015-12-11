@@ -35,6 +35,7 @@ body {
 footer {
     background-color: #222;
     color: white;
+    padding: 30px 0;
 }
 
 .login-form,
@@ -63,12 +64,11 @@ footer {
 #spotlight, #projects {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1680px;
+    max-width: 1450px;
 }
 
 .spotlight-item, .project {
-    margin: 0 15px 5px 15px;
+    margin: 0 15px 10px 15px;
 }
 
 .project-top {
@@ -90,12 +90,38 @@ footer {
 
 .profile-top {
     display: flex;
-    height: 250px;
+    min-height: 250px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 50px;
-    border-bottom: 1px solid dimgray;
 }
+
+.img-profile {
+    border: 3px solid #999;
+    margin: 10px auto;
+}
+
+#nav-2 {
+    display: flex;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid lightgrey;
+    margin-bottom: 30px;
+}
+
+#nav-2 a:link,
+#nav-2 a:visited,
+#nav-2 a:hover,
+#nav-2 a:active {
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #0D0D0D;
+    text-transform: uppercase;
+
+#nav-2 a:hover {
+    border-bottom: 1px solid #0D0D0D;
+}
+
 
 
 
