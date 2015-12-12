@@ -28,7 +28,7 @@ class ProfileController extends Controller {
         // $user = User::find($id);
         $user = User::where('username', $username)->first();
 
-        $projects = Project::where('user_id', $user->id)->get();
+        $projects = Project::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
 
         $badges = DB::table("userbadges")
             ->join('badges', 'badge_id' , '=' , 'badges.id')
