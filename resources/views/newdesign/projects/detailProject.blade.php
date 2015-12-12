@@ -82,17 +82,22 @@
                     <div class="g-plus sharebtndetail" data-action="share" data-annotation="none" data-href=""></div>
                 </div>
 
-                <div class="project-info-list project-user-actions">
-                    <a href="/projects/{{ $project->id }}/edit" title="Edit this project" class="btn btn-default btn-xs btn-edit"><i class="fa fa-pencil fa-lg"></i> Edit</a>
-                    <form action="/projects/{{ $project->id }}/delete" method="post" onclick="return confirm('Are you sure you want to delete this project?');">
-                        {!! csrf_field() !!}
-                        <button type="submit" title="Delete project" class="btn btn-danger btn-xs btn-delete"><i class="fa fa-trash fa-lg"></i> Delete</button>
-                    </form>
-                    <form action="/spam/{{ $project->id }}" method="post" onclick="return confirm('Are you sure you want to flag this project as spam?');">
-                        {!! csrf_field() !!}
-                        <button type="submit" title="Delete project as spam" class="btn btn-warning btn-xs btn-delete"><i class="fa fa-flag fa-lg"></i> Spam</button>
-                    </form>
-                </div>
+                @if(Auth::check())
+                    <div class="project-info-list project-user-actions">
+                        @if(Auth::id() == $user->id)
+                            <a href="/projects/{{ $project->id }}/edit" title="Edit this project" class="btn btn-default btn-xs btn-edit"><i class="fa fa-pencil fa-lg"></i> Edit</a>
+                            <form action="/projects/{{ $project->id }}/delete" method="post" onclick="return confirm('Are you sure you want to delete this project?');">
+                                {!! csrf_field() !!}
+                                <button type="submit" title="Delete project" class="btn btn-danger btn-xs btn-delete"><i class="fa fa-trash fa-lg"></i> Delete</button>
+                            </form>
+                        @endif
+
+                        <form action="/spam/{{ $project->id }}" method="post" onclick="return confirm('Are you sure you want to flag this project as spam?');">
+                            {!! csrf_field() !!}
+                            <button type="submit" title="Delete project as spam" class="btn btn-warning btn-xs btn-delete"><i class="fa fa-flag fa-lg"></i> Spam</button>
+                        </form>
+                    </div>
+                @endif
             </div>
 
             <div class="col-md-12 project-comments-section">
