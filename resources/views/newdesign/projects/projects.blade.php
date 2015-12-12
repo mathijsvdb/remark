@@ -21,7 +21,7 @@
                                 <p class="description">{{ $project->body }}</p>
                             </div>
                         </a>
-                        <a href="#" class="username pull-left">{{ $project->user->username }}</a>
+                        <a href="/profile/{{ $project->user->username }}" class="username pull-left">{{ $project->user->username }}</a>
                         <span class="pull-right">{{ $project->likes->count() }} <span class="glyphicon glyphicon-heart"></span></span>
                         <span class="pull-right">{{ $project->favorites->count() }} <span class="glyphicon glyphicon-star"></span>&nbsp;</span>
                     </li>
