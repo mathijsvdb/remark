@@ -39,7 +39,19 @@ body {
 footer {
     background-color: #222;
     color: white;
-    padding: 30px 0;
+    padding: 30px 15px;
+}
+
+.ads {
+    width: 100%;
+}
+
+.ads .ad {
+    margin-left: 30px;
+}
+
+.ads .ad:last-child {
+    margin-left: 0;
 }
 
 .login-form,

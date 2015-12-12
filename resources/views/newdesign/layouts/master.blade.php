@@ -44,7 +44,19 @@
 
     <footer>
         <div class="container-fluid">
-            <img src="{{ URL::asset('assets/images/remark-logo.svg') }}" width="140" alt="Remark">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{ URL::asset('assets/images/remark-logo.svg') }}" width="140" alt="Remark">
+                </div>
+
+                <div class="col-md-6">
+                    <div class="ads">
+                        <img class="pull-right ad" src="http://lorempixel.com/200/150" alt="">
+                        <img class="pull-right ad" src="http://lorempixel.com/200/150" alt="">
+                        <img class="pull-right ad" src="http://lorempixel.com/200/150" alt="">
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
