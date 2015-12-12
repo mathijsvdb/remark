@@ -124,7 +124,10 @@ Route::get('/projects/search/{id}','ProjectController@SearchByColor');
 /*
  * Advertising Routes
  */
-Route::get('/advertising','AdsController@ads');
+Route::get('/advertising', [
+    'middleware' => 'auth',
+    'uses' => 'AdsController@ads'
+]);
 Route::post('/advertising', 'AdsController@postClickCounter');
 
 Route::post('', function(){
