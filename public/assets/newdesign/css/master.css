@@ -63,6 +63,7 @@ footer {
     min-height: 100%;
     align-items: stretch;
     width:100%;
+    flex: 1;
 }
 
 #spotlight, #projects {
