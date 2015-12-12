@@ -51,9 +51,9 @@
 
                 <div class="col-md-6">
                     <div class="ads">
-                        <img class="pull-right ad" src="http://lorempixel.com/200/150" alt="">
-                        <img class="pull-right ad" src="http://lorempixel.com/200/150" alt="">
-                        <img class="pull-right ad" src="http://lorempixel.com/200/150" alt="">
+                        <a class="pull-right ad" href="http://www.staggeringbeauty.com/"><img src="http://lorempixel.com/200/150" alt=""></a>
+                        <a class="pull-right ad" href="http://www.trypap.com/"><img class="pull-right ad" src="http://lorempixel.com/200/150" alt=""></a>
+                        <a class="pull-right ad" href="http://www.sanger.dk/"><img class="pull-right ad" src="http://lorempixel.com/200/150" alt=""></a>
                     </div>
                 </div>
             </div>
