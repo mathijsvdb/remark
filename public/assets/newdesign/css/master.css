@@ -205,6 +205,192 @@ footer {
     white-space: nowrap;
 }
 
+.project-top-section {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.project-mid-left {
+    clear: both;
+}
+
+.project-user-img {
+    margin: 10px auto;
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.project-title-section {
+    float: left;
+    margin: 10px 0px 10px 15px;
+}
+
+.project-title-section h1 {
+    font-size: 20px;
+    margin: 0 0 5px 0;
+}
+
+.project-title-section p {
+    margin: 0;
+}
+
+.project-date {
+    color: grey;
+    margin: 10px;
+}
+
+.project-img {
+    min-width: 545px;
+    min-height: auto;
+}
+
+.project-info-list {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    height: 50px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.project-info-list:last-child {
+    border: none;
+}
+
+.project-info-list i {
+    color: grey;
+}
+
+.project-info-list span, .project-colors, .project-tags {
+    margin-left: 15px;
+}
+
+.project-colors a:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.project-colors a:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.project-colors a {
+    height: 18px;
+    width: 28px;
+    display: block;
+    float: left;
+    transform-origin: center center;
+}
+
+.project-colors a:hover {
+    z-index: 9999;
+    transform: scale(1.25, 1.25);
+    transform-origin: center center;
+}
+
+.project-tags a {
+    font-size: smaller;
+    padding: 3px;
+    border-radius: 3px;
+    background-color: lightgrey;
+    text-decoration: none;
+    color: #222;
+    margin-right: 3px;
+}
+
+.btn-delete i {
+    color: white;
+}
+
+.btn-edit i {
+    color: #0D0D0D;
+}
+
+.project-user-actions a,
+.project-user-actions button,
+.project-sharing * {
+    margin-right: 10px;
+}
+
+.sharebtndetail span {
+    margin: 0;
+}
+
+.project-comments-section  h3 {
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+.project-comments-section textarea {
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.btn-comment {
+    margin-bottom: 10px;
+}
+
+.project-comments {
+    margin-bottom: 50px;
+    clear: both;
+    border-top: 1px solid lightgrey;
+}
+
+.project-no-comments {
+    margin-bottom: 50px;
+    padding-top: 10px;
+    clear: both;
+    border-top: 1px solid lightgrey;
+}
+
+.project-comments .project-comment:first-child {
+    margin-top: 10px;
+}
+
+.project-comment {
+    display: flex;
+    align-items: flex-start;
+    background-color: white;
+    border-radius: 4px;
+    border-right: 1px solid #EEEEEE;
+    border-top: 1px solid #EEEEEE;
+    border-bottom: 1px solid #EEEEEE;
+    margin-bottom: 10px;
+}
+
+.project-comment-user-img {
+    margin-right: 1em;
+    width: 50px;
+    height: 50px;;
+}
+
+.project-comment-body {
+    flex: 1;
+}
+
+.project-comment-body h4 {
+    margin-top: 0;
+}
+
+.project-comment-body p {
+    font-size: 14px;
+}
+
+#like-btn, #unlike-btn, #favorite-btn, #unfavorite-btn {
+    border: none;
+    background: none;
+    width: auto;
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+
+
+
+
+
 
 
 
