@@ -69,7 +69,6 @@ footer {
     display: flex;
     flex-wrap: wrap;
     max-width: 1450px;
-    justify-content: center;
 }
 
 .spotlight-item, .project {

@@ -4,7 +4,7 @@
             @foreach($projects as $project)
                 <li class="project">
                     <a href="/projects/{{ $project->id }}" class="thumbnail project-thumbnail">
-                        <img src="/uploads/{{ $project->img }}" alt="...">
+                        <img src="/uploads/{{ $project->img }}" alt="">
 
                         <div class="project-details">
                             <p class="title">{{ $project->title }}</p>

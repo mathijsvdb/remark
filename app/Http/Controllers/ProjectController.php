@@ -29,9 +29,9 @@ use \League\ColorExtractor\Client as ColorExtractor;
 class ProjectController extends Controller
 {
     public function showAllProjects() {
-        $projects = Project::all();
+        $projects = Project::all()->sortByDesc('created_at');
 
-        return view('projects', compact('projects'));
+        return view('newdesign.projects.projects', compact('projects'));
     }
 
     public function getAddProject() {

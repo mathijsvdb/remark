@@ -14,14 +14,9 @@ class frontpageController extends Controller
 
     public function frontpage()
     {
-        $spotlight = DB::table('projects')
-            ->join('users', 'users.id', '=', 'projects.user_id')
-            ->select('users.username','projects.*')
-            ->orderBy('created_at', 'desc')
-            ->take(6)
-            ->get();
+        $spotlight = Project::orderBy('created_at', 'DESC')->take(20)->get();;
 
-        return view("frontpage", compact('spotlight'));
+        return view("newdesign.frontpage", compact('spotlight'));
     }
 
 }
