@@ -3,64 +3,64 @@
 @section("content")
     <div class="profile-top text-center">
         <div class="container-fluid">
-            <img class="img-circle img-profile" src="http://lorempixel.com/100/100/people" alt="">
-            <p>Mathijs Van den Broeck</p>
-            <p>bio</p>
-            <p><i class="fa fa-envelope"></i> mathijsvandenbroeck&commat;gmail.com</p>
+            @if($user->image == 'default.jpg')
+                <img class="img-circle img-profile" src="/assets/images/{!! $user->image !!}" alt="">
+            @else
+                <img class="img-circle img-profile" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
+            @endif
 
+            <p><strong>{{ $user->firstname . " " . $user->lastname }}</strong></p>
+            @if($user->bio != '')
+            <p>{{ $user->bio }}</p>
+            @endif
+
+            @if(!empty($user->facebook || $user->twitter || $user->website))
             <ul class="social list-inline">
+                @if(!empty($user->facebook))
                 <li>
-                    <a href="">
+                    <a href="{{ $user->facebook }}">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
                         </span>
-                    </a></li>
+                    </a>
+                </li>
+                @endif
+                @if(!empty($user->twitter))
                 <li>
-                    <a href="">
+                    <a href="{{ $user->twitter }}">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
                         </span>
-                    </a></li>
+                    </a>
+                </li>
+                @endif
+                @if(!empty($user->website))
                 <li>
-                    <a href="">
+                    <a href="{{ $user->website }}">
                         <span class="fa-stack fa-lg">
                             <i class="fa fa-circle fa-stack-2x"></i>
                             <i class="fa fa-globe fa-stack-1x fa-inverse"></i>
                         </span>
                     </a>
                 </li>
+                @endif
             </ul>
-        </div>
+            @endif
 
-        <!-- navigatie voor eigen projecten/favorites/... -->
+            @if(Auth::check())
+            <a id="edit-profile" class="btn btn-default btn-xs" href="/update"><i class="fa fa-pencil"></i> Edit my profile</a>
+            @endif
+        </div>
     </div>
 
+    <!-- navigatie voor eigen projecten/favorites/... -->
     <ul class="list-inline" id="nav-2">
-        <li><a href="/myprojects">My Projects</a></li>
-        <li><a href="/favorites">My Favorites</a></li>
+        <li><a href="/userprojects">Projects</a></li>
+        <li><a href="/userfavorites">Favorites</a></li>
+        <li><a href="/userrewards">Rewards</a></li>
     </ul>
 
-    <div class="container-fluid">
-        @if(1 == rand(0, 1))
-        <ul class="list-unstyled" id="projects">
-            @for($i= 0; $i < 20; $i++)
-                <li class="project">
-                    <a href="" class="thumbnail">
-                        <img src="http://lorempixel.com/250/250/abstract" alt="...">
-                        <span>title</span>
-                        <span></span>
-                        <span class="pull-right">125 <span class="glyphicon glyphicon-heart"></span></span>
-                    </a>
-                </li>
-            @endfor
-        </ul>
-        @else
-            <div class="text-center">
-                <p>You have no projects</p>
-                <a class="btn btn-primary" href="/projects/add"><span class="glyphicon glyphicon-plus"></span> Add a project</a>
-            </div>
-        @endif
-    </div>
+    @include('newdesign.profile.myprojects')
 @stop

@@ -1,3 +1,7 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
 body {
     background: whitesmoke;
     font-family: 'Open Sans', sans-serif;
@@ -65,10 +69,11 @@ footer {
     display: flex;
     flex-wrap: wrap;
     max-width: 1450px;
+    justify-content: center;
 }
 
 .spotlight-item, .project {
-    margin: 0 15px 10px 15px;
+    margin: 0 15px 25px 15px;
 }
 
 .project-top {
@@ -98,7 +103,18 @@ footer {
 .img-profile {
     border: 3px solid #999;
     margin: 10px auto;
+    width: 100px;
+    height: 100px;
 }
+
+.social {
+    margin: 0;
+}
+
+#edit-profile {
+    margin-top: 10px;
+}
+
 
 #nav-2 {
     display: flex;
@@ -107,6 +123,7 @@ footer {
     justify-content: center;
     border-top: 1px solid lightgrey;
     margin-bottom: 30px;
+    margin-top: 10px;
 }
 
 #nav-2 a:link,
@@ -121,6 +138,71 @@ footer {
 
 #nav-2 a:hover {
     border-bottom: 1px solid #0D0D0D;
+}
+
+.project-thumbnail:link,
+.project-thumbnail:visited,
+.project-thumbnail:hover,
+.project-thumbnail:active {
+    margin-bottom: 5px;
+    position: relative;
+    text-decoration: none;
+    color: #0D0D0D;
+    border: none;
+}
+
+.project-thumbnail img {
+    width: 250px;
+    height: 250px;
+}
+
+.project-details {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    bottom: 4px;
+    z-index: 1;
+    width: 250px;
+    height: 250px;
+    background-color: rgba(255,255,255, 0);
+    transition: all 0.25s ease-in-out;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-thumbnail:hover .project-details {
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.project-thumbnail .project-details p {
+    opacity: 0;
+    transition: all 0.25s ease-in-out;
+}
+
+.project-thumbnail:hover .project-details p {
+    opacity: 1;
+}
+
+.title {
+    font-weight: bold;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.description {
+    font-size: 12px;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.username {
+    width: 125px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 

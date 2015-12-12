@@ -12,7 +12,7 @@
 */
 
 Route::get('/newdesign', function() {
-    return view("newdesign.projects.projects");
+    return view("newdesign.profile.profile");
 });
 
 /*

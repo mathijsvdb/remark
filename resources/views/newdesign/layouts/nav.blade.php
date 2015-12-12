@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img src="{{ URL::asset('assets/images/remark-logo.svg') }}" width="140" alt="Remark">
             </a>
         </div>

@@ -38,7 +38,7 @@ class ProfileController extends Controller {
             ->get();
 
 
-        return view("profile", compact('user', 'projects', 'badges'));
+        return view("newdesign.profile.profile", compact('user', 'projects', 'badges'));
     }
 
     public function updateProfile(Request $request)

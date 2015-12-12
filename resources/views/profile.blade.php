@@ -64,7 +64,7 @@
                                 @endif
                             @else
                                 @foreach($projects as $work)
-                                    <a href="/projects/{!! $work['id'] !!}">
+                                    <a href="">
                                         <img class="projectimages content-box" src="/uploads/{!! $work['img'] !!}" alt="">
                                     </a>
                                 @endforeach
