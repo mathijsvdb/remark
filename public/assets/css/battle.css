@@ -1,5 +1,5 @@
-.battle_text_intro h1.intro{
-
+.battle_text_intro{
+    padding: 10px 40px 10px 40px;
 }
 
 .battle_text_intro p{
@@ -20,8 +20,10 @@
 }
 
 .information_battle{
-    margin-left: 40px;
+    margin-left: 55px;
     margin-bottom: 20px;
+    margin-top: 13px;
+
 }
 
 .information_battle p{
@@ -32,8 +34,8 @@
     width: 100%;
 }
 
-.battle_container ul{
-
+.battle_container{
+    padding: 10px 40px 10px 40px;
 }
 
 .battle_container li{
@@ -47,11 +49,18 @@
 .battle_container a:active{
     color: white;
     display: block;
-    background-color: black;
     padding: 8px;
     font-size: 1.6rem;
 }
 
 .battle_container span{
     float: right;
+}
+
+.participate-btn{
+    width: 120px;
+    margin-left: 62px;
+    border-radius: 30px;
+    background-color: lightgreen;
+    border: none;
 }

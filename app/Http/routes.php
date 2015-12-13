@@ -68,7 +68,10 @@ Route::get('/activity', [
     'uses' => 'UserActivityController@showAllActivity'
 ]);
 
-Route::get('profile/{id}/favorites', [
+
+Route::get("/popular", 'SearchController@filterRecent');
+
+Route::get('profile/{username}/favorites', [
     'middleware' => 'auth',
     'uses' => 'ProfileController@showFavorites'
 ]);
@@ -121,7 +124,10 @@ Route::get('/projects/search/{id}','ProjectController@SearchByColor');
 /*
  * Advertising Routes
  */
-Route::get('/advertising','AdsController@ads');
+Route::get('/advertising', [
+    'middleware' => 'auth',
+    'uses' => 'AdsController@ads'
+]);
 Route::post('/advertising', 'AdsController@postClickCounter');
 
 Route::post('', function(){
