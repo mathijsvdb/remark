@@ -26,7 +26,6 @@ class ProfileController extends Controller {
      */
     public function profile($username)
     {
-        // $user = User::find($id);
         $user = User::where('username', $username)->first();
         $projects = Project::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
         $favorites = Favorite::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
