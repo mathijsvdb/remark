@@ -21,6 +21,7 @@
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ URL::asset('assets/newdesign/css/master.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/newdesign/css/ow-bootstrap.css') }}">
 
     <link rel="icon" href="{{URL::asset('assets/images/favicon.png')}}" sizes="16x16 32x32" type="image/png">
 

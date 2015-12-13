@@ -155,8 +155,9 @@ footer {
 }
 
 #nav-2 li.active {
-    background-color: lightgreen;
+    background-color: #1D9C73;
     border-radius: 4px;
+    color: white;
 }
 
 #nav-2 a:hover {
@@ -436,6 +437,8 @@ footer {
     margin: 0;
     outline: none;
 }
+
+
 
 
 
