@@ -1,4 +1,4 @@
-@extends('1-old-design.layouts.master')
+@extends('layouts.master')
 
 @if (count($errors) > 0)
     <div class="alert alert-danger">
