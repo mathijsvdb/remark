@@ -29,3 +29,7 @@
 .btn:focus, .btn:active:focus {
     outline: none;
 }
+
+.navbar-inverse .navbar-nav>li>a:focus, .navbar-inverse .navbar-nav>li>a:hover {
+    color: #21b283;
+}
