@@ -1,4 +1,4 @@
-@extends("layouts.master")
+@extends("old-design.layouts.master")
 
 @section("content")
 	<div id="updateform" style="padding: 45px;">

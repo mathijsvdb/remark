@@ -1,4 +1,4 @@
-@extends('newdesign.layouts.master')
+@extends('layouts.master')
 
 @section('content')
     <div class="reset-email-page">

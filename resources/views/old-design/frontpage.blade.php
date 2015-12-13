@@ -1,4 +1,4 @@
-@extends("layouts.master")
+@extends("old-design.layouts.master")
 
 @section("content")
     <div class="front_container_bg"></div>

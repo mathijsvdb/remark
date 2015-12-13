@@ -1,4 +1,4 @@
-@extends("layouts.master")
+@extends("old-design.layouts.master")
 
 @section("content")
     <h1>Projects by this color</h1>
