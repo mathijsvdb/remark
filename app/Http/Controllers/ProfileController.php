@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Badges;
+use App\Favorite;
 use App\Project;
 use App\Referrals;
 use App\User;
@@ -30,6 +31,8 @@ class ProfileController extends Controller {
 
         $projects = Project::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
 
+        $favorites = Favorite::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
+
         $badges = DB::table("userbadges")
             ->join('badges', 'badge_id' , '=' , 'badges.id')
             ->where('user_id', $user->id)
@@ -37,8 +40,7 @@ class ProfileController extends Controller {
             ->take(3)
             ->get();
 
-
-        return view("newdesign.profile.profile", compact('user', 'projects', 'badges'));
+        return view("newdesign.profile.profile", compact('user', 'projects', 'favorites', 'badges'));
     }
 
     public function updateProfile(Request $request)

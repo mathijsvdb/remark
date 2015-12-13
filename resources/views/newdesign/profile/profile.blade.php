@@ -56,11 +56,52 @@
     </div>
 
     <!-- navigatie voor eigen projecten/favorites/... -->
-    <ul class="list-inline" id="nav-2">
-        <li><a href="/userprojects">Projects</a></li>
-        <li><a href="/userfavorites">Favorites</a></li>
-        <li><a href="/userrewards">Rewards</a></li>
+    <ul class="list-unstyled" id="nav-2">
+        <li id="user-projects" class="active">Projects</li>
+        <li id="user-favorites">Favorites</li>
+        <li id="user-rewards">Rewards</li>
     </ul>
 
-    @include('newdesign.profile.myprojects')
+    <div class="user-projects-section">
+        @include('newdesign.profile.userprojects');
+    </div>
+
+    <div class="user-favorites-section hidden">
+        @include('newdesign.profile.userfavorites');
+    </div>
+
+    <div class="user-rewards-section hidden">
+        @include('newdesign.profile.userrewards');
+    </div>
+@stop
+
+@section('scripts')
+    <script>
+        $('#user-projects').on('click', function() {
+            $('.user-projects-section').removeClass('hidden');
+            $('.user-favorites-section').addClass('hidden');
+            $('.user-rewards-section').addClass('hidden');
+            $('#user-projects').addClass('active');
+            $('#user-favorites').removeClass('active');
+            $('#user-rewards').removeClass('active');
+        });
+
+        $('#user-favorites').on('click', function() {
+            $('.user-projects-section').addClass('hidden');
+            $('.user-favorites-section').removeClass('hidden');
+            $('.user-rewards-section').addClass('hidden');
+            $('#user-projects').removeClass('active');
+            $('#user-favorites').addClass('active');
+            $('#user-rewards').removeClass('active');
+        });
+
+        $('#user-rewards').on('click', function() {
+            $('.user-projects-section').addClass('hidden');
+            $('.user-favorites-section').addClass('hidden');
+            $('.user-rewards-section').removeClass('hidden');
+            $('#user-projects').removeClass('active');
+            $('#user-favorites').removeClass('active');
+            $('#user-rewards').addClass('active');
+        });
+    </script>
 @stop

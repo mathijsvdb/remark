@@ -12,4 +12,9 @@ class Favorite extends Model
      * @var string
      */
     protected $table = 'favorites';
+
+    public function project()
+    {
+        return $this->belongsTo('App\Project');
+    }
 }

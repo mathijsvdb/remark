@@ -19,7 +19,8 @@
         </ul>
     @else
         <div class="text-center">
-            <p>You have no projects</p>
+            <h4>You have no projects.</h4>
+            <p>Add your first project now!</p>
             <a class="btn btn-primary" href="/projects/add"><span class="glyphicon glyphicon-plus"></span> Add a project</a>
         </div>
     @endif
