@@ -1,4 +1,4 @@
-@extends("old-design.layouts.master")
+@extends("layouts.master")
 
 @section("content")
     <script type="text/javascript" src="https://js.stripe.com/v1/"></script>

@@ -1,4 +1,4 @@
-@extends("old-design.layouts.master")
+@extends("layouts.master")
 
 @section("content")
     <div class="addProject_container_bg"></div>
