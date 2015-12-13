@@ -113,7 +113,7 @@ footer {
 }
 
 .img-profile {
-    border: 3px solid #999;
+    border: 3px solid #1d9c73;
     margin: 10px auto;
     width: 100px;
     height: 100px;
@@ -132,7 +132,7 @@ footer {
     height: 50px;
     align-items: center;
     justify-content: center;
-    border-top: 1px solid lightgrey;
+    border-top: 1px solid #EEEEEE;
     margin-bottom: 30px;
     margin-top: 10px;
 }
@@ -150,7 +150,7 @@ footer {
 }
 
 #nav-2 li:hover {
-    background-color: lightgrey;
+    background-color: #EEEEEE;
     border-radius: 4px;
 }
 
@@ -250,11 +250,24 @@ footer {
     text-overflow: ellipsis;
 }
 
-.username {
+.username:link,
+.username:visited,
+.username:hover,
+.username:active {
     width: 125px;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    text-decoration: none;
+    color: #1d9c73;
+}
+
+.username:hover {
+    color: #198663;
+}
+
+.username:active {
+    color: #157153;
 }
 
 .project-top-section {
@@ -302,7 +315,7 @@ footer {
     align-items: center;
     padding: 10px 0;
     height: 50px;
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid #EEEEEE;
 }
 
 .project-info-list:last-child {
@@ -345,7 +358,7 @@ footer {
     font-size: smaller;
     padding: 3px;
     border-radius: 3px;
-    background-color: lightgrey;
+    background-color: #EEEEEE;
     text-decoration: none;
     color: #222;
     margin-right: 3px;
@@ -386,14 +399,14 @@ footer {
 .project-comments {
     margin-bottom: 50px;
     clear: both;
-    border-top: 1px solid lightgrey;
+    border-top: 1px solid #EEEEEE;
 }
 
 .project-no-comments {
     margin-bottom: 50px;
     padding-top: 10px;
     clear: both;
-    border-top: 1px solid lightgrey;
+    border-top: 1px solid #EEEEEE;
 }
 
 .project-comments .project-comment:first-child {

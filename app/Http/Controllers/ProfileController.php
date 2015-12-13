@@ -34,7 +34,7 @@ class ProfileController extends Controller {
         $userbadge_ids = [];
 
         foreach($userbadges as $userbadge) {
-            $userbadge_ids[] = $userbadge->id;
+            $userbadge_ids[] = $userbadge->badge_id;
         }
 
         return view("profile.profile", compact('user', 'projects', 'favorites', 'badges', 'userbadge_ids'));
