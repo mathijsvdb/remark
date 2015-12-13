@@ -31,7 +31,7 @@ class ProjectController extends Controller
     public function showAllProjects() {
         $projects = Project::all()->sortByDesc('created_at');
 
-        return view('2-newdesign.projects.projects', compact('projects'));
+        return view('projects.projects', compact('projects'));
     }
 
     public function getAddProject() {
