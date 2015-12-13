@@ -19,8 +19,12 @@
         </ul>
     @else
         <div class="text-center">
-            <h4>You have no favorites yet.</h4>
-            <p>Click on the <i class="fa fa-star"></i> while checking out a project to favorite it.</p>
+            @if(Auth::id() == $user->id)
+                <h4>You have no favorites yet.</h4>
+                <p>Click on the <i class="fa fa-star"></i> while checking out a project to favorite it.</p>
+            @else
+                <h4>This user has no favorites yet.</h4>
+            @endif
         </div>
     @endif
 </div>

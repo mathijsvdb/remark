@@ -19,9 +19,13 @@
         </ul>
     @else
         <div class="text-center">
-            <h4>You have no projects.</h4>
-            <p>Add your first project now!</p>
-            <a class="btn btn-primary" href="/projects/add"><span class="glyphicon glyphicon-plus"></span> Add a project</a>
+            @if(Auth::id() == $user->id)
+                <h4>You have no projects yet.</h4>
+                <p>Add your first project now!</p>
+                <a class="btn btn-primary" href="/projects/add"><span class="glyphicon glyphicon-plus"></span> Add a project</a>
+            @else
+                <h4>This user has no projects yet.</h4>
+            @endif
         </div>
     @endif
 </div>
