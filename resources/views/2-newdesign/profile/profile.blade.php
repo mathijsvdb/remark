@@ -63,15 +63,15 @@
     </ul>
 
     <div class="user-projects-section">
-        @include('2-newdesign.profile.userprojects')
+        @include('profile.userprojects')
     </div>
 
     <div class="user-favorites-section hidden">
-        @include('2-newdesign.profile.userfavorites')
+        @include('profile.userfavorites')
     </div>
 
     <div class="user-rewards-section hidden">
-        @include('2-newdesign.profile.userrewards')
+        @include('profile.userrewards')
     </div>
 @stop
 
