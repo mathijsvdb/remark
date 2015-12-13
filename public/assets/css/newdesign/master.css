@@ -150,12 +150,22 @@ footer {
 }
 
 #nav-2 li:hover {
-    background-color: #EEEEEE;
+    background-color: #198663;
+    border: 1px solid #157153;
     border-radius: 4px;
+    color:white;
+}
+
+#nav-2 li:active {
+    background-color: #157153;
+    border: 1px solid #157153;
+    border-radius: 4px;
+    color:white;
 }
 
 #nav-2 li.active {
     background-color: #1D9C73;
+    border: 1px solid #198663;
     border-radius: 4px;
     color: white;
 }
@@ -174,11 +184,17 @@ footer {
 
 #rewards li {
     float: left;
-    width: 175px;
+    width: 174px;
     margin: 10px;
     background-color: white;
-    border-color: #EEEEEE;
+    border: 1px solid #EEEEEE;
     border-radius: 4px;
+    transition: all 0.1s ease-in;
+}
+
+#rewards li:hover {
+    z-index: 9999;
+    transform: scale(1.05, 1.05);
 }
 
 .reward {
@@ -216,7 +232,7 @@ footer {
     z-index: 1;
     width: 250px;
     height: 250px;
-    background-color: rgba(255,255,255, 0);
+    background-color: rgba(255, 255, 255, 0);
     transition: all 0.25s ease-in-out;
     padding: 10px;
     display: flex;
