@@ -49,7 +49,7 @@ class ProfileController extends Controller {
             ->take(3)
             ->get();*/
 
-        return view("newdesign.profile.profile", compact('user', 'projects', 'favorites', 'badges', 'userbadge_ids'));
+        return view("profile.profile", compact('user', 'projects', 'favorites', 'badges', 'userbadge_ids'));
     }
 
     public function updateProfile(Request $request)
@@ -116,20 +116,6 @@ class ProfileController extends Controller {
         $user->save();
 
         return redirect("profile/" . $user->username);
-    }
-
-    public function showFavorites($username)
-    {
-        $user = User::where('username', $username)->first();
-
-        $myFavorites = DB::table('favorites')
-            ->where('favorites.user_id', '=', $user->id)
-            ->join('projects', 'projects.id', '=', 'favorites.project_id')
-            ->join('users', 'users.id', '=', 'projects.user_id')
-            ->select('projects.*', 'users.username')
-            ->get();
-
-        return view('myFavorites', compact('myFavorites'));
     }
 
     public function referralMail(Request $request){
