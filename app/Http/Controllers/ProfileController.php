@@ -54,12 +54,8 @@ class ProfileController extends Controller {
 
     public function updateProfile(Request $request)
     {
-        // if ($request->user())
-        // {
             $user = Auth::user();
-
             return view("update", compact('user'));
-        // }
     }
 
     public function postProfile()
