@@ -46,7 +46,7 @@
         @yield('content')
 
 
-            @include('1-old-design.layouts.footer')
+            @include('layouts.footer')
 
 
 
