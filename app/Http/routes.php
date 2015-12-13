@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/newdesign', function() {
-    return view("newdesign.projects.detailProject");
+Route::get('/2-newdesign', function() {
+    return view("2-newdesign.projects.detailProject");
 });
 
 /*

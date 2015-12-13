@@ -36,7 +36,7 @@
 </head>
 <body>
 
-    @include('layouts.nav')
+    @include('2-newdesign.layouts.nav')
 
     <div class="content">
         @yield('content')

@@ -1,4 +1,4 @@
-@extends("old-design.layouts.master")
+@extends("1-old-design.layouts.master")
 
 @section("content")
 

@@ -16,7 +16,7 @@ class frontpageController extends Controller
     {
         $spotlight = Project::orderBy('created_at', 'DESC')->take(20)->get();;
 
-        return view("newdesign.frontpage", compact('spotlight'));
+        return view("2-newdesign.frontpage", compact('spotlight'));
     }
 
 }
