@@ -33,14 +33,23 @@ class ProfileController extends Controller {
 
         $favorites = Favorite::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
 
-        $badges = DB::table("userbadges")
+        $badges = DB::table('badges')->get();
+
+        $userbadges = $user->badges;
+        $userbadge_ids = [];
+
+        foreach($userbadges as $userbadge) {
+            $userbadge_ids[] = $userbadge->id;
+        }
+
+        /*$badges = DB::table("userbadges")
             ->join('badges', 'badge_id' , '=' , 'badges.id')
             ->where('user_id', $user->id)
             ->orderBy('created_at', 'asc')
             ->take(3)
-            ->get();
+            ->get();*/
 
-        return view("newdesign.profile.profile", compact('user', 'projects', 'favorites', 'badges'));
+        return view("newdesign.profile.profile", compact('user', 'projects', 'favorites', 'badges', 'userbadge_ids'));
     }
 
     public function updateProfile(Request $request)

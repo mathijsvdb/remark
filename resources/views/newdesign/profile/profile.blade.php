@@ -49,7 +49,7 @@
             </ul>
             @endif
 
-            @if(Auth::check())
+            @if(Auth::id() == $user->id)
             <a id="edit-profile" class="btn btn-default btn-xs" href="/update"><i class="fa fa-pencil"></i> Edit my profile</a>
             @endif
         </div>
@@ -63,15 +63,15 @@
     </ul>
 
     <div class="user-projects-section">
-        @include('newdesign.profile.userprojects');
+        @include('newdesign.profile.userprojects')
     </div>
 
     <div class="user-favorites-section hidden">
-        @include('newdesign.profile.userfavorites');
+        @include('newdesign.profile.userfavorites')
     </div>
 
     <div class="user-rewards-section hidden">
-        @include('newdesign.profile.userrewards');
+        @include('newdesign.profile.userrewards')
     </div>
 @stop
 

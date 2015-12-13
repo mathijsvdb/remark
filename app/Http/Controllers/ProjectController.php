@@ -289,7 +289,7 @@ class ProjectController extends Controller
     public function deleteProject($project_id) {
         $project = Project::find($project_id);
 
-        $project->delete();
+        $project->forceDelete();
         File::delete('uploads/' . $project->img);
 
         return redirect("/projects");

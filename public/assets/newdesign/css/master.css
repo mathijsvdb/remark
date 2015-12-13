@@ -163,6 +163,34 @@ footer {
     border-bottom: 1px solid #0D0D0D;
 }
 
+.user-projects-section,
+.user-favorites-section,
+.user-rewards-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+#rewards li {
+    float: left;
+    width: 175px;
+    margin: 10px;
+    background-color: white;
+    border-color: #EEEEEE;
+    border-radius: 4px;
+}
+
+.reward {
+    width: 150px;
+    height: 150px;
+    opacity: 0.25;
+    margin: 15px;
+}
+
+.rewarded {
+    opacity: 1;
+}
+
 .project-thumbnail:link,
 .project-thumbnail:visited,
 .project-thumbnail:hover,
@@ -408,8 +436,6 @@ footer {
     margin: 0;
     outline: none;
 }
-
-
 
 
 
