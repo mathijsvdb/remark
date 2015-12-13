@@ -1,0 +1,31 @@
+.btn-primary {
+    background-color: #1D9C73;
+    border-color: #1D9C73;
+}
+
+.btn-primary:hover {
+    background-color: #198663;
+    border-color: #157153;
+}
+
+.btn-primary.active,
+.btn-primary:active,
+.open>.dropdown-toggle.btn-primary,
+.btn-primary.focus,
+.btn-primary:focus,
+.btn-primary.active.focus,
+.btn-primary.active:focus,
+.btn-primary.active:hover,
+.btn-primary:active.focus,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.open>.dropdown-toggle.btn-primary.focus,
+.open>.dropdown-toggle.btn-primary:focus,
+.open>.dropdown-toggle.btn-primary:hover {
+    background-color: #157153;
+    border-color: #157153;
+}
+
+.btn:focus, .btn:active:focus {
+    outline: none;
+}

@@ -7,8 +7,6 @@ Homestead.json
 .env
 .idea/
 
-!/public
-/public/*
 !/public/uploads
 /public/uploads/*
 !/public/uploads/projects
