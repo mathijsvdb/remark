@@ -113,8 +113,9 @@
                     <a href="/login" class="btn btn-primary btn-comment">Log in to comment</a>
                 @endif
 
-                @if(count($comments) > 0)
-                    <ul class="list-unstyled project-comments">
+
+                <ul class="list-unstyled project-comments">
+                    @if(count($comments) > 0)
                         @foreach($comments as $comment)
                             <li>
                                 <blockquote class="project-comment">
@@ -136,10 +137,10 @@
                                 </blockquote>
                             </li>
                         @endforeach
-                    </ul>
-                @else
-                    <p class="project-no-comments">There are no comments on this project yet.</p>
-                @endif
+                    @else
+                        <p class="project-no-comments">There are no comments on this project yet.</p>
+                    @endif
+                </ul>
             </div>
         </div>
     </div>
@@ -246,6 +247,7 @@
                                 '</blockquote>' +
                             '</li>'
                     );
+                    $('.project-no-comments').hide();
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {
                     if(jqXHR.status = 422) {
