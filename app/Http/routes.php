@@ -21,7 +21,7 @@ Route::get('/projects/add', [
 ]);
 Route::post('/projects/add', 'ProjectController@postAddProject');
 Route::get('/projects/{id}', 'ProjectController@showProjectById');
-Route::post('/projects/{id}', 'ProjectController@addComment');
+//Route::post('/projects/{id}', 'ProjectController@addComment');
 Route::post('/projects/{id}/delete', 'ProjectController@deleteProject');
 Route::get('/projects/{id}/edit', [
     'middleware' => 'auth',
@@ -38,6 +38,7 @@ Route::post('projects/{id}/unfavorite', 'ProjectController@unfavoriteProject');
 
 // Ajax like and favorite routes
 Route::group(['prefix' => 'ajax'], function () {
+    Route::post('/projects','AjaxController@filterPopular');
     Route::post('projects/{id}/like', 'AjaxController@likeProject');
     Route::post('projects/{id}/unlike', 'AjaxController@unlikeProject');
     Route::post('projects/{id}/favorite', 'AjaxController@favoriteProject');
@@ -45,7 +46,7 @@ Route::group(['prefix' => 'ajax'], function () {
 });
 
 
-Route::post('/projects/{id}', 'ProjectController@addComment');
+//Route::post('/projects/{id}', 'ProjectController@addComment');
 
 Route::get('profile/{id}','ProfileController@profile');
 Route::get('update','ProfileController@updateProfile');

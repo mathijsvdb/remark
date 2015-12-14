@@ -43,11 +43,4 @@ class SearchController extends Controller
         return view("frontpage", compact('searches'));
     }
 
-    public function filterRecent(){
-        $popular = DB::table('projects')->select(DB::raw('*, (SELECT count(id) FROM likes WHERE project_id=projects.id) as likes'))
-            ->orderBy('likes', 'desc')
-            ->get();
-
-        return view("frontpage", compact('popular'));
-    }
 }

@@ -99,4 +99,12 @@ class AjaxController extends Controller
 
         return response()->json($data);
     }
+
+    public function filterPopular(){
+        $popular = DB::table('projects')->select(DB::raw('*, (SELECT count(id) FROM likes WHERE project_id=projects.id) as likes'))
+            ->orderBy('likes', 'desc')
+            ->get();
+
+        return view("projects", compact('popular'));
+    }
 }

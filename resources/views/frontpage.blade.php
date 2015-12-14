@@ -49,8 +49,6 @@
                         </div>
                     </div>
                 </form>
-                <a href="/">recent</a>
-                <a href="/popular">popular</a>
             </div>
 
 
@@ -83,19 +81,6 @@
 
 
         <div class="imagelist">
-
-                @if(isset($popular))
-                    @foreach($popular as $popwork)
-                    <div class="col-md-4">
-                        <a href="/projects/{{ $popwork->id }}">{{ $popwork->title }} <span class="glyphicon glyphicon-heart"> {{ $popwork->likes }}</span>
-                        <img style="width: 300px; height: 300px;list-style: none" src="/uploads/{!! $popwork->img !!}" alt="">
-                            <p>{{$popwork->body}}</p>
-                        </a>
-
-                    </div>
-                    @endforeach
-                @else
-
 
 
                 <?php if(!isset($searches)){ ?>
@@ -135,7 +120,7 @@
                     <?php }?>
 
                 <?php }?>
-                    @endif
+
         </div>
 
         </div>
@@ -175,7 +160,9 @@
                 });
             });
 
+
         });
+
     </script>
 
 @stop
