@@ -17,6 +17,10 @@
                 </li>
             @endforeach
         </ul>
+
+        <div class="text-center">
+            {!! $projects->render() !!}
+        </div>
     @else
         <div class="text-center">
             @if(Auth::id() == $user->id)
