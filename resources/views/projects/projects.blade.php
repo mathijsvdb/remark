@@ -10,6 +10,10 @@
 
     <div class="container-fluid">
         @if(count($projects) > 0)
+            <div class="text-center">
+            {!! $projects->render() !!}
+            </div>
+
             <ul class="list-unstyled" id="projects">
                 @foreach($projects as $project)
                     <li class="project">
@@ -27,6 +31,10 @@
                     </li>
                 @endforeach
             </ul>
+
+            <div class="text-center">
+                {!! $projects->render() !!}
+            </div>
         @else
             <div class="text-center">
                 <p>There are no projects yet, be the first to upload one!</p>

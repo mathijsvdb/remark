@@ -29,7 +29,7 @@ use \League\ColorExtractor\Client as ColorExtractor;
 class ProjectController extends Controller
 {
     public function showAllProjects() {
-        $projects = Project::all()->sortByDesc('created_at');
+        $projects = Project::orderBy('created_at', 'desc')->paginate(20);
 
         return view('projects.projects', compact('projects'));
     }
@@ -471,6 +471,4 @@ class ProjectController extends Controller
         return Redirect::to('/projects/' . $id);
 
     }
-
-
 }
