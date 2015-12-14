@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/2-newdesign', function() {
-    return view("2-newdesign.projects.detailProject");
-});
-
 /*
  * Project Routes
  */
@@ -45,6 +41,7 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::post('projects/{id}/unlike', 'AjaxController@unlikeProject');
     Route::post('projects/{id}/favorite', 'AjaxController@favoriteProject');
     Route::post('projects/{id}/unfavorite', 'AjaxController@unfavoriteProject');
+    Route::post('projects/{id}/comment', 'AjaxController@commentProject');
 });
 
 

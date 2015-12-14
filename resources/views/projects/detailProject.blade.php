@@ -103,11 +103,11 @@
             <div class="col-md-12 project-comments-section">
                 <h3>Comments</h3>
                 @if(Auth::check())
-                    <form method="POST" class="form" action="">
+                    <form method="POST" id="comment-form" action="">
                         {!! csrf_field() !!}
-                        <textarea name="body" class="form-control" rows="3"></textarea>
+                        <textarea name="body" id="comment-body" class="form-control" rows="3"></textarea>
                         <input type="hidden" name="project_id" value="{{ $project->id }}">
-                        <button class="btn btn-primary btn-comment pull-right" type="submit">Submit comment&nbsp;<i class="fa fa-paper-plane fa-inverse"></i></button>
+                        <button class="btn btn-primary btn-comment pull-right" id="comment-btn" type="submit">Submit comment&nbsp;<i class="fa fa-paper-plane fa-inverse"></i></button>
                     </form>
                 @else
                     <a href="/login" class="btn btn-primary btn-comment">Log in to comment</a>
@@ -131,7 +131,7 @@
 
                                     <form action="#" method="post" class="flag_comment">
                                         {!! csrf_field() !!}
-                                        <button title="Flag this comment as spam" type=submit class="btn btn-warning btn-xs" id="flag_comment_user"><i class="fa fa-flag fa-fw fa-lg"></i></button>
+                                        <button title="Flag this comment as spam" type="submit" class="btn btn-warning btn-xs" id="flag_comment_user"><i class="fa fa-flag fa-fw fa-lg"></i></button>
                                     </form>
                                 </blockquote>
                             </li>
@@ -152,70 +152,106 @@
         $(function() {
             $('#like-form').on('click', '#like-btn', function(e) {
                 $.ajax({
-                            method: "POST",
-                            url: "/ajax/projects/{{ $project->id }}/like",
-                            dataType: 'json'
-                        })
-                        .done(function($data) {
-                            console.log($data.feedback);
-                            $('#like-icon').css('color', 'crimson');
-                            $('#n-likes').text($data.likes);
-                            $('#like-form').attr('action', '/projects/{{$project->id}}/unlike');
-                            $('#like-btn').attr('id', 'unlike-btn');
-                        })
+                    method: "POST",
+                    url: "/ajax/projects/{{ $project->id }}/like",
+                    dataType: 'json'
+                })
+                .done(function($data) {
+                    console.log($data.feedback);
+                    $('#like-icon').css('color', 'crimson');
+                    $('#n-likes').text($data.likes);
+                    $('#like-form').attr('action', '/projects/{{$project->id}}/unlike');
+                    $('#like-btn').attr('id', 'unlike-btn');
+                })
 
                 e.preventDefault();
             });
 
             $('#like-form').on('click', '#unlike-btn', function(e) {
                 $.ajax({
-                            method: "POST",
-                            url: "/ajax/projects/{{ $project->id }}/unlike",
-                            dataType: 'json'
-                        })
-                        .done(function($data) {
-                            console.log($data.feedback);
-                            $('#like-icon').css('color', '');
-                            $('#n-likes').text($data.likes);
-                            $('#like-form').attr('action', '/projects/{{$project->id}}/like');
-                            $('#unlike-btn').attr('id', 'like-btn');
-                        })
+                    method: "POST",
+                    url: "/ajax/projects/{{ $project->id }}/unlike",
+                    dataType: 'json'
+                })
+                .done(function($data) {
+                    console.log($data.feedback);
+                    $('#like-icon').css('color', '');
+                    $('#n-likes').text($data.likes);
+                    $('#like-form').attr('action', '/projects/{{$project->id}}/like');
+                    $('#unlike-btn').attr('id', 'like-btn');
+                })
 
                 e.preventDefault();
             });
 
             $('#favorite-form').on('click', '#favorite-btn', function(e) {
                 $.ajax({
-                            method: "POST",
-                            url: "/ajax/projects/{{ $project->id }}/favorite",
-                            dataType: 'json'
-                        })
-                        .done(function($data) {
-                            console.log($data.feedback);
-                            console.log($data.favorites);
-                            $('#favorite-icon').css('color', 'gold');
-                            $('#n-favorites').text($data.favorites);
-                            $('#favorite-form').attr('action', '/projects/{{$project->id}}/unfavorite');
-                            $('#favorite-btn').attr('id', 'unfavorite-btn');
-                        })
+                    method: "POST",
+                    url: "/ajax/projects/{{ $project->id }}/favorite",
+                    dataType: 'json'
+                })
+                .done(function($data) {
+                    console.log($data.feedback);
+                    console.log($data.favorites);
+                    $('#favorite-icon').css('color', 'gold');
+                    $('#n-favorites').text($data.favorites);
+                    $('#favorite-form').attr('action', '/projects/{{$project->id}}/unfavorite');
+                    $('#favorite-btn').attr('id', 'unfavorite-btn');
+                })
 
                 e.preventDefault();
             });
 
             $('#favorite-form').on('click', '#unfavorite-btn', function(e) {
                 $.ajax({
-                            method: "POST",
-                            url: "/ajax/projects/{{ $project->id }}/unfavorite",
-                            dataType: 'json'
-                        })
-                        .done(function($data) {
-                            console.log($data.feedback);
-                            console.log($data.favorites);
-                            $('#favorite-icon').css('color', '');
-                            $('#n-favorites').text($data.favorites);
-                            $('#favorite-form').attr('action', '/projects/{{$project->id}}/favorite');
-                            $('#unfavorite-btn').attr('id', 'favorite-btn');
-                        })
+                    method: "POST",
+                    url: "/ajax/projects/{{ $project->id }}/unfavorite",
+                    dataType: 'json'
+                })
+                .done(function($data) {
+                    console.log($data.feedback);
+                    console.log($data.favorites);
+                    $('#favorite-icon').css('color', '');
+                    $('#n-favorites').text($data.favorites);
+                    $('#favorite-form').attr('action', '/projects/{{$project->id}}/favorite');
+                    $('#unfavorite-btn').attr('id', 'favorite-btn');
+                })
+
+                e.preventDefault();
+            });
+
+            $('#comment-form').on('click', '#comment-btn', function(e) {
+                var comment = $('#comment-body').val();
+
+                $.ajax({
+                    method: "POST",
+                    url: "/ajax/projects/{{ $project->id }}/comment",
+                    data: {"comment" : comment},
+                    dataType: 'json'
+                })
+                .done(function(data) {
+                    console.log(data);
+                    $('#comment-body').val('');
+                    $('.project-comments').prepend(
+                            '<li>' +
+                                '<blockquote class="project-comment">' +
+                                    '<a href="/profile/' + data.username + '"><img  src="' + data.image + '" class="project-comment-user-img img-circle" alt=""></a>' +
+                                    '<div class="project-comment-body">' +
+                                        '<h4><a href="/profile/' + data.username + '">' + data.fullname + '</a></h4>' +
+                                        '<p>' + comment + '</p>' +
+                                    '</div>' +
+                                    '<form action="#" method="post" class="flag_comment">{!! csrf_field() !!}' +
+                                        '<button title="Flag this comment as spam" type="submit" class="btn btn-warning btn-xs" id="flag_comment_user"><i class="fa fa-flag fa-fw fa-lg"></i></button>' +
+                                    '</form>' +
+                                '</blockquote>' +
+                            '</li>'
+                    );
+                })
+                .fail(function(jqXHR, textStatus, errorThrown) {
+                    if(jqXHR.status = 422) {
+                        $('#comment-form').after('<p style="color: red;">You should really enter some feedback!</p>')
+                    }
+                });
 
                 e.preventDefault();
             });

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Favorite;
 use App\Like;
-use App\Project;
-use App\User;
 use App\Notifications;
-use App\Http\Requests;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AjaxController extends Controller
@@ -96,6 +95,40 @@ class AjaxController extends Controller
             'feedback' => 'You unfavorite the project.',
             'favorites' => Favorite::where('project_id', $project_id)->count(),
         ];
+
+        return response()->json($data);
+    }
+
+    public function commentProject(Request $request, $project_id) {
+        $this->validate($request, [
+            'comment' => 'required'
+        ]);
+
+        $user = Auth::user();
+
+        $comment = new Comment;
+        $comment->body = $request->input('comment');
+        $comment->user_id = $user->id;
+        $comment->project_id = $project_id;
+        $comment->new = 1;
+        $comment->save();
+
+        $notification = new Notifications;
+        $notification->user_id = $user->id;
+        $notification->project_id = $project_id;
+        $notification->notificationType = 'comment';
+        $notification->save();
+
+        $data = [
+            'username' => $user->username,
+            'fullname' => $user->firstname . ' ' . $user->lastname,
+        ];
+
+        if($user->image == 'default.jpg') {
+            $data['image'] = '/assets/images/' . $user->image;
+        } else {
+            $data['image'] = '/uploads/profilepictures/' . $user->image;
+        }
 
         return response()->json($data);
     }
