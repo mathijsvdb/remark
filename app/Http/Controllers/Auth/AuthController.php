@@ -68,7 +68,7 @@ class AuthController extends Controller
 
             if($totalUsers<100){
                 //badgeId + userId naar db sturen
-                $this->AddInDatabase(Auth::id(), $badge_id);
+                User::find(Auth::id())->userBadge()->attach($badge_id);
             }
 
         } else {
@@ -137,21 +137,5 @@ class AuthController extends Controller
             'image' => 'default.jpg',
             
         ]);
-    }
-
-    public function AddInDatabase($user_id, $badge_id){
-        $badge = new Badges;
-
-        $totalBadge = DB::table("userbadges")
-            ->where('user_id', $user_id)
-            ->where('badge_id', $badge_id)
-            ->count();
-
-        $badge->user_id = $user_id;
-        $badge->badge_id = $badge_id;
-
-        if($totalBadge <= 0){
-            $badge->save();
-        }
     }
 }

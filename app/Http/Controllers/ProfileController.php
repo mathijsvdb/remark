@@ -161,30 +161,11 @@ class ProfileController extends Controller {
                 ->where('username', '=', $_GET['username'])
                 ->get();
 
-            $this->referralBadge($user[0]->id);
+            User::find($user[0]->id)->userBadge()->attach(6);
         }
 
-        return redirect(url());
-    }
+        $info = "thank you for referring a friend";
 
-    public function referralBadge($id){
-        $badge_id = 6;
-        $this->AddInDatabase($id, $badge_id);
-    }
-
-    public function AddInDatabase($user_id, $badge_id){
-        $badge = new Badges;
-
-        $totalBadge = DB::table("userbadges")
-            ->where('user_id', $user_id)
-            ->where('badge_id', $badge_id)
-            ->count();
-
-        $badge->user_id = $user_id;
-        $badge->badge_id = $badge_id;
-
-        if($totalBadge <= 0){
-            $badge->save();
-        }
+        return redirect(url())->with('info', $info);
     }
 }

@@ -29,7 +29,7 @@
 
             <div class="form-group">
                 <label for="tags">Add some tags</label>
-                <input type="text" name="tags" class="form-control" value="Amsterdam,Washington,Sydney,Beijing,Cairo" data-role="tagsinput">
+                <input type="text" name="tags" class="form-control" value="" data-role="tagsinput">
                 <p class="help-block">Seperate your tags with a comma (e.g. logo, Illustrator, branding, ...)</p>
             </div>
 
