@@ -90,7 +90,7 @@ footer {
     margin: 0 15px 25px 15px;
 }
 
-.project-top {
+.project-top, .developer-top {
     background-image: url(../../images/bg2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -469,6 +469,81 @@ footer {
     outline: none;
 }
 
+/*api*/
+
+.developer-top {
+    background-image: url(../../images/bg5.jpg);
+    color:white;
+}
+
+.api_container{
+    width: 100%;
+    height: 100%;
+}
+
+.api_container .info_api{
+    margin-left: 20px;
+    margin-top: 50px;
+}
+
+.info_api, .content_api_container{
+    float: none;
+}
+
+.user_api_key_container{
+    margin-bottom: 30px;
+}
+.user_api_key_container li input[type=text]{
+    border: 2px solid grey;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 200px;
+    margin-top: 20px;
+}
+
+.user_api_key_container li label{
+    margin-right: 12px;
+}
+
+.user_api_key_container span{
+    font-size: 1.6rem;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.user_api_key_container button{
+    background-color: lightgreen;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    padding: 10px;
+}
+
+.user_api_key_container button:hover{
+    background-color: mediumspringgreen;
+}
+
+.api_container .remarkv1_api{
+    margin-top: 40px;
+}
+
+@media screen and (min-width: 720px) {
+    .user_api_key_container form{
+        float: left;
+    }
+
+    .user_api_key_container .api_key_loop{
+        list-style: none;
+        margin-top: 17px;
+        margin-left: 100px;
+    }
+
+    .user_api_key_container li input[type=text]{
+        width: 400px;
+        margin-top: 0px;
+    }
+}
 
 
 
