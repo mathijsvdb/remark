@@ -541,7 +541,6 @@ footer {
 
 .battle_text_intro .intro{
     padding: 10px 40px 10px 40px;
-    text-align: center;
 }
 
 .battle_text_intro p{
@@ -569,9 +568,9 @@ footer {
     font-size: 25px;
 }
 
-.information_battle{
-    display: inline;
-    text-align: center;
+.information_battle p{
+    padding-top: 30px;
+    margin-left: -5px;
 }
 
 .battle_container img{
@@ -585,14 +584,12 @@ footer {
 .battle_container li{
     padding: 0px;
     margin: 10px;
+    background-color: #ebebeb;
 }
 
 .battle_container .add_proj_btn{
-    margin: 20px auto;
-}
-
-.battle_container h1{
-    text-align: center;
+    margin-left: 0px;
+    margin-top: 30px;
 }
 
 .battle_container a:link,
@@ -609,12 +606,8 @@ footer {
     float: right;
 }
 
-.battle_container .proj_title_battle{
-
-}
-
-.battle_container li{
-    background-color: #ebebeb;
+.battle_container .row{
+    margin-left: -45px;
 }
 
 .participate-btn{
@@ -625,7 +618,16 @@ footer {
     border: none;
 }
 
+.battle_container .no_submits{
+    border: 1px black solid;
+    width: 200px;
+    margin-left: -20px;
+
+}
+
 @media screen and (min-width: 720px) {
+    /*api*/
+
     .user_api_key_container form{
         float: left;
     }
@@ -640,29 +642,26 @@ footer {
         width: 400px;
         margin-top: 0px;
     }
-}
 
-@media screen and (min-width: 720px) {
+    /*battles*/
+
+    .full_battle_container {
+        width: 750px;
+        padding-top: 35px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .battle_text_intro p{
-        width: 450px;
-        margin: 0 auto;
+        max-width: 800px;
     }
 
     .inactive .row{
-        margin-right: auto;
-        margin-left: auto;
         width: 700px;
     }
 
     .battle_container li{
         width: 200px;float:left;
-    }
-}
-
-@media screen and (min-width: 920px) {
-    .battle_text_intro p{
-        width: 580px;
-        margin: 0 auto;
     }
 }
 

@@ -22,17 +22,22 @@
             <div class="information_battle"><p>{{$active_battle->description}}</p></div>
 
             <ul class="row">
-                @foreach($battle_projects as $project)
-                    <li class="col-md-2 content-box">
-                        <a href="/projects/{{ $project->id }}">
-                            <span class="proj_title_battle">{{ $project->title }}</span>
-                            <span class="glyphicon glyphicon-heart hartje"> {{ $project->likes }}</span>
-                        </a>
-                        <img src="/uploads/{!! $project->img !!}" alt="">
-                        <p>{{$project->body}}</p>
-                    </li>
-                @endforeach
+                @if (count($battle_projects) > 0)
+                    @foreach($battle_projects as $project)
+                        <li class="col-md-2 content-box">
+                            <a href="/projects/{{ $project->id }}">
+                                <span class="proj_title_battle">{{ $project->title }}</span>
+                                <span class="glyphicon glyphicon-heart hartje"> {{ $project->likes }}</span>
+                            </a>
+                            <img src="/uploads/{!! $project->img !!}" alt="">
+                            <p>{{$project->body}}</p>
+                        </li>
+                    @endforeach
+                @else
+                    <p class="no_submits">No projects are submitted yet! Be the first and increase your chances.</p>
+                @endif
             </ul>
+
         </div>
 
         @if (count($done_battles) > 0)
