@@ -4,9 +4,11 @@
 
     <div class="activity">
 
+        <div class="activity_container">
+
         <h2>Your user activity</h2>
 
-        @if(count($result) > 0)
+        @if(count($result) < 0)
             <ul class="list-group">
                 @foreach($result as $notification)
 
@@ -36,6 +38,15 @@
                     @endif
                 @endforeach
             </ul>
+        @else
+
+                <p class="no_submits">You have no notifications yet. Like something to see your history or
+                    add a project to get some interaction!<br>
+                    <a href="/projects/add" class="btn btn-primary participate-btn add_proj_btn"><span>Add a project</span></a>
+                </p>
+
         @endif
+
+        </div>
     </div>
 @stop
