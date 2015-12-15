@@ -647,6 +647,16 @@ footer {
     margin-top: 30px;
 }
 
+.activity_container .list-group{
+    list-style: none;
+    margin-top: 30px;
+}
+
+.activity_container .list-group li{
+    border-left: 2px solid #1d9c73;
+    padding-left: 30px;margin-top: 30px;
+}
+
 @media screen and (min-width: 720px) {
     /*api*/
 
@@ -684,6 +694,15 @@ footer {
 
     .battle_container li{
         width: 200px;float:left;
+    }
+
+    /*useractivity*/
+
+    .activity_container{
+        padding-left: 0px;
+        width: 300px;
+        max-width: 400px;
+        margin: 0 auto;
     }
 }
 
