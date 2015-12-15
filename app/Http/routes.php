@@ -151,7 +151,11 @@ Route::post('/spam/{id}', 'ProjectController@spam');
 
 Route::group(['namespace' => 'API'], function() {
     // Developers
-    Route::get('developers', 'ApiController@index');
+    Route::get('/developers', [
+        'middleware' => 'auth',
+        'uses' => 'ApiController@index'
+    ]);
+
     Route::post('developers', 'ApiController@generateAPIkey');
 
     Route::group(['prefix' => 'api/v1'], function() {
