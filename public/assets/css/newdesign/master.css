@@ -528,6 +528,103 @@ footer {
     margin-top: 40px;
 }
 
+/*Battles*/
+
+.full_battle_container{
+    width: 100%;
+}
+
+.full_battle_container li{
+    list-style: none;
+    color:black;
+}
+
+.battle_text_intro .intro{
+    padding: 10px 40px 10px 40px;
+    text-align: center;
+}
+
+.battle_text_intro p{
+    margin-top: 20px;
+    margin-left:40px;
+}
+
+.battle_container .col-md-2 span{
+    color:black;
+}
+
+.battle_container .axe{
+    width: 30px; height: 30px;
+    display: inline-block;
+    margin-top: -10px;
+    margin-right: 20px;
+}
+
+.battle_container p{
+    color: grey;
+    padding:10px;
+}
+
+.battle_container h1{
+    font-size: 25px;
+}
+
+.information_battle{
+    display: inline;
+    text-align: center;
+}
+
+.battle_container img{
+    width: 100%;
+}
+
+.battle_container{
+    padding: 10px 40px 10px 40px;
+}
+
+.battle_container li{
+    padding: 0px;
+    margin: 10px;
+}
+
+.battle_container .add_proj_btn{
+    margin: 20px auto;
+}
+
+.battle_container h1{
+    text-align: center;
+}
+
+.battle_container a:link,
+.battle_container a:visited,
+.battle_container a:hover,
+.battle_container a:active{
+    color: white;
+    display: block;
+    padding: 8px;
+    font-size: 1.6rem;
+}
+
+.battle_container .hartje{
+    float: right;
+}
+
+.battle_container .proj_title_battle{
+
+}
+
+.battle_container li{
+    background-color: #ebebeb;
+}
+
+.participate-btn{
+    width: 120px;
+    margin-left: 62px;
+    border-radius: 30px;
+    background-color: lightgreen;
+    border: none;
+}
+
 @media screen and (min-width: 720px) {
     .user_api_key_container form{
         float: left;
@@ -544,11 +641,5 @@ footer {
         margin-top: 0px;
     }
 }
-
-
-
-
-
-
 
 
