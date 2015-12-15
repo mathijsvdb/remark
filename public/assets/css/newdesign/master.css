@@ -406,8 +406,11 @@ footer {
     font-size: 20px;
 }
 
+textarea {
+    resize: vertical;
+}
+
 .project-comments-section textarea {
-    resize: none;
     margin-bottom: 10px;
 }
 
