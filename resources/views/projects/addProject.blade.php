@@ -54,11 +54,3 @@
         </form>
     </div>
 @stop
-
-@section('scripts')
-    <script>
-        $('#tags').tagsinput({
-            confirmKeys: [32, 188]
-        });
-    </script>
-@stop
