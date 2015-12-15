@@ -104,6 +104,7 @@ class AjaxController extends Controller
     {
         $projects = DB::table('projects')->select(DB::raw('*, (SELECT count(id) FROM likes WHERE project_id=projects.id) as likes, (SELECT count(id) FROM favorites WHERE project_id=projects.id) as favorites'))
             ->orderBy('likes', 'desc')
+            ->orderBy('projects.created_at', 'desc')
             ->join('users', 'users.id', '=', 'projects.user_id')
             ->get();
 
