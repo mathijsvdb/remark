@@ -18,35 +18,29 @@
 
             <div class="form-group">
                 <label for="title">Project title</label>
-                <input type="text" placeholder="Project titel" name="title" value={!! old('title') !!}>
+                <input class="form-control" type="text" placeholder="Project titel" name="title" value={!! old('title') !!}>
             </div>
 
             <div class="form-group">
-                <label for="body">Project description:</label>
+                <label for="body">Project description</label>
                 <textarea class="form-control" name="body" placeholder="Write details..." rows="3" value={!! old('body') !!}></textarea>
                 <br>
             </div>
 
             <div class="form-group">
-            <label for="tags">Add image tags:</label><br>
-                <p class="col-xs-5"><input type="checkbox" name="tags" value="web">Web Design</p>
-                <p class="col-xs-5"><input type="checkbox" name="tags" value="illustrator">Illustrator</p>
-                <p class="col-xs-5"><input type="checkbox" name="tags" value="photoshop">Photoshop</p>
-                <p class="col-xs-5"><input type="checkbox" name="tags" value="mobile">Mobile Design</p>
-                <p class="col-xs-5"><input type="checkbox" name="tags" value="logo">Logo</p>
-                <p class="col-xs-5"><input type="checkbox" name="tags" value="poster">Poster</p>
-                <p class="col-xs-5"><input type="checkbox" name="tags" value="material">Material Design</p>
-                <p class="col-xs-5"><input type="checkbox" name="tags" value="branding">Branding</p>
+                <label for="tags">Add some tags</label>
+                <input type="text" name="tags" data-role="tagsinput" id="tags">
+                <p class="help-block">Seperate your tags with a comma (e.g. logo, Illustrator, branding, ...)</p>
             </div>
 
             <div class="form-group">
-                <p class="col-xs-12"><b>Select image to upload (500x500):</b></p>
+                <label>Select image to upload (500x500)</label>
                 <input type="file" name="fileToUpload" id="fileToUpload" value={!! old('fileToUpload') !!}>
             </div>
 
             <div class="form-group">
-                <p class="col-xs-7"><b>Participate in a battle?</b></p><br><br>
-                <select class="battles_projadd_subscribe" name="battle">
+                <label>Participate in a battle?</label>
+                <select class="form-control battles_projadd_subscribe" name="battle">
                     <option value="">No thanks</option>
                     @foreach($battles as $battle)
                     <option value="{{ $battle->id }}">{{ $battle->name }}</option>
@@ -55,9 +49,8 @@
             </div>
 
             <div class="form-group">
-                <button type="submit" class="btn btn-default btn_addProject">Add project</button>
+                <button type="submit" class="btn btn-primary btn-block">Add project</button>
             </div>
-
         </form>
     </div>
 @stop

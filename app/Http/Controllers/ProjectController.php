@@ -37,7 +37,7 @@ class ProjectController extends Controller
     public function getAddProject() {
         $battles = Battle::where('active', true)->get();
 
-        return view('addProject', compact('battles'));
+        return view('projects.addProject', compact('battles'));
     }
 
     public function postAddProject() {
@@ -125,6 +125,7 @@ class ProjectController extends Controller
 
     public function showProjectById($id) {
         $project = Project::find($id);
+        $tags = explode(',', $project->tags);
         $likes = $project->likes->count();
         $favorites = $project->favorites->count();
 
@@ -149,7 +150,7 @@ class ProjectController extends Controller
             ->orderBy('created_at', 'desc')
         ->get();
 
-        return view('projects.detailProject', compact('project', 'user', 'colorpieces', 'comments', 'likes', 'favorites', 'user_liked', 'user_favorited'));
+        return view('projects.detailProject', compact('project', 'user', 'colorpieces', 'comments', 'likes', 'favorites', 'user_liked', 'user_favorited', 'tags'));
     }
 
     /**
