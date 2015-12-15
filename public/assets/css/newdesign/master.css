@@ -90,7 +90,7 @@ footer {
     margin: 0 15px 25px 15px;
 }
 
-.project-top {
+.project-top, .developer-top {
     background-image: url(../../images/bg2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -469,11 +469,200 @@ footer {
     outline: none;
 }
 
+/*api*/
 
+.developer-top {
+    background-image: url(../../images/bg5.jpg);
+    color:white;
+}
 
+.api_container{
+    width: 100%;
+    height: 100%;
+}
 
+.api_container .info_api{
+    margin-left: 20px;
+    margin-top: 50px;
+}
 
+.info_api, .content_api_container{
+    float: none;
+}
 
+.user_api_key_container{
+    margin-bottom: 30px;
+}
+.user_api_key_container li input[type=text]{
+    border: 2px solid grey;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 200px;
+    margin-top: 20px;
+}
 
+.user_api_key_container li label{
+    margin-right: 12px;
+}
 
+.user_api_key_container span{
+    font-size: 1.6rem;
+    margin-top: 14px;
+    margin-bottom: 14px;
+    display: block;
+}
+
+.user_api_key_container button{
+    background-color: lightgreen;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    padding: 10px;
+}
+
+.user_api_key_container button:hover{
+    background-color: mediumspringgreen;
+}
+
+.api_container .remarkv1_api{
+    margin-top: 40px;
+}
+
+/*Battles*/
+
+.full_battle_container{
+    width: 100%;
+}
+
+.full_battle_container li{
+    list-style: none;
+    color:black;
+}
+
+.battle_text_intro .intro{
+    padding: 10px 40px 10px 40px;
+    text-align: center;
+}
+
+.battle_text_intro p{
+    margin-top: 20px;
+    margin-left:40px;
+}
+
+.battle_container .col-md-2 span{
+    color:black;
+}
+
+.battle_container .axe{
+    width: 30px; height: 30px;
+    display: inline-block;
+    margin-top: -10px;
+    margin-right: 20px;
+}
+
+.battle_container p{
+    color: grey;
+    padding:10px;
+}
+
+.battle_container h1{
+    font-size: 25px;
+}
+
+.information_battle{
+    display: inline;
+    text-align: center;
+}
+
+.battle_container img{
+    width: 100%;
+}
+
+.battle_container{
+    padding: 10px 40px 10px 40px;
+}
+
+.battle_container li{
+    padding: 0px;
+    margin: 10px;
+}
+
+.battle_container .add_proj_btn{
+    margin: 20px auto;
+}
+
+.battle_container h1{
+    text-align: center;
+}
+
+.battle_container a:link,
+.battle_container a:visited,
+.battle_container a:hover,
+.battle_container a:active{
+    color: white;
+    display: block;
+    padding: 8px;
+    font-size: 1.6rem;
+}
+
+.battle_container .hartje{
+    float: right;
+}
+
+.battle_container .proj_title_battle{
+
+}
+
+.battle_container li{
+    background-color: #ebebeb;
+}
+
+.participate-btn{
+    width: 120px;
+    margin-left: 62px;
+    border-radius: 30px;
+    background-color: lightgreen;
+    border: none;
+}
+
+@media screen and (min-width: 720px) {
+    .user_api_key_container form{
+        float: left;
+    }
+
+    .user_api_key_container .api_key_loop{
+        list-style: none;
+        margin-top: 17px;
+        margin-left: 100px;
+    }
+
+    .user_api_key_container li input[type=text]{
+        width: 400px;
+        margin-top: 0px;
+    }
+}
+
+@media screen and (min-width: 720px) {
+    .battle_text_intro p{
+        width: 450px;
+        margin: 0 auto;
+    }
+
+    .inactive .row{
+        margin-right: auto;
+        margin-left: auto;
+        width: 700px;
+    }
+
+    .battle_container li{
+        width: 200px;float:left;
+    }
+}
+
+@media screen and (min-width: 920px) {
+    .battle_text_intro p{
+        width: 580px;
+        margin: 0 auto;
+    }
+}
 
