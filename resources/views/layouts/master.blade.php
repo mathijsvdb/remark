@@ -18,6 +18,7 @@
     <link href="{{ URL::asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="{{ URL::asset('assets/jquery-ui-1.11.4/jquery-ui.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ URL::asset('assets/css/bootstrap-tagsinput.css') }}">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{{ URL::asset('assets/css/newdesign/master.css') }}">
@@ -64,6 +65,7 @@
 </body>
 
 <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/googleanalytics.js') }}"></script>
 <script src="{{ URL::asset('assets/js/script.js') }}"></script>
 <script type="text/javascript">

@@ -72,7 +72,9 @@
                 <div class="project-info-list">
                     <i class="fa fa-tags fa-fw fa-lg"></i>
                     <div class="project-tags">
-                        <a href="/">{!! $project->tags !!}</a>
+                        @foreach($tags as $tag)
+                            <a href="/">{!! $tag !!}</a>
+                        @endforeach
                     </div>
                 </div>
 

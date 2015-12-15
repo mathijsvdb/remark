@@ -376,7 +376,8 @@ footer {
     font-size: smaller;
     padding: 3px;
     border-radius: 3px;
-    background-color: #EEEEEE;
+    background-color: white;
+    border: 1px solid #EEEEEE;
     text-decoration: none;
     color: #222;
     margin-right: 3px;
