@@ -7,10 +7,7 @@
 
 
     <div class="projects-container">
-        <form action="#" method="post">
-            <input type="hidden" name="_token" id="tokenPopular" value="{{ csrf_token() }}">
-            <button class="btn btn-default" name="popular" id="popular">popular</button>
-        </form>
+
         <h1>Projects<a href="/projects/add" class="btn btn-primary plus-project"><span>+</span> Add a project</a></h1>
         <hr class="hr_left">
         <ul class="row">

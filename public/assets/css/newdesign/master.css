@@ -99,7 +99,6 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
 }
 
 .project-top h1 {
@@ -112,6 +111,7 @@ footer {
     min-height: 250px;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .img-profile {
@@ -136,7 +136,6 @@ footer {
     justify-content: center;
     border-top: 1px solid #EEEEEE;
     margin-bottom: 30px;
-    margin-top: 10px;
 }
 
 #nav-2 li {
