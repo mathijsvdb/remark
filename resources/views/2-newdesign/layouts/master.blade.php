@@ -20,8 +20,7 @@
     <link href="{{ URL::asset('assets/jquery-ui-1.11.4/jquery-ui.min.css') }}" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/newdesign/master.css') }}">
-    <link rel="stylesheet" href="{{ URL::asset('assets/css/newdesign/extra.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('assets/newdesign/css/master.css') }}">
 
     <link rel="icon" href="{{URL::asset('assets/images/favicon.png')}}" sizes="16x16 32x32" type="image/png">
 

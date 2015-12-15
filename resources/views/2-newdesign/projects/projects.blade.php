@@ -1,29 +1,17 @@
 @extends('layouts.master')
 
-@section('content')
-    <div class="welcome text-center">
-        <div class="container">
-            <div class="jumbotron">
-                @if(!Auth::check())
-                    <header>
-                        <h1>Do you want to make the most of your design?</h1>
-                        <p>At remark <b> students </b> like you post a design, then other students, start giving other students feedback on the design so that the students can learn from each other!</p>
-                        <a href="{{ url('/register') }}" class="btn btn-primary">Start here, It's FREE!</a>
-                    </header>
-                @else
-                    <header>
-                        <h1>Get remarks and learn</h1>
-                        <a class="btn btn-primary" href="/projects/add"><span class="glyphicon glyphicon-plus"></span> Add a project</a>
-                    </header>
-                @endif
-            </div>
+@section("content")
+    <div class="project-top">
+        <div class="container-fluid">
+            <h1>Projects</h1>
+            <a class="btn btn-primary" href="/projects/add"><span class="glyphicon glyphicon-plus"></span> Add a project</a>
         </div>
     </div>
 
     <div class="container-fluid">
-        @if(count($spotlight) > 0)
-            <ul class="list-unstyled" id="spotlight">
-                @foreach($spotlight as $project)
+        @if(count($projects) > 0)
+            <ul class="list-unstyled" id="projects">
+                @foreach($projects as $project)
                     <li class="project">
                         <a href="/projects/{{ $project->id }}" class="thumbnail project-thumbnail">
                             <img src="/uploads/{{ $project->img }}" alt="">

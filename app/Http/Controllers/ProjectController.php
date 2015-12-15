@@ -29,9 +29,9 @@ use \League\ColorExtractor\Client as ColorExtractor;
 class ProjectController extends Controller
 {
     public function showAllProjects() {
-        $projects = Project::all();
+        $projects = Project::orderBy('created_at', 'desc')->paginate(20);
 
-        return view('projects', compact('projects'));
+        return view('projects.projects', compact('projects'));
     }
 
     public function getAddProject() {
@@ -125,8 +125,8 @@ class ProjectController extends Controller
 
     public function showProjectById($id) {
         $project = Project::find($id);
-        $likes = Project::find($id)->likes->count();
-        $favorites = Project::find($id)->favorites->count();
+        $likes = $project->likes->count();
+        $favorites = $project->favorites->count();
 
         $user = User::find($project['user_id']);
 
@@ -145,11 +145,11 @@ class ProjectController extends Controller
         $comments = DB::table("comments")
         ->where('project_id', $id)
         ->join('users', 'users.id', '=', 'comments.user_id')
-        ->select('users.firstname', 'users.lastname', 'comments.*', 'users.image')
+        ->select('users.firstname', 'users.lastname', 'comments.*', 'users.image', 'users.username')
             ->orderBy('created_at', 'desc')
         ->get();
 
-        return view('projects.detailProjects', compact('project', 'user', 'colorpieces', 'comments', 'likes', 'favorites', 'user_liked', 'user_favorited'));
+        return view('projects.detailProject', compact('project', 'user', 'colorpieces', 'comments', 'likes', 'favorites', 'user_liked', 'user_favorited'));
     }
 
     /**
@@ -289,7 +289,7 @@ class ProjectController extends Controller
     public function deleteProject($project_id) {
         $project = Project::find($project_id);
 
-        $project->delete();
+        $project->forceDelete();
         File::delete('uploads/' . $project->img);
 
         return redirect("/projects");
@@ -471,6 +471,4 @@ class ProjectController extends Controller
         return Redirect::to('/projects/' . $id);
 
     }
-
-
 }

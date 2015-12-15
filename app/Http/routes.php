@@ -21,14 +21,13 @@ Route::get('/projects/add', [
 ]);
 Route::post('/projects/add', 'ProjectController@postAddProject');
 Route::get('/projects/{id}', 'ProjectController@showProjectById');
-//Route::post('/projects/{id}', 'ProjectController@addComment');
+Route::post('/projects/{id}', 'ProjectController@addComment');
 Route::post('/projects/{id}/delete', 'ProjectController@deleteProject');
 Route::get('/projects/{id}/edit', [
     'middleware' => 'auth',
     'uses' => 'ProjectController@getEditProject'
 ]);
 Route::post('/projects/{id}/edit', 'ProjectController@postEditProject');
-Route::get('profile/{id}/rewards','RewardsController@ShowUserRewards');
 
 // Likes and favorites routes
 Route::post('projects/{id}/like', 'ProjectController@likeProject');
@@ -43,12 +42,12 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::post('projects/{id}/unlike', 'AjaxController@unlikeProject');
     Route::post('projects/{id}/favorite', 'AjaxController@favoriteProject');
     Route::post('projects/{id}/unfavorite', 'AjaxController@unfavoriteProject');
+    Route::post('projects/{id}/comment', 'AjaxController@commentProject');
 });
 
 
-//Route::post('/projects/{id}', 'ProjectController@addComment');
+Route::post('/projects/{id}', 'ProjectController@addComment');
 
-Route::get('profile/{id}','ProfileController@profile');
 Route::get('update','ProfileController@updateProfile');
 
 /*
@@ -69,13 +68,7 @@ Route::get('/activity', [
     'uses' => 'UserActivityController@showAllActivity'
 ]);
 
-
 Route::get("/popular", 'SearchController@filterRecent');
-
-Route::get('profile/{username}/favorites', [
-    'middleware' => 'auth',
-    'uses' => 'ProfileController@showFavorites'
-]);
 
 /*
  * Authentication Routes
@@ -125,7 +118,10 @@ Route::get('/projects/search/{id}','ProjectController@SearchByColor');
 /*
  * Advertising Routes
  */
-Route::get('/advertising','AdsController@ads');
+Route::get('/advertising', [
+    'middleware' => 'auth',
+    'uses' => 'AdsController@ads'
+]);
 Route::post('/advertising', 'AdsController@postClickCounter');
 
 Route::post('', function(){

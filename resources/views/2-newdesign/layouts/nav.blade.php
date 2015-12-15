@@ -38,7 +38,7 @@
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            {{ Auth::user()->firstname . " " . Auth::user()->lastname }} <i class="fa fa-angle-down"></i>
+                            Profile <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="{{ url('/profile/' . Auth::user()->username) }}">My Profile</a></li>

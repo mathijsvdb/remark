@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\Badges;
+use App\Favorite;
 use App\Project;
 use App\Referrals;
 use App\User;
@@ -25,30 +26,24 @@ class ProfileController extends Controller {
      */
     public function profile($username)
     {
-        // $user = User::find($id);
         $user = User::where('username', $username)->first();
+        $projects = Project::where('user_id', $user->id)->orderBy('created_at', 'DESC')->paginate(10);
+        $favorites = Favorite::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
+        $badges = DB::table('badges')->get();
+        $userbadges = $user->badges;
+        $userbadge_ids = [];
 
-        $projects = Project::where('user_id', $user->id)->get();
+        foreach($userbadges as $userbadge) {
+            $userbadge_ids[] = $userbadge->badge_id;
+        }
 
-        $badges = DB::table("userbadges")
-            ->join('badges', 'badge_id' , '=' , 'badges.id')
-            ->where('user_id', $user->id)
-            ->orderBy('created_at', 'asc')
-            ->take(3)
-            ->get();
-
-
-        return view("profile", compact('user', 'projects', 'badges'));
+        return view("profile.profile", compact('user', 'projects', 'favorites', 'badges', 'userbadge_ids'));
     }
 
     public function updateProfile(Request $request)
     {
-        // if ($request->user())
-        // {
             $user = Auth::user();
-
             return view("update", compact('user'));
-        // }
     }
 
     public function postProfile()
@@ -105,20 +100,6 @@ class ProfileController extends Controller {
         $user->save();
 
         return redirect("profile/" . $user->username);
-    }
-
-    public function showFavorites($username)
-    {
-        $user = User::where('username', $username)->first();
-
-        $myFavorites = DB::table('favorites')
-            ->where('favorites.user_id', '=', $user->id)
-            ->join('projects', 'projects.id', '=', 'favorites.project_id')
-            ->join('users', 'users.id', '=', 'projects.user_id')
-            ->select('projects.*', 'users.username')
-            ->get();
-
-        return view('myFavorites', compact('myFavorites'));
     }
 
     public function referralMail(Request $request){

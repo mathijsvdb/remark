@@ -12,4 +12,9 @@ class Badges extends Model
      * @var string
      */
     protected $table = 'userbadges';
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }
