@@ -11,6 +11,12 @@
         </div>
     @endif
 
+    @if(!empty(Session::get('info')))
+        <div class="alert alert-success">
+            <strong>{!! Session::get('info') !!}</strong>
+        </div>
+    @endif
+
     <div class="registrer content-box">
         <form class="form-horizontal" method="post" url="/referral" role="form">
             {!! csrf_field() !!}
@@ -27,7 +33,7 @@
                     <button type="submit" class="btn btn-primary btn-block">Invite!</button>
                 </div>
 
-                <p>Don't have any friends?<a href="/">Click here</a></p>
+                <p>Don't have any friends to refer?<a href="/">Click here</a></p>
             </div>
         </form> <!-- /form -->
     </div>

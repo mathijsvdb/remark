@@ -1,6 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
+    @if(!empty(Session::get('info')))
+        <div class="alert alert-success">
+            <strong>{!! Session::get('info') !!}</strong>
+        </div>
+    @endif
+
     <div class="welcome text-center">
         <div class="container">
             <div class="jumbotron">
