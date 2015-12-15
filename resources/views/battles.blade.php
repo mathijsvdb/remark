@@ -46,7 +46,7 @@
         </div>
 
         <div class="battle_container inactive">
-            <h2><img class="axe" src="http://game-icons.net/icons/lorc/originals/png/000000/transparent/battle-axe.png" alt="battle_icon">  {{$inactive_battle->name}}</h2>
+            <h1><img class="axe" src="http://game-icons.net/icons/lorc/originals/png/000000/transparent/battle-axe.png" alt="battle_icon">  {{$inactive_battle->name}}</h1>
             <div class="information_battle"><p>{{$inactive_battle->description}}</p></div>
             <ul class="row">
                 @foreach($done_battles as $project)

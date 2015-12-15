@@ -642,4 +642,27 @@ footer {
     }
 }
 
+@media screen and (min-width: 720px) {
+    .battle_text_intro p{
+        width: 450px;
+        margin: 0 auto;
+    }
+
+    .inactive .row{
+        margin-right: auto;
+        margin-left: auto;
+        width: 700px;
+    }
+
+    .battle_container li{
+        width: 200px;float:left;
+    }
+}
+
+@media screen and (min-width: 920px) {
+    .battle_text_intro p{
+        width: 580px;
+        margin: 0 auto;
+    }
+}
 
