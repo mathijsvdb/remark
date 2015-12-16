@@ -90,3 +90,7 @@
 		</form>
 	</div>
 @stop
+
+@section('scripts')
+	<script src="{{ URL::asset('assets/js/script.js') }}"></script>
+@stop
