@@ -340,8 +340,8 @@ footer {
 }
 
 .project-img {
-    min-width: 545px;
-    min-height: auto;
+    width: 545px;
+    height: auto;
 }
 
 .project-info-list {
@@ -512,6 +512,7 @@ textarea {
 #upload-file {
     display: inline-block;
     width: auto;
+    cursor
 }
 
 /*api*/
