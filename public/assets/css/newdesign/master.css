@@ -71,10 +71,19 @@ footer {
     margin: 50px auto;
 }
 
+.add-project-form {
+    max-width: 600px;
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 6px;
+    margin: 50px auto;
+}
+
 .login-page,
 .signup-page,
 .reset-page,
-.reset-email-page {
+.reset-email-page,
+.add-project-page {
     background-image: url(../../images/bg2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -478,6 +487,31 @@ textarea {
     padding: 0;
     margin: 0;
     outline: none;
+}
+
+.file-upload {
+    position: relative;
+}
+
+.file-upload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.file-upload-container {
+    display: block;
+}
+
+#upload-file {
+    display: inline-block;
+    width: auto;
 }
 
 /*api*/
