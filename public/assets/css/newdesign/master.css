@@ -80,6 +80,16 @@ footer {
     margin: 50px auto;
 }
 
+.login-form h1,
+.signup-form h1,
+.reset-form h1,
+.reset-email-form h1,
+.add-project-form h1,
+.edit-profile-form h1 {
+    margin-top: 10px;
+    font-size: 28px;
+}
+
 .login-page,
 .signup-page,
 .reset-page,
