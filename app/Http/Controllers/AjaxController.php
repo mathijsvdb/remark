@@ -122,11 +122,26 @@ class AjaxController extends Controller
     }
 
     public function commentProject(Request $request, $project_id) {
+
+        $user = Auth::user();
+
         $this->validate($request, [
             'comment' => 'required'
         ]);
 
-        $user = Auth::user();
+        //--------------------badge---------------------------//
+
+        $totalComments = DB::table("comments")
+            ->where('user_id', $user->id)
+            ->where('project_id', $project_id)
+            ->count();
+
+        if($totalComments == 4){
+            //badgeId + userId naar db sturen
+            $badge_id = 3;
+            auth::user()->userBadge()->attach($badge_id);
+        }
+        //--------------------badge---------------------------//
 
         $comment = new Comment;
         $comment->body = $request->input('comment');
