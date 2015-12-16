@@ -124,7 +124,7 @@ footer {
     margin: 0 15px 25px 15px;
 }
 
-.project-top, .developer-top {
+.project-top, .developer-top, .reclam-top {
     background-image: url(../../images/bg2.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -718,6 +718,54 @@ textarea {
 .activity_container .list-group li{
     border-left: 2px solid #1d9c73;
     padding-left: 30px;margin-top: 30px;
+}
+
+/*------reclam (advertising view)------*/
+
+.item_reclam_content{
+    padding: 0;
+    color: black;
+    margin-top: 20px;
+}
+.item_reclam_content img{
+    float: left;
+    padding: 0;
+    display: inline-block;
+}
+.wrapper_reclam{
+    background-color: white;
+    float: left;
+    border: 1px solid #EEE;
+    width: 99%;
+    display: inline-block;
+}
+
+.info_reclam{
+    margin-left: 20px;
+    display: inline-block;
+    width: 200px;
+}
+
+.reclam_container{
+    color: white;
+}
+
+.content_reclam{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.reclam-top{
+    text-align: center;
+}
+
+.reclam-top a:link,
+.reclam-top a:visited,
+.reclam-top a:hover,
+.reclam-top a:active{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 4px;
 }
 
 @media screen and (min-width: 720px) {
