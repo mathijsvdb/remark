@@ -49,7 +49,7 @@ class Kernel extends ConsoleKernel
                 $template_content = [];
                 $message = array(
                     'subject' => 'Your account has been activated!',
-                    'from_email' => 'noreply@remark.com',
+                    'from_email' => 'RemarkTeam@remark.com',
                     'from_name' => 'Remark',
                     'to' => array(
                         array(

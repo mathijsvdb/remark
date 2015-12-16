@@ -47,7 +47,7 @@ class RemarkHighLightMail{
                         $template_content = [];
                         $message = array(
                                 'subject' => 'Go checkout the higlights for this week from Remark',
-                                'from_email' => 'noreply@remark.com',
+                                'from_email' => 'RemarkTeam@remark.com',
                                 'from_name' => 'Remark',
                                 'to' => array(
                                     array(
@@ -62,27 +62,27 @@ class RemarkHighLightMail{
                                         'vars' => array(
                                             array(
                                                 'name' => 'new_1',
-                                                'content' => '<table><tr>' . $new_list[0]->title . '</tr></table>',
+                                                'content' => '<table><tr>' . $new_list[0] . '</tr></table>',
                                             ),
                                             array(
                                                 'name' => 'new_2',
-                                                'content' => $new_list[1]->title,
+                                                'content' => '<table><tr>' . $new_list[1] . '</tr></table>',
                                             ),
                                             array(
                                                 'name' => 'new_3',
-                                                'content' => $new_list[2]->title,
+                                                'content' => '<table><tr>' . $new_list[2] . '</tr></table>',
                                             ),
                                             array(
                                                 'name' => 'popular_1',
-                                                'content' => $popular_list[0]->body,
+                                                'content' => '<table><tr>' . $popular_list[0] . '</tr></table>',
                                             ),
                                             array(
                                                 'name' => 'popular_2',
-                                                'content' => $popular_list[1]->body,
+                                                'content' => '<table><tr>' . $popular_list[1] . '</tr></table>',
                                             ),
                                             array(
                                                 'name' => 'popular_3',
-                                                'content' => $popular_list[2]->body,
+                                                'content' => '<table><tr>' . $popular_list[2] . '</tr></table>',
                                             ), 
                                         )
                                     )

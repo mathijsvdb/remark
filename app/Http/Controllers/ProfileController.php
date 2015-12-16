@@ -151,7 +151,7 @@ class ProfileController extends Controller {
 
             $message = [
                 'subject' => 'Notification alert',
-                'from_email' => 'noreply@remark.com',
+                'from_email' => 'RemarkTeam@remark.com',
                 'from_name' => 'Remark',
                 'to' => array(
                     array(
