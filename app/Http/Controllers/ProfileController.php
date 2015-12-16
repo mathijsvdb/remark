@@ -40,7 +40,7 @@ class ProfileController extends Controller {
         return view("profile.profile", compact('user', 'projects', 'favorites', 'badges', 'userbadge_ids'));
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile()
     {
             $user = Auth::user();
             return view("profile.editProfile", compact('user'));
@@ -48,7 +48,7 @@ class ProfileController extends Controller {
 
     public function postProfile()
     {
-        $user = \App\User::find(Auth::id());
+        $user = User::find(Auth::id());
         $image = Input::file('fileToUpload');
         $destinationPath = 'uploads/profilepictures';
         $oldfile = $user->image;
@@ -102,7 +102,7 @@ class ProfileController extends Controller {
         return redirect("profile/" . $user->username);
     }
 
-    public function referralMail(Request $request){
+    public function referralMail(){
         $file = array(
             'email' => Request::input('referral-email'),
         );
