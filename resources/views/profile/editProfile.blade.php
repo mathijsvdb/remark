@@ -75,30 +75,33 @@
 			<hr>
 
 			<div class="form-group">
-				<label for="commentmail">Email on comment</label><br>
-				@if($user->comment_mail == 1)
-				<input type="checkbox" name="commentmail_yes" id="commentmail_yes" value="yes" checked>
-				@else
-				<input type="checkbox" name="commentmail_yes" id="commentmail_yes" value="yes">
-				@endif
-				<span for="commentmail_yes" class="updatemaillable"> Mail me when someone comments</span>
+                <p><strong>Email on comment</strong></p>
+                <div class="checkbox">
+                    <label>
+                        @if($user->comment_mail == 1)
+                            <input type="checkbox" name="commentmail_yes" id="commentmail_yes" value="yes" checked> Mail me when someone comments on my projects.
+                        @else
+                            <input type="checkbox" name="commentmail_yes" id="commentmail_yes" value="yes"> Mail me when someone comments on my projects.
+                        @endif
+                    </label>
+                </div>
 			</div>
 
-			<div class="form-group">
-				<p><strong>Highlight email</strong></p>
-				<div class="checkbox">
-				<label>
-				@if($user->highlight_mail == 1)
-				<input type="checkbox" name="highlightmail_yes" id="highlightmail_yes" value="yes" checked> Mail me when someone comments on my projects.
-				@else
-				<input type="checkbox" name="highlightmail_yes" id="highlightmail_yes" value="yes" > Mail me when someone comments on my projects.
-				@endif
-				</label>
-				</div>
-			</div>
-			<br />
+            <div class="form-group">
+                <p><strong>Highlight email</strong></p>
+                <div class="checkbox">
+                    <label>
+                        @if($user->highlight_mail == 1)
+                            <input type="checkbox" name="highlightmail_yes" id="highlightmail_yes" value="yes" checked> Mail me when someone comments on my projects.
+                        @else
+                            <input type="checkbox" name="highlightmail_yes" id="highlightmail_yes" value="yes" > Mail me when someone comments on my projects.
+                        @endif
+                    </label>
+                </div>
+            </div>
 
-			<div>
+
+            <div>
 				<input type="hidden" name="id" value="{{ $user->id }}" class="form-control">
 			</div>
 
