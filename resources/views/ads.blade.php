@@ -2,27 +2,29 @@
 
 @section("content")
 
-    <div class="adver_container">
+    <div class="reclam_container">
 
 
 
-        <div class="content_adver col-md-10 content-box center-block">
+        <div class="content_reclam col-md-12">
             <h2>Your advertisements <a class="" href="/advertising/add">Add more +</a></h2>
 
 
             @if (count($myAds) > 0)
-            <ul class="row">
+            <ul class="row list-unstyled center-block">
             @foreach($myAds as $ad)
-                <div class="col-md-4 ad" id="{{$ad->id}}">
-                    <li>
-                        <h3>{{$ad->title}} </h3>
-                        <p>Click Counter: {{$ad->clicks}}</p>
-                        <p>{{$ad->description}} </p>
-                        <img src="{{asset($ad->img)}}" alt="advertising">
+                <div id="{{$ad->id}}">
+                    <li class="col-md-3 col-sm-3  ad item_reclam_content">
+                        <div class="center-block wrapper_reclam">
+                            <h3>{{$ad->title}} </h3>
+                            <p>Click Counter: {{$ad->clicks}}</p>
+                            <p>{{$ad->description}} </p>
+                            <img src="{{asset($ad->img)}}" alt="reclam">
+                        </div>
                     </li>
                 </div>
-            </ul>
             @endforeach
+            </ul>
             @else
                 <p>There are no advertisments linked to your account</p>
             @endif
