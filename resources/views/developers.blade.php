@@ -3,7 +3,7 @@
 @section("content")
     <div class="developer-top">
         <div class="container-fluid">
-            <h1>Use remark data for your project</h1>
+            <h1>Use Remark data for your project</h1>
         </div>
     </div>
 

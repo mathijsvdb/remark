@@ -22,7 +22,7 @@ body {
     background-image: url(../../images/bg1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
     display: flex;
     align-items: center;
 }
@@ -30,6 +30,10 @@ body {
 .jumbotron {
     background-color: rgba(240, 240, 240, 0.9);
     margin: 50px 0;
+}
+
+.jumbotron h1 {
+    font-size: 50px;
 }
 
 .navbar {
@@ -78,6 +82,10 @@ footer {
     align-items: stretch;
     width:100%;
     flex: 1;
+}
+
+.spotlight-title {
+    margin-bottom: 30px;
 }
 
 #spotlight, #projects {

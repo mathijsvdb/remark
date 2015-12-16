@@ -27,6 +27,8 @@
     </div>
 
     <div class="container-fluid">
+        <h2 class="text-center spotlight-title">Checkout the latest projects</h2>
+
         @if(count($spotlight) > 0)
             <ul class="list-unstyled" id="spotlight">
                 @foreach($spotlight as $project)

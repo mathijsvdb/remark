@@ -6,7 +6,7 @@
 
         <div class="project-top">
             <div class="container-fluid">
-                <h1>See what happend while you were away.</h1>
+                <h1>See what happened while you were away.</h1>
             </div>
         </div>
 
