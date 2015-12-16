@@ -15,6 +15,8 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
             $table->string('body');
+            $table->integer('spam');
+            $table->softDeletes();
             $table->integer('user_id')->foreign('user_id')->references('id')->on('users');
             $table->integer('project_id')->foreign('project_id')->references('id')->on('projects');
             $table->boolean('new');
