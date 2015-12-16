@@ -1,7 +1,7 @@
 @extends("layouts.master")
 
 @section("content")
-	<div id="updateform" style="padding: 45px;">
+	<div class="edit-profile-page">
 		@if (count($errors) > 0)
 			<div class="alert alert-danger">
 				<ul>
@@ -11,72 +11,90 @@
 				</ul>
 			</div>
 		@endif
-		<h2>Edit profile</h2>
-
-		<form method="POST" action="/update" enctype="multipart/form-data">
+		<form class="edit-profile-form" method="POST" action="/update" enctype="multipart/form-data">
+			<h1 class="text-center">Edit your profile</h1>
 			{!! csrf_field() !!}
 
-			<div class="form-group">
-
+			<div class="text-center">
 				@if($user->image == 'default.jpg')
-					<img class="img-circle" id="preview" style="width: 150px; height:150px; padding: 5px; margin-right: auto; margin-left: auto; display: block;background-color: whitesmoke;" src="/assets/images/{!! $user->image !!}" alt="">
+					<img class="img-circle img-profile" id="preview" src="/assets/images/{!! $user->image !!}" alt="">
 				@else
-					<img class="img-circle" id="preview" style="width: 150px; height:150px; padding: 5px; margin-right: auto; margin-left: auto; display: block;background-color: whitesmoke;" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
+					<img class="img-circle img-profile" id="preview" src="/uploads/profilepictures/{!! $user->image !!}" alt="">
 				@endif
 
-				<input type="file" style="margin-top: 15px;" name="fileToUpload" id="input">
+				<div class="form-group">
+					<div class="file-upload-container">
+						<div class="file-upload btn btn-default">
+							<span>Upload</span>
+							<input type="file" name="fileToUpload" id="btn-upload" class="upload" value={!! old('fileToUpload') !!}>
+						</div>
+					</div>
+				</div>
 			</div>
 
-			<div>
+			<div class="form-group">
 				<label for="firstname">Firstname</label>
 				<input type="firstname" name="firstname" value="{{ $user->firstname }}" class="form-control">
 			</div>
 
-			<div>
+			<div class="form-group">
 				<label for="lastname">Lastname</label>
 				<input type="lastname" name="lastname" value="{{ $user->lastname }}" class="form-control">
 			</div>
 
-			<div>
+			<div class="form-group">
 				<label for="email">E-mail</label>
 				<input type="email" name="email" value="{{ $user->email }}" class="form-control">
 			</div>
 
-			<hr style="visibility: hidden;"/>
-			<div>
-				<h4>About me</h4>
-				<label for="bio">biography</label><input class="form-control" value="{{ $user->bio }}" name="bio" type="text">
+			<h3>About me</h3>
+			<hr>
+
+			<div class="form-group">
+				<label for="bio">Biography</label>
+				<input class="form-control" value="{{ $user->bio }}" name="bio" type="text">
+				<p class="help-block">What is so interesting about you?</p>
 			</div>
 
-			<hr style="visibility: hidden;"/>
-			<div>
-				<h4>Adding links</h4>
-				<label for="facebook">Facebook</label><input class="form-control" value="{{ $user->facebook }}" name="facebook" type="text">
-				<label for="twitter">Twitter</label><input class="form-control" value="{{ $user->twitter }}" name="twitter" type="text">
-				<label for="website">Website</label><input class="form-control" value="{{ $user->website }}" name="website" type="text">
+			<div class="form-group">
+				<label for="facebook">Facebook URL</label>
+				<input placeholder="https://www.facebook.com/johndoe" class="form-control" value="{{ $user->facebook }}" name="facebook" type="text">
 			</div>
-			<br />
-			<div id="emailpreferences">
-				<h4>Email preferences</h4>
+
+			<div class="form-group">
+				<label for="twitter">Twitter URL</label>
+				<input placeholder="https://www.twitter.com/johndoe" class="form-control" value="{{ $user->twitter }}" name="twitter" type="text">
+			</div>
+
+			<div class="form-group">
+				<label for="website">Website URL</label>
+				<input placeholder="http://www.myportfolio.com" class="form-control" value="{{ $user->website }}" name="website" type="text">
+			</div>
+
+			<h3>Email preferences</h3>
+			<hr>
+
+			<div class="form-group">
 				<label for="commentmail">Email on comment</label><br>
-
 				@if($user->comment_mail == 1)
 				<input type="checkbox" name="commentmail_yes" id="commentmail_yes" value="yes" checked>
 				@else
 				<input type="checkbox" name="commentmail_yes" id="commentmail_yes" value="yes">
 				@endif
-				<label for="commentmail_yes" class="updatemaillable"> Mail me when someone comments</label><br>
-																	 
-				<label for="highlightmail">Highlight email</label><br>
+				<span for="commentmail_yes" class="updatemaillable"> Mail me when someone comments</span>
+			</div>
 
+			<div class="form-group">
+				<p><strong>Highlight email</strong></p>
+				<div class="checkbox">
+				<label>
 				@if($user->highlight_mail == 1)
-				<input type="checkbox" name="highlightmail_yes" id="highlightmail_yes" value="yes" checked>
+				<input type="checkbox" name="highlightmail_yes" id="highlightmail_yes" value="yes" checked> Mail me when someone comments on my projects.
 				@else
-				<input type="checkbox" name="highlightmail_yes" id="highlightmail_yes" value="yes" >
+				<input type="checkbox" name="highlightmail_yes" id="highlightmail_yes" value="yes" > Mail me when someone comments on my projects.
 				@endif
-
-				<label for="highlightmail_yes" class="updatemaillable"> Email me with highlights </label><br>
-                                                   
+				</label>
+				</div>
 			</div>
 			<br />
 
@@ -85,7 +103,9 @@
 			</div>
 
 
-			<button>Submit!</button>
+			<div class="form-group">
+				<button class="btn btn-primary btn-block" type="submit">Save</button>
+			</div>
 
 		</form>
 	</div>

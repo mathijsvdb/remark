@@ -4,7 +4,7 @@
 
     var URL = window.URL || window.webkitURL;
 
-    var input = document.querySelector('#input');
+    var input = document.querySelector('#btn-upload');
     var preview = document.querySelector('#preview');
 
     // When the file input changes, create a object URL around the file.

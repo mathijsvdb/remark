@@ -43,7 +43,7 @@ class ProfileController extends Controller {
     public function updateProfile(Request $request)
     {
             $user = Auth::user();
-            return view("update", compact('user'));
+            return view("profile.editProfile", compact('user'));
     }
 
     public function postProfile()

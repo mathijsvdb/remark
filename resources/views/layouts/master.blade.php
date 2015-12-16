@@ -67,7 +67,6 @@
 <script src="{{ URL::asset('assets/js/bootstrap.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ URL::asset('assets/js/googleanalytics.js') }}"></script>
-<script src="{{ URL::asset('assets/js/script.js') }}"></script>
 <script type="text/javascript">
     $(document).ready(function() {
         $.ajaxSetup({

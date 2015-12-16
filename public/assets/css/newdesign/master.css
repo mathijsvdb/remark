@@ -71,7 +71,8 @@ footer {
     margin: 50px auto;
 }
 
-.add-project-form {
+.add-project-form,
+.edit-profile-form {
     max-width: 600px;
     background-color: whitesmoke;
     padding: 20px;
@@ -83,7 +84,8 @@ footer {
 .signup-page,
 .reset-page,
 .reset-email-page,
-.add-project-page {
+.add-project-page,
+.edit-profile-page {
     background-image: url(../../images/bg2.jpg);
     background-repeat: no-repeat;
     background-size: cover;

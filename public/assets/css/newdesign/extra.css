@@ -42,3 +42,16 @@
     background-color: #1D9C73;
     border-color: #198663;
 }
+
+.form-control:focus, .bootstrap-tagsinput:focus {
+    border: 1px solid #EEEEEE;
+    border-bottom: 1px solid #1D9C73;
+    box-shadow: none;
+}
+
+.form-control, .bootstrap-tagsinput {
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #EEEEEE;
+    transition: all 0.2s ease-in;
+}
