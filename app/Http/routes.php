@@ -57,7 +57,6 @@ Route::get('update','ProfileController@updateProfile');
  * Profile Routes
  */
 Route::get('profile/{username}', [
-    'middleware' => 'auth',
     'uses' =>'ProfileController@profile'
 ]);
 Route::get('update', [
