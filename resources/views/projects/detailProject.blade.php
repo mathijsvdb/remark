@@ -233,7 +233,7 @@
                     dataType: 'json'
                 })
                 .done(function(data) {
-                    console.log(data);
+                    $('.comment-error').remove();
                     $('#comment-body').val('');
                     $('.project-comments').prepend(
                             '<li>' +
@@ -253,7 +253,8 @@
                 })
                 .fail(function(jqXHR, textStatus, errorThrown) {
                     if(jqXHR.status = 422) {
-                        $('#comment-form').after('<p style="color: red;">You should really enter some feedback!</p>')
+                        $('.comment-error').remove();
+                        $('#comment-form').after('<p class="comment-error" style="color: red;">You should really enter some feedback!</p>')
                     }
                 });
 
