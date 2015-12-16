@@ -8,6 +8,7 @@ use App\Like;
 use App\Notifications;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AjaxController extends Controller
 {
@@ -97,6 +98,27 @@ class AjaxController extends Controller
         ];
 
         return response()->json($data);
+    }
+
+    public function filterPopular()
+    {
+        $projects = DB::table('projects')->select(DB::raw('*, (SELECT count(id) FROM likes WHERE project_id=projects.id) as likes, (SELECT count(id) FROM favorites WHERE project_id=projects.id) as favorites'))
+            ->orderBy('likes', 'desc')
+            ->orderBy('projects.created_at', 'desc')
+            ->join('users', 'users.id', '=', 'projects.user_id')
+            ->get();
+
+        return response()->json($projects);
+    }
+
+    public function filterRecent()
+    {
+        $projects = DB::table('projects')->select(DB::raw('*, (SELECT count(id) FROM likes WHERE project_id=projects.id) as likes, (SELECT count(id) FROM favorites WHERE project_id=projects.id) as favorites'))
+            ->orderBy('projects.created_at', 'desc')
+            ->join('users', 'users.id', '=', 'projects.user_id')
+            ->get();
+
+        return response()->json($projects);
     }
 
     public function commentProject(Request $request, $project_id) {

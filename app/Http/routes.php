@@ -14,6 +14,17 @@
 /*
  * Project Routes
  */
+// Ajax like and favorite routes
+Route::group(['prefix' => 'ajax'], function () {
+    Route::post('projects/{id}/like', 'AjaxController@likeProject');
+    Route::post('projects/{id}/unlike', 'AjaxController@unlikeProject');
+    Route::post('projects/{id}/favorite', 'AjaxController@favoriteProject');
+    Route::post('projects/{id}/unfavorite', 'AjaxController@unfavoriteProject');
+    Route::post('projects/{id}/comment', 'AjaxController@commentProject');
+    Route::post('projects/popular','AjaxController@filterPopular');
+    Route::post('projects/recent','AjaxController@filterRecent');
+});
+
 Route::get('/projects','ProjectController@showAllProjects');
 Route::get('/projects/add', [
     'middleware' => 'auth',
@@ -35,14 +46,7 @@ Route::post('projects/{id}/unlike', 'ProjectController@unlikeProject');
 Route::post('projects/{id}/favorite', 'ProjectController@favoriteProject');
 Route::post('projects/{id}/unfavorite', 'ProjectController@unfavoriteProject');
 
-// Ajax like and favorite routes
-Route::group(['prefix' => 'ajax'], function () {
-    Route::post('projects/{id}/like', 'AjaxController@likeProject');
-    Route::post('projects/{id}/unlike', 'AjaxController@unlikeProject');
-    Route::post('projects/{id}/favorite', 'AjaxController@favoriteProject');
-    Route::post('projects/{id}/unfavorite', 'AjaxController@unfavoriteProject');
-    Route::post('projects/{id}/comment', 'AjaxController@commentProject');
-});
+
 
 
 Route::post('/projects/{id}', 'ProjectController@addComment');
@@ -147,7 +151,11 @@ Route::post('/spam/{id}', 'ProjectController@spam');
 
 Route::group(['namespace' => 'API'], function() {
     // Developers
-    Route::get('developers', 'ApiController@index');
+    Route::get('/developers', [
+        'middleware' => 'auth',
+        'uses' => 'ApiController@index'
+    ]);
+
     Route::post('developers', 'ApiController@generateAPIkey');
 
     Route::group(['prefix' => 'api/v1'], function() {
