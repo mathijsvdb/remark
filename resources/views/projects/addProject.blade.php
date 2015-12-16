@@ -10,13 +10,12 @@
 
                 <div class="form-group">
                     <label for="title">Project title</label>
-                    <input class="form-control" type="text" placeholder="Project titel" name="title" value={!! old('title') !!}>
+                    <input class="form-control" type="text" placeholder="Project title" name="title" value={!! old('title') !!}>
                 </div>
 
                 <div class="form-group">
                     <label for="body">Project description</label>
                     <textarea class="form-control" name="body" placeholder="Write details..." rows="3" value={!! old('body') !!}></textarea>
-                    <br>
                 </div>
 
                 <div class="form-group">

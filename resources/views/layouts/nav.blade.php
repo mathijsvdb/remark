@@ -27,7 +27,7 @@
                 <div class="input-group">
                     <input type="text" class="form-control" placeholder="Search">
                     <span class="input-group-btn">
-                        <button class="btn btn-primary" type="button"><span class="glyphicon glyphicon-search"></span></button>
+                        <button class="btn btn-primary btn-search" type="button"><span class="glyphicon glyphicon-search"></span></button>
                     </span>
                 </div>
             </form>
@@ -41,9 +41,8 @@
                             {{ Auth::user()->firstname . " " . Auth::user()->lastname }} <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ url('/profile/' . Auth::user()->username) }}">My Profile</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown"><a href="{{ url('/logout') }}" >Logout</a></li>
+                            <li><a href="{{ url('/profile/' . Auth::user()->username) }}">My Profile<i class="fa fa-user fa-fw pull-right"></i></a></li>
+                            <li class="dropdown"><a class="btn-logout" href="{{ url('/logout') }}" >Logout<i class="fa fa-sign-out fa-fw pull-right"></i></a></li>
                         </ul>
                     </li>
                 @else

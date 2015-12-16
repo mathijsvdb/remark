@@ -41,6 +41,10 @@ body {
     border: none;
 }
 
+.btn-search {
+    border-radius: 0;
+}
+
 footer {
     background-color: #222;
     color: white;
@@ -67,7 +71,7 @@ footer {
     max-width: 400px;
     background-color: whitesmoke;
     padding: 20px;
-    border-radius: 6px;
+    border-radius: 4px;
     margin: 50px auto;
 }
 
@@ -76,7 +80,7 @@ footer {
     max-width: 600px;
     background-color: whitesmoke;
     padding: 20px;
-    border-radius: 6px;
+    border-radius: 4px;
     margin: 50px auto;
 }
 
@@ -113,6 +117,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     max-width: 1450px;
+    margin-bottom: 30px;
 }
 
 .spotlight-item, .project {
@@ -130,7 +135,7 @@ footer {
     align-items: center;
 }
 
-.project-top h1 {
+.project-top h1, .developer-top h1 {
     margin-top: 0;
     color: white;
 }

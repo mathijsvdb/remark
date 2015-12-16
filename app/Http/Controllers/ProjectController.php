@@ -170,8 +170,6 @@ class ProjectController extends Controller
         if(count($user_liked) > 0)
         {
             return Redirect::back();
-
-
         }
         else
         {
@@ -299,19 +297,19 @@ class ProjectController extends Controller
     public function getEditProject($project_id) {
         $project = Project::find($project_id);
 
-        return view('updateProject', compact('project'));
+        return view('projects/editProject', compact('project'));
     }
 
     public function postEditProject($project_id)
     {
         $project = Project::find($project_id);
-        $oldimage = $project['img'];
-        $oldtricolor = $project['img_tricolor'];
+        $oldimage = $project->img;
+        $oldtricolor = $project->img_tricolor;
         $title = Request::input('title');
         $body = Request::input('body');
         $tags = Request::input('tags');
         $image = Input::file('fileToUpload');
-        $destinationPath = 'uploads/'; // upload path
+        $destinationPath = 'uploads/';
         $client = new ColorExtractor;
         //rules
         $file = array(
@@ -375,12 +373,10 @@ class ProjectController extends Controller
 
         $project->img_tricolor = $tricolor_correct;
         $project->user_id = Auth::id();
-        //$project->user_id = 1;
-        //$table->increments('id');
 
         $project->save();
 
-        return redirect('/projects');
+        return redirect('/projects/' . $project_id);
     }
 
     public function SearchByColor($colorid){
