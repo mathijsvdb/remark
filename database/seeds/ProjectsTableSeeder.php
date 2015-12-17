@@ -27,7 +27,7 @@ class ProjectsTableSeeder extends Seeder
                 'updated_at' => Carbon::now()->addMonth(-1)
             ],[
                 'title' => 'Pointas',
-                'body' => "Pointas logo Spanish Coffee.",
+                'body' => "Pointas Spanish Coffee.",
                 'tags' => "logo",
                 'img' => 'projects/coffee_logo_2.png',
                 'img_tricolor' => "FCCC66,6EC4C1,17506E",
