@@ -17,7 +17,7 @@
         </div>
     @endif
 
-    <div class="registrer content-box">
+    <div class="registrer row content-box">
         <form class="form-horizontal" method="post" url="/referral" role="form">
             {!! csrf_field() !!}
             <div class="form-group">

@@ -758,9 +758,21 @@ textarea {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-
+.content_reclam p{
+    color: black;
+}
 .reclam-top{
     text-align: center;
+}
+
+.recalm_no{
+    font-size: 2rem;
+    width: 100%;
+    text-align: center;
+}
+
+.recalm_no p:first-child{
+    font-weight: bolder;
 }
 
 .reclam-top a:link,

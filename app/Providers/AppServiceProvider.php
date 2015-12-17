@@ -31,7 +31,6 @@ class AppServiceProvider extends ServiceProvider
                 ->get();
             view()->share('ads', $ads);
         }
-
     }
 
     /**
