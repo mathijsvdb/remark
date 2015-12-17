@@ -24,6 +24,7 @@
                             <h3>{{$ad->title}} </h3>
                             <p>Click Counter: {{$ad->clicks}}</p>
                             <p>{{$ad->description}} </p>
+                            <a href="/advertising/update/{{ $ad->id }}">update add</a>
                         </div>
                     </div>
                 </li>
