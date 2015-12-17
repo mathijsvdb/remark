@@ -3,63 +3,69 @@
 @section("content")
     <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
 
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li class="form-group has-error">{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <div class="add-project-page">
+        <div class="container">
 
-    <div class="advertising_container content-box">
-        <form action="/advertising/add" method="POST" id="payment-form" class="form-horizontal" role="form" enctype="multipart/form-data">
-            {!! csrf_field() !!}
-            <h2>Your advertising</h2>
-            <p>advertisments will be displayed for 30 days - €50</p>
-            <div class="form-group">
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li class="form-group has-error">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-                <div class="col-sm-12">
-                    <label for="title" class="control-label">Title:</label>
+            <form action="/advertising/add" method="POST" class="add-project-form" role="form" enctype="multipart/form-data">
+                {!! csrf_field() !!}
+                <h1 class="text-center">Add your advertisement</h1>
+                <p class="text-center">advertisements will be displayed for 30 days - €50</p>
+                <div class="form-group">
+                    <label for="title" class="control-label">Title</label>
                     <input type="text" id="title" placeholder="Title" name="title" class="form-control" autofocus required="required" />
-                    <label for="url">Url to website:</label>
+                </div>
+
+                <div class="form-group">
+                    <label for="url">Url to website</label>
                     <input type="text" id="url" placeholder="http://" name="url" class="form-control" autofocus required="required" />
-                    <span class="help-block">Example: http://example.com</span>
+                    <span class="help-block">Please paste your full URL (e.g. http://www.yourwebsite.com</span>
+                </div>
+
+                <div class="form-group">
                     <label for="startDate">Date :</label>
-                    <input name="data-picker" id="input" type="date" class="date-picker" />
-
+                    <input name="data-picker" id="input" type="date" class="date-picker" class="form-control" />
                 </div>
 
-            </div>
-            <div class="form-group">
-                <div class="col-sm-12">
-                    <label for="fileToUpload">Image:</label>
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                    <span class="help-block">Image has to be width 200 and height 150</span>
+                <div class="form-group">
+                    <label for="fileToUpload">Your advertisement</label>
+
+                    <div class="file-upload-container">
+                        <div class="file-upload btn btn-default">
+                            <span>Upload</span>
+                            <input type="file" name="fileToUpload" id="btn-upload" class="upload" value={!! old('fileToUpload') !!}>
+                        </div>
+                        <input id="upload-file" placeholder="Choose File" disabled="disabled" class="form-control">
+                        <span class="help-block">Image has to be width 200 and height 150</span>
+                    </div>
                 </div>
-
-            </div>
-
-
-
 
                 <script
-                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                        data-key="pk_test_uJfH5C7V9YeBhsIhZ2LB6edn"
-                        data-image="/img/documentation/checkout/marketplace.png"
-                        data-name="Pay add"
-                        data-description="30 days = 50€"
-                        data-currency="eur"
-                        data-amount="5000"
-                        data-locale="auto">
+                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                    data-key="pk_test_uJfH5C7V9YeBhsIhZ2LB6edn"
+                    data-image="/img/documentation/checkout/marketplace.png"
+                    data-name="Pay add"
+                    data-description="30 days = 50€"
+                    data-currency="eur"
+                    data-amount="5000"
+                    data-locale="auto">
                 </script>
-
-            
-        </form>
+            </form>
+        </div>
     </div>
+@stop
 
 
+@section('scripts')
     <script>
         Stripe.setPublishableKey('pk_test_uJfH5C7V9YeBhsIhZ2LB6edn');
         function stripeResponseHandler(status, response) {
@@ -91,5 +97,11 @@
                 return false; // submit from callback
             });
         });
+    </script>
+
+    <script>
+        document.getElementById("btn-upload").onchange = function () {
+            document.getElementById("upload-file").value = this.value.replace("C:\\fakepath\\", "");
+        };
     </script>
 @stop
