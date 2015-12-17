@@ -1,6 +1,15 @@
 @extends('layouts.master')
 
 @section('content')
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="form-group has-error">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="reset-email-page">
         <div class="container">
             <form class="reset-email-form" method="POST" action="/password/email">

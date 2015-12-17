@@ -1,6 +1,15 @@
 @extends('layouts.master')
 
 @section("content")
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="form-group has-error">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="signup-page">
         <div class="container">
             <form class="signup-form" method="post" action="/register">
@@ -22,7 +31,6 @@
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="username" placeholder="Username" value="{{ old('username') }}" name="username" class="form-control" required="required">
-                    <span class="help-block">Choose something unique! </span>
                 </div>
 
                 <div class="form-group">
