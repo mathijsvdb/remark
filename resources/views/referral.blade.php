@@ -1,41 +1,41 @@
 @extends('layouts.master')
 
 @section("content")
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li class="form-group has-error">{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    <div class="add-project-page">
+        <div class="container">
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li class="form-group has-error">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
 
-    @if(!empty(Session::get('info')))
-        <div class="alert alert-success">
-            <strong>{!! Session::get('info') !!}</strong>
-        </div>
-    @endif
+            @if(!empty(Session::get('info')))
+                <div class="alert alert-success">
+                    <strong>{!! Session::get('info') !!}</strong>
+                </div>
+            @endif
+            <form method="post" url="/referral" role="form" class="add-project-form">
+                {!! csrf_field() !!}
 
-    <div class="registrer row content-box">
-        <form class="form-horizontal" method="post" url="/referral" role="form">
-            {!! csrf_field() !!}
-            <div class="form-group">
-                <label for="email" class="col-sm-3 control-label"></label>
-                <div class="col-sm-9">
-                    <h2>Refer a friend</h2>
+                <h1 class="text-center">Refer a Friend</h1>
+
+                <div class="form-group">
+                    <label for="email">Your friend's email</label>
                     <span class="help-block">Do you have a talented friend? refer him now!</span>
                     <input type="email" id="referral-email" placeholder="Friends e-mail" name="referral-email" class="form-control">
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-sm-9 col-sm-offset-3">
+                <div class="form-group">
+
+                <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-block">Invite!</button>
                 </div>
 
-                <p>Don't have any friends to refer?<a href="/">Click here</a></p>
-            </div>
-        </form> <!-- /form -->
+                <p>Don't have any friends to refer? <a href="/">Skip this step</a></p>
+            </form> <!-- /form -->
+        </div>
     </div>
-
 @stop

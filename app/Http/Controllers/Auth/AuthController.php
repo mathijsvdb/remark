@@ -61,7 +61,7 @@ class AuthController extends Controller
 
         if(str_contains($input['email'], '@student.thomasmore.be')){
             Auth::login($this->create($input));
-            $info = 'Congratulations on creating an account, To update your profile visit the profile page!';
+            $info = 'Congratulations on creating an account, invite a friend to join aswell for rewards!';
 
             $badge_id = 2;
             $totalUsers = DB::table("users")
