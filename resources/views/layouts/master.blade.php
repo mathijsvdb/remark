@@ -47,17 +47,16 @@
     <footer>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6">
-                    <img src="{{ URL::asset('assets/images/remark-logo.svg') }}" width="140" alt="Remark">
-                </div>
 
-                <div class="col-md-6">
                     <div class="ads">
                         @foreach($ads as $ad)
-                        <a class="pull-right ad" href="{{ $ad->url }}"><img src="{{ $ad->img }}" alt=""></a>
+                            <div class="col-sm-3" style="margin-top: 10px;">
+                        <a class=" ad" href="{{ $ad->url }}"><img src="{{ $ad->img }}" alt=""></a>
+                            </div>
                         @endforeach
                     </div>
-                </div>
+
+
             </div>
         </div>
     </footer>
