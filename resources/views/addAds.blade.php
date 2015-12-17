@@ -42,10 +42,10 @@
                     <div class="file-upload-container">
                         <div class="file-upload btn btn-default">
                             <span>Upload</span>
-                            <input type="file" name="fileToUpload" id="btn-upload" class="upload" value={!! old('fileToUpload') !!}>
+                            <input type="file" name="fileToUpload" id="btn-upload" class="upload">
                         </div>
                         <input id="upload-file" placeholder="Choose File" disabled="disabled" class="form-control">
-                        <span class="help-block">Image has to be width 200 and height 150</span>
+                        <span class="error-img"></span>
                     </div>
                 </div>
 
@@ -95,6 +95,33 @@
                     exp_year: $('.card-expiry-year').val()
                 }, stripeResponseHandler);
                 return false; // submit from callback
+            });
+
+            var _URL = window.URL || window.webkitURL;
+
+            $("#btn-upload").change(function(e) {
+
+                var image, file;
+
+                if ((file = this.files[0])) {
+
+                    image = new Image();
+
+                    image.onload = function() {
+                        if(!(this.width == 200 && this.height == 150)){
+                            $('.error-img').html('Image has to be 200x150!').css('color', 'red');
+                            $("#upload-file").replaceWith($("#upload-file").val('').clone(true));
+                            $("#btn-upload").replaceWith($("#btn-upload").val('').clone(true));
+                        } else {
+                            $('.error-img').html('');
+                        }
+                    };
+
+                    image.src = _URL.createObjectURL(file);
+
+
+                }
+
             });
         });
     </script>
