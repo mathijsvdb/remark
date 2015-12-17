@@ -47,4 +47,8 @@ class User extends Model implements AuthenticatableContract,
     public function userBadge() {
         return $this->belongsToMany('App\Badges', 'userbadges', 'user_id', 'badge_id')->withTimestamps();
     }
+
+    public function apikey() {
+        return $this->hasOne('App\Apikey');
+    }
 }

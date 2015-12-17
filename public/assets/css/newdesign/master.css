@@ -41,7 +41,7 @@ body {
     border: none;
 }
 
-.btn-search {
+.btn-search, .btn-copy {
     border-radius: 0;
 }
 
@@ -542,118 +542,70 @@ textarea {
     color:white;
 }
 
-.api_container{
-    width: 100%;
-    height: 100%;
-}
-
-.api_container .info_api{
-    margin-left: 20px;
-    margin-top: 50px;
-}
-
-.info_api, .content_api_container{
-    float: none;
-}
-
-.user_api_key_container{
+.developer-content {
     margin-bottom: 30px;
-}
-.user_api_key_container li input[type=text]{
-    border: 2px solid grey;
-    padding-left: 10px;
-    padding-right: 10px;
-    width: 200px;
-    margin-top: 20px;
-}
-
-.user_api_key_container li label{
-    margin-right: 12px;
-}
-
-.user_api_key_container span{
-    font-size: 1.6rem;
-    margin-top: 14px;
-    margin-bottom: 14px;
-    display: block;
-}
-
-.user_api_key_container button{
-    background-color: lightgreen;
-    border: none;
-    border-radius: 50px;
-    color: white;
-    padding: 10px;
-}
-
-.user_api_key_container button:hover{
-    background-color: mediumspringgreen;
-}
-
-.api_container .remarkv1_api{
-    margin-top: 40px;
 }
 
 /*Battles*/
 
-.full_battle_container{
+.full_battle_container {
     width: 100%;
 }
 
-.full_battle_container li{
+.full_battle_container li {
     list-style: none;
     color:black;
 }
 
-.battle_text_intro .intro{
+.battle_text_intro .intro {
     padding: 10px 40px 10px 40px;
 }
 
-.battle_text_intro p{
+.battle_text_intro p {
     margin-top: 20px;
     margin-left:40px;
 }
 
-.battle_container .col-md-2 span{
+.battle_container .col-md-2 span {
     color:black;
 }
 
-.battle_container .axe{
+.battle_container .axe {
     width: 30px; height: 30px;
     display: inline-block;
     margin-top: -10px;
     margin-right: 20px;
 }
 
-.battle_container p{
+.battle_container p {
     color: grey;
     padding:10px;
 }
 
-.battle_container h1{
+.battle_container h1 {
     font-size: 25px;
 }
 
-.information_battle p{
+.information_battle p {
     padding-top: 30px;
     margin-left: -5px;
 }
 
-.battle_container img{
+.battle_container img {
     width: 100%;
 }
 
-.battle_container{
+.battle_container {
     padding: 10px 40px 10px 40px;
 }
 
-.battle_container li{
+.battle_container li {
     padding: 0px;
     margin: 10px;
     background-color: #ebebeb;
 }
 
-.battle_container .add_proj_btn{
+.battle_container .add_proj_btn {
     margin-left: 0px;
     margin-top: 30px;
 }
@@ -661,22 +613,22 @@ textarea {
 .battle_container a:link,
 .battle_container a:visited,
 .battle_container a:hover,
-.battle_container a:active{
+.battle_container a:active {
     color: white;
     display: block;
     padding: 8px;
     font-size: 1.6rem;
 }
 
-.battle_container .hartje{
+.battle_container .hartje {
     float: right;
 }
 
-.battle_container .row{
+.battle_container .row {
     margin-left: -45px;
 }
 
-.participate-btn{
+.participate-btn {
     width: 120px;
     margin-left: 62px;
     border-radius: 30px;
@@ -684,58 +636,60 @@ textarea {
     border: none;
 }
 
-.battle_container .no_submits{
+.battle_container .no_submits {
     border: 1px black solid;
     width: 200px;
     margin-left: -20px;
 }
 
 /*useractivity*/
-.activity_container{
+.activity_container {
     padding-top: 15px;
     padding-left: 30px;
     padding-bottom: 40px;
 }
 
-.activity_container .no_submits{
+.activity_container .no_submits {
     border: 1px black solid;
     max-width: 500px;
     padding: 10px;
     margin-right: 30px;
 }
 
-.activity_container .no_submits .participate-btn{
+.activity_container .no_submits .participate-btn {
     margin-left: 0px;
 }
 
-.activity_container .no_submits .add_proj_btn{
+.activity_container .no_submits .add_proj_btn {
 
     margin-top: 30px;
 }
 
-.activity_container .list-group{
+.activity_container .list-group {
     list-style: none;
     margin-top: 30px;
 }
 
-.activity_container .list-group li{
+.activity_container .list-group li {
     border-left: 2px solid #1d9c73;
     padding-left: 30px;margin-top: 30px;
 }
 
 /*------reclam (advertising view)------*/
 
-.item_reclam_content{
+.item_reclam_content {
     padding: 0;
     color: black;
     margin-top: 20px;
 }
-.item_reclam_content img{
+
+.item_reclam_content img {
     float: left;
     padding: 0;
     display: inline-block;
 }
-.wrapper_reclam{
+
+.wrapper_reclam {
     background-color: white;
     float: left;
     border: 1px solid #EEE;
@@ -743,41 +697,41 @@ textarea {
     display: inline-block;
 }
 
-.info_reclam{
+.info_reclam {
     margin-left: 20px;
     display: inline-block;
     width: 200px;
 }
 
-.reclam_container{
+.reclam_container {
     color: white;
 }
 
-.content_reclam{
+.content_reclam {
     margin-top: 20px;
     margin-bottom: 20px;
 }
-.content_reclam p{
+.content_reclam p {
     color: black;
 }
-.reclam-top{
+.reclam-top {
     text-align: center;
 }
 
-.recalm_no{
+.recalm_no {
     font-size: 2rem;
     width: 100%;
     text-align: center;
 }
 
-.recalm_no p:first-child{
+.reclam_no p:first-child {
     font-weight: bolder;
 }
 
 .reclam-top a:link,
 .reclam-top a:visited,
 .reclam-top a:hover,
-.reclam-top a:active{
+.reclam-top a:active {
     margin-left: auto;
     margin-right: auto;
     border-radius: 4px;
@@ -790,7 +744,7 @@ textarea {
     margin-bottom: 20px;
 }
 
-.search_container h1, p{
+.search_container h1, .search_container p{
     padding-top: 20px;
     padding-left: 20px;
 }

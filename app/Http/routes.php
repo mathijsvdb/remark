@@ -147,8 +147,6 @@ Route::post('/spamComment/{id}', 'ProjectController@spamComment');
 /*
  * API Routes
  */
-
-
 Route::group(['namespace' => 'API'], function() {
     // Developers
     Route::get('/developers', [
