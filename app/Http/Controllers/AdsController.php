@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Advertisement;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Request;
@@ -71,6 +72,7 @@ class AdsController extends Controller
 
         if(!empty($image)){
             if($image->isValid()){
+                File::delete(public_path().$oldimage);
                 $extension = $image->getClientOriginalExtension(); // getting image extension
                 $fileName = Auth::user()->username . '_' . rand(11111,99999).'.'.$extension; // renaming image
                 Input::file('fileToUpload')->move($destinationPath, $fileName);
