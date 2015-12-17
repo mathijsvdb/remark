@@ -40,7 +40,7 @@ class SearchController extends Controller
 
 
 
-        return view("frontpage", compact('searches'));
+        return view("search", compact('searches'));
     }
 
 }
