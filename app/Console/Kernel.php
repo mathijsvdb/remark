@@ -88,7 +88,7 @@ class Kernel extends ConsoleKernel
             DB::table('ads')
                 ->where('end_date', '<', Carbon::now())
                 ->delete();
-        })->daily();
+        })->everyMinute();
 
         $schedule->call(join('@', [RemarkHighLightMail::class, 'HighLights']))
             ->weekly()->mondays()->at('13:00');
