@@ -19,7 +19,7 @@ class UserTableSeeder extends Seeder
             [
                 'firstname' => 'Joris',
                 'lastname' => 'Hens',
-                'username' => 'Jorre',
+                'username' => 'Jorre20',
                 'password' => Hash::make('joris'),
                 'email' => 'joris20@student.thomasmore.be',
                 'accountstatus' => '1',
