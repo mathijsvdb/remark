@@ -35,7 +35,11 @@
             @endforeach
             </ul>
             @else
-                <p>There are no advertisments linked to your account</p>
+                <div class="recalm_no">
+                    <p>Ooh! No you don't have any advertisements yet.</p>
+                    <p>But don't worry you can add one by clicking add more.</p>
+                    <a class="btn btn-primary" href="/advertising/add"><span class="glyphicon glyphicon-plus"></span>Add more</a>
+                </div>
             @endif
         </div>
 
