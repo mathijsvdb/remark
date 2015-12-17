@@ -169,4 +169,20 @@ class AjaxController extends Controller
 
         return response()->json($data);
     }
+
+    public function checkUserWithin2Hours($id){
+        $timeCreated = DB::table("users")
+            ->where('id', $id)
+            ->select('created_at')
+            ->get();
+
+        $dateCreated = new DateTime($timeCreated[0]->created_at);
+        $dateNow = Carbon::now();
+        $interval = $dateCreated->diff($dateNow);
+
+        if($interval->format('%a') == 0 && $interval->format('%h') < 2){
+            $badge_id = 1;
+            User::find($id)->userBadge()->attach($badge_id);
+        }
+    }
 }

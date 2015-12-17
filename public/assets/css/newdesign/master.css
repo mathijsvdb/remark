@@ -330,6 +330,10 @@ footer {
     clear: both;
 }
 
+.project-mid-left .thumbnail {
+    display: inline-block;
+}
+
 .project-user-img {
     margin: 10px auto;
     width: 50px;
@@ -357,7 +361,7 @@ footer {
 }
 
 .project-img {
-    width: 545px;
+    width: 500px;
     height: auto;
 }
 

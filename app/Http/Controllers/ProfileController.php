@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image;
 use Request;
 use Auth;
 use MandrillMail;
@@ -50,7 +51,7 @@ class ProfileController extends Controller {
     {
         $user = User::find(Auth::id());
         $image = Input::file('fileToUpload');
-        $destinationPath = 'uploads/profilepictures';
+        $destinationPath = 'uploads/profilepictures/';
         $oldfile = $user->image;
 
         $file = array('fileToUpload' => $image);
@@ -67,7 +68,14 @@ class ProfileController extends Controller {
                 $extension = $image->getClientOriginalExtension();
                 $fileName = Auth::user()->username.'.'.$extension;
                 File::delete('uploads/profilepictures/' . $oldfile);
-                Input::file('fileToUpload')->move($destinationPath, $fileName);
+
+                if (!file_exists($destinationPath)) {
+                    File::makeDirectory($destinationPath, $mode = 0777, true, true);
+                }
+
+                $img = Image::make($image);
+                $img->fit(500,500)->crop(500, 500, 0, 0)->save($destinationPath . $fileName);
+
                 $user->image = $fileName;
             } else {
                 Session::flash('error', 'uploaded file is not valid');
