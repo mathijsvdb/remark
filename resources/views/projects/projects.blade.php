@@ -2,8 +2,8 @@
 
 @section("content")
     <div class="project-top">
-        <div class="container-fluid">
-            <h1>Projects</h1>
+        <div class="container-fluid text-center">
+            <h1>All Projects</h1>
             <a class="btn btn-primary" href="/projects/add"><span class="glyphicon glyphicon-plus"></span> Add a project</a>
         </div>
     </div>

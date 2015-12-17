@@ -7,59 +7,66 @@
         </div>
     </div>
 
-    <div class="api_container row">
-        <div class="content_api_container col-md-6 center-block">
-            <div class="info_api ">
+    <div class="container developer-content">
+        <h2>Remark API v1</h2>
 
-                <p>
-                    Our API allows you to add data from our platform to your application. When calling an API that does not access private user data, you can use a simple API key. This key is used to authenticate your application for accounting purposes.
-                </p>
-                <p>
-                    There are 2 different endpoints available. One that has <strong>popular</strong> and one that has <strong>details</strong> of all projects.
-                    You can use 1 API key for both of these parameters.
-                </p>
+        <p>Our API allows you to add data from our platform to your application. You can show single projects of the most popular projects.</p>
+        <p>Have fun developing!</p>
 
+        <h3>API Key</h3>
 
+        @if(Auth::user()->apikey)
+            <p>Use your API key for authentication to access the Remark API. In the documentation you can find how to provide your API key.</p>
 
-                <div class="user_api_key_container col-md-12 center-block content-box">
-                    <h3>Your API Key</h3>
-
-                    <form action="" method="post">
-                        {!! csrf_field() !!}
-                        <button type="submit" class="btn btn-default" id="generate_API_KEY">Generate Key</button>
-                    </form>
-
-                    <ul class="api_key_loop"> <!-- lus hier keys uit die gelinkt zijn aan de gebruiker.-->
-                        <li>
-                            <input id="key" type="text" value="Generate a key first.">
-                        </li>
-                    </ul>
-
-                    <div class="remarkv1_api">
-                    <h2>Remark API v1</h2>
-
-                    <p>The API has the following endpoints:</p>
-
-                    <ul>
-                        <li>/items/popular</li>
-                        <ul>
-                            <li>
-                                <p>This endpoint has a page and perpage parameter (e.g.{{ url('/api/v1/items/popular?page=1&perpage=1') }}).</p>
-                                <p>It returns the most popular projects ordered by likes.</p>
-                            </li>
-                        </ul>
-                        <li>/item/id</li>
-                        <ul>
-                            <li>
-                                <p>This endpoint has an ID parameter (e.g.: {{ url('/api/v1/item/1') }}).</p>
-                                <p>It returns a project by id.</p>
-                            </li>
-                        </ul>
-                    </ul>
-                    </div>
+            <div class="input-group">
+                <input type="text" id="apikey" class="form-control" readonly value="{{ Auth::user()->apikey->apikey }}">
+                <div class="input-group-btn">
+                    <button title="Copy to clipboard" class="btn btn-primary btn-copy" data-clipboard-target="#apikey"><i class="fa fa-clipboard fa-fw"></i></button>
                 </div>
             </div>
-        </div>
-    </div>
+        @else
+            <p>To use our API you will need an API key to authenticate yourself.</p>
 
+
+            <form action="" method="post">
+                {!! csrf_field() !!}
+                <div class="text-center form-group">
+                    <p>You don't have an API key yet</p>
+                    <button type="submit" class="btn btn-primary" id="generate_API_KEY">Generate API Key</button>
+                </div>
+            </form>
+        @endif
+
+        <h3>Documentation</h3>
+
+        <p>The API provides the following endpoints:</p>
+
+        <dl>
+            <dt>/items/popular</dt>
+            <dd>
+                Returns the most popular projects ordered by likes. <br>
+                This endpoint has a page and a perpage parameter (e.g. {{ url('/api/v1/items/popular?page=1&perpage=10&key=YOURAPIKEY') }})
+            </dd>
+            <br>
+            <dt>/items/id</dt>
+            <dd>
+                Returns a project by ID. <br>
+                This endpoint has an ID parameter (e.g.: {{ url('/api/v1/items/1?key=YOURAPIKEY') }}).
+            </dd>
+        </dl>
+    </div>
+@stop
+
+@section('scripts')
+    <script src="/assets/js/clipboard.min.js"></script>
+    <script>
+        var clipboard = new Clipboard('.btn-copy');
+
+        clipboard.on('success', function(e) {
+            $('.btn-copy').html('Copied!');
+            setTimeout( function(){
+                $('.btn-copy').html('<i class="fa fa-clipboard fa-fw"></i>');
+            },1000);
+        });
+    </script>
 @stop

@@ -47,16 +47,14 @@
     <footer>
         <div class="container-fluid">
             <div class="row">
-
+                    <p class="text-center"><small>ADVERTISEMENTS</small></p>
                     <div class="ads">
                         @foreach($ads as $ad)
-                            <div class="col-sm-3" style="margin-top: 10px;">
+                            <div class="col-xs-12 col-sm-4 col-md-4 text-center" style="margin-top: 10px;">
                         <a class=" ad" href="{{ $ad->url }}"><img src="{{ $ad->img }}" alt=""></a>
                             </div>
                         @endforeach
                     </div>
-
-
             </div>
         </div>
     </footer>
