@@ -106,7 +106,7 @@ return [
         ],
         'fileToUpload' => [
             'required' => "You will not get many views if you don't upload an image",
-            'image' => 'Are you kidding me, stop uploading something else',
+            'image' => 'Please upload an image',
             'mimes' => 'only add images with these types: :values.',
         ],
     ],

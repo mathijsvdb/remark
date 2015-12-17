@@ -31,6 +31,8 @@
 
                 </div>
 
+
+
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
@@ -40,6 +42,8 @@
                 </div>
 
             </div>
+
+
 
 
 
@@ -61,6 +65,7 @@
 
 
     <script>
+
         Stripe.setPublishableKey('pk_test_uJfH5C7V9YeBhsIhZ2LB6edn');
         function stripeResponseHandler(status, response) {
             if (response.error) {
@@ -90,6 +95,28 @@
                 }, stripeResponseHandler);
                 return false; // submit from callback
             });
+        });
+
+        var _URL = window.URL || window.webkitURL;
+
+        $("#file").change(function(e) {
+
+            var image, file;
+
+            if ((file = this.files[0])) {
+
+                image = new Image();
+
+                image.onload = function() {
+
+                    alert("The image width is " +this.width + " and image height is " + this.height);
+                };
+
+                image.src = _URL.createObjectURL(file);
+
+
+            }
+
         });
     </script>
 @stop
