@@ -42,6 +42,7 @@ class AuthController extends Controller
 
     //register users + waitinglist users
 
+
     public function postRegister(Request $request)
     {
         $input = $request->all();
