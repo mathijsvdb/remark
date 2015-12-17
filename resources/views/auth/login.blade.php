@@ -1,6 +1,16 @@
 @extends('layouts.master')
 
+
 @section('content')
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li class="form-group has-error">{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <div class="login-page">
         <div class="container">
             <form class="login-form" method="POST" action="/login">
