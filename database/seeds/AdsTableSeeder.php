@@ -28,7 +28,7 @@ class AdsTableSeeder extends Seeder
             [
                 'title' => 'Dribbble',
                 'description' => "Remark is stealing our customers!",
-                'url' => "http://remark.dev",
+                'url' => "http://www.dribbble.com",
                 'img' => 'assets/images/reclam/reclam_dribbble.png',
                 'user_id' => 1,
                 'start_date' => carbon::now(),
@@ -37,7 +37,7 @@ class AdsTableSeeder extends Seeder
             [
                 'title' => 'Razer',
                 'description' => "New Anansi Keyboard",
-                'url' => "http://remark.dev",
+                'url' => "http://www.razerzone.com",
                 'img' => 'assets/images/reclam/reclam_razer.png',
                 'user_id' => 2,
                 'start_date' => carbon::now(),
@@ -46,7 +46,7 @@ class AdsTableSeeder extends Seeder
             [
                 'title' => 'Thomas More',
                 'description' => "De hogeschool voor wie meer verwacht",
-                'url' => "http://remark.dev",
+                'url' => "http://www.thomasmore.be",
                 'img' => 'assets/images/reclam/reclam_thomasmore.png',
                 'user_id' => 1,
                 'start_date' => carbon::now(),
