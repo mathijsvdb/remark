@@ -23,14 +23,6 @@
                     <input class="form-control" type="email" name="email" value="{{ old('email') }}">
                 </div>
 
-                @if (count($errors) > 0)
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                @endif
-
                 <button class="btn btn-primary btn-block" type="submit">Send Password Reset Link</button>
             </form>
         </div>
