@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Advertisement;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 use Request;
@@ -32,6 +33,63 @@ class AdsController extends Controller
     public function AddAds()
     {
         return view("addAds");
+    }
+
+    public function updateAds($id){
+
+        $oldad = Advertisement::find($id);
+
+        return view("updateAds", compact('oldad'));
+    }
+
+    public function postUpdateAds($id){
+
+        //rules
+        $file = array(
+            'fileToUpload' => Request::input('img'),
+            'title' => Request::input('title'),
+            'url' => Request::input('url')
+        );
+        $rules = array(
+            'fileToUpload' => 'image|mimes:jpeg,png',
+            'title' => 'required',
+            'url' => 'required'
+        );
+
+        //validator
+        $validator = Validator::make($file, $rules);
+
+        //if validator fails
+        if ($validator->fails()) {
+            // send back to the page with the input data and errors
+            return Redirect::to('/advertising/update/' . $id)->withInput()->withErrors($validator);
+        }
+
+        $ad = Advertisement::find($id);
+        $image = Input::file('fileToUpload');
+        $oldimage = Advertisement::find($id)->img;
+        $destinationPath = 'uploads/reclam';
+
+        if(!empty($image)){
+            if($image->isValid()){
+                File::delete(public_path().$oldimage);
+                $extension = $image->getClientOriginalExtension(); // getting image extension
+                $fileName = Auth::user()->username . '_' . rand(11111,99999).'.'.$extension; // renaming image
+                Input::file('fileToUpload')->move($destinationPath, $fileName);
+                $ad->img = '/uploads/reclam/' . $fileName;
+            } else {
+                Session::flash('error', 'uploaded file is not valid');
+                return Redirect::to('/advertising/add');
+            }
+        } else {
+            $ad->img = $oldimage;
+        }
+
+        $ad->title = Request::input('title');
+        $ad->url = Request::input('url');
+        $ad->save();
+
+        return redirect('/advertising');
     }
 
     public function postAddAdvertisement()

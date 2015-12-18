@@ -47,6 +47,7 @@
     <footer>
         <div class="container-fluid">
             <div class="row">
+                    <p class="text-center"><small>ADVERTISEMENTS</small></p>
                     <div class="ads">
                         @foreach($ads as $ad)
                             <div class="col-xs-12 col-sm-4 col-md-4 text-center" style="margin-top: 10px;">

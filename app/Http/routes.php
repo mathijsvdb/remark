@@ -124,6 +124,10 @@ Route::get('/advertising', [
     'middleware' => 'auth',
     'uses' => 'AdsController@ads'
 ]);
+
+Route::get('/advertising/update/{id}', 'AdsController@updateAds');
+Route::post('/advertising/update/{id}', 'AdsController@postUpdateAds');
+
 Route::post('/advertising', 'AdsController@postClickCounter');
 
 Route::post('', function(){

@@ -8,7 +8,7 @@
     </div>
 
     <div class="container developer-content">
-        <h1>Remark API v1</h1>
+        <h2>Remark API v1</h2>
 
         <p>Our API allows you to add data from our platform to your application. You can show single projects of the most popular projects.</p>
         <p>Have fun developing!</p>
@@ -24,8 +24,6 @@
                     <button title="Copy to clipboard" class="btn btn-primary btn-copy" data-clipboard-target="#apikey"><i class="fa fa-clipboard fa-fw"></i></button>
                 </div>
             </div>
-
-
         @else
             <p>To use our API you will need an API key to authenticate yourself.</p>
 
@@ -57,12 +55,18 @@
             </dd>
         </dl>
     </div>
-
 @stop
 
 @section('scripts')
     <script src="/assets/js/clipboard.min.js"></script>
     <script>
-        new Clipboard('.btn-copy');
+        var clipboard = new Clipboard('.btn-copy');
+
+        clipboard.on('success', function(e) {
+            $('.btn-copy').html('Copied!');
+            setTimeout( function(){
+                $('.btn-copy').html('<i class="fa fa-clipboard fa-fw"></i>');
+            },1000);
+        });
     </script>
 @stop
