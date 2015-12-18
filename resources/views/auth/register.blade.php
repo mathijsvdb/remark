@@ -1,53 +1,54 @@
 @extends('layouts.master')
 
 @section("content")
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li class="form-group has-error">{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <div class="signup-page">
         <div class="container">
             <form class="signup-form" method="post" action="/register">
                 {!! csrf_field() !!}
                 <h1 class="text-center">Register</h1>
 
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="form-group has-error">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="form-group">
                     <label for="firstName"">First name</label>
-                    <input type="text" id="firstName" placeholder="Firstname" name="firstname" value="{{ old('firstname') }}" class="form-control" autofocus required="required">
+                    <input type="text" id="firstName" placeholder="Firstname" name="firstname" value="{{ old('firstname') }}" class="form-control" autofocus>
                     <span class="help-block">Example: Smith, Davis</span>
                 </div>
 
                 <div class="form-group">
                     <label for="lastname">Last name</label>
-                    <input type="text" id="lastname" placeholder="Lastname" name="lastname" value="{{ old('lastname') }}" class="form-control" autofocus required="required">
+                    <input type="text" id="lastname" placeholder="Lastname" name="lastname" value="{{ old('lastname') }}" class="form-control" autofocus>
                     <span class="help-block">Example: Emma, Liam</span>
                 </div>
 
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="username" placeholder="Username" value="{{ old('username') }}" name="username" class="form-control" required="required">
+                    <input type="username" placeholder="Username" value="{{ old('username') }}" name="username" class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="E-mail" name="email" class="form-control" value="{{ old('email') }}" required="required">
+                    <input type="email" id="email" placeholder="E-mail" name="email" class="form-control" value="{{ old('email') }}">
                     <span class="help-block">Example: u0000000&commat;student.thomasmore.be</span>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password" class="form-control" required="required">
+                    <input type="password" id="password" name="password" placeholder="Password" class="form-control">
                     <span class="help-block">Minimum 6 characters</span>
                 </div>
 
                 <div class="form-group">
                     <label for="password">Confirm password</label>
-                    <input type="password" id="password" name="password_confirmation" placeholder="Confirm password" class="form-control" required="required">
+                    <input type="password" id="password" name="password_confirmation" placeholder="Confirm password" class="form-control">
                 </div>
 
                 <div class="form-group">

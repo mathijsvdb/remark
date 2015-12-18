@@ -3,16 +3,6 @@
 @section("content")
     <div class="add-project-page">
         <div class="container">
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li class="form-group has-error">{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
             @if(!empty(Session::get('info')))
                 <div class="alert alert-success">
                     <strong>{!! Session::get('info') !!}</strong>
@@ -22,6 +12,16 @@
                 {!! csrf_field() !!}
 
                 <h1 class="text-center">Refer a Friend</h1>
+
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="form-group has-error">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <div class="form-group">
                     <label for="email">Your friend's email</label>

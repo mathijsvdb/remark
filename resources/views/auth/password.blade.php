@@ -1,19 +1,21 @@
 @extends('layouts.master')
 
 @section('content')
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li class="form-group has-error">{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
     <div class="reset-email-page">
         <div class="container">
             <form class="reset-email-form" method="POST" action="/password/email">
                 <h1 class="text-center">Reset your password</h1>
+
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="form-group has-error">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 {!! csrf_field() !!}
 
                 <div class="form-group">

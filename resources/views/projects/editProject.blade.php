@@ -6,6 +6,16 @@
             <form action="/projects/{{$project->id}}/edit" method="post" class="add-project-form" enctype="multipart/form-data">
                 <h1 class="text-center">Edit your project</h1>
 
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="form-group has-error">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 {!! csrf_field() !!}
 
                 <div class="form-group">

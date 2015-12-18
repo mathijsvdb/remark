@@ -2,17 +2,19 @@
 
 @section("content")
 	<div class="edit-profile-page">
-		@if (count($errors) > 0)
-			<div class="alert alert-danger">
-				<ul>
-					@foreach ($errors->all() as $error)
-						<li class="form-group has-error">{{ $error }}</li>
-					@endforeach
-				</ul>
-			</div>
-		@endif
 		<form class="edit-profile-form" method="POST" action="/update" enctype="multipart/form-data">
 			<h1 class="text-center">Edit your profile</h1>
+
+			@if (count($errors) > 0)
+				<div class="alert alert-danger">
+					<ul>
+						@foreach ($errors->all() as $error)
+							<li class="form-group has-error">{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+			@endif
+
 			{!! csrf_field() !!}
 
 			<div class="text-center">

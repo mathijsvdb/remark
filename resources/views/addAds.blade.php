@@ -6,20 +6,22 @@
     <div class="add-project-page">
         <div class="container">
 
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li class="form-group has-error">{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
-
             <form action="/advertising/add" method="POST" class="add-project-form" role="form" enctype="multipart/form-data">
                 {!! csrf_field() !!}
                 <h1 class="text-center">Add your advertisement</h1>
+
                 <p class="text-center">advertisements will be displayed for 30 days - €50</p>
+
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li class="form-group has-error">{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="form-group">
                     <label for="title" class="control-label">Title</label>
                     <input type="text" id="title" placeholder="Title" name="title" class="form-control" autofocus required="required" />
